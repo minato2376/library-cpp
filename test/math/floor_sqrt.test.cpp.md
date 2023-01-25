@@ -1,22 +1,28 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':x:'
+    path: math/floor_sqrt.hpp
+    title: math/floor_sqrt.hpp
   - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"test/template.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n\
-    #pragma GCC optimize (\"Ofast\")\n#pragma GCC optimize (\"unroll-loops\")\n#endif\n\
+  bundledCode: "#line 1 \"test/math/floor_sqrt.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+    \n#line 1 \"math/floor_sqrt.hpp\"\n/**\n * sqrt(x) \u3092\u8D85\u3048\u306A\u3044\
+    \u6700\u5927\u306E\u6574\u6570\u3092\u6C42\u3081\u308B\u3002\n * O(1)\n */\nlong\
+    \ long floor_sqrt(long long x) {\n    return floor(sqrt((long double)x));\n}\n\
+    #line 1 \"other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n#pragma\
+    \ GCC optimize (\"Ofast\")\n#pragma GCC optimize (\"unroll-loops\")\n#endif\n\
     #include <bits/stdc++.h>\nusing namespace std;\nusing uint = unsigned int;\nusing\
     \ ll = long long;\nusing ull = unsigned long long;\nusing pii = pair<int, int>;\n\
     using pll = pair<long long, long long>;\ntemplate <class T> using vec = vector<T>;\n\
@@ -75,23 +81,35 @@ data:
     #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
     \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 3 \"test/template.test.cpp\"\n\nint main() {\n    int\
-    \ A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
-    ;\n\nint main() {\n    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n\
-    }"
+    // clang-format on\n#line 4 \"test/math/floor_sqrt.test.cpp\"\n\nint main() {\n\
+    \    int T;\n    cin >> T;\n    rep(i, T) {\n        ll N;\n        cin >> N;\n\
+    \        for (ll x = 2;; x++) {\n            if (N % x == 0) {\n             \
+    \   ll y = N / x;\n                ll z = floor_sqrt(y);\n                if (z\
+    \ * z == y) {\n                    cout << z << \" \" << x << ln;\n          \
+    \      } else {\n                    y /= x;\n                    cout << x <<\
+    \ \" \" << y << ln;\n                }\n                break;\n            }\n\
+    \        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"math/floor_sqrt.hpp\"\
+    ;\n#include \"other/template.hpp\";\n\nint main() {\n    int T;\n    cin >> T;\n\
+    \    rep(i, T) {\n        ll N;\n        cin >> N;\n        for (ll x = 2;; x++)\
+    \ {\n            if (N % x == 0) {\n                ll y = N / x;\n          \
+    \      ll z = floor_sqrt(y);\n                if (z * z == y) {\n            \
+    \        cout << z << \" \" << x << ln;\n                } else {\n          \
+    \          y /= x;\n                    cout << x << \" \" << y << ln;\n     \
+    \           }\n                break;\n            }\n        }\n    }\n}"
   dependsOn:
+  - math/floor_sqrt.hpp
   - other/template.hpp
   isVerificationFile: true
-  path: test/template.test.cpp
+  path: test/math/floor_sqrt.test.cpp
   requiredBy: []
-  timestamp: '2023-01-25 18:02:27+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-01-25 19:14:24+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/template.test.cpp
+documentation_of: test/math/floor_sqrt.test.cpp
 layout: document
 redirect_from:
-- /verify/test/template.test.cpp
-- /verify/test/template.test.cpp.html
-title: test/template.test.cpp
+- /verify/test/math/floor_sqrt.test.cpp
+- /verify/test/math/floor_sqrt.test.cpp.html
+title: test/math/floor_sqrt.test.cpp
 ---
