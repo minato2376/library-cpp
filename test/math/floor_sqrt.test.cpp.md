@@ -14,10 +14,10 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    PROBLEM: https://atcoder.jp/contests/abc284/tasks/abc284_d
     links:
-    - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"test/math/floor_sqrt.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+    - https://atcoder.jp/contests/abc284/tasks/abc284_d
+  bundledCode: "#line 1 \"test/math/floor_sqrt.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc284/tasks/abc284_d\"\
     \n#line 1 \"math/floor_sqrt.hpp\"\n/**\n * sqrt(x) \u3092\u8D85\u3048\u306A\u3044\
     \u6700\u5927\u306E\u6574\u6570\u3092\u6C42\u3081\u308B\u3002\n * O(1)\n */\nlong\
     \ long floor_sqrt(long long x) {\n    return floor(sqrt((long double)x));\n}\n\
@@ -89,21 +89,22 @@ data:
     \      } else {\n                    y /= x;\n                    cout << x <<\
     \ \" \" << y << ln;\n                }\n                break;\n            }\n\
     \        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"math/floor_sqrt.hpp\"\
-    ;\n#include \"other/template.hpp\";\n\nint main() {\n    int T;\n    cin >> T;\n\
-    \    rep(i, T) {\n        ll N;\n        cin >> N;\n        for (ll x = 2;; x++)\
-    \ {\n            if (N % x == 0) {\n                ll y = N / x;\n          \
-    \      ll z = floor_sqrt(y);\n                if (z * z == y) {\n            \
-    \        cout << z << \" \" << x << ln;\n                } else {\n          \
-    \          y /= x;\n                    cout << x << \" \" << y << ln;\n     \
-    \           }\n                break;\n            }\n        }\n    }\n}"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc284/tasks/abc284_d\"\n#include\
+    \ \"math/floor_sqrt.hpp\";\n#include \"other/template.hpp\";\n\nint main() {\n\
+    \    int T;\n    cin >> T;\n    rep(i, T) {\n        ll N;\n        cin >> N;\n\
+    \        for (ll x = 2;; x++) {\n            if (N % x == 0) {\n             \
+    \   ll y = N / x;\n                ll z = floor_sqrt(y);\n                if (z\
+    \ * z == y) {\n                    cout << z << \" \" << x << ln;\n          \
+    \      } else {\n                    y /= x;\n                    cout << x <<\
+    \ \" \" << y << ln;\n                }\n                break;\n            }\n\
+    \        }\n    }\n}"
   dependsOn:
   - math/floor_sqrt.hpp
   - other/template.hpp
   isVerificationFile: true
   path: test/math/floor_sqrt.test.cpp
   requiredBy: []
-  timestamp: '2023-01-25 19:14:24+09:00'
+  timestamp: '2023-01-25 19:15:08+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/math/floor_sqrt.test.cpp
