@@ -3,5 +3,6 @@
  * O(1)
  */
 long long floor_sqrt(long long x) {
+    assert(0 <= x);
     return floor(sqrt((long double)x));
 }
