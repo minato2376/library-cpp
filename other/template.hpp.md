@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/math/floor_sqrt.test.cpp
     title: test/math/floor_sqrt.test.cpp
   - icon: ':heavy_check_mark:'
-    path: test/template.test.cpp
-    title: test/template.test.cpp
-  _isVerificationFailed: true
+    path: test/other/template.test.cpp
+    title: test/other/template.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 1 "other/template.hpp"
@@ -319,9 +319,9 @@ data:
   path: other/template.hpp
   requiredBy: []
   timestamp: '2023-01-25 18:02:27+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/template.test.cpp
+  - test/other/template.test.cpp
   - test/math/floor_sqrt.test.cpp
 documentation_of: other/template.hpp
 layout: document

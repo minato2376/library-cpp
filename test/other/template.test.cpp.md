@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
   _extendedRequiredBy: []
@@ -14,7 +14,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
     - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"test/template.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+  bundledCode: "#line 1 \"test/other/template.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
     \n#line 1 \"other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n\
     #pragma GCC optimize (\"Ofast\")\n#pragma GCC optimize (\"unroll-loops\")\n#endif\n\
     #include <bits/stdc++.h>\nusing namespace std;\nusing uint = unsigned int;\nusing\
@@ -75,23 +75,23 @@ data:
     #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
     \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 3 \"test/template.test.cpp\"\n\nint main() {\n    int\
-    \ A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n}\n"
+    // clang-format on\n#line 3 \"test/other/template.test.cpp\"\n\nint main() {\n\
+    \    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
     \n\nint main() {\n    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n\
     }"
   dependsOn:
   - other/template.hpp
   isVerificationFile: true
-  path: test/template.test.cpp
+  path: test/other/template.test.cpp
   requiredBy: []
-  timestamp: '2023-01-25 21:32:32+09:00'
+  timestamp: '2023-01-25 21:40:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/template.test.cpp
+documentation_of: test/other/template.test.cpp
 layout: document
 redirect_from:
-- /verify/test/template.test.cpp
-- /verify/test/template.test.cpp.html
-title: test/template.test.cpp
+- /verify/test/other/template.test.cpp
+- /verify/test/other/template.test.cpp.html
+title: test/other/template.test.cpp
 ---
