@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
   _extendedRequiredBy: []
@@ -78,14 +78,14 @@ data:
     // clang-format on\n#line 3 \"test/template.test.cpp\"\n\nint main() {\n    int\
     \ A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
-    ;\n\nint main() {\n    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n\
+    \n\nint main() {\n    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n\
     }"
   dependsOn:
   - other/template.hpp
   isVerificationFile: true
   path: test/template.test.cpp
   requiredBy: []
-  timestamp: '2023-01-25 18:02:27+09:00'
+  timestamp: '2023-01-25 21:32:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/template.test.cpp

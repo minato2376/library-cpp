@@ -3,12 +3,12 @@ data:
   libraryCategories:
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':x:'
       path: math/floor_sqrt.hpp
       title: math/floor_sqrt.hpp
   - name: other
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: other/template.hpp
       title: other/template.hpp
   verificationCategories:

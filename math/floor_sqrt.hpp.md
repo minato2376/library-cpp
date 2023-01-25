@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: test/math/floor_sqrt.test.cpp
+    title: test/math/floor_sqrt.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/floor_sqrt.hpp\"\n/**\n * sqrt(x) \u3092\u8D85\u3048\
@@ -20,8 +23,9 @@ data:
   path: math/floor_sqrt.hpp
   requiredBy: []
   timestamp: '2023-01-25 19:14:24+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - test/math/floor_sqrt.test.cpp
 documentation_of: math/floor_sqrt.hpp
 layout: document
 redirect_from:
