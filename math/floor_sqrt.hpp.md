@@ -13,16 +13,16 @@ data:
     links: []
   bundledCode: "#line 1 \"math/floor_sqrt.hpp\"\n/**\n * sqrt(x) \u3092\u8D85\u3048\
     \u306A\u3044\u6700\u5927\u306E\u6574\u6570\u3092\u6C42\u3081\u308B\u3002\n * O(1)\n\
-    \ */\nlong long floor_sqrt(long long x) {\n    return floor(sqrt((long double)x));\n\
-    }\n"
+    \ */\nlong long floor_sqrt(long long x) {\n    assert(0 <= x);\n    return floor(sqrt((long\
+    \ double)x));\n}\n"
   code: "/**\n * sqrt(x) \u3092\u8D85\u3048\u306A\u3044\u6700\u5927\u306E\u6574\u6570\
     \u3092\u6C42\u3081\u308B\u3002\n * O(1)\n */\nlong long floor_sqrt(long long x)\
-    \ {\n    return floor(sqrt((long double)x));\n}"
+    \ {\n    assert(0 <= x);\n    return floor(sqrt((long double)x));\n}"
   dependsOn: []
   isVerificationFile: false
   path: math/floor_sqrt.hpp
   requiredBy: []
-  timestamp: '2023-01-25 19:14:24+09:00'
+  timestamp: '2023-01-25 22:00:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/floor_sqrt.test.cpp
