@@ -1,6 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
-#include "../math/floor_sqrt.hpp";
-#include "../other/template.hpp";
+#include <bits/stdc++.h>
+#include "math/floor_sqrt.hpp"
+#include "other/template.hpp"
 
 vec<ll> A = {1,
              2,
