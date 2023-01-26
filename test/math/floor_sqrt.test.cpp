@@ -63,7 +63,6 @@ int main() {
     rep(i, SZ(A)) {
         assert(floor_sqrt(A[i]) == B[i]);
     }
-    int A, B;
-    cin >> A >> B;
-    cout << A + B << ln;
+    INT(X, Y);
+    print(X + Y);
 }

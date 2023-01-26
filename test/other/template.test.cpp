@@ -2,7 +2,6 @@
 #include "other/template.hpp"
 
 int main() {
-    int A, B;
-    cin >> A >> B;
-    cout << A + B << ln;
+    INT(A, B);
+    print(A + B);
 }
