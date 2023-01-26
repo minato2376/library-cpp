@@ -16,38 +16,68 @@ data:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/other/template.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
     \n#line 1 \"other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n\
-    #pragma GCC optimize (\"Ofast\")\n#pragma GCC optimize (\"unroll-loops\")\n#endif\n\
-    #include <bits/stdc++.h>\nusing namespace std;\nusing uint = unsigned int;\nusing\
-    \ ll = long long;\nusing ull = unsigned long long;\nusing pii = pair<int, int>;\n\
-    using pll = pair<long long, long long>;\ntemplate <class T> using vec = vector<T>;\n\
-    template <class T> using vvec = vector<vector<T>>;\n#define rep(i, n) for (int\
-    \ i = 0; i < (n); i++)\n#define rrep(i, n) for (int i = int(n) - 1; i >= 0; i--)\n\
-    #define all(x) begin(x), end(x)\nconstexpr char ln = '\\n';\ntemplate <class Container>\
-    \ inline int SZ(const Container& v) { return int(v.size()); }\ntemplate <class\
-    \ T> inline void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end());\
-    \ }\ntemplate <class T1, class T2> inline bool chmax(T1& a, T2 b) { if (a < b)\
-    \ { a = b; return true; } return false; }\ntemplate <class T1, class T2> inline\
-    \ bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false; }\n\
-    inline int topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }\ninline\
-    \ int botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\ninline int popcount(ull\
-    \ x) { return __builtin_popcountll(x); }\ninline int kthbit(ull x, int k) { return\
-    \ (x >> k) & 1; }\ninline constexpr long long TEN(int x) { return x == 0 ? 1 :\
-    \ TEN(x - 1) * 10; }\nconst string YESNO[2] = {\"NO\", \"YES\"};\nconst string\
-    \ YesNo[2] = {\"No\", \"Yes\"};\ninline void YES(bool t = true) { cout << YESNO[t]\
-    \ << \"\\n\"; }\ninline void Yes(bool t = true) { cout << YesNo[t] << \"\\n\"\
-    ; }\ntemplate <class T> inline void drop(T x) { cout << x << \"\\n\"; exit(0);\
-    \ }\ninline void print() { cout << \"\\n\"; }\ntemplate <class T> inline void\
-    \ print(const vector<T>& v) { for (auto it = v.begin(); it != v.end(); ++it) {\
-    \ if (it != v.begin()) { cout << \" \"; } cout << *it; } print(); }\ntemplate\
-    \ <class T, class... Args> inline void print(const T& x, const Args& ... args)\
-    \ { cout << x << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\ntemplate <class\
-    \ T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p) { return os <<\
-    \ \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate <size_t N, class\
-    \ TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_; }\ntemplate\
-    \ <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream &os,\
-    \ TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t); debug_tuple<N + 1, TUPLE,\
-    \ Args...>(os, t); }\ntemplate <class ...Args> ostream& operator<<(ostream& os,\
-    \ tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>, Args...>(os,\
+    #pragma GCC target(\"avx2,avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
+    unroll-loops\")\n#endif\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\n\
+    using ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
+    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
+    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
+    \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
+    \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
+    \ i = (l); (i) < (r); (i)++)\n#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2,\
+    \ REP1, REP0)(__VA_ARGS__)\n#define OVERLOAD_RREP(_1, _2, _3, name, ...) name\n\
+    #define RREP1(i, n) for (auto i = (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n\
+    #define RREP2(i, l, r) for (auto i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...)\
+    \ OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x),\
+    \ end(x)\ntemplate <class Container> int SZ(const Container& v) { return int(v.size());\
+    \ }\ntemplate <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(),\
+    \ v.end()), v.end()); }\ntemplate <class T1, class T2> bool chmax(T1& a, T2 b)\
+    \ { if (a < b) { a = b; return true; } return false; }\ntemplate <class T1, class\
+    \ T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false;\
+    \ }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }\nint\
+    \ botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
+    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
+    \ >> k) & 1; }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1)\
+    \ * 10; }\ntemplate <typename S> void rearrange(const vector<S>& id) {}\ntemplate\
+    \ <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>&\
+    \ v) {\n    vector<T> w(v.size());\n    rep(i, si(id)) w[i] = v[id[i]];\n    v.swap(w);\n\
+    }\ntemplate <typename S, typename Head, typename... Tail> void rearrange(const\
+    \ vector<S>& id, Head& a, Tail& ...tail) {\n    rearrange_exec(id, a);\n    rearrange(id,\
+    \ tail...);\n}\nconstexpr char ln = '\\n';\nconst string YESNO[2] = {\"NO\", \"\
+    YES\"};\nconst string YesNo[2] = {\"No\", \"Yes\"};\nvoid YES(bool t = true) {\
+    \ cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool t = true) { cout << YesNo[t] <<\
+    \ \"\\n\"; }\ntemplate <class T> void drop(T x) { cout << x << \"\\n\"; exit(0);\
+    \ }\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define\
+    \ LL(...)     \\\n    ll __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define STR(...)\
+    \        \\\n    string __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define CHR(...)\
+    \      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define LDB(...)   \
+    \          \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define VEC(type,\
+    \ name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n#define VEC2(type,\
+    \ name1, name2, size)     \\\n    vector<type> name1(size), name2(size); \\\n\
+    \    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
+    \ name1, name2, name3, size)           \\\n    vector<type> name1(size), name2(size),\
+    \ name3(size); \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i], name3[i])\n\
+    #define VEC4(type, name1, name2, name3, name4, size)                 \\\n    vector<type>\
+    \ name1(size), name2(size), name3(size), name4(size); \\\n    for (int i = 0;\
+    \ i < size; i++) IN(name1[i], name2[i], name3[i], name4[i]);\n#define VV(type,\
+    \ name, N, M)                       \\\n    vector<vector<type>> name(N, vector<type>(M));\
+    \ \\\n    IN(name)\ntemplate <class T> void scan(T& a) { cin >> a; }\ntemplate\
+    \ <class T> void scan(vector<T>& a) { for (auto& i : a) scan(i); }\nvoid IN()\
+    \ {}\ntemplate <class Head, class... Tail> void IN(Head& head, Tail&... tail)\
+    \ { scan(head); IN(tail...); }\nvoid print() { cout << \"\\n\"; }\ntemplate <class\
+    \ T> void print(const vector<T>& v) { for (auto it = v.begin(); it != v.end();\
+    \ ++it) { if (it != v.begin()) { cout << \" \"; } cout << *it; } print(); }\n\
+    template <class T, class... Args> void print(const T& x, const Args& ... args)\
+    \ { cout << x; if (sizeof...(Args)) cout << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\n\
+    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p)\
+    \ { return os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate\
+    \ <size_t N, class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_;\
+    \ }\ntemplate <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
+    \ &os, TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t); debug_tuple<N +\
+    \ 1, TUPLE, Args...>(os, t); }\ntemplate <class ...Args> ostream& operator<<(ostream&\
+    \ os, tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>, Args...>(os,\
     \ t); return os << \")\"; }\nstring debug_delim(int& i) { return i++ == 0 ? \"\
     \" : \", \"; }\n#define debug_embrace(x) { int i = 0; os << \"{\";  { x } return\
     \ os << \"}\"; }\ntemplate <class T> ostream& operator<<(ostream& os, vector<T>\
@@ -76,16 +106,15 @@ data:
     \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 3 \"test/other/template.test.cpp\"\n\nint main() {\n\
-    \    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n}\n"
+    \    INT(A, B);\n    print(A + B);\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
-    \n\nint main() {\n    int A, B;\n    cin >> A >> B;\n    cout << A + B << ln;\n\
-    }"
+    \n\nint main() {\n    INT(A, B);\n    print(A + B);\n}"
   dependsOn:
   - other/template.hpp
   isVerificationFile: true
   path: test/other/template.test.cpp
   requiredBy: []
-  timestamp: '2023-01-25 21:40:49+09:00'
+  timestamp: '2023-01-27 00:57:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/other/template.test.cpp

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: math/floor_sqrt.hpp
-    title: math/floor_sqrt.hpp
+    path: datastructure/BinaryIndexedTree.hpp
+    title: datastructure/BinaryIndexedTree.hpp
   - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
@@ -14,20 +14,21 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
     links:
-    - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"test/math/floor_sqrt.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n\
-    #pragma GCC target(\"avx2,avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
-    unroll-loops\")\n#endif\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
-    \ uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\n\
-    using ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
-    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
-    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
-    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
-    #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
-    \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
+    - https://judge.yosupo.jp/problem/point_add_range_sum
+  bundledCode: "#line 1 \"test/datastructure/BinaryIndexedTree.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line 1 \"\
+    other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n#pragma GCC target(\"\
+    avx2,avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"unroll-loops\"\
+    )\n#endif\n#include <bits/stdc++.h>\nusing namespace std;\nusing uint = unsigned\
+    \ int;\nusing ll = long long;\nusing ull = unsigned long long;\nusing ld = long\
+    \ double;\nusing pii = pair<int, int>;\nusing pll = pair<long long, long long>;\n\
+    template <class T> using maxheap = priority_queue<T>;\ntemplate <class T> using\
+    \ minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate <class T> using\
+    \ vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n#define\
+    \ OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato =\
+    \ decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
     \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
     \ i = (l); (i) < (r); (i)++)\n#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2,\
     \ REP1, REP0)(__VA_ARGS__)\n#define OVERLOAD_RREP(_1, _2, _3, name, ...) name\n\
@@ -108,85 +109,51 @@ data:
     #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
     \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 1 \"math/floor_sqrt.hpp\"\n/**\n * sqrt(x) \u3092\u8D85\
-    \u3048\u306A\u3044\u6700\u5927\u306E\u6574\u6570\u3092\u6C42\u3081\u308B\u3002\
-    \n * O(1)\n */\nlong long floor_sqrt(long long x) {\n    assert(0 <= x);\n   \
-    \ return floor(sqrt((long double)x));\n}\n#line 4 \"test/math/floor_sqrt.test.cpp\"\
-    \n\nvec<ll> A = {1,\n             2,\n             3,\n             4,\n     \
-    \        8999999999999999999,\n             9000000000000000000,\n           \
-    \  8999999994000000000,\n             8999999994000000001,\n             8999999994000000002,\n\
-    \             8999999988000000003,\n             8999999988000000004,\n      \
-    \       8999999988000000005,\n             8999999982000000008,\n            \
-    \ 8999999982000000009,\n             8999999982000000010,\n             8999999976000000015,\n\
-    \             8999999976000000016,\n             8999999976000000017,\n      \
-    \       8491099229177050083,\n             8491099229177050084,\n            \
-    \ 8491099229177050085,\n             8681616713998055555,\n             8681616713998055556,\n\
-    \             8681616713998055557,\n             8870082394394406024,\n      \
-    \       8870082394394406025,\n             8870082394394406026,\n            \
-    \ 8783796469688809023,\n             8783796469688809024,\n             8783796469688809025,\n\
-    \             8423372501986777343,\n             8423372501986777344,\n      \
-    \       8423372501986777345,\n             8734980711058006083,\n            \
-    \ 8734980711058006084,\n             8734980711058006085,\n             8809989053821655183,\n\
-    \             8809989053821655184,\n             8809989053821655185,\n      \
-    \       8854489696895693763,\n             8854489696895693764,\n            \
-    \ 8854489696895693765,\n             8781633772865386800,\n             8781633772865386801,\n\
-    \             8781633772865386802,\n             8849280339176904003,\n      \
-    \       8849280339176904004,\n             8849280339176904005};\nvec<ll> B =\
-    \ {\n    1,          1,          1,          2,          2999999999, 3000000000,\n\
-    \    2999999998, 2999999999, 2999999999, 2999999997, 2999999998, 2999999998,\n\
-    \    2999999996, 2999999997, 2999999997, 2999999995, 2999999996, 2999999996,\n\
-    \    2913949077, 2913949078, 2913949078, 2946458333, 2946458334, 2946458334,\n\
-    \    2978268354, 2978268355, 2978268355, 2963747031, 2963747032, 2963747032,\n\
-    \    2902304687, 2902304688, 2902304688, 2955500077, 2955500078, 2955500078,\n\
-    \    2968162571, 2968162572, 2968162572, 2975649457, 2975649458, 2975649458,\n\
-    \    2963382150, 2963382151, 2963382151, 2974773997, 2974773998, 2974773998};\n\
-    int main() {\n    rep(i, SZ(A)) {\n        assert(floor_sqrt(A[i]) == B[i]);\n\
-    \    }\n    INT(X, Y);\n    print(X + Y);\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
-    \n#include \"math/floor_sqrt.hpp\"\n\nvec<ll> A = {1,\n             2,\n     \
-    \        3,\n             4,\n             8999999999999999999,\n            \
-    \ 9000000000000000000,\n             8999999994000000000,\n             8999999994000000001,\n\
-    \             8999999994000000002,\n             8999999988000000003,\n      \
-    \       8999999988000000004,\n             8999999988000000005,\n            \
-    \ 8999999982000000008,\n             8999999982000000009,\n             8999999982000000010,\n\
-    \             8999999976000000015,\n             8999999976000000016,\n      \
-    \       8999999976000000017,\n             8491099229177050083,\n            \
-    \ 8491099229177050084,\n             8491099229177050085,\n             8681616713998055555,\n\
-    \             8681616713998055556,\n             8681616713998055557,\n      \
-    \       8870082394394406024,\n             8870082394394406025,\n            \
-    \ 8870082394394406026,\n             8783796469688809023,\n             8783796469688809024,\n\
-    \             8783796469688809025,\n             8423372501986777343,\n      \
-    \       8423372501986777344,\n             8423372501986777345,\n            \
-    \ 8734980711058006083,\n             8734980711058006084,\n             8734980711058006085,\n\
-    \             8809989053821655183,\n             8809989053821655184,\n      \
-    \       8809989053821655185,\n             8854489696895693763,\n            \
-    \ 8854489696895693764,\n             8854489696895693765,\n             8781633772865386800,\n\
-    \             8781633772865386801,\n             8781633772865386802,\n      \
-    \       8849280339176904003,\n             8849280339176904004,\n            \
-    \ 8849280339176904005};\nvec<ll> B = {\n    1,          1,          1,       \
-    \   2,          2999999999, 3000000000,\n    2999999998, 2999999999, 2999999999,\
-    \ 2999999997, 2999999998, 2999999998,\n    2999999996, 2999999997, 2999999997,\
-    \ 2999999995, 2999999996, 2999999996,\n    2913949077, 2913949078, 2913949078,\
-    \ 2946458333, 2946458334, 2946458334,\n    2978268354, 2978268355, 2978268355,\
-    \ 2963747031, 2963747032, 2963747032,\n    2902304687, 2902304688, 2902304688,\
-    \ 2955500077, 2955500078, 2955500078,\n    2968162571, 2968162572, 2968162572,\
-    \ 2975649457, 2975649458, 2975649458,\n    2963382150, 2963382151, 2963382151,\
-    \ 2974773997, 2974773998, 2974773998};\nint main() {\n    rep(i, SZ(A)) {\n  \
-    \      assert(floor_sqrt(A[i]) == B[i]);\n    }\n    INT(X, Y);\n    print(X +\
-    \ Y);\n}"
+    // clang-format on\n#line 2 \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate\
+    \ <class T> struct BinaryIndexedTree {\n  private:\n    int n;\n    vector<T>\
+    \ data;\n\n    // [0,i) (0-indexed) a[0] + \u2026 + a[i-1]\n    T sum(int i) const\
+    \ {\n        T ret = 0;\n        for (; i > 0; i -= i & -i) ret += data[i];\n\
+    \        return ret;\n    }\n\n  public:\n    BinaryIndexedTree() {\n    }\n \
+    \   BinaryIndexedTree(int n) : n(n), data(n + 1, 0) {\n    }\n\n    int size()\
+    \ const {\n        return n;\n    }\n\n    /**\n     * (0-indexed)\n     * a[i]\
+    \ += x\n     */\n    void add(int i, T x) {\n        assert(0 <= i and i < n);\n\
+    \        for (++i; i <= n; i += i & -i) data[i] += x;\n    }\n\n    /**\n    \
+    \ * [l, r) (0-indexed)\n     * @return a[l] + \u2026\u3000+ a[r-1]\n     */\n\
+    \    T sum(int l, int r) const {\n        if (l >= r) return T(0);\n        assert(0\
+    \ <= l and r <= n);\n        return sum(r) - sum(l);\n    }\n\n    /**\n     *\
+    \ (0-indexed)\n     * r = 0 or a[0] + a[1] + ... + a[r-1] < x\n     * r = n or\
+    \ a[0] + a[1] + ... + a[r] >= x\n     * a[0] + a[1] + ... + a[r] >= x \u3068\u306A\
+    \u308B\u6700\u5C0F\u306E r \u3092\u8FD4\u3059\u3002\n     */\n    int lower_bound(T\
+    \ x) const {\n        int k = 1;\n        int ret = 0;\n        while ((k << 1)\
+    \ <= n) k <<= 1;\n        while (k > 0) {\n            if (ret + k <= n and data[ret\
+    \ + k] < x) {\n                x -= data[ret + k];\n                ret += k;\n\
+    \            }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n\
+    \    int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\
+    };\n#line 4 \"test/datastructure/BinaryIndexedTree.test.cpp\"\n\nint main() {\n\
+    \    INT(N, Q);\n    BinaryIndexedTree<ll> BIT(N);\n    VEC(ll, A, N);\n    rep(i,\
+    \ N) BIT.add(i, A[i]);\n    rep(Q) {\n        INT(T);\n        if (T == 0) {\n\
+    \            LL(p, x);\n            BIT.add(p, x);\n        } else {\n       \
+    \     INT(l, r);\n            print(BIT.sum(l, r));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
+    #include \"other/template.hpp\"\n#include \"datastructure/BinaryIndexedTree.hpp\"\
+    \n\nint main() {\n    INT(N, Q);\n    BinaryIndexedTree<ll> BIT(N);\n    VEC(ll,\
+    \ A, N);\n    rep(i, N) BIT.add(i, A[i]);\n    rep(Q) {\n        INT(T);\n   \
+    \     if (T == 0) {\n            LL(p, x);\n            BIT.add(p, x);\n     \
+    \   } else {\n            INT(l, r);\n            print(BIT.sum(l, r));\n    \
+    \    }\n    }\n}"
   dependsOn:
   - other/template.hpp
-  - math/floor_sqrt.hpp
+  - datastructure/BinaryIndexedTree.hpp
   isVerificationFile: true
-  path: test/math/floor_sqrt.test.cpp
+  path: test/datastructure/BinaryIndexedTree.test.cpp
   requiredBy: []
   timestamp: '2023-01-27 00:57:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/math/floor_sqrt.test.cpp
+documentation_of: test/datastructure/BinaryIndexedTree.test.cpp
 layout: document
 redirect_from:
-- /verify/test/math/floor_sqrt.test.cpp
-- /verify/test/math/floor_sqrt.test.cpp.html
-title: test/math/floor_sqrt.test.cpp
+- /verify/test/datastructure/BinaryIndexedTree.test.cpp
+- /verify/test/datastructure/BinaryIndexedTree.test.cpp.html
+title: test/datastructure/BinaryIndexedTree.test.cpp
 ---

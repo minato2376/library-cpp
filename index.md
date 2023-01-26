@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: datastructure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: datastructure/BinaryIndexedTree.hpp
+      title: datastructure/BinaryIndexedTree.hpp
   - name: math
     pages:
     - icon: ':heavy_check_mark:'
@@ -12,6 +17,11 @@ data:
       path: other/template.hpp
       title: other/template.hpp
   verificationCategories:
+  - name: test/datastructure
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/datastructure/BinaryIndexedTree.test.cpp
+      title: test/datastructure/BinaryIndexedTree.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'
