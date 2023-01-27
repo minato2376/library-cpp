@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: algorithm
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: algorithm/inversion_number.hpp
+      title: algorithm/inversion_number.hpp
   - name: datastructure
     pages:
     - icon: ':heavy_check_mark:'
@@ -17,6 +22,11 @@ data:
       path: other/template.hpp
       title: other/template.hpp
   verificationCategories:
+  - name: test/algorithm
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/algorithm/inversion_number.test.cpp
+      title: test/algorithm/inversion_number.test.cpp
   - name: test/datastructure
     pages:
     - icon: ':heavy_check_mark:'

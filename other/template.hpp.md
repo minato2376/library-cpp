@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/algorithm/inversion_number.test.cpp
+    title: test/algorithm/inversion_number.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/datastructure/BinaryIndexedTree.test.cpp
     title: test/datastructure/BinaryIndexedTree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -205,6 +208,7 @@ data:
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/other/template.test.cpp
   - test/math/floor_sqrt.test.cpp
+  - test/algorithm/inversion_number.test.cpp
 documentation_of: other/template.hpp
 layout: document
 redirect_from:
