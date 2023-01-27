@@ -13,6 +13,9 @@ data:
       title: datastructure/BinaryIndexedTree.hpp
   - name: math
     pages:
+    - icon: ':warning:'
+      path: math/TwoSat.hpp
+      title: math/TwoSat.hpp
     - icon: ':heavy_check_mark:'
       path: math/floor_sqrt.hpp
       title: math/floor_sqrt.hpp
