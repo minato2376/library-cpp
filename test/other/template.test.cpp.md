@@ -15,14 +15,12 @@ data:
     links:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/other/template.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#ifndef MINATO_LOCAL\n\
-    #pragma GCC target(\"avx2,avx\")\n#pragma GCC optimize(\"O3\")\n#pragma GCC optimize(\"\
-    unroll-loops\")\n#endif\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
-    \ uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\n\
-    using ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
-    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
-    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
-    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
+    using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
+    \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
+    using pll = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
+    template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\n\
+    template <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
     #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
     \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
     \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
@@ -42,15 +40,15 @@ data:
     \ >> k) & 1; }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1)\
     \ * 10; }\ntemplate <typename S> void rearrange(const vector<S>& id) {}\ntemplate\
     \ <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>&\
-    \ v) {\n    vector<T> w(v.size());\n    rep(i, si(id)) w[i] = v[id[i]];\n    v.swap(w);\n\
-    }\ntemplate <typename S, typename Head, typename... Tail> void rearrange(const\
-    \ vector<S>& id, Head& a, Tail& ...tail) {\n    rearrange_exec(id, a);\n    rearrange(id,\
-    \ tail...);\n}\nconstexpr char ln = '\\n';\nconst string YESNO[2] = {\"NO\", \"\
-    YES\"};\nconst string YesNo[2] = {\"No\", \"Yes\"};\nvoid YES(bool t = true) {\
-    \ cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool t = true) { cout << YesNo[t] <<\
-    \ \"\\n\"; }\ntemplate <class T> void drop(T x) { cout << x << \"\\n\"; exit(0);\
-    \ }\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define\
-    \ LL(...)     \\\n    ll __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define STR(...)\
+    \ v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] =\
+    \ v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head, typename... Tail>\
+    \ void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id,\
+    \ a); rearrange(id, tail...); }\nconstexpr char ln = '\\n';\nconst string YESNO[2]\
+    \ = {\"NO\", \"YES\"};\nconst string YesNo[2] = {\"No\", \"Yes\"};\nvoid YES(bool\
+    \ t = true) { cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool t = true) { cout <<\
+    \ YesNo[t] << \"\\n\"; }\ntemplate <class T> void drop(T x) { cout << x << \"\\\
+    n\"; exit(0); }\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
+    #define LL(...)     \\\n    ll __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define STR(...)\
     \        \\\n    string __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define CHR(...)\
     \      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define LDB(...)   \
     \          \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define VEC(type,\
@@ -114,7 +112,7 @@ data:
   isVerificationFile: true
   path: test/other/template.test.cpp
   requiredBy: []
-  timestamp: '2023-01-27 00:57:32+09:00'
+  timestamp: '2023-01-27 11:10:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/other/template.test.cpp
