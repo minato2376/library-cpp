@@ -1,9 +1,4 @@
 // clang-format off
-#ifndef MINATO_LOCAL
-#pragma GCC target("avx2,avx")
-#pragma GCC optimize("O3")
-#pragma GCC optimize("unroll-loops")
-#endif
 #include <bits/stdc++.h>
 using namespace std;
 using uint = unsigned int;
@@ -36,15 +31,8 @@ int popcount(ull x) { return __builtin_popcountll(x); }
 int kthbit(ull x, int k) { return (x >> k) & 1; }
 constexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1) * 10; }
 template <typename S> void rearrange(const vector<S>& id) {}
-template <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>& v) {
-    vector<T> w(v.size());
-    rep(i, si(id)) w[i] = v[id[i]];
-    v.swap(w);
-}
-template <typename S, typename Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail) {
-    rearrange_exec(id, a);
-    rearrange(id, tail...);
-}
+template <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }
+template <typename S, typename Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id, a); rearrange(id, tail...); }
 constexpr char ln = '\n';
 const string YESNO[2] = {"NO", "YES"};
 const string YesNo[2] = {"No", "Yes"};
