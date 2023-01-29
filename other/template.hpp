@@ -23,6 +23,9 @@ template <class T> using vvec = vector<vector<T>>;
 #define all(x) begin(x), end(x)
 template <class Container> int SZ(const Container& v) { return int(v.size()); }
 template <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end()); }
+template <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(), v.end()); }
+template <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(), v.end()); }
+template <class T> T SUM(const vector<T>& v) { return *accumulate(v.begin(), v.end(), T(0)); }
 template <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }
 template <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false; }
 int topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }
