@@ -10,6 +10,9 @@ data:
     path: test/datastructure/BinaryIndexedTree.test.cpp
     title: test/datastructure/BinaryIndexedTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/datastructure/UnionFind.test.cpp
+    title: test/datastructure/UnionFind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/floor_sqrt.test.cpp
     title: test/math/floor_sqrt.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,30 +39,33 @@ data:
     \ OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x),\
     \ end(x)\ntemplate <class Container> int SZ(const Container& v) { return int(v.size());\
     \ }\ntemplate <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(),\
-    \ v.end()), v.end()); }\ntemplate <class T1, class T2> bool chmax(T1& a, T2 b)\
-    \ { if (a < b) { a = b; return true; } return false; }\ntemplate <class T1, class\
-    \ T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false;\
-    \ }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }\nint\
-    \ botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
-    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
-    \ >> k) & 1; }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1)\
-    \ * 10; }\ntemplate <typename S> void rearrange(const vector<S>& id) {}\ntemplate\
-    \ <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>&\
-    \ v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] =\
-    \ v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head, typename... Tail>\
-    \ void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id,\
-    \ a); rearrange(id, tail...); }\nconstexpr char ln = '\\n';\nconst string YESNO[2]\
-    \ = {\"NO\", \"YES\"};\nconst string YesNo[2] = {\"No\", \"Yes\"};\nvoid YES(bool\
-    \ t = true) { cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool t = true) { cout <<\
-    \ YesNo[t] << \"\\n\"; }\ntemplate <class T> void drop(T x) { cout << x << \"\\\
-    n\"; exit(0); }\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
-    #define LL(...)     \\\n    ll __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define STR(...)\
-    \        \\\n    string __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define CHR(...)\
-    \      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define LDB(...)   \
-    \          \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define VEC(type,\
-    \ name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n#define VEC2(type,\
-    \ name1, name2, size)     \\\n    vector<type> name1(size), name2(size); \\\n\
-    \    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
+    \ v.end()), v.end()); }\ntemplate <class T> T MAX(const vector<T>& v) { return\
+    \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
+    \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
+    \ vector<T>& v) { return *accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
+    \ T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return\
+    \ false; }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b)\
+    \ { a = b; return true; } return false; }\nint topbit(ull x) { return x == 0 ?\
+    \ -1 : 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x);\
+    \ }\nint popcount(ull x) { return __builtin_popcountll(x); }\nint kthbit(ull x,\
+    \ int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int x) { return x ==\
+    \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
+    \ id) {}\ntemplate <typename S, typename T> void rearrange_exec(const vector<S>&\
+    \ id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size();\
+    \ i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head,\
+    \ typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nconstexpr char ln = '\\\
+    n';\nconst string YESNO[2] = {\"NO\", \"YES\"};\nconst string YesNo[2] = {\"No\"\
+    , \"Yes\"};\nvoid YES(bool t = true) { cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool\
+    \ t = true) { cout << YesNo[t] << \"\\n\"; }\ntemplate <class T> void drop(T x)\
+    \ { cout << x << \"\\n\"; exit(0); }\n#define INT(...)     \\\n    int __VA_ARGS__;\
+    \ \\\n    IN(__VA_ARGS__)\n#define LL(...)     \\\n    ll __VA_ARGS__; \\\n  \
+    \  IN(__VA_ARGS__)\n#define STR(...)        \\\n    string __VA_ARGS__; \\\n \
+    \   IN(__VA_ARGS__)\n#define CHR(...)      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
+    #define LDB(...)             \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
+    #define VEC(type, name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n\
+    #define VEC2(type, name1, name2, size)     \\\n    vector<type> name1(size), name2(size);\
+    \ \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
     \ name1, name2, name3, size)           \\\n    vector<type> name1(size), name2(size),\
     \ name3(size); \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i], name3[i])\n\
     #define VEC4(type, name1, name2, name3, name4, size)                 \\\n    vector<type>\
@@ -125,30 +131,33 @@ data:
     \ OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x),\
     \ end(x)\ntemplate <class Container> int SZ(const Container& v) { return int(v.size());\
     \ }\ntemplate <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(),\
-    \ v.end()), v.end()); }\ntemplate <class T1, class T2> bool chmax(T1& a, T2 b)\
-    \ { if (a < b) { a = b; return true; } return false; }\ntemplate <class T1, class\
-    \ T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false;\
-    \ }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }\nint\
-    \ botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
-    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
-    \ >> k) & 1; }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1)\
-    \ * 10; }\ntemplate <typename S> void rearrange(const vector<S>& id) {}\ntemplate\
-    \ <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>&\
-    \ v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] =\
-    \ v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head, typename... Tail>\
-    \ void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id,\
-    \ a); rearrange(id, tail...); }\nconstexpr char ln = '\\n';\nconst string YESNO[2]\
-    \ = {\"NO\", \"YES\"};\nconst string YesNo[2] = {\"No\", \"Yes\"};\nvoid YES(bool\
-    \ t = true) { cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool t = true) { cout <<\
-    \ YesNo[t] << \"\\n\"; }\ntemplate <class T> void drop(T x) { cout << x << \"\\\
-    n\"; exit(0); }\n#define INT(...)     \\\n    int __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
-    #define LL(...)     \\\n    ll __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define STR(...)\
-    \        \\\n    string __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define CHR(...)\
-    \      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define LDB(...)   \
-    \          \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define VEC(type,\
-    \ name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n#define VEC2(type,\
-    \ name1, name2, size)     \\\n    vector<type> name1(size), name2(size); \\\n\
-    \    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
+    \ v.end()), v.end()); }\ntemplate <class T> T MAX(const vector<T>& v) { return\
+    \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
+    \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
+    \ vector<T>& v) { return *accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
+    \ T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return\
+    \ false; }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b)\
+    \ { a = b; return true; } return false; }\nint topbit(ull x) { return x == 0 ?\
+    \ -1 : 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x);\
+    \ }\nint popcount(ull x) { return __builtin_popcountll(x); }\nint kthbit(ull x,\
+    \ int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int x) { return x ==\
+    \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
+    \ id) {}\ntemplate <typename S, typename T> void rearrange_exec(const vector<S>&\
+    \ id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size();\
+    \ i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head,\
+    \ typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nconstexpr char ln = '\\\
+    n';\nconst string YESNO[2] = {\"NO\", \"YES\"};\nconst string YesNo[2] = {\"No\"\
+    , \"Yes\"};\nvoid YES(bool t = true) { cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool\
+    \ t = true) { cout << YesNo[t] << \"\\n\"; }\ntemplate <class T> void drop(T x)\
+    \ { cout << x << \"\\n\"; exit(0); }\n#define INT(...)     \\\n    int __VA_ARGS__;\
+    \ \\\n    IN(__VA_ARGS__)\n#define LL(...)     \\\n    ll __VA_ARGS__; \\\n  \
+    \  IN(__VA_ARGS__)\n#define STR(...)        \\\n    string __VA_ARGS__; \\\n \
+    \   IN(__VA_ARGS__)\n#define CHR(...)      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
+    #define LDB(...)             \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
+    #define VEC(type, name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n\
+    #define VEC2(type, name1, name2, size)     \\\n    vector<type> name1(size), name2(size);\
+    \ \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
     \ name1, name2, name3, size)           \\\n    vector<type> name1(size), name2(size),\
     \ name3(size); \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i], name3[i])\n\
     #define VEC4(type, name1, name2, name3, name4, size)                 \\\n    vector<type>\
@@ -202,9 +211,10 @@ data:
   isVerificationFile: false
   path: other/template.hpp
   requiredBy: []
-  timestamp: '2023-01-27 11:10:46+09:00'
+  timestamp: '2023-01-30 01:33:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - test/datastructure/UnionFind.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/other/template.test.cpp
   - test/math/floor_sqrt.test.cpp

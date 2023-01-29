@@ -2,11 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: algorithm/inversion_number.hpp
-    title: algorithm/inversion_number.hpp
-  - icon: ':heavy_check_mark:'
-    path: datastructure/BinaryIndexedTree.hpp
-    title: datastructure/BinaryIndexedTree.hpp
+    path: datastructure/UnionFind.hpp
+    title: datastructure/UnionFind.hpp
   - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
@@ -17,17 +14,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
+    PROBLEM: https://yukicoder.me/problems/no/1054
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D
-  bundledCode: "#line 1 \"test/algorithm/inversion_number.test.cpp\"\n#define PROBLEM\
-    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
-    using pll = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
-    template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\n\
-    template <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    - https://yukicoder.me/problems/no/1054
+  bundledCode: "#line 1 \"test/datastructure/UnionFind.test.cpp\"\n#define PROBLEM\
+    \ \"https://yukicoder.me/problems/no/1054\"\n#line 1 \"other/template.hpp\"\n\
+    // clang-format off\n#include <bits/stdc++.h>\nusing namespace std;\nusing uint\
+    \ = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nusing\
+    \ ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
+    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
+    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
     #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
     \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
     \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
@@ -113,53 +110,88 @@ data:
     #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
     \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 2 \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate\
-    \ <class T> struct BinaryIndexedTree {\n  private:\n    int n;\n    vector<T>\
-    \ data;\n\n    // [0,i) (0-indexed) a[0] + \u2026 + a[i-1]\n    T sum(int i) const\
-    \ {\n        T ret = 0;\n        for (; i > 0; i -= i & -i) ret += data[i];\n\
-    \        return ret;\n    }\n\n  public:\n    BinaryIndexedTree() {\n    }\n \
-    \   BinaryIndexedTree(int n) : n(n), data(n + 1, 0) {\n    }\n\n    int size()\
-    \ const {\n        return n;\n    }\n\n    /**\n     * (0-indexed)\n     * a[i]\
-    \ += x\n     */\n    void add(int i, T x) {\n        assert(0 <= i and i < n);\n\
-    \        for (++i; i <= n; i += i & -i) data[i] += x;\n    }\n\n    /**\n    \
-    \ * [l, r) (0-indexed)\n     * @return a[l] + \u2026\u3000+ a[r-1]\n     */\n\
-    \    T sum(int l, int r) const {\n        if (l >= r) return T(0);\n        assert(0\
-    \ <= l and r <= n);\n        return sum(r) - sum(l);\n    }\n\n    /**\n     *\
-    \ (0-indexed)\n     * r = 0 or a[0] + a[1] + ... + a[r-1] < x\n     * r = n or\
-    \ a[0] + a[1] + ... + a[r] >= x\n     * a[0] + a[1] + ... + a[r] >= x \u3068\u306A\
-    \u308B\u6700\u5C0F\u306E r \u3092\u8FD4\u3059\u3002\n     */\n    int lower_bound(T\
-    \ x) const {\n        int k = 1;\n        int ret = 0;\n        while ((k << 1)\
-    \ <= n) k <<= 1;\n        while (k > 0) {\n            if (ret + k <= n and data[ret\
-    \ + k] < x) {\n                x -= data[ret + k];\n                ret += k;\n\
-    \            }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n\
-    \    int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\
-    };\n#line 3 \"algorithm/inversion_number.hpp\"\n\ntemplate <class T> long long\
-    \ inversion_number(const vector<T>& v) {\n    int n = int(v.size());\n    vector<T>\
-    \ com = v;\n    sort(com.begin(), com.end());\n    com.erase(unique(com.begin(),\
-    \ com.end()), com.end());\n    int m = int(com.size());\n\n    BinaryIndexedTree<int>\
-    \ BIT(m);\n    long long ret = 0;\n    for (int i = 0; i < n; i++) {\n       \
-    \ int k = lower_bound(com.begin(), com.end(), v[i]) - com.begin();\n        ret\
-    \ += BIT.sum(k + 1, m);\n        BIT.add(k, 1);\n    }\n\n    return ret;\n}\n\
-    #line 5 \"test/algorithm/inversion_number.test.cpp\"\n\nint main() {\n    INT(N);\n\
-    \    VEC(int, A, N);\n    print(inversion_number(A));\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_D\"\
-    \n#include \"other/template.hpp\"\n#include \"algorithm/inversion_number.hpp\"\
-    \n\nint main() {\n    INT(N);\n    VEC(int, A, N);\n    print(inversion_number(A));\n\
-    }"
+    // clang-format on\n#line 2 \"datastructure/UnionFind.hpp\"\n\n/**\n * \u9AD8\u901F\
+    \u3001\u7701\u30E1\u30E2\u30EA\u306A\u30B7\u30F3\u30D7\u30EB\u306A UnionFind \u3092\
+    \u4F7F\u3044\u305F\u3044\u5834\u5408\u3001atcoder::dsu \u3092\u4F7F\u3046\u3002\
+    \n */\nstruct UnionFind {\n  private:\n    int n, group_number;\n    vector<int>\
+    \ parent_or_size, nex;\n\n  public:\n    UnionFind() : n(0), group_number(0) {\n\
+    \    }\n    UnionFind(int n) : n(n), group_number(n), parent_or_size(n, -1), nex(n)\
+    \ {\n        iota(nex.begin(), nex.end(), 0);\n    }\n\n    int size() const {\n\
+    \        return n;\n    }\n\n    /**\n     * \u9023\u7D50\u6210\u5206\u306E\u500B\
+    \u6570\u3092\u53D6\u5F97\u3059\u308B\u3002\n     */\n    int count() const {\n\
+    \        return group_number;\n    }\n\n    bool merge(int x, int y) {\n     \
+    \   assert(0 <= x and x < n);\n        assert(0 <= y and y < n);\n        x =\
+    \ root_(x);\n        y = root_(y);\n        if (x == y) return false;\n      \
+    \  if (parent_or_size[x] > parent_or_size[y]) swap(x, y);\n        parent_or_size[x]\
+    \ += parent_or_size[y];\n        parent_or_size[y] = x;\n        swap(nex[x],\
+    \ nex[y]);\n        group_number--;\n        return true;\n    }\n\n    /**\n\
+    \     * @param f void f(int parent, int child)\n     * \u30DE\u30FC\u30B8\u3059\
+    \u308B\u969B\u306E\u51E6\u7406\u3092\u884C\u3046\u95A2\u6570\u3092\u6E21\u3059\
+    \u3002\n     */\n    template <class F> bool merge(int x, int y, const F& f) {\n\
+    \        assert(0 <= x and x < n);\n        assert(0 <= y and y < n);\n      \
+    \  x = root_(x);\n        y = root_(y);\n        if (x == y) return false;\n \
+    \       if (parent_or_size[x] > parent_or_size[y]) swap(x, y);\n        f(x, y);\n\
+    \        parent_or_size[x] += parent_or_size[y];\n        parent_or_size[y] =\
+    \ x;\n        swap(nex[x], nex[y]);\n        group_number--;\n        return true;\n\
+    \    }\n\n    bool same(int x, int y) {\n        assert(0 <= x and x < n);\n \
+    \       assert(0 <= y and y < n);\n        return root_(x) == root_(y);\n    }\n\
+    \n    int root(int x) {\n        assert(0 <= x and x < n);\n        return root_(x);\n\
+    \    }\n\n    /**\n     * \u9802\u70B9 x \u306E\u5C5E\u3059\u308B\u9023\u7D50\u6210\
+    \u5206\u306E\u30B5\u30A4\u30BA\u3092\u8FD4\u3059\u3002\n     */\n    int size(int\
+    \ x) {\n        assert(0 <= x and x < n);\n        return -parent_or_size[root_(x)];\n\
+    \    }\n\n    /**\n     * \u9802\u70B9 x \u306E\u5C5E\u3059\u308B\u9023\u7D50\u6210\
+    \u5206\u306E\u4EE3\u8868\u5143\u3092\u8FD4\u3059\u3002\n     * root(x) \u3068\u540C\
+    \u3058\u3002\n     */\n    int operator[](int x) {\n        assert(0 <= x and\
+    \ x < n);\n        return root_(x);\n    }\n\n    vector<vector<int>> groups()\
+    \ {\n        vector<int> leader_buf(n), group_size(n);\n        for (int i = 0;\
+    \ i < n; i++) {\n            leader_buf[i] = root(i);\n            group_size[leader_buf[i]]++;\n\
+    \        }\n        vector<vector<int>> result(n);\n        for (int i = 0; i\
+    \ < n; i++) {\n            result[i].reserve(group_size[i]);\n        }\n    \
+    \    for (int i = 0; i < n; i++) {\n            result[leader_buf[i]].push_back(i);\n\
+    \        }\n        result.erase(remove_if(result.begin(), result.end(),\n   \
+    \                            [&](const vector<int>& v) { return v.empty(); }),\n\
+    \                     result.end());\n        return result;\n    }\n\n    /**\n\
+    \     * \u9802\u70B9 x \u306E\u5C5E\u3059\u308B\u9023\u7D50\u6210\u5206\u306E\u9802\
+    \u70B9\u756A\u53F7\u306E\u30EA\u30B9\u30C8\u3092\u8FD4\u3059\u3002\n     * O(size(x))\n\
+    \     */\n    vector<int> group(int x) const {\n        assert(0 <= x and x <\
+    \ n);\n        vector<int> ret;\n        int v = x;\n        do {\n          \
+    \  ret.emplace_back(v);\n            v = nex[v];\n        } while (v != x);\n\
+    \        return ret;\n    }\n\n  private:\n    int root_(int x) {\n        if\
+    \ (parent_or_size[x] < 0) return x;\n        return parent_or_size[x] = root_(parent_or_size[x]);\n\
+    \    }\n};\n#line 4 \"test/datastructure/UnionFind.test.cpp\"\n\nvoid solve()\
+    \ {\n    INT(N, Q);\n    UnionFind uf(N);\n    vec<ll> D(N);\n    vec<ll> A(N);\n\
+    \    auto f = [&](int r, int c) {\n        auto vs = uf.group(c);\n        for\
+    \ (auto v : vs) {\n            A[v] += D[c] - D[r];\n        }\n    };\n    rep(Q)\
+    \ {\n        INT(t, a, b);\n        if (t == 1) {\n            a--;\n        \
+    \    b--;\n            uf.merge(a, b, f);\n        } else if (t == 2) {\n    \
+    \        a--;\n            D[uf.root(a)] += b;\n        } else {\n           \
+    \ a--;\n            print(A[a] + D[uf.root(a)]);\n        }\n    }\n}\n\nint main()\
+    \ {\n    int T = 1;\n    // cin >> T;\n    for (int i = 0; i < T; i++) {\n   \
+    \     solve();\n    }\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/1054\"\n#include \"other/template.hpp\"\
+    \n#include \"datastructure/UnionFind.hpp\"\n\nvoid solve() {\n    INT(N, Q);\n\
+    \    UnionFind uf(N);\n    vec<ll> D(N);\n    vec<ll> A(N);\n    auto f = [&](int\
+    \ r, int c) {\n        auto vs = uf.group(c);\n        for (auto v : vs) {\n \
+    \           A[v] += D[c] - D[r];\n        }\n    };\n    rep(Q) {\n        INT(t,\
+    \ a, b);\n        if (t == 1) {\n            a--;\n            b--;\n        \
+    \    uf.merge(a, b, f);\n        } else if (t == 2) {\n            a--;\n    \
+    \        D[uf.root(a)] += b;\n        } else {\n            a--;\n           \
+    \ print(A[a] + D[uf.root(a)]);\n        }\n    }\n}\n\nint main() {\n    int T\
+    \ = 1;\n    // cin >> T;\n    for (int i = 0; i < T; i++) {\n        solve();\n\
+    \    }\n}"
   dependsOn:
   - other/template.hpp
-  - algorithm/inversion_number.hpp
-  - datastructure/BinaryIndexedTree.hpp
+  - datastructure/UnionFind.hpp
   isVerificationFile: true
-  path: test/algorithm/inversion_number.test.cpp
+  path: test/datastructure/UnionFind.test.cpp
   requiredBy: []
   timestamp: '2023-01-30 01:33:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/algorithm/inversion_number.test.cpp
+documentation_of: test/datastructure/UnionFind.test.cpp
 layout: document
 redirect_from:
-- /verify/test/algorithm/inversion_number.test.cpp
-- /verify/test/algorithm/inversion_number.test.cpp.html
-title: test/algorithm/inversion_number.test.cpp
+- /verify/test/datastructure/UnionFind.test.cpp
+- /verify/test/datastructure/UnionFind.test.cpp.html
+title: test/datastructure/UnionFind.test.cpp
 ---
