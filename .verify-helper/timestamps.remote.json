@@ -3,5 +3,6 @@
 "test/datastructure/BinaryIndexedTree.test.cpp": "2023-01-30 01:33:16 +0900",
 "test/datastructure/UnionFind.test.cpp": "2023-01-30 01:33:16 +0900",
 "test/math/floor_sqrt.test.cpp": "2023-01-30 01:33:16 +0900",
+"test/math/totient.test.cpp": "2023-01-31 15:10:02 +0900",
 "test/other/template.test.cpp": "2023-01-30 01:33:16 +0900"
 }
