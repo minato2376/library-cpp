@@ -25,6 +25,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/floor_sqrt.hpp
       title: math/floor_sqrt.hpp
+    - icon: ':heavy_check_mark:'
+      path: math/totient.hpp
+      title: math/totient.hpp
   - name: mod
     pages:
     - icon: ':warning:'
@@ -67,6 +70,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/floor_sqrt.test.cpp
       title: test/math/floor_sqrt.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/math/totient.test.cpp
+      title: test/math/totient.test.cpp
   - name: test/other
     pages:
     - icon: ':heavy_check_mark:'

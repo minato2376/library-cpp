@@ -16,6 +16,9 @@ data:
     path: test/math/floor_sqrt.test.cpp
     title: test/math/floor_sqrt.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/totient.test.cpp
+    title: test/math/totient.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/other/template.test.cpp
     title: test/other/template.test.cpp
   _isVerificationFailed: false
@@ -217,6 +220,7 @@ data:
   - test/datastructure/UnionFind.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/other/template.test.cpp
+  - test/math/totient.test.cpp
   - test/math/floor_sqrt.test.cpp
   - test/algorithm/inversion_number.test.cpp
 documentation_of: other/template.hpp
