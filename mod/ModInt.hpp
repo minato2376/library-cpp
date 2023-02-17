@@ -154,6 +154,3 @@ template <int m> struct ModInt {
         return m;
     }
 };
-
-using mint998 = ModInt<998244353>;
-using mint107 = ModInt<1000000007>;
