@@ -192,10 +192,6 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
     }
 };
 
-template <typename T, T INF> auto buildRangeSetRangeMin(int n) {
-    return buildRangeSetRangeMin(vector<T>(n, INF));
-}
-
 template <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>& v) {
     auto f = [](T a, T b) { return min(a, b); };
     auto g = [](T a, T b) {
@@ -208,4 +204,20 @@ template <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>& v) {
     };
     LazySegmentTree seg(f, g, h, INF, INF, v);
     return seg;
+}
+
+template <typename T, T INF> auto buildRangeSetRangeMin(int n) {
+    return buildRangeSetRangeMin<T, INF>(vector<T>(n, INF));
+}
+
+template <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>& v) {
+    auto f = [](T a, T b) { return min(a, b); };
+    auto g = [](T a, T b) { return a + b; };
+    auto h = [](T a, T b) { return a + b; };
+    LazySegmentTree seg(f, g, h, INF, 0, v);
+    return seg;
+}
+
+template <typename T, T INF> auto buildRangeAddRangeMin(int n) {
+    return buildRangeAddRangeMin<T, INF>(vector<T>(n));
 }
