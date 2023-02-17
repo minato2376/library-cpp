@@ -22,6 +22,12 @@ data:
     path: test/other/template.test.cpp
     title: test/other/template.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/segmenttree/DualSegmentTree.test.cpp
+    title: test/segmenttree/DualSegmentTree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/segmenttree/DualSegmentTree2.test.cpp
+    title: test/segmenttree/DualSegmentTree2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/SegmentTree.test.cpp
     title: test/segmenttree/SegmentTree.test.cpp
   _isVerificationFailed: false
@@ -223,6 +229,8 @@ data:
   - test/datastructure/UnionFind.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/segmenttree/SegmentTree.test.cpp
+  - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/segmenttree/DualSegmentTree.test.cpp
   - test/other/template.test.cpp
   - test/math/totient.test.cpp
   - test/math/floor_sqrt.test.cpp

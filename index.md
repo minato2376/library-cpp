@@ -44,6 +44,9 @@ data:
   - name: segmenttree
     pages:
     - icon: ':heavy_check_mark:'
+      path: segmenttree/DualSegmentTree.hpp
+      title: segmenttree/DualSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
       path: segmenttree/SegmentTree.hpp
       title: segmenttree/SegmentTree.hpp
   - name: shortestpath
@@ -80,6 +83,12 @@ data:
       title: test/other/template.test.cpp
   - name: test/segmenttree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/segmenttree/DualSegmentTree.test.cpp
+      title: test/segmenttree/DualSegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segmenttree/DualSegmentTree2.test.cpp
+      title: test/segmenttree/DualSegmentTree2.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/SegmentTree.test.cpp
       title: test/segmenttree/SegmentTree.test.cpp
