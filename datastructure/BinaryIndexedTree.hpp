@@ -1,18 +1,9 @@
 #pragma once
 
 template <class T> struct BinaryIndexedTree {
-  private:
     int n;
     vector<T> data;
 
-    // [0,i) (0-indexed) a[0] + … + a[i-1]
-    T sum(int i) const {
-        T ret = 0;
-        for (; i > 0; i -= i & -i) ret += data[i];
-        return ret;
-    }
-
-  public:
     BinaryIndexedTree() {
     }
     BinaryIndexedTree(int n) : n(n), data(n + 1, 0) {
@@ -31,13 +22,20 @@ template <class T> struct BinaryIndexedTree {
         for (++i; i <= n; i += i & -i) data[i] += x;
     }
 
+    // [0,i) (0-indexed) a[0] + … + a[i-1]
+    T sum(int i) const {
+        assert(0 <= i and i <= n);
+        T ret = 0;
+        for (; i > 0; i -= i & -i) ret += data[i];
+        return ret;
+    }
+
     /**
      * [l, r) (0-indexed)
      * @return a[l] + …　+ a[r-1]
      */
     T sum(int l, int r) const {
         if (l >= r) return T(0);
-        assert(0 <= l and r <= n);
         return sum(r) - sum(l);
     }
 
