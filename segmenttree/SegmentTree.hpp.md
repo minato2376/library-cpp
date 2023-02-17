@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/segmenttree/SegmentTree.test.cpp
+    title: test/segmenttree/SegmentTree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"segmenttree/SegmentTree.hpp\"\n\ntemplate <class T, class\
@@ -45,7 +48,11 @@ data:
     \ ((r & -r) != r);\n        return 0;\n    }\n\n    T operator[](int p) {\n  \
     \      assert(0 <= p && p < _n);\n        return node[p + size];\n    }\n\n  private:\n\
     \    void update(int k) {\n        node[k] = op(node[2 * k], node[2 * k + 1]);\n\
-    \    }\n};\n"
+    \    }\n};\n\ntemplate <typename T, T INF> auto buildPointSetRangeMin(int n) {\n\
+    \    return buildPointSetRangeMin(vector<T>(n, INF));\n}\n\ntemplate <typename\
+    \ T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {\n    auto f = [](T\
+    \ a, T b) { return min(a, b); };\n    SegmentTree seg(f, INF, v);\n    return\
+    \ seg;\n}\n"
   code: "#pragma once\n\ntemplate <class T, class F> struct SegmentTree {\n  private:\n\
     \    F op;\n    T e;\n    int _n, size, log;\n    vector<T> node;\n\n  public:\n\
     \    SegmentTree() {\n    }\n    SegmentTree(const F& op, T e, int n) : SegmentTree(op,\
@@ -82,14 +89,19 @@ data:
     \            sm = op(node[r], sm);\n        } while ((r & -r) != r);\n       \
     \ return 0;\n    }\n\n    T operator[](int p) {\n        assert(0 <= p && p <\
     \ _n);\n        return node[p + size];\n    }\n\n  private:\n    void update(int\
-    \ k) {\n        node[k] = op(node[2 * k], node[2 * k + 1]);\n    }\n};"
+    \ k) {\n        node[k] = op(node[2 * k], node[2 * k + 1]);\n    }\n};\n\ntemplate\
+    \ <typename T, T INF> auto buildPointSetRangeMin(int n) {\n    return buildPointSetRangeMin(vector<T>(n,\
+    \ INF));\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMin(const vector<T>&\
+    \ v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    SegmentTree seg(f,\
+    \ INF, v);\n    return seg;\n}"
   dependsOn: []
   isVerificationFile: false
   path: segmenttree/SegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-01-30 01:32:40+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  timestamp: '2023-02-18 02:25:20+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/segmenttree/SegmentTree.test.cpp
 documentation_of: segmenttree/SegmentTree.hpp
 layout: document
 redirect_from:

@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/other/template.test.cpp
     title: test/other/template.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/segmenttree/SegmentTree.test.cpp
+    title: test/segmenttree/SegmentTree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -219,6 +222,7 @@ data:
   verifiedWith:
   - test/datastructure/UnionFind.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/segmenttree/SegmentTree.test.cpp
   - test/other/template.test.cpp
   - test/math/totient.test.cpp
   - test/math/floor_sqrt.test.cpp

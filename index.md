@@ -43,7 +43,7 @@ data:
       title: other/template.hpp
   - name: segmenttree
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: segmenttree/SegmentTree.hpp
       title: segmenttree/SegmentTree.hpp
   - name: shortestpath
@@ -78,5 +78,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/other/template.test.cpp
       title: test/other/template.test.cpp
+  - name: test/segmenttree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/segmenttree/SegmentTree.test.cpp
+      title: test/segmenttree/SegmentTree.test.cpp
 layout: toppage
 ---
