@@ -14,11 +14,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F
-  bundledCode: "#line 1 \"test/segmenttree/LazySegmentTree.test.cpp\"\n#define PROBLEM\
-    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
+  bundledCode: "#line 1 \"test/segmenttree/LazySegmentTree2.test.cpp\"\n#define PROBLEM\
+    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
     \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
@@ -189,32 +189,30 @@ data:
     \ T b) { return a + b; };\n    auto h = [](T a, T b) { return a + b; };\n    LazySegmentTree\
     \ seg(f, g, h, INF, 0, v);\n    return seg;\n}\n\ntemplate <typename T, T INF>\
     \ auto buildRangeAddRangeMin(int n) {\n    return buildRangeAddRangeMin<T, INF>(vector<T>(n));\n\
-    }\n#line 5 \"test/segmenttree/LazySegmentTree.test.cpp\"\nint main() {\n    INT(n,\
-    \ q);\n    auto seg = buildRangeSetRangeMin<int, numeric_limits<int>::max()>(\n\
-    \        vec<int>(n, numeric_limits<int>::max()));\n    rep(q) {\n        INT(t);\n\
-    \        if (t == 0) {\n            INT(l, r, x);\n            seg.apply(l, r\
-    \ + 1, x);\n        } else {\n            INT(l, r);\n            print(seg.get(l,\
-    \ r + 1));\n        }\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_F\"\
+    }\n#line 5 \"test/segmenttree/LazySegmentTree2.test.cpp\"\nint main() {\n    INT(n,\
+    \ q);\n    auto seg = buildRangeAddRangeMin<int, numeric_limits<int>::max()>(n);\n\
+    \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
+    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
+    \            print(seg.get(l, r + 1));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
     \n#include \"other/template.hpp\"\n#include \"segmenttree/LazySegmentTree.hpp\"\
-    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeMin<int, numeric_limits<int>::max()>(\n\
-    \        vec<int>(n, numeric_limits<int>::max()));\n    rep(q) {\n        INT(t);\n\
-    \        if (t == 0) {\n            INT(l, r, x);\n            seg.apply(l, r\
-    \ + 1, x);\n        } else {\n            INT(l, r);\n            print(seg.get(l,\
-    \ r + 1));\n        }\n    }\n}"
+    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeAddRangeMin<int, numeric_limits<int>::max()>(n);\n\
+    \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
+    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
+    \            print(seg.get(l, r + 1));\n        }\n    }\n}"
   dependsOn:
   - other/template.hpp
   - segmenttree/LazySegmentTree.hpp
   isVerificationFile: true
-  path: test/segmenttree/LazySegmentTree.test.cpp
+  path: test/segmenttree/LazySegmentTree2.test.cpp
   requiredBy: []
   timestamp: '2023-02-18 04:23:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/segmenttree/LazySegmentTree.test.cpp
+documentation_of: test/segmenttree/LazySegmentTree2.test.cpp
 layout: document
 redirect_from:
-- /verify/test/segmenttree/LazySegmentTree.test.cpp
-- /verify/test/segmenttree/LazySegmentTree.test.cpp.html
-title: test/segmenttree/LazySegmentTree.test.cpp
+- /verify/test/segmenttree/LazySegmentTree2.test.cpp
+- /verify/test/segmenttree/LazySegmentTree2.test.cpp.html
+title: test/segmenttree/LazySegmentTree2.test.cpp
 ---

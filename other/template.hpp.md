@@ -31,6 +31,9 @@ data:
     path: test/segmenttree/LazySegmentTree.test.cpp
     title: test/segmenttree/LazySegmentTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/segmenttree/LazySegmentTree2.test.cpp
+    title: test/segmenttree/LazySegmentTree2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/RangeAddRangeSum.test.cpp
     title: test/segmenttree/RangeAddRangeSum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -236,6 +239,7 @@ data:
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/segmenttree/SegmentTree.test.cpp
   - test/segmenttree/LazySegmentTree.test.cpp
+  - test/segmenttree/LazySegmentTree2.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp
   - test/segmenttree/DualSegmentTree.test.cpp
   - test/segmenttree/RangeAddRangeSum.test.cpp
