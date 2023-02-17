@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: test/algorithm/inversion_number.test.cpp
-    title: test/algorithm/inversion_number.test.cpp
+    path: test/segmenttree/RangeAddRangeSum.test.cpp
+    title: test/segmenttree/RangeAddRangeSum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -33,34 +33,38 @@ data:
     \ (k > 0) {\n            if (ret + k <= n and data[ret + k] < x) {\n         \
     \       x -= data[ret + k];\n                ret += k;\n            }\n      \
     \      k >>= 1;\n        }\n        return ret;\n    }\n\n    int upper_bound(T\
-    \ x) const {\n        return lower_bound(x + 1);\n    }\n};\n#line 3 \"algorithm/inversion_number.hpp\"\
-    \n\ntemplate <class T> long long inversion_number(const vector<T>& v) {\n    int\
-    \ n = int(v.size());\n    vector<T> com = v;\n    sort(com.begin(), com.end());\n\
-    \    com.erase(unique(com.begin(), com.end()), com.end());\n    int m = int(com.size());\n\
-    \n    BinaryIndexedTree<int> BIT(m);\n    long long ret = 0;\n    for (int i =\
-    \ 0; i < n; i++) {\n        int k = lower_bound(com.begin(), com.end(), v[i])\
-    \ - com.begin();\n        ret += BIT.sum(k + 1, m);\n        BIT.add(k, 1);\n\
-    \    }\n\n    return ret;\n}\n"
-  code: "#pragma once\n#include \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate\
-    \ <class T> long long inversion_number(const vector<T>& v) {\n    int n = int(v.size());\n\
-    \    vector<T> com = v;\n    sort(com.begin(), com.end());\n    com.erase(unique(com.begin(),\
-    \ com.end()), com.end());\n    int m = int(com.size());\n\n    BinaryIndexedTree<int>\
-    \ BIT(m);\n    long long ret = 0;\n    for (int i = 0; i < n; i++) {\n       \
-    \ int k = lower_bound(com.begin(), com.end(), v[i]) - com.begin();\n        ret\
-    \ += BIT.sum(k + 1, m);\n        BIT.add(k, 1);\n    }\n\n    return ret;\n}"
+    \ x) const {\n        return lower_bound(x + 1);\n    }\n};\n#line 2 \"segmenttree/RangeAddRangeSum.hpp\"\
+    \n\ntemplate <typename T> struct RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T>\
+    \ a, b;\n    RangeAddRangeSum() {\n    }\n    RangeAddRangeSum(int n) : n(n),\
+    \ a(n + 1), b(n + 1) {\n    }\n\n    int size() const {\n        return n;\n \
+    \   }\n\n    // add x to [l, r)\n    void add(int l, int r, T x) {\n        if\
+    \ (l >= r) return;\n        a.add(l, x);\n        a.add(r, -x);\n        b.add(l,\
+    \ x * (1 - l));\n        b.add(r, x * (r - 1));\n    }\n\n    T sum(int i) const\
+    \ {\n        return a.sum(i) * (i - 1) + b.sum(i);\n    }\n\n    // return sum\
+    \ of [l, r)\n    T sum(int l, int r) const {\n        return sum(r) - sum(l);\n\
+    \    }\n};\n"
+  code: "#include \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate <typename T>\
+    \ struct RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T> a, b;\n    RangeAddRangeSum()\
+    \ {\n    }\n    RangeAddRangeSum(int n) : n(n), a(n + 1), b(n + 1) {\n    }\n\n\
+    \    int size() const {\n        return n;\n    }\n\n    // add x to [l, r)\n\
+    \    void add(int l, int r, T x) {\n        if (l >= r) return;\n        a.add(l,\
+    \ x);\n        a.add(r, -x);\n        b.add(l, x * (1 - l));\n        b.add(r,\
+    \ x * (r - 1));\n    }\n\n    T sum(int i) const {\n        return a.sum(i) *\
+    \ (i - 1) + b.sum(i);\n    }\n\n    // return sum of [l, r)\n    T sum(int l,\
+    \ int r) const {\n        return sum(r) - sum(l);\n    }\n};"
   dependsOn:
   - datastructure/BinaryIndexedTree.hpp
   isVerificationFile: false
-  path: algorithm/inversion_number.hpp
+  path: segmenttree/RangeAddRangeSum.hpp
   requiredBy: []
-  timestamp: '2023-02-18 03:59:33+09:00'
+  timestamp: '2023-02-18 04:05:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/algorithm/inversion_number.test.cpp
-documentation_of: algorithm/inversion_number.hpp
+  - test/segmenttree/RangeAddRangeSum.test.cpp
+documentation_of: segmenttree/RangeAddRangeSum.hpp
 layout: document
 redirect_from:
-- /library/algorithm/inversion_number.hpp
-- /library/algorithm/inversion_number.hpp.html
-title: algorithm/inversion_number.hpp
+- /library/segmenttree/RangeAddRangeSum.hpp
+- /library/segmenttree/RangeAddRangeSum.hpp.html
+title: segmenttree/RangeAddRangeSum.hpp
 ---

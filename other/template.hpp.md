@@ -28,6 +28,12 @@ data:
     path: test/segmenttree/DualSegmentTree2.test.cpp
     title: test/segmenttree/DualSegmentTree2.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/segmenttree/LazySegmentTree.test.cpp
+    title: test/segmenttree/LazySegmentTree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/segmenttree/RangeAddRangeSum.test.cpp
+    title: test/segmenttree/RangeAddRangeSum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/SegmentTree.test.cpp
     title: test/segmenttree/SegmentTree.test.cpp
   _isVerificationFailed: false
@@ -229,8 +235,10 @@ data:
   - test/datastructure/UnionFind.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/segmenttree/SegmentTree.test.cpp
+  - test/segmenttree/LazySegmentTree.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp
   - test/segmenttree/DualSegmentTree.test.cpp
+  - test/segmenttree/RangeAddRangeSum.test.cpp
   - test/other/template.test.cpp
   - test/math/totient.test.cpp
   - test/math/floor_sqrt.test.cpp

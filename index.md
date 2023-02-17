@@ -47,6 +47,12 @@ data:
       path: segmenttree/DualSegmentTree.hpp
       title: segmenttree/DualSegmentTree.hpp
     - icon: ':heavy_check_mark:'
+      path: segmenttree/LazySegmentTree.hpp
+      title: segmenttree/LazySegmentTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: segmenttree/RangeAddRangeSum.hpp
+      title: segmenttree/RangeAddRangeSum.hpp
+    - icon: ':heavy_check_mark:'
       path: segmenttree/SegmentTree.hpp
       title: segmenttree/SegmentTree.hpp
   - name: shortestpath
@@ -89,6 +95,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/DualSegmentTree2.test.cpp
       title: test/segmenttree/DualSegmentTree2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segmenttree/LazySegmentTree.test.cpp
+      title: test/segmenttree/LazySegmentTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segmenttree/RangeAddRangeSum.test.cpp
+      title: test/segmenttree/RangeAddRangeSum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/SegmentTree.test.cpp
       title: test/segmenttree/SegmentTree.test.cpp

@@ -7,6 +7,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
+  - icon: ':heavy_check_mark:'
+    path: segmenttree/RangeAddRangeSum.hpp
+    title: segmenttree/RangeAddRangeSum.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,15 +17,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
     links:
-    - https://judge.yosupo.jp/problem/point_add_range_sum
-  bundledCode: "#line 1 \"test/datastructure/BinaryIndexedTree.test.cpp\"\n#define\
-    \ PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line 1 \"\
-    other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing uint = unsigned int;\nusing ll = long long;\nusing ull = unsigned\
-    \ long long;\nusing ld = long double;\nusing pii = pair<int, int>;\nusing pll\
-    \ = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G
+  bundledCode: "#line 1 \"test/segmenttree/RangeAddRangeSum.test.cpp\"\n#define PROBLEM\
+    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
+    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
+    using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
+    \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
+    using pll = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
     template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\n\
     template <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
     #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
@@ -130,31 +133,39 @@ data:
     \ < x) {\n                x -= data[ret + k];\n                ret += k;\n   \
     \         }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n \
     \   int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\
-    };\n#line 4 \"test/datastructure/BinaryIndexedTree.test.cpp\"\n\nint main() {\n\
-    \    INT(N, Q);\n    BinaryIndexedTree<ll> BIT(N);\n    VEC(ll, A, N);\n    rep(i,\
-    \ N) BIT.add(i, A[i]);\n    rep(Q) {\n        INT(T);\n        if (T == 0) {\n\
-    \            LL(p, x);\n            BIT.add(p, x);\n        } else {\n       \
-    \     INT(l, r);\n            print(BIT.sum(l, r));\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
-    #include \"other/template.hpp\"\n#include \"datastructure/BinaryIndexedTree.hpp\"\
-    \n\nint main() {\n    INT(N, Q);\n    BinaryIndexedTree<ll> BIT(N);\n    VEC(ll,\
-    \ A, N);\n    rep(i, N) BIT.add(i, A[i]);\n    rep(Q) {\n        INT(T);\n   \
-    \     if (T == 0) {\n            LL(p, x);\n            BIT.add(p, x);\n     \
-    \   } else {\n            INT(l, r);\n            print(BIT.sum(l, r));\n    \
-    \    }\n    }\n}"
+    };\n#line 2 \"segmenttree/RangeAddRangeSum.hpp\"\n\ntemplate <typename T> struct\
+    \ RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T> a, b;\n    RangeAddRangeSum()\
+    \ {\n    }\n    RangeAddRangeSum(int n) : n(n), a(n + 1), b(n + 1) {\n    }\n\n\
+    \    int size() const {\n        return n;\n    }\n\n    // add x to [l, r)\n\
+    \    void add(int l, int r, T x) {\n        if (l >= r) return;\n        a.add(l,\
+    \ x);\n        a.add(r, -x);\n        b.add(l, x * (1 - l));\n        b.add(r,\
+    \ x * (r - 1));\n    }\n\n    T sum(int i) const {\n        return a.sum(i) *\
+    \ (i - 1) + b.sum(i);\n    }\n\n    // return sum of [l, r)\n    T sum(int l,\
+    \ int r) const {\n        return sum(r) - sum(l);\n    }\n};\n#line 5 \"test/segmenttree/RangeAddRangeSum.test.cpp\"\
+    \nint main() {\n    INT(n, q);\n    RangeAddRangeSum<ll> BIT(n);\n    rep(q) {\n\
+    \        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n         \
+    \   BIT.add(l - 1, r, x);\n        } else {\n            INT(l, r);\n        \
+    \    print(BIT.sum(l - 1, r));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
+    \n#include \"other/template.hpp\"\n#include \"segmenttree/RangeAddRangeSum.hpp\"\
+    \nint main() {\n    INT(n, q);\n    RangeAddRangeSum<ll> BIT(n);\n    rep(q) {\n\
+    \        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n         \
+    \   BIT.add(l - 1, r, x);\n        } else {\n            INT(l, r);\n        \
+    \    print(BIT.sum(l - 1, r));\n        }\n    }\n}"
   dependsOn:
   - other/template.hpp
+  - segmenttree/RangeAddRangeSum.hpp
   - datastructure/BinaryIndexedTree.hpp
   isVerificationFile: true
-  path: test/datastructure/BinaryIndexedTree.test.cpp
+  path: test/segmenttree/RangeAddRangeSum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 03:59:33+09:00'
+  timestamp: '2023-02-18 04:05:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/datastructure/BinaryIndexedTree.test.cpp
+documentation_of: test/segmenttree/RangeAddRangeSum.test.cpp
 layout: document
 redirect_from:
-- /verify/test/datastructure/BinaryIndexedTree.test.cpp
-- /verify/test/datastructure/BinaryIndexedTree.test.cpp.html
-title: test/datastructure/BinaryIndexedTree.test.cpp
+- /verify/test/segmenttree/RangeAddRangeSum.test.cpp
+- /verify/test/segmenttree/RangeAddRangeSum.test.cpp.html
+title: test/segmenttree/RangeAddRangeSum.test.cpp
 ---

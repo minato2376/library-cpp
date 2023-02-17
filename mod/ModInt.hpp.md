@@ -59,8 +59,7 @@ data:
     \        return os << M._v;\n    }\n    friend istream& operator>>(istream& is,\
     \ ModInt& M) {\n        long long x;\n        is >> x;\n        M = x;\n     \
     \   return is;\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() {\n        return m;\n    }\n};\n\nusing mint998 = ModInt<998244353>;\n\
-    using mint107 = ModInt<1000000007>;\n"
+    \ unsigned int umod() {\n        return m;\n    }\n};\n"
   code: "template <int m> struct ModInt {\n  public:\n    static constexpr int mod()\
     \ {\n        return m;\n    }\n    static ModInt raw(int v) {\n        ModInt\
     \ x;\n        x._v = v;\n        return x;\n    }\n\n    ModInt() : _v(0) {\n\
@@ -111,13 +110,12 @@ data:
     \        return os << M._v;\n    }\n    friend istream& operator>>(istream& is,\
     \ ModInt& M) {\n        long long x;\n        is >> x;\n        M = x;\n     \
     \   return is;\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() {\n        return m;\n    }\n};\n\nusing mint998 = ModInt<998244353>;\n\
-    using mint107 = ModInt<1000000007>;"
+    \ unsigned int umod() {\n        return m;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: mod/ModInt.hpp
   requiredBy: []
-  timestamp: '2023-01-30 01:32:03+09:00'
+  timestamp: '2023-02-18 04:05:28+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: mod/ModInt.hpp
