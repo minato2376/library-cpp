@@ -178,19 +178,42 @@ data:
     \        if (k < size) lazy[k] = composition(lazy[k], val);\n    }\n\n    void\
     \ push(int k) {\n        if (lazy[k] == id) return;\n        all_apply(2 * k,\
     \ lazy[k]);\n        all_apply(2 * k + 1, lazy[k]);\n        lazy[k] = id;\n \
-    \   }\n};\n\ntemplate <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>&\
+    \   }\n};\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u6700\u5C0F\u5024\n\
+    \ */\ntemplate <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>&\
     \ v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto g = [](T a,\
     \ T b) {\n        (void)a;\n        return b;\n    };\n    auto h = [](T a, T\
     \ b) {\n        (void)a;\n        return b;\n    };\n    LazySegmentTree seg(f,\
     \ g, h, INF, INF, v);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto\
     \ buildRangeSetRangeMin(int n) {\n    return buildRangeSetRangeMin<T, INF>(vector<T>(n,\
-    \ INF));\n}\n\ntemplate <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>&\
+    \ INF));\n}\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u6700\u5927\u5024\n\
+    \ */\ntemplate <typename T, T INF> auto buildRangeSetRangeMax(const vector<T>&\
+    \ v) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto g = [](T a,\
+    \ T b) {\n        (void)a;\n        return b;\n    };\n    auto h = [](T a, T\
+    \ b) {\n        (void)a;\n        return b;\n    };\n    LazySegmentTree seg(f,\
+    \ g, h, -INF, -INF, v);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto\
+    \ buildRangeSetRangeMax(int n) {\n    return buildRangeSetRangeMax<T, INF>(vector<T>(n,\
+    \ -INF));\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5C0F\u5024\
+    \n */\ntemplate <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>&\
     \ v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto g = [](T a,\
     \ T b) { return a + b; };\n    auto h = [](T a, T b) { return a + b; };\n    LazySegmentTree\
     \ seg(f, g, h, INF, 0, v);\n    return seg;\n}\n\ntemplate <typename T, T INF>\
     \ auto buildRangeAddRangeMin(int n) {\n    return buildRangeAddRangeMin<T, INF>(vector<T>(n));\n\
-    }\n#line 5 \"test/segmenttree/LazySegmentTree.test.cpp\"\nint main() {\n    INT(n,\
-    \ q);\n    auto seg = buildRangeSetRangeMin<int, numeric_limits<int>::max()>(\n\
+    }\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\n */\ntemplate\
+    \ <typename T, T INF> auto buildRangeAddRangeMax(const vector<T>& v) {\n    auto\
+    \ f = [](T a, T b) { return max(a, b); };\n    auto g = [](T a, T b) { return\
+    \ a + b; };\n    auto h = [](T a, T b) { return a + b; };\n    LazySegmentTree\
+    \ seg(f, g, h, -INF, 0, v);\n    return seg;\n}\n\ntemplate <typename T, T INF>\
+    \ auto buildRangeAddRangeMax(int n) {\n    return buildRangeAddRangeMax<T, INF>(vector<T>(n));\n\
+    }\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u548C\n */\ntemplate <typename\
+    \ T, T ID> auto buildRangeSetRangeSum(const vector<T>& v) {\n    using P = pair<T,\
+    \ int>;\n    auto f = [](P a, P b) { return P(a.first + b.first, a.second + b.second);\
+    \ };\n    auto g = [](P a, T b) { return P(b * a.second, a.second); };\n    auto\
+    \ h = [](T a, T b) {\n        (void)a;\n        return b;\n    };\n    vector<P>\
+    \ w(v.size());\n    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i],\
+    \ 1);\n    }\n    LazySegmentTree seg(f, g, h, P(0, 0), ID, w);\n    return seg;\n\
+    }\n\ntemplate <typename T, T ID> auto buildRangeSetRangeSum(int n) {\n    return\
+    \ buildRangeSetRangeSum<T, ID>(vec<T>(n));\n}\n#line 5 \"test/segmenttree/LazySegmentTree.test.cpp\"\
+    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeMin<int, numeric_limits<int>::max()>(\n\
     \        vec<int>(n, numeric_limits<int>::max()));\n    rep(q) {\n        INT(t);\n\
     \        if (t == 0) {\n            INT(l, r, x);\n            seg.apply(l, r\
     \ + 1, x);\n        } else {\n            INT(l, r);\n            print(seg.get(l,\
@@ -208,7 +231,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/LazySegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 04:23:56+09:00'
+  timestamp: '2023-02-18 04:39:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/LazySegmentTree.test.cpp

@@ -14,11 +14,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
-  bundledCode: "#line 1 \"test/segmenttree/LazySegmentTree2.test.cpp\"\n#define PROBLEM\
-    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I
+  bundledCode: "#line 1 \"test/segmenttree/LazySegmentTree3.test.cpp\"\n#define PROBLEM\
+    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
     \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
@@ -212,30 +212,30 @@ data:
     \ w(v.size());\n    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i],\
     \ 1);\n    }\n    LazySegmentTree seg(f, g, h, P(0, 0), ID, w);\n    return seg;\n\
     }\n\ntemplate <typename T, T ID> auto buildRangeSetRangeSum(int n) {\n    return\
-    \ buildRangeSetRangeSum<T, ID>(vec<T>(n));\n}\n#line 5 \"test/segmenttree/LazySegmentTree2.test.cpp\"\
-    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeAddRangeMin<int, numeric_limits<int>::max()>(n);\n\
+    \ buildRangeSetRangeSum<T, ID>(vec<T>(n));\n}\n#line 5 \"test/segmenttree/LazySegmentTree3.test.cpp\"\
+    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeSum<int, numeric_limits<int>::max()>(n);\n\
     \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
     \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
-    \            print(seg.get(l, r + 1));\n        }\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H\"\
+    \            print(seg.get(l, r + 1).first);\n        }\n    }\n}\n"
+  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
     \n#include \"other/template.hpp\"\n#include \"segmenttree/LazySegmentTree.hpp\"\
-    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeAddRangeMin<int, numeric_limits<int>::max()>(n);\n\
+    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeSum<int, numeric_limits<int>::max()>(n);\n\
     \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
     \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
-    \            print(seg.get(l, r + 1));\n        }\n    }\n}"
+    \            print(seg.get(l, r + 1).first);\n        }\n    }\n}"
   dependsOn:
   - other/template.hpp
   - segmenttree/LazySegmentTree.hpp
   isVerificationFile: true
-  path: test/segmenttree/LazySegmentTree2.test.cpp
+  path: test/segmenttree/LazySegmentTree3.test.cpp
   requiredBy: []
   timestamp: '2023-02-18 04:39:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/segmenttree/LazySegmentTree2.test.cpp
+documentation_of: test/segmenttree/LazySegmentTree3.test.cpp
 layout: document
 redirect_from:
-- /verify/test/segmenttree/LazySegmentTree2.test.cpp
-- /verify/test/segmenttree/LazySegmentTree2.test.cpp.html
-title: test/segmenttree/LazySegmentTree2.test.cpp
+- /verify/test/segmenttree/LazySegmentTree3.test.cpp
+- /verify/test/segmenttree/LazySegmentTree3.test.cpp.html
+title: test/segmenttree/LazySegmentTree3.test.cpp
 ---
