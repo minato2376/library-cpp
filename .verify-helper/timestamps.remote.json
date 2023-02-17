@@ -7,7 +7,8 @@
 "test/other/template.test.cpp": "2023-02-18 02:27:48 +0900",
 "test/segmenttree/DualSegmentTree.test.cpp": "2023-02-18 02:43:17 +0900",
 "test/segmenttree/DualSegmentTree2.test.cpp": "2023-02-18 02:47:07 +0900",
-"test/segmenttree/LazySegmentTree.test.cpp": "2023-02-18 04:05:28 +0900",
+"test/segmenttree/LazySegmentTree.test.cpp": "2023-02-18 04:23:56 +0900",
+"test/segmenttree/LazySegmentTree2.test.cpp": "2023-02-18 04:23:56 +0900",
 "test/segmenttree/RangeAddRangeSum.test.cpp": "2023-02-18 04:05:28 +0900",
 "test/segmenttree/SegmentTree.test.cpp": "2023-02-18 02:27:48 +0900"
 }
