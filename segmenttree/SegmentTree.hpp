@@ -108,3 +108,13 @@ template <class T, class F> struct SegmentTree {
         node[k] = op(node[2 * k], node[2 * k + 1]);
     }
 };
+
+template <typename T, T INF> auto buildPointSetRangeMin(int n) {
+    return buildPointSetRangeMin(vector<T>(n, INF));
+}
+
+template <typename T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {
+    auto f = [](T a, T b) { return min(a, b); };
+    SegmentTree seg(f, INF, v);
+    return seg;
+}
