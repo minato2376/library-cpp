@@ -38,7 +38,7 @@ data:
     \ v.end()), v.end()); }\ntemplate <class T> T MAX(const vector<T>& v) { return\
     \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
     \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
-    \ vector<T>& v) { return *accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
+    \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
     \ T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return\
     \ false; }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b)\
     \ { a = b; return true; } return false; }\nint topbit(ull x) { return x == 0 ?\
@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: test/math/totient.test.cpp
   requiredBy: []
-  timestamp: '2023-01-31 15:10:02+09:00'
+  timestamp: '2023-02-18 02:27:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/totient.test.cpp
