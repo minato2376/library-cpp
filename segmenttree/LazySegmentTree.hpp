@@ -192,6 +192,9 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
     }
 };
 
+/**
+ * 区間更新区間最小値
+ */
 template <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>& v) {
     auto f = [](T a, T b) { return min(a, b); };
     auto g = [](T a, T b) {
@@ -210,6 +213,30 @@ template <typename T, T INF> auto buildRangeSetRangeMin(int n) {
     return buildRangeSetRangeMin<T, INF>(vector<T>(n, INF));
 }
 
+/**
+ * 区間更新区間最大値
+ */
+template <typename T, T INF> auto buildRangeSetRangeMax(const vector<T>& v) {
+    auto f = [](T a, T b) { return max(a, b); };
+    auto g = [](T a, T b) {
+        (void)a;
+        return b;
+    };
+    auto h = [](T a, T b) {
+        (void)a;
+        return b;
+    };
+    LazySegmentTree seg(f, g, h, -INF, -INF, v);
+    return seg;
+}
+
+template <typename T, T INF> auto buildRangeSetRangeMax(int n) {
+    return buildRangeSetRangeMax<T, INF>(vector<T>(n, -INF));
+}
+
+/**
+ * 区間加算区間最小値
+ */
 template <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>& v) {
     auto f = [](T a, T b) { return min(a, b); };
     auto g = [](T a, T b) { return a + b; };
@@ -220,4 +247,42 @@ template <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>& v) {
 
 template <typename T, T INF> auto buildRangeAddRangeMin(int n) {
     return buildRangeAddRangeMin<T, INF>(vector<T>(n));
+}
+
+/**
+ * 区間加算区間最大値
+ */
+template <typename T, T INF> auto buildRangeAddRangeMax(const vector<T>& v) {
+    auto f = [](T a, T b) { return max(a, b); };
+    auto g = [](T a, T b) { return a + b; };
+    auto h = [](T a, T b) { return a + b; };
+    LazySegmentTree seg(f, g, h, -INF, 0, v);
+    return seg;
+}
+
+template <typename T, T INF> auto buildRangeAddRangeMax(int n) {
+    return buildRangeAddRangeMax<T, INF>(vector<T>(n));
+}
+
+/**
+ * 区間更新区間和
+ */
+template <typename T, T ID> auto buildRangeSetRangeSum(const vector<T>& v) {
+    using P = pair<T, int>;
+    auto f = [](P a, P b) { return P(a.first + b.first, a.second + b.second); };
+    auto g = [](P a, T b) { return P(b * a.second, a.second); };
+    auto h = [](T a, T b) {
+        (void)a;
+        return b;
+    };
+    vector<P> w(v.size());
+    for (size_t i = 0; i < v.size(); i++) {
+        w[i] = P(v[i], 1);
+    }
+    LazySegmentTree seg(f, g, h, P(0, 0), ID, w);
+    return seg;
+}
+
+template <typename T, T ID> auto buildRangeSetRangeSum(int n) {
+    return buildRangeSetRangeSum<T, ID>(vec<T>(n));
 }
