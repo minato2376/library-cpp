@@ -238,19 +238,19 @@ data:
   timestamp: '2023-02-18 02:27:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/datastructure/UnionFind.test.cpp
-  - test/datastructure/BinaryIndexedTree.test.cpp
-  - test/segmenttree/SegmentTree.test.cpp
-  - test/segmenttree/LazySegmentTree.test.cpp
-  - test/segmenttree/LazySegmentTree2.test.cpp
-  - test/segmenttree/DualSegmentTree2.test.cpp
-  - test/segmenttree/LazySegmentTree3.test.cpp
-  - test/segmenttree/DualSegmentTree.test.cpp
-  - test/segmenttree/RangeAddRangeSum.test.cpp
-  - test/other/template.test.cpp
-  - test/math/totient.test.cpp
   - test/math/floor_sqrt.test.cpp
+  - test/math/totient.test.cpp
+  - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/segmenttree/LazySegmentTree2.test.cpp
+  - test/segmenttree/RangeAddRangeSum.test.cpp
+  - test/segmenttree/LazySegmentTree.test.cpp
+  - test/segmenttree/DualSegmentTree.test.cpp
+  - test/segmenttree/SegmentTree.test.cpp
+  - test/segmenttree/LazySegmentTree3.test.cpp
+  - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/datastructure/UnionFind.test.cpp
   - test/algorithm/inversion_number.test.cpp
+  - test/other/template.test.cpp
 documentation_of: other/template.hpp
 layout: document
 redirect_from:

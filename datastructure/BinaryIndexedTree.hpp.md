@@ -42,7 +42,11 @@ data:
     \ (k > 0) {\n            if (ret + k <= n and data[ret + k] < x) {\n         \
     \       x -= data[ret + k];\n                ret += k;\n            }\n      \
     \      k >>= 1;\n        }\n        return ret;\n    }\n\n    int upper_bound(T\
-    \ x) const {\n        return lower_bound(x + 1);\n    }\n};\n"
+    \ x) const {\n        return lower_bound(x + 1);\n    }\n\n#ifdef MINATO_LOCAL\n\
+    \    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>& r) {\n\
+    \        vector<T> v(r.size());\n        for (int i = 0; i < r.size(); i++) {\n\
+    \            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n        return\
+    \ os;\n    }\n#endif\n};\n"
   code: "#pragma once\n\ntemplate <class T> struct BinaryIndexedTree {\n    int n;\n\
     \    vector<T> data;\n\n    BinaryIndexedTree() {\n    }\n    BinaryIndexedTree(int\
     \ n) : n(n), data(n + 1, 0) {\n    }\n\n    int size() const {\n        return\
@@ -62,18 +66,21 @@ data:
     \ + k] < x) {\n                x -= data[ret + k];\n                ret += k;\n\
     \            }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n\
     \    int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\
-    };\n"
+    \n#ifdef MINATO_LOCAL\n    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>&\
+    \ r) {\n        vector<T> v(r.size());\n        for (int i = 0; i < r.size();\
+    \ i++) {\n            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n \
+    \       return os;\n    }\n#endif\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: datastructure/BinaryIndexedTree.hpp
   requiredBy:
   - segmenttree/RangeAddRangeSum.hpp
   - algorithm/inversion_number.hpp
-  timestamp: '2023-02-18 03:59:33+09:00'
+  timestamp: '2023-02-18 14:32:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/datastructure/BinaryIndexedTree.test.cpp
   - test/segmenttree/RangeAddRangeSum.test.cpp
+  - test/datastructure/BinaryIndexedTree.test.cpp
   - test/algorithm/inversion_number.test.cpp
 documentation_of: datastructure/BinaryIndexedTree.hpp
 layout: document

@@ -33,8 +33,12 @@ data:
     \ (k > 0) {\n            if (ret + k <= n and data[ret + k] < x) {\n         \
     \       x -= data[ret + k];\n                ret += k;\n            }\n      \
     \      k >>= 1;\n        }\n        return ret;\n    }\n\n    int upper_bound(T\
-    \ x) const {\n        return lower_bound(x + 1);\n    }\n};\n#line 2 \"segmenttree/RangeAddRangeSum.hpp\"\
-    \n\ntemplate <typename T> struct RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T>\
+    \ x) const {\n        return lower_bound(x + 1);\n    }\n\n#ifdef MINATO_LOCAL\n\
+    \    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>& r) {\n\
+    \        vector<T> v(r.size());\n        for (int i = 0; i < r.size(); i++) {\n\
+    \            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n        return\
+    \ os;\n    }\n#endif\n};\n#line 2 \"segmenttree/RangeAddRangeSum.hpp\"\n\ntemplate\
+    \ <typename T> struct RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T>\
     \ a, b;\n    RangeAddRangeSum() {\n    }\n    RangeAddRangeSum(int n) : n(n),\
     \ a(n + 1), b(n + 1) {\n    }\n\n    int size() const {\n        return n;\n \
     \   }\n\n    // add x to [l, r)\n    void add(int l, int r, T x) {\n        if\
@@ -57,7 +61,7 @@ data:
   isVerificationFile: false
   path: segmenttree/RangeAddRangeSum.hpp
   requiredBy: []
-  timestamp: '2023-02-18 04:05:28+09:00'
+  timestamp: '2023-02-18 14:32:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/segmenttree/RangeAddRangeSum.test.cpp

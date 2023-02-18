@@ -132,20 +132,24 @@ data:
     \ 1;\n        while (k > 0) {\n            if (ret + k <= n and data[ret + k]\
     \ < x) {\n                x -= data[ret + k];\n                ret += k;\n   \
     \         }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n \
-    \   int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\
-    };\n#line 2 \"segmenttree/RangeAddRangeSum.hpp\"\n\ntemplate <typename T> struct\
-    \ RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T> a, b;\n    RangeAddRangeSum()\
-    \ {\n    }\n    RangeAddRangeSum(int n) : n(n), a(n + 1), b(n + 1) {\n    }\n\n\
-    \    int size() const {\n        return n;\n    }\n\n    // add x to [l, r)\n\
-    \    void add(int l, int r, T x) {\n        if (l >= r) return;\n        a.add(l,\
-    \ x);\n        a.add(r, -x);\n        b.add(l, x * (1 - l));\n        b.add(r,\
-    \ x * (r - 1));\n    }\n\n    T sum(int i) const {\n        return a.sum(i) *\
-    \ (i - 1) + b.sum(i);\n    }\n\n    // return sum of [l, r)\n    T sum(int l,\
-    \ int r) const {\n        return sum(r) - sum(l);\n    }\n};\n#line 5 \"test/segmenttree/RangeAddRangeSum.test.cpp\"\
-    \nint main() {\n    INT(n, q);\n    RangeAddRangeSum<ll> BIT(n);\n    rep(q) {\n\
-    \        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n         \
-    \   BIT.add(l - 1, r, x);\n        } else {\n            INT(l, r);\n        \
-    \    print(BIT.sum(l - 1, r));\n        }\n    }\n}\n"
+    \   int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\n\
+    #ifdef MINATO_LOCAL\n    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>&\
+    \ r) {\n        vector<T> v(r.size());\n        for (int i = 0; i < r.size();\
+    \ i++) {\n            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n \
+    \       return os;\n    }\n#endif\n};\n#line 2 \"segmenttree/RangeAddRangeSum.hpp\"\
+    \n\ntemplate <typename T> struct RangeAddRangeSum {\n    int n;\n    BinaryIndexedTree<T>\
+    \ a, b;\n    RangeAddRangeSum() {\n    }\n    RangeAddRangeSum(int n) : n(n),\
+    \ a(n + 1), b(n + 1) {\n    }\n\n    int size() const {\n        return n;\n \
+    \   }\n\n    // add x to [l, r)\n    void add(int l, int r, T x) {\n        if\
+    \ (l >= r) return;\n        a.add(l, x);\n        a.add(r, -x);\n        b.add(l,\
+    \ x * (1 - l));\n        b.add(r, x * (r - 1));\n    }\n\n    T sum(int i) const\
+    \ {\n        return a.sum(i) * (i - 1) + b.sum(i);\n    }\n\n    // return sum\
+    \ of [l, r)\n    T sum(int l, int r) const {\n        return sum(r) - sum(l);\n\
+    \    }\n};\n#line 5 \"test/segmenttree/RangeAddRangeSum.test.cpp\"\nint main()\
+    \ {\n    INT(n, q);\n    RangeAddRangeSum<ll> BIT(n);\n    rep(q) {\n        INT(t);\n\
+    \        if (t == 0) {\n            INT(l, r, x);\n            BIT.add(l - 1,\
+    \ r, x);\n        } else {\n            INT(l, r);\n            print(BIT.sum(l\
+    \ - 1, r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_G\"\
     \n#include \"other/template.hpp\"\n#include \"segmenttree/RangeAddRangeSum.hpp\"\
     \nint main() {\n    INT(n, q);\n    RangeAddRangeSum<ll> BIT(n);\n    rep(q) {\n\
@@ -159,7 +163,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/RangeAddRangeSum.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 04:05:28+09:00'
+  timestamp: '2023-02-18 14:32:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/RangeAddRangeSum.test.cpp

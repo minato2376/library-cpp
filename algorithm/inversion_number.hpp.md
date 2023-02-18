@@ -33,14 +33,17 @@ data:
     \ (k > 0) {\n            if (ret + k <= n and data[ret + k] < x) {\n         \
     \       x -= data[ret + k];\n                ret += k;\n            }\n      \
     \      k >>= 1;\n        }\n        return ret;\n    }\n\n    int upper_bound(T\
-    \ x) const {\n        return lower_bound(x + 1);\n    }\n};\n#line 3 \"algorithm/inversion_number.hpp\"\
-    \n\ntemplate <class T> long long inversion_number(const vector<T>& v) {\n    int\
-    \ n = int(v.size());\n    vector<T> com = v;\n    sort(com.begin(), com.end());\n\
-    \    com.erase(unique(com.begin(), com.end()), com.end());\n    int m = int(com.size());\n\
-    \n    BinaryIndexedTree<int> BIT(m);\n    long long ret = 0;\n    for (int i =\
-    \ 0; i < n; i++) {\n        int k = lower_bound(com.begin(), com.end(), v[i])\
-    \ - com.begin();\n        ret += BIT.sum(k + 1, m);\n        BIT.add(k, 1);\n\
-    \    }\n\n    return ret;\n}\n"
+    \ x) const {\n        return lower_bound(x + 1);\n    }\n\n#ifdef MINATO_LOCAL\n\
+    \    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>& r) {\n\
+    \        vector<T> v(r.size());\n        for (int i = 0; i < r.size(); i++) {\n\
+    \            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n        return\
+    \ os;\n    }\n#endif\n};\n#line 3 \"algorithm/inversion_number.hpp\"\n\ntemplate\
+    \ <class T> long long inversion_number(const vector<T>& v) {\n    int n = int(v.size());\n\
+    \    vector<T> com = v;\n    sort(com.begin(), com.end());\n    com.erase(unique(com.begin(),\
+    \ com.end()), com.end());\n    int m = int(com.size());\n\n    BinaryIndexedTree<int>\
+    \ BIT(m);\n    long long ret = 0;\n    for (int i = 0; i < n; i++) {\n       \
+    \ int k = lower_bound(com.begin(), com.end(), v[i]) - com.begin();\n        ret\
+    \ += BIT.sum(k + 1, m);\n        BIT.add(k, 1);\n    }\n\n    return ret;\n}\n"
   code: "#pragma once\n#include \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate\
     \ <class T> long long inversion_number(const vector<T>& v) {\n    int n = int(v.size());\n\
     \    vector<T> com = v;\n    sort(com.begin(), com.end());\n    com.erase(unique(com.begin(),\
@@ -53,7 +56,7 @@ data:
   isVerificationFile: false
   path: algorithm/inversion_number.hpp
   requiredBy: []
-  timestamp: '2023-02-18 03:59:33+09:00'
+  timestamp: '2023-02-18 14:32:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/algorithm/inversion_number.test.cpp
