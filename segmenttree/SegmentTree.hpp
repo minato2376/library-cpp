@@ -4,7 +4,7 @@ template <class T, class F> struct SegmentTree {
   private:
     F op;
     T e;
-    int _n, size, log;
+    int _n, size_, log;
     vector<T> node;
 
   public:
@@ -15,18 +15,22 @@ template <class T, class F> struct SegmentTree {
     SegmentTree(const F& op, T e, const vector<T>& v)
         : op(op), e(e), _n(int(v.size())), log(0) {
         while ((1 << log) < _n) log++;
-        size = 1 << log;
-        node = vector<T>(2 * size, e);
-        for (int i = 0; i < _n; i++) node[size + i] = v[i];
-        for (int i = size - 1; i >= 1; i--) {
+        size_ = 1 << log;
+        node = vector<T>(2 * size_, e);
+        for (int i = 0; i < _n; i++) node[size_ + i] = v[i];
+        for (int i = size_ - 1; i >= 1; i--) {
             update(i);
         }
+    }
+
+    int size() const {
+        return _n;
     }
 
     // (0-indexed)
     void set(int p, T x) {
         assert(0 <= p && p < _n);
-        p += size;
+        p += size_;
         node[p] = x;
         for (int i = 1; i <= log; i++) update(p >> i);
     }
@@ -35,8 +39,8 @@ template <class T, class F> struct SegmentTree {
     T get(int l, int r) {
         if (l >= r) return e;
         T resl = e, resr = e;
-        l += size;
-        r += size;
+        l += size_;
+        r += size_;
         while (l < r) {
             if (l & 1) resl = op(resl, node[l++]);
             l >>= 1;
@@ -54,19 +58,19 @@ template <class T, class F> struct SegmentTree {
         assert(0 <= l && l <= _n);
         assert(check(e));
         if (l == _n) return _n;
-        l += size;
+        l += size_;
         T sm = e;
         do {
             while (~l & 1) l >>= 1;
             if (!check(op(sm, node[l]))) {
-                while (l < size) {
+                while (l < size_) {
                     l = (2 * l);
                     if (check(op(sm, node[l]))) {
                         sm = op(sm, node[l]);
                         l++;
                     }
                 }
-                return l - size;
+                return l - size_;
             }
             sm = op(sm, node[l]);
             l++;
@@ -78,20 +82,20 @@ template <class T, class F> struct SegmentTree {
         assert(0 <= r && r <= _n);
         assert(check(e));
         if (r == 0) return 0;
-        r += size;
+        r += size_;
         T sm = e;
         do {
             r--;
             while (r > 1 && (r & 1)) r >>= 1;
             if (!check(op(node[r], sm))) {
-                while (r < size) {
+                while (r < size_) {
                     r = (2 * r + 1);
                     if (check(op(node[r], sm))) {
                         sm = op(node[r], sm);
                         r--;
                     }
                 }
-                return r + 1 - size;
+                return r + 1 - size_;
             }
             sm = op(node[r], sm);
         } while ((r & -r) != r);
@@ -100,8 +104,19 @@ template <class T, class F> struct SegmentTree {
 
     T operator[](int p) {
         assert(0 <= p && p < _n);
-        return node[p + size];
+        return node[p + size_];
     }
+
+#ifdef MINATO_LOCAL
+    friend ostream& operator<<(ostream& os, SegmentTree r) {
+        vector<T> v(r.size());
+        for (int i = 0; i < r.size(); i++) {
+            v[i] = r[i];
+        }
+        os << v;
+        return os;
+    }
+#endif
 
   private:
     void update(int k) {
@@ -116,5 +131,15 @@ template <typename T, T INF> auto buildPointSetRangeMin(int n) {
 template <typename T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {
     auto f = [](T a, T b) { return min(a, b); };
     SegmentTree seg(f, INF, v);
+    return seg;
+}
+
+template <typename T, T INF> auto buildPointSetRangeMax(int n) {
+    return buildPointSetRangeMax(vector<T>(n, INF));
+}
+
+template <typename T, T INF> auto buildPointSetRangeMax(const vector<T>& v) {
+    auto f = [](T a, T b) { return max(a, b); };
+    SegmentTree seg(f, -INF, v);
     return seg;
 }
