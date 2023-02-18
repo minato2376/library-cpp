@@ -34,8 +34,8 @@ data:
     \       x -= data[ret + k];\n                ret += k;\n            }\n      \
     \      k >>= 1;\n        }\n        return ret;\n    }\n\n    int upper_bound(T\
     \ x) const {\n        return lower_bound(x + 1);\n    }\n\n#ifdef MINATO_LOCAL\n\
-    \    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>& r) {\n\
-    \        vector<T> v(r.size());\n        for (int i = 0; i < r.size(); i++) {\n\
+    \    friend ostream& operator<<(ostream& os, const BinaryIndexedTree& r) {\n \
+    \       vector<T> v(r.size());\n        for (int i = 0; i < r.size(); i++) {\n\
     \            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n        return\
     \ os;\n    }\n#endif\n};\n#line 3 \"algorithm/inversion_number.hpp\"\n\ntemplate\
     \ <class T> long long inversion_number(const vector<T>& v) {\n    int n = int(v.size());\n\
@@ -56,7 +56,7 @@ data:
   isVerificationFile: false
   path: algorithm/inversion_number.hpp
   requiredBy: []
-  timestamp: '2023-02-18 14:32:06+09:00'
+  timestamp: '2023-02-18 14:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/algorithm/inversion_number.test.cpp
