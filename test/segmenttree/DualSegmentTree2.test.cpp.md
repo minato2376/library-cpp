@@ -112,41 +112,45 @@ data:
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 1 \"segmenttree/DualSegmentTree.hpp\"\ntemplate <class\
     \ T, class U, class G, class H> struct DualSegmentTree {\n  private:\n    G mapping;\n\
-    \    H composition;\n    U id;\n    int _n, size, log;\n    vector<T> node;\n\
+    \    H composition;\n    U id;\n    int _n, size_, log;\n    vector<T> node;\n\
     \    vector<U> lazy;\n\n  public:\n    DualSegmentTree() {\n    }\n    DualSegmentTree(const\
     \ G& mapping,\n                    const H& composition,\n                   \
     \ U id,\n                    const vector<T>& v)\n        : mapping(mapping),\n\
     \          composition(composition),\n          id(id),\n          _n(int(v.size())),\n\
-    \          log(0) {\n        while ((1 << log) < _n) log++;\n        size = 1\
-    \ << log;\n        node.resize(size);\n        for (int i = 0; i < _n; i++) node[i]\
-    \ = v[i];\n        lazy = vector<U>(size, id);\n    }\n\n    void set(int p, T\
-    \ x) {\n        assert(0 <= p && p < _n);\n        p += size;\n        for (int\
-    \ i = log; i >= 1; i--) push(p >> i);\n        node[p - size] = x;\n    }\n\n\
-    \    void apply(int p, U val) {\n        assert(0 <= p && p < _n);\n        p\
-    \ += size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n        node[p\
-    \ - size] =\n            val == id ? node[p - size] : mapping(node[p - size],\
-    \ val);\n    }\n\n    void apply(int l, int r, U val) {\n        if (l >= r) return;\n\
-    \n        l += size;\n        r += size;\n\n        for (int i = log; i >= 1;\
-    \ i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n            if\
-    \ (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\n        {\n       \
-    \     int l2 = l, r2 = r;\n            while (l < r) {\n                if (l\
-    \ & 1) all_apply(l++, val);\n                if (r & 1) all_apply(--r, val);\n\
-    \                l >>= 1;\n                r >>= 1;\n            }\n         \
-    \   l = l2;\n            r = r2;\n        }\n    }\n\n    T operator[](int p)\
-    \ {\n        assert(0 <= p && p < _n);\n        p += size;\n        for (int i\
-    \ = log; i >= 1; i--) push(p >> i);\n        return node[p - size];\n    }\n\n\
-    \  private:\n    void all_apply(int k, U val) {\n        if (k >= size)\n    \
-    \        node[k - size] =\n                val == id ? node[k - size] : mapping(node[k\
-    \ - size], val);\n        else\n            lazy[k] = composition(lazy[k], val);\n\
-    \    }\n\n    void push(int k) {\n        if (lazy[k] == id) return;\n       \
-    \ all_apply(2 * k, lazy[k]);\n        all_apply(2 * k + 1, lazy[k]);\n       \
-    \ lazy[k] = id;\n    }\n};\n#line 5 \"test/segmenttree/DualSegmentTree2.test.cpp\"\
-    \nint main() {\n    INT(n, q);\n    auto g = [](int a, int b) { return a + b;\
-    \ };\n    auto h = [](int a, int b) { return a + b; };\n    const int id = 0;\n\
-    \    DualSegmentTree seg(g, h, id, vec<int>(n));\n    rep(q) {\n        INT(t);\n\
-    \        if (t == 0) {\n            INT(l, r, x);\n            seg.apply(l - 1,\
-    \ r, x);\n        } else {\n            INT(i);\n            print(seg[i - 1]);\n\
-    \        }\n    }\n}\n"
+    \          log(0) {\n        while ((1 << log) < _n) log++;\n        size_ = 1\
+    \ << log;\n        node.resize(size_);\n        for (int i = 0; i < _n; i++) node[i]\
+    \ = v[i];\n        lazy = vector<U>(size_, id);\n    }\n\n    int size() const\
+    \ {\n        return _n;\n    }\n\n    void set(int p, T x) {\n        assert(0\
+    \ <= p && p < _n);\n        p += size_;\n        for (int i = log; i >= 1; i--)\
+    \ push(p >> i);\n        node[p - size_] = x;\n    }\n\n    void apply(int p,\
+    \ U val) {\n        assert(0 <= p && p < _n);\n        p += size_;\n        for\
+    \ (int i = log; i >= 1; i--) push(p >> i);\n        node[p - size_] =\n      \
+    \      val == id ? node[p - size_] : mapping(node[p - size_], val);\n    }\n\n\
+    \    void apply(int l, int r, U val) {\n        if (l >= r) return;\n\n      \
+    \  l += size_;\n        r += size_;\n\n        for (int i = log; i >= 1; i--)\
+    \ {\n            if (((l >> i) << i) != l) push(l >> i);\n            if (((r\
+    \ >> i) << i) != r) push((r - 1) >> i);\n        }\n\n        {\n            int\
+    \ l2 = l, r2 = r;\n            while (l < r) {\n                if (l & 1) all_apply(l++,\
+    \ val);\n                if (r & 1) all_apply(--r, val);\n                l >>=\
+    \ 1;\n                r >>= 1;\n            }\n            l = l2;\n         \
+    \   r = r2;\n        }\n    }\n\n    T operator[](int p) {\n        assert(0 <=\
+    \ p && p < _n);\n        p += size_;\n        for (int i = log; i >= 1; i--) push(p\
+    \ >> i);\n        return node[p - size_];\n    }\n\n#ifdef MINATO_LOCAL\n    friend\
+    \ ostream& operator<<(ostream& os, DualSegmentTree r) {\n        vector<T> v(r.size());\n\
+    \        for (int i = 0; i < r.size(); i++) {\n            v[i] = r[i];\n    \
+    \    }\n        os << v;\n        return os;\n    }\n#endif\n\n  private:\n  \
+    \  void all_apply(int k, U val) {\n        if (k >= size_)\n            node[k\
+    \ - size_] =\n                val == id ? node[k - size_] : mapping(node[k - size_],\
+    \ val);\n        else\n            lazy[k] = composition(lazy[k], val);\n    }\n\
+    \n    void push(int k) {\n        if (lazy[k] == id) return;\n        all_apply(2\
+    \ * k, lazy[k]);\n        all_apply(2 * k + 1, lazy[k]);\n        lazy[k] = id;\n\
+    \    }\n};\n#line 5 \"test/segmenttree/DualSegmentTree2.test.cpp\"\nint main()\
+    \ {\n    INT(n, q);\n    auto g = [](int a, int b) { return a + b; };\n    auto\
+    \ h = [](int a, int b) { return a + b; };\n    const int id = 0;\n    DualSegmentTree\
+    \ seg(g, h, id, vec<int>(n));\n    rep(q) {\n        INT(t);\n        if (t ==\
+    \ 0) {\n            INT(l, r, x);\n            seg.apply(l - 1, r, x);\n     \
+    \   } else {\n            INT(i);\n            print(seg[i - 1]);\n        }\n\
+    \    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_E\"\
     \n#include \"other/template.hpp\"\n#include \"segmenttree/DualSegmentTree.hpp\"\
     \nint main() {\n    INT(n, q);\n    auto g = [](int a, int b) { return a + b;\
@@ -161,7 +165,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/DualSegmentTree2.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 02:47:07+09:00'
+  timestamp: '2023-02-18 20:47:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/DualSegmentTree2.test.cpp

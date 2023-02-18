@@ -2,11 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: generator/generate_random_sequence.hpp
+    title: generator/generate_random_sequence.hpp
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
-  - icon: ':heavy_check_mark:'
-    path: segmenttree/DualSegmentTree.hpp
-    title: segmenttree/DualSegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -14,17 +14,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D
-  bundledCode: "#line 1 \"test/segmenttree/DualSegmentTree.test.cpp\"\n#define PROBLEM\
-    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
-    using pll = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
-    template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\n\
-    template <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"test/generator/generate_random_sequence.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#line 1 \"other/template.hpp\"\
+    \n// clang-format off\n#include <bits/stdc++.h>\nusing namespace std;\nusing uint\
+    \ = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nusing\
+    \ ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
+    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
+    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
     #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
     \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
     \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
@@ -110,70 +110,87 @@ data:
     #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
     \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
     \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 1 \"segmenttree/DualSegmentTree.hpp\"\ntemplate <class\
-    \ T, class U, class G, class H> struct DualSegmentTree {\n  private:\n    G mapping;\n\
-    \    H composition;\n    U id;\n    int _n, size_, log;\n    vector<T> node;\n\
-    \    vector<U> lazy;\n\n  public:\n    DualSegmentTree() {\n    }\n    DualSegmentTree(const\
-    \ G& mapping,\n                    const H& composition,\n                   \
-    \ U id,\n                    const vector<T>& v)\n        : mapping(mapping),\n\
-    \          composition(composition),\n          id(id),\n          _n(int(v.size())),\n\
-    \          log(0) {\n        while ((1 << log) < _n) log++;\n        size_ = 1\
-    \ << log;\n        node.resize(size_);\n        for (int i = 0; i < _n; i++) node[i]\
-    \ = v[i];\n        lazy = vector<U>(size_, id);\n    }\n\n    int size() const\
-    \ {\n        return _n;\n    }\n\n    void set(int p, T x) {\n        assert(0\
-    \ <= p && p < _n);\n        p += size_;\n        for (int i = log; i >= 1; i--)\
-    \ push(p >> i);\n        node[p - size_] = x;\n    }\n\n    void apply(int p,\
-    \ U val) {\n        assert(0 <= p && p < _n);\n        p += size_;\n        for\
-    \ (int i = log; i >= 1; i--) push(p >> i);\n        node[p - size_] =\n      \
-    \      val == id ? node[p - size_] : mapping(node[p - size_], val);\n    }\n\n\
-    \    void apply(int l, int r, U val) {\n        if (l >= r) return;\n\n      \
-    \  l += size_;\n        r += size_;\n\n        for (int i = log; i >= 1; i--)\
-    \ {\n            if (((l >> i) << i) != l) push(l >> i);\n            if (((r\
-    \ >> i) << i) != r) push((r - 1) >> i);\n        }\n\n        {\n            int\
-    \ l2 = l, r2 = r;\n            while (l < r) {\n                if (l & 1) all_apply(l++,\
-    \ val);\n                if (r & 1) all_apply(--r, val);\n                l >>=\
-    \ 1;\n                r >>= 1;\n            }\n            l = l2;\n         \
-    \   r = r2;\n        }\n    }\n\n    T operator[](int p) {\n        assert(0 <=\
-    \ p && p < _n);\n        p += size_;\n        for (int i = log; i >= 1; i--) push(p\
-    \ >> i);\n        return node[p - size_];\n    }\n\n#ifdef MINATO_LOCAL\n    friend\
-    \ ostream& operator<<(ostream& os, DualSegmentTree r) {\n        vector<T> v(r.size());\n\
-    \        for (int i = 0; i < r.size(); i++) {\n            v[i] = r[i];\n    \
-    \    }\n        os << v;\n        return os;\n    }\n#endif\n\n  private:\n  \
-    \  void all_apply(int k, U val) {\n        if (k >= size_)\n            node[k\
-    \ - size_] =\n                val == id ? node[k - size_] : mapping(node[k - size_],\
-    \ val);\n        else\n            lazy[k] = composition(lazy[k], val);\n    }\n\
-    \n    void push(int k) {\n        if (lazy[k] == id) return;\n        all_apply(2\
-    \ * k, lazy[k]);\n        all_apply(2 * k + 1, lazy[k]);\n        lazy[k] = id;\n\
-    \    }\n};\n#line 5 \"test/segmenttree/DualSegmentTree.test.cpp\"\nint main()\
-    \ {\n    INT(n, q);\n    auto g = [](int a, int b) {\n        (void)a;\n     \
-    \   return b;\n    };\n    auto h = [](int a, int b) {\n        (void)a;\n   \
-    \     return b;\n    };\n    const int id = numeric_limits<int>::max();\n    vec<int>\
-    \ A(n, numeric_limits<int>::max());\n    DualSegmentTree seg(g, h, id, A);\n \
-    \   rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
-    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(i);\n\
-    \            print(seg[i]);\n        }\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_D\"\
-    \n#include \"other/template.hpp\"\n#include \"segmenttree/DualSegmentTree.hpp\"\
-    \nint main() {\n    INT(n, q);\n    auto g = [](int a, int b) {\n        (void)a;\n\
-    \        return b;\n    };\n    auto h = [](int a, int b) {\n        (void)a;\n\
-    \        return b;\n    };\n    const int id = numeric_limits<int>::max();\n \
-    \   vec<int> A(n, numeric_limits<int>::max());\n    DualSegmentTree seg(g, h,\
-    \ id, A);\n    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l,\
-    \ r, x);\n            seg.apply(l, r + 1, x);\n        } else {\n            INT(i);\n\
-    \            print(seg[i]);\n        }\n    }\n}"
+    // clang-format on\n#line 1 \"generator/generate_random_sequence.hpp\"\n/**\n\
+    \ * \u5024\u304C lower \u4EE5\u4E0A upper \u672A\u6E80\u3067\u3042\u308B\u9577\
+    \u3055 n \u306E\u6570\u5217\u3092\u5168\u3066\u751F\u6210\u3059\u308B\u3002\n\
+    \ * O(D**n * n)\n */\ntemplate <typename T>\nvector<vector<T>> generate_random_sequence(int\
+    \ n, T upper, T lower = 0) {\n    int D = upper - lower;\n    int size = 1;\n\
+    \    for (int i = 0; i < n; i++) size *= D;\n    vector<vector<T>> ret(size);\n\
+    \    for (int k = 0; k < size; k++) {\n        vector<T> v(n);\n        int x\
+    \ = k;\n        for (int i = 0; i < n; i++) {\n            v[i] = lower + x %\
+    \ D;\n            x /= D;\n        }\n        reverse(v.begin(), v.end());\n \
+    \       ret[k] = v;\n    }\n    return ret;\n}\n#line 4 \"test/generator/generate_random_sequence.test.cpp\"\
+    \n\nvoid aplusb() {\n    INT(A, B);\n    print(A + B);\n}\n\nint main() {\n  \
+    \  {\n        auto value = generate_random_sequence(3, 4);\n        vec<vec<int>>\
+    \ expected = {\n            {0, 0, 0}, {0, 0, 1}, {0, 0, 2}, {0, 0, 3}, {0, 1,\
+    \ 0}, {0, 1, 1},\n            {0, 1, 2}, {0, 1, 3}, {0, 2, 0}, {0, 2, 1}, {0,\
+    \ 2, 2}, {0, 2, 3},\n            {0, 3, 0}, {0, 3, 1}, {0, 3, 2}, {0, 3, 3}, {1,\
+    \ 0, 0}, {1, 0, 1},\n            {1, 0, 2}, {1, 0, 3}, {1, 1, 0}, {1, 1, 1}, {1,\
+    \ 1, 2}, {1, 1, 3},\n            {1, 2, 0}, {1, 2, 1}, {1, 2, 2}, {1, 2, 3}, {1,\
+    \ 3, 0}, {1, 3, 1},\n            {1, 3, 2}, {1, 3, 3}, {2, 0, 0}, {2, 0, 1}, {2,\
+    \ 0, 2}, {2, 0, 3},\n            {2, 1, 0}, {2, 1, 1}, {2, 1, 2}, {2, 1, 3}, {2,\
+    \ 2, 0}, {2, 2, 1},\n            {2, 2, 2}, {2, 2, 3}, {2, 3, 0}, {2, 3, 1}, {2,\
+    \ 3, 2}, {2, 3, 3},\n            {3, 0, 0}, {3, 0, 1}, {3, 0, 2}, {3, 0, 3}, {3,\
+    \ 1, 0}, {3, 1, 1},\n            {3, 1, 2}, {3, 1, 3}, {3, 2, 0}, {3, 2, 1}, {3,\
+    \ 2, 2}, {3, 2, 3},\n            {3, 3, 0}, {3, 3, 1}, {3, 3, 2}, {3, 3, 3}};\n\
+    \        assert(value == expected);\n    }\n    {\n        auto value = generate_random_sequence(1,\
+    \ 1);\n        vec<vec<int>> expected = {{0}};\n        assert(value == expected);\n\
+    \    }\n    {\n        auto value = generate_random_sequence(3, 7, 3);\n     \
+    \   vec<vec<int>> expected = {\n            {3, 3, 3}, {3, 3, 4}, {3, 3, 5}, {3,\
+    \ 3, 6}, {3, 4, 3}, {3, 4, 4},\n            {3, 4, 5}, {3, 4, 6}, {3, 5, 3}, {3,\
+    \ 5, 4}, {3, 5, 5}, {3, 5, 6},\n            {3, 6, 3}, {3, 6, 4}, {3, 6, 5}, {3,\
+    \ 6, 6}, {4, 3, 3}, {4, 3, 4},\n            {4, 3, 5}, {4, 3, 6}, {4, 4, 3}, {4,\
+    \ 4, 4}, {4, 4, 5}, {4, 4, 6},\n            {4, 5, 3}, {4, 5, 4}, {4, 5, 5}, {4,\
+    \ 5, 6}, {4, 6, 3}, {4, 6, 4},\n            {4, 6, 5}, {4, 6, 6}, {5, 3, 3}, {5,\
+    \ 3, 4}, {5, 3, 5}, {5, 3, 6},\n            {5, 4, 3}, {5, 4, 4}, {5, 4, 5}, {5,\
+    \ 4, 6}, {5, 5, 3}, {5, 5, 4},\n            {5, 5, 5}, {5, 5, 6}, {5, 6, 3}, {5,\
+    \ 6, 4}, {5, 6, 5}, {5, 6, 6},\n            {6, 3, 3}, {6, 3, 4}, {6, 3, 5}, {6,\
+    \ 3, 6}, {6, 4, 3}, {6, 4, 4},\n            {6, 4, 5}, {6, 4, 6}, {6, 5, 3}, {6,\
+    \ 5, 4}, {6, 5, 5}, {6, 5, 6},\n            {6, 6, 3}, {6, 6, 4}, {6, 6, 5}, {6,\
+    \ 6, 6}};\n        assert(value == expected);\n    }\n    aplusb();\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
+    \n#include \"generator/generate_random_sequence.hpp\"\n\nvoid aplusb() {\n   \
+    \ INT(A, B);\n    print(A + B);\n}\n\nint main() {\n    {\n        auto value\
+    \ = generate_random_sequence(3, 4);\n        vec<vec<int>> expected = {\n    \
+    \        {0, 0, 0}, {0, 0, 1}, {0, 0, 2}, {0, 0, 3}, {0, 1, 0}, {0, 1, 1},\n \
+    \           {0, 1, 2}, {0, 1, 3}, {0, 2, 0}, {0, 2, 1}, {0, 2, 2}, {0, 2, 3},\n\
+    \            {0, 3, 0}, {0, 3, 1}, {0, 3, 2}, {0, 3, 3}, {1, 0, 0}, {1, 0, 1},\n\
+    \            {1, 0, 2}, {1, 0, 3}, {1, 1, 0}, {1, 1, 1}, {1, 1, 2}, {1, 1, 3},\n\
+    \            {1, 2, 0}, {1, 2, 1}, {1, 2, 2}, {1, 2, 3}, {1, 3, 0}, {1, 3, 1},\n\
+    \            {1, 3, 2}, {1, 3, 3}, {2, 0, 0}, {2, 0, 1}, {2, 0, 2}, {2, 0, 3},\n\
+    \            {2, 1, 0}, {2, 1, 1}, {2, 1, 2}, {2, 1, 3}, {2, 2, 0}, {2, 2, 1},\n\
+    \            {2, 2, 2}, {2, 2, 3}, {2, 3, 0}, {2, 3, 1}, {2, 3, 2}, {2, 3, 3},\n\
+    \            {3, 0, 0}, {3, 0, 1}, {3, 0, 2}, {3, 0, 3}, {3, 1, 0}, {3, 1, 1},\n\
+    \            {3, 1, 2}, {3, 1, 3}, {3, 2, 0}, {3, 2, 1}, {3, 2, 2}, {3, 2, 3},\n\
+    \            {3, 3, 0}, {3, 3, 1}, {3, 3, 2}, {3, 3, 3}};\n        assert(value\
+    \ == expected);\n    }\n    {\n        auto value = generate_random_sequence(1,\
+    \ 1);\n        vec<vec<int>> expected = {{0}};\n        assert(value == expected);\n\
+    \    }\n    {\n        auto value = generate_random_sequence(3, 7, 3);\n     \
+    \   vec<vec<int>> expected = {\n            {3, 3, 3}, {3, 3, 4}, {3, 3, 5}, {3,\
+    \ 3, 6}, {3, 4, 3}, {3, 4, 4},\n            {3, 4, 5}, {3, 4, 6}, {3, 5, 3}, {3,\
+    \ 5, 4}, {3, 5, 5}, {3, 5, 6},\n            {3, 6, 3}, {3, 6, 4}, {3, 6, 5}, {3,\
+    \ 6, 6}, {4, 3, 3}, {4, 3, 4},\n            {4, 3, 5}, {4, 3, 6}, {4, 4, 3}, {4,\
+    \ 4, 4}, {4, 4, 5}, {4, 4, 6},\n            {4, 5, 3}, {4, 5, 4}, {4, 5, 5}, {4,\
+    \ 5, 6}, {4, 6, 3}, {4, 6, 4},\n            {4, 6, 5}, {4, 6, 6}, {5, 3, 3}, {5,\
+    \ 3, 4}, {5, 3, 5}, {5, 3, 6},\n            {5, 4, 3}, {5, 4, 4}, {5, 4, 5}, {5,\
+    \ 4, 6}, {5, 5, 3}, {5, 5, 4},\n            {5, 5, 5}, {5, 5, 6}, {5, 6, 3}, {5,\
+    \ 6, 4}, {5, 6, 5}, {5, 6, 6},\n            {6, 3, 3}, {6, 3, 4}, {6, 3, 5}, {6,\
+    \ 3, 6}, {6, 4, 3}, {6, 4, 4},\n            {6, 4, 5}, {6, 4, 6}, {6, 5, 3}, {6,\
+    \ 5, 4}, {6, 5, 5}, {6, 5, 6},\n            {6, 6, 3}, {6, 6, 4}, {6, 6, 5}, {6,\
+    \ 6, 6}};\n        assert(value == expected);\n    }\n    aplusb();\n}"
   dependsOn:
   - other/template.hpp
-  - segmenttree/DualSegmentTree.hpp
+  - generator/generate_random_sequence.hpp
   isVerificationFile: true
-  path: test/segmenttree/DualSegmentTree.test.cpp
+  path: test/generator/generate_random_sequence.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 20:47:36+09:00'
+  timestamp: '2023-02-19 02:28:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/segmenttree/DualSegmentTree.test.cpp
+documentation_of: test/generator/generate_random_sequence.test.cpp
 layout: document
 redirect_from:
-- /verify/test/segmenttree/DualSegmentTree.test.cpp
-- /verify/test/segmenttree/DualSegmentTree.test.cpp.html
-title: test/segmenttree/DualSegmentTree.test.cpp
+- /verify/test/generator/generate_random_sequence.test.cpp
+- /verify/test/generator/generate_random_sequence.test.cpp.html
+title: test/generator/generate_random_sequence.test.cpp
 ---

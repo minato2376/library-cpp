@@ -13,6 +13,9 @@ data:
     path: test/datastructure/UnionFind.test.cpp
     title: test/datastructure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/generator/generate_random_sequence.test.cpp
+    title: test/generator/generate_random_sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/floor_sqrt.test.cpp
     title: test/math/floor_sqrt.test.cpp
   - icon: ':heavy_check_mark:'
@@ -249,6 +252,7 @@ data:
   - test/segmenttree/LazySegmentTree3.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/datastructure/UnionFind.test.cpp
+  - test/generator/generate_random_sequence.test.cpp
   - test/algorithm/inversion_number.test.cpp
   - test/other/template.test.cpp
 documentation_of: other/template.hpp

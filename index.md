@@ -17,6 +17,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: datastructure/UnionFind.hpp
       title: datastructure/UnionFind.hpp
+  - name: generator
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: generator/generate_random_sequence.hpp
+      title: generator/generate_random_sequence.hpp
   - name: math
     pages:
     - icon: ':warning:'
@@ -74,6 +79,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/datastructure/UnionFind.test.cpp
       title: test/datastructure/UnionFind.test.cpp
+  - name: test/generator
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/generator/generate_random_sequence.test.cpp
+      title: test/generator/generate_random_sequence.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'
