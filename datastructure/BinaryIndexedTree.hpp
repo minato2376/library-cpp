@@ -62,4 +62,15 @@ template <class T> struct BinaryIndexedTree {
     int upper_bound(T x) const {
         return lower_bound(x + 1);
     }
+
+#ifdef MINATO_LOCAL
+    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>& r) {
+        vector<T> v(r.size());
+        for (int i = 0; i < r.size(); i++) {
+            v[i] = r.sum(i, i + 1);
+        }
+        os << v;
+        return os;
+    }
+#endif
 };
