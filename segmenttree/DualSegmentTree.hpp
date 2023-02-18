@@ -3,7 +3,7 @@ template <class T, class U, class G, class H> struct DualSegmentTree {
     G mapping;
     H composition;
     U id;
-    int _n, size, log;
+    int _n, size_, log;
     vector<T> node;
     vector<U> lazy;
 
@@ -20,32 +20,36 @@ template <class T, class U, class G, class H> struct DualSegmentTree {
           _n(int(v.size())),
           log(0) {
         while ((1 << log) < _n) log++;
-        size = 1 << log;
-        node.resize(size);
+        size_ = 1 << log;
+        node.resize(size_);
         for (int i = 0; i < _n; i++) node[i] = v[i];
-        lazy = vector<U>(size, id);
+        lazy = vector<U>(size_, id);
+    }
+
+    int size() const {
+        return _n;
     }
 
     void set(int p, T x) {
         assert(0 <= p && p < _n);
-        p += size;
+        p += size_;
         for (int i = log; i >= 1; i--) push(p >> i);
-        node[p - size] = x;
+        node[p - size_] = x;
     }
 
     void apply(int p, U val) {
         assert(0 <= p && p < _n);
-        p += size;
+        p += size_;
         for (int i = log; i >= 1; i--) push(p >> i);
-        node[p - size] =
-            val == id ? node[p - size] : mapping(node[p - size], val);
+        node[p - size_] =
+            val == id ? node[p - size_] : mapping(node[p - size_], val);
     }
 
     void apply(int l, int r, U val) {
         if (l >= r) return;
 
-        l += size;
-        r += size;
+        l += size_;
+        r += size_;
 
         for (int i = log; i >= 1; i--) {
             if (((l >> i) << i) != l) push(l >> i);
@@ -67,16 +71,27 @@ template <class T, class U, class G, class H> struct DualSegmentTree {
 
     T operator[](int p) {
         assert(0 <= p && p < _n);
-        p += size;
+        p += size_;
         for (int i = log; i >= 1; i--) push(p >> i);
-        return node[p - size];
+        return node[p - size_];
     }
+
+#ifdef MINATO_LOCAL
+    friend ostream& operator<<(ostream& os, DualSegmentTree r) {
+        vector<T> v(r.size());
+        for (int i = 0; i < r.size(); i++) {
+            v[i] = r[i];
+        }
+        os << v;
+        return os;
+    }
+#endif
 
   private:
     void all_apply(int k, U val) {
-        if (k >= size)
-            node[k - size] =
-                val == id ? node[k - size] : mapping(node[k - size], val);
+        if (k >= size_)
+            node[k - size_] =
+                val == id ? node[k - size_] : mapping(node[k - size_], val);
         else
             lazy[k] = composition(lazy[k], val);
     }
