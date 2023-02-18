@@ -64,7 +64,7 @@ template <class T> struct BinaryIndexedTree {
     }
 
 #ifdef MINATO_LOCAL
-    friend ostream& operator<<(ostream& os, const BinaryIndexedTree<T>& r) {
+    friend ostream& operator<<(ostream& os, const BinaryIndexedTree& r) {
         vector<T> v(r.size());
         for (int i = 0; i < r.size(); i++) {
             v[i] = r.sum(i, i + 1);
