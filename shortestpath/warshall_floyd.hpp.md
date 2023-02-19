@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: test/shortestpath/warshall_floyd.test.cpp
+    title: test/shortestpath/warshall_floyd.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"shortestpath/warshall_floyd.hpp\"\n\ntemplate <typename\
@@ -26,8 +29,9 @@ data:
   path: shortestpath/warshall_floyd.hpp
   requiredBy: []
   timestamp: '2023-01-30 01:32:32+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - test/shortestpath/warshall_floyd.test.cpp
 documentation_of: shortestpath/warshall_floyd.hpp
 layout: document
 redirect_from:

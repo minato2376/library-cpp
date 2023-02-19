@@ -62,7 +62,7 @@ data:
       title: segmenttree/SegmentTree.hpp
   - name: shortestpath
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: shortestpath/warshall_floyd.hpp
       title: shortestpath/warshall_floyd.hpp
   verificationCategories:
@@ -120,5 +120,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/SegmentTree.test.cpp
       title: test/segmenttree/SegmentTree.test.cpp
+  - name: test/shortestpath
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/shortestpath/warshall_floyd.test.cpp
+      title: test/shortestpath/warshall_floyd.test.cpp
 layout: toppage
 ---

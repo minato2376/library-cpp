@@ -45,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/segmenttree/SegmentTree.test.cpp
     title: test/segmenttree/SegmentTree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: test/shortestpath/warshall_floyd.test.cpp
+    title: test/shortestpath/warshall_floyd.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -250,6 +253,7 @@ data:
   - test/segmenttree/DualSegmentTree.test.cpp
   - test/segmenttree/SegmentTree.test.cpp
   - test/segmenttree/LazySegmentTree3.test.cpp
+  - test/shortestpath/warshall_floyd.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/datastructure/UnionFind.test.cpp
   - test/generator/generate_random_sequence.test.cpp
