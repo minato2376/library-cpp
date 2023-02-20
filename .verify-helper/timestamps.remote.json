@@ -5,6 +5,7 @@
 "test/generator/generate_random_sequence.test.cpp": "2023-02-19 02:28:43 +0900",
 "test/math/floor_sqrt.test.cpp": "2023-02-18 02:27:48 +0900",
 "test/math/totient.test.cpp": "2023-02-18 02:27:48 +0900",
+"test/mod/ModInt.test.cpp": "2023-02-20 20:48:49 +0900",
 "test/other/template.test.cpp": "2023-02-18 02:27:48 +0900",
 "test/segmenttree/DualSegmentTree.test.cpp": "2023-02-18 20:47:36 +0900",
 "test/segmenttree/DualSegmentTree2.test.cpp": "2023-02-18 20:47:36 +0900",
