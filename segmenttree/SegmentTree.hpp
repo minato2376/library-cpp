@@ -125,7 +125,9 @@ template <class T, class F> struct SegmentTree {
 };
 
 template <typename T, T INF> auto buildPointSetRangeMin(int n) {
-    return buildPointSetRangeMin(vector<T>(n, INF));
+    auto f = [](T a, T b) { return min(a, b); };
+    SegmentTree seg(f, INF, n);
+    return seg;
 }
 
 template <typename T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {
@@ -135,7 +137,9 @@ template <typename T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {
 }
 
 template <typename T, T INF> auto buildPointSetRangeMax(int n) {
-    return buildPointSetRangeMax(vector<T>(n, INF));
+    auto f = [](T a, T b) { return max(a, b); };
+    SegmentTree seg(f, -INF, n);
+    return seg;
 }
 
 template <typename T, T INF> auto buildPointSetRangeMax(const vector<T>& v) {
