@@ -17,47 +17,69 @@ data:
   bundledCode: "#line 1 \"test/other/template.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
     \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing ld = long double;\nusing pii = pair<int, int>;\n\
-    using pll = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
-    template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\n\
-    template <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
-    #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
-    \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
-    \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
-    \ i = (l); (i) < (r); (i)++)\n#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2,\
-    \ REP1, REP0)(__VA_ARGS__)\n#define OVERLOAD_RREP(_1, _2, _3, name, ...) name\n\
-    #define RREP1(i, n) for (auto i = (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n\
-    #define RREP2(i, l, r) for (auto i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...)\
-    \ OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x),\
-    \ end(x)\ntemplate <class Container> int SZ(const Container& v) { return int(v.size());\
-    \ }\ntemplate <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(),\
-    \ v.end()), v.end()); }\ntemplate <class T> T MAX(const vector<T>& v) { return\
-    \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
-    \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
-    \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
-    \ T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return\
-    \ false; }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b)\
-    \ { a = b; return true; } return false; }\nint topbit(ull x) { return x == 0 ?\
-    \ -1 : 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x);\
-    \ }\nint popcount(ull x) { return __builtin_popcountll(x); }\nint kthbit(ull x,\
-    \ int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int x) { return x ==\
-    \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
-    \ id) {}\ntemplate <typename S, typename T> void rearrange_exec(const vector<S>&\
-    \ id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size();\
-    \ i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head,\
-    \ typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
-    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nconstexpr char ln = '\\\
-    n';\nconst string YESNO[2] = {\"NO\", \"YES\"};\nconst string YesNo[2] = {\"No\"\
-    , \"Yes\"};\nvoid YES(bool t = true) { cout << YESNO[t] << \"\\n\"; }\nvoid Yes(bool\
-    \ t = true) { cout << YesNo[t] << \"\\n\"; }\ntemplate <class T> void drop(T x)\
-    \ { cout << x << \"\\n\"; exit(0); }\n#define INT(...)     \\\n    int __VA_ARGS__;\
-    \ \\\n    IN(__VA_ARGS__)\n#define LL(...)     \\\n    ll __VA_ARGS__; \\\n  \
-    \  IN(__VA_ARGS__)\n#define STR(...)        \\\n    string __VA_ARGS__; \\\n \
-    \   IN(__VA_ARGS__)\n#define CHR(...)      \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
-    #define LDB(...)             \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n\
-    #define VEC(type, name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n\
-    #define VEC2(type, name1, name2, size)     \\\n    vector<type> name1(size), name2(size);\
-    \ \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
+    \ ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld = long double;\n\
+    using pii = pair<int, int>;\nusing pll = pair<long long, long long>;\ntemplate\
+    \ <class T> using maxheap = priority_queue<T>;\ntemplate <class T> using minheap\
+    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <class T> using vec =\
+    \ vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n#define OVERLOAD_REP(_1,\
+    \ _2, _3, name, ...) name\n#define REP0(n) for (auto minato = decay_t<decltype(n)>{};\
+    \ minato < (n); ++minato)\n#define REP1(i, n) for (auto i = decay_t<decltype(n)>{};\
+    \ (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto i = (l); (i) < (r); (i)++)\n\
+    #define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2, REP1, REP0)(__VA_ARGS__)\n#define\
+    \ OVERLOAD_RREP(_1, _2, _3, name, ...) name\n#define RREP1(i, n) for (auto i =\
+    \ (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n#define RREP2(i, l, r) for (auto\
+    \ i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...) OVERLOAD_RREP(__VA_ARGS__,\
+    \ RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x), end(x)\ntemplate <class\
+    \ Container> int SZ(const Container& v) { return int(v.size()); }\ntemplate <class\
+    \ T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end());\
+    \ }\ntemplate <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(),\
+    \ v.end()); }\ntemplate <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(),\
+    \ v.end()); }\ntemplate <class T> T SUM(const vector<T>& v) { return accumulate(v.begin(),\
+    \ v.end(), T(0)); }\ntemplate <class T> T ABS(T x) { return max(x, -x); }\ntemplate\
+    \ <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true;\
+    \ } return false; }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if\
+    \ (a > b) { a = b; return true; } return false; }\nint topbit(ull x) { return\
+    \ x == 0 ? -1 : 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0\
+    \ ? 64 : __builtin_ctzll(x); }\nint popcount(ull x) { return __builtin_popcountll(x);\
+    \ }\nint kthbit(ull x, int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int\
+    \ x) { return x == 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const\
+    \ vector<S>& id) { (void)id; }\ntemplate <typename S, typename T> void rearrange_exec(const\
+    \ vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i <\
+    \ id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename\
+    \ Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nistream& operator>>(istream&\
+    \ is, __int128_t& x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()),\
+    \ it = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 +\
+    \ s[it] - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
+    \ os, __int128_t x) {\n    if (x == 0) return os << 0;\n    if (x < 0) os << '-',\
+    \ x = -x;\n    deque<int> deq;\n    while (x) deq.emplace_front(x % 10), x /=\
+    \ 10;\n    for (int e : deq) os << e;\n    return os;\n}\ntemplate <class T> vector<T>\
+    \ &operator++(vector<T>& v) { for (auto& e : v) { e++; } return v;} \ntemplate\
+    \ <class T> vector<T> operator++(vector<T>& v, int) { auto res = v; for (auto&\
+    \ e : v) { e++; } return res; }\ntemplate <class T> vector<T> &operator--(vector<T>&\
+    \ v) { for (auto& e : v) { e--; } return v; }\ntemplate <class T> vector<T> operator--(vector<T>&\
+    \ v, int) { auto res = v; for (auto& e : v) { e--; } return res; }\ntemplate <class\
+    \ T1, class T2> pair<T1, T2> operator-(const pair<T1, T2>& x) { return pair<T1,\
+    \ T2>(-x.first, -x.second); }\ntemplate <class T1, class T2> pair<T1, T2> operator-(const\
+    \ pair<T1, T2>& x, const pair<T1, T2>& y) { return pair<T1, T2>(x.first - y.first,\
+    \ x.second - y.second); }\ntemplate <class T1, class T2> pair<T1, T2> operator+(const\
+    \ pair<T1, T2>& x, const pair<T1, T2>& y) { return pair<T1, T2>(x.first + y.first,\
+    \ x.second + y.second); }\ntemplate <class T1, class T2> pair<T1, T2> operator+=(pair<T1,\
+    \ T2>& l, const pair<T1, T2>& r) { return l = l + r; }\ntemplate <class T1, class\
+    \ T2> pair<T1, T2> operator-=(pair<T1, T2>& l, const pair<T1, T2>& r) { return\
+    \ l = l - r; }\nconstexpr char ln = '\\n';\nconst string YESNO[2] = {\"NO\", \"\
+    YES\"};\nconst string YesNo[2] = {\"No\", \"Yes\"};\nvoid YES(bool t = true) {\
+    \ cout << YESNO[t] << \"\\n\"; }\nvoid NO(bool t = 1) { YES(!t); }\nvoid Yes(bool\
+    \ t = true) { cout << YesNo[t] << \"\\n\"; }\nvoid No(bool t = 1) { Yes(!t); }\n\
+    template <class T> void drop(T x) { cout << x << \"\\n\"; exit(0); }\n#define\
+    \ INT(...)     \\\n    int __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define LL(...)\
+    \     \\\n    ll __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define STR(...)      \
+    \  \\\n    string __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define CHR(...)     \
+    \ \\\n    char __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define LDB(...)        \
+    \     \\\n    long double __VA_ARGS__; \\\n    IN(__VA_ARGS__)\n#define VEC(type,\
+    \ name, size) \\\n    vector<type> name(size);  \\\n    IN(name)\n#define VEC2(type,\
+    \ name1, name2, size)     \\\n    vector<type> name1(size), name2(size); \\\n\
+    \    for (int i = 0; i < size; i++) IN(name1[i], name2[i])\n#define VEC3(type,\
     \ name1, name2, name3, size)           \\\n    vector<type> name1(size), name2(size),\
     \ name3(size); \\\n    for (int i = 0; i < size; i++) IN(name1[i], name2[i], name3[i])\n\
     #define VEC4(type, name1, name2, name3, name4, size)                 \\\n    vector<type>\
@@ -115,7 +137,7 @@ data:
   isVerificationFile: true
   path: test/other/template.test.cpp
   requiredBy: []
-  timestamp: '2023-02-18 02:27:48+09:00'
+  timestamp: '2023-02-21 01:03:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/other/template.test.cpp
