@@ -4,6 +4,7 @@ using namespace std;
 using uint = unsigned int;
 using ll = long long;
 using ull = unsigned long long;
+using i128 = __int128_t;
 using ld = long double;
 using pii = pair<int, int>;
 using pll = pair<long long, long long>;
@@ -26,6 +27,7 @@ template <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()
 template <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(), v.end()); }
 template <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(), v.end()); }
 template <class T> T SUM(const vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }
+template <class T> T ABS(T x) { return max(x, -x); }
 template <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }
 template <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false; }
 int topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }
@@ -33,14 +35,43 @@ int botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }
 int popcount(ull x) { return __builtin_popcountll(x); }
 int kthbit(ull x, int k) { return (x >> k) & 1; }
 constexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1) * 10; }
-template <typename S> void rearrange(const vector<S>& id) {}
+template <typename S> void rearrange(const vector<S>& id) { (void)id; }
 template <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }
 template <typename S, typename Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id, a); rearrange(id, tail...); }
+istream& operator>>(istream& is, __int128_t& x) {
+    x = 0;
+    string s;
+    is >> s;
+    int n = int(s.size()), it = 0;
+    if (s[0] == '-') it++;
+    for (; it < n; it++) x = (x * 10 + s[it] - '0');
+    if (s[0] == '-') x = -x;
+    return is;
+}
+ostream& operator<<(ostream& os, __int128_t x) {
+    if (x == 0) return os << 0;
+    if (x < 0) os << '-', x = -x;
+    deque<int> deq;
+    while (x) deq.emplace_front(x % 10), x /= 10;
+    for (int e : deq) os << e;
+    return os;
+}
+template <class T> vector<T> &operator++(vector<T>& v) { for (auto& e : v) { e++; } return v;} 
+template <class T> vector<T> operator++(vector<T>& v, int) { auto res = v; for (auto& e : v) { e++; } return res; }
+template <class T> vector<T> &operator--(vector<T>& v) { for (auto& e : v) { e--; } return v; }
+template <class T> vector<T> operator--(vector<T>& v, int) { auto res = v; for (auto& e : v) { e--; } return res; }
+template <class T1, class T2> pair<T1, T2> operator-(const pair<T1, T2>& x) { return pair<T1, T2>(-x.first, -x.second); }
+template <class T1, class T2> pair<T1, T2> operator-(const pair<T1, T2>& x, const pair<T1, T2>& y) { return pair<T1, T2>(x.first - y.first, x.second - y.second); }
+template <class T1, class T2> pair<T1, T2> operator+(const pair<T1, T2>& x, const pair<T1, T2>& y) { return pair<T1, T2>(x.first + y.first, x.second + y.second); }
+template <class T1, class T2> pair<T1, T2> operator+=(pair<T1, T2>& l, const pair<T1, T2>& r) { return l = l + r; }
+template <class T1, class T2> pair<T1, T2> operator-=(pair<T1, T2>& l, const pair<T1, T2>& r) { return l = l - r; }
 constexpr char ln = '\n';
 const string YESNO[2] = {"NO", "YES"};
 const string YesNo[2] = {"No", "Yes"};
 void YES(bool t = true) { cout << YESNO[t] << "\n"; }
+void NO(bool t = 1) { YES(!t); }
 void Yes(bool t = true) { cout << YesNo[t] << "\n"; }
+void No(bool t = 1) { Yes(!t); }
 template <class T> void drop(T x) { cout << x << "\n"; exit(0); }
 #define INT(...)     \
     int __VA_ARGS__; \
