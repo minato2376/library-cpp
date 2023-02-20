@@ -22,6 +22,9 @@ data:
     path: test/math/totient.test.cpp
     title: test/math/totient.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/mod/ModInt.test.cpp
+    title: test/mod/ModInt.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/other/template.test.cpp
     title: test/other/template.test.cpp
   - icon: ':heavy_check_mark:'
@@ -256,6 +259,7 @@ data:
   - test/shortestpath/warshall_floyd.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/datastructure/UnionFind.test.cpp
+  - test/mod/ModInt.test.cpp
   - test/generator/generate_random_sequence.test.cpp
   - test/algorithm/inversion_number.test.cpp
   - test/other/template.test.cpp

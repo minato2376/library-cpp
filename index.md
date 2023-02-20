@@ -38,7 +38,7 @@ data:
     - icon: ':warning:'
       path: mod/ModCombination.hpp
       title: mod/ModCombination.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: mod/ModInt.hpp
       title: mod/ModInt.hpp
   - name: other
@@ -92,6 +92,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/math/totient.test.cpp
       title: test/math/totient.test.cpp
+  - name: test/mod
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/mod/ModInt.test.cpp
+      title: test/mod/ModInt.test.cpp
   - name: test/other
     pages:
     - icon: ':heavy_check_mark:'
