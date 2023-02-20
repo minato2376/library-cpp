@@ -53,14 +53,14 @@ data:
     \            v[i] = r[i];\n        }\n        os << v;\n        return os;\n \
     \   }\n#endif\n\n  private:\n    void update(int k) {\n        node[k] = op(node[2\
     \ * k], node[2 * k + 1]);\n    }\n};\n\ntemplate <typename T, T INF> auto buildPointSetRangeMin(int\
-    \ n) {\n    return buildPointSetRangeMin(vector<T>(n, INF));\n}\n\ntemplate <typename\
-    \ T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {\n    auto f = [](T\
-    \ a, T b) { return min(a, b); };\n    SegmentTree seg(f, INF, v);\n    return\
-    \ seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMax(int n) {\n\
-    \    return buildPointSetRangeMax(vector<T>(n, INF));\n}\n\ntemplate <typename\
-    \ T, T INF> auto buildPointSetRangeMax(const vector<T>& v) {\n    auto f = [](T\
-    \ a, T b) { return max(a, b); };\n    SegmentTree seg(f, -INF, v);\n    return\
-    \ seg;\n}\n"
+    \ n) {\n    auto f = [](T a, T b) { return min(a, b); };\n    SegmentTree seg(f,\
+    \ INF, n);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMin(const\
+    \ vector<T>& v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    SegmentTree\
+    \ seg(f, INF, v);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMax(int\
+    \ n) {\n    auto f = [](T a, T b) { return max(a, b); };\n    SegmentTree seg(f,\
+    \ -INF, n);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMax(const\
+    \ vector<T>& v) {\n    auto f = [](T a, T b) { return max(a, b); };\n    SegmentTree\
+    \ seg(f, -INF, v);\n    return seg;\n}\n"
   code: "#pragma once\n\ntemplate <class T, class F> struct SegmentTree {\n  private:\n\
     \    F op;\n    T e;\n    int _n, size_, log;\n    vector<T> node;\n\n  public:\n\
     \    SegmentTree() {\n    }\n    SegmentTree(const F& op, T e, int n) : SegmentTree(op,\
@@ -102,19 +102,20 @@ data:
     \ i++) {\n            v[i] = r[i];\n        }\n        os << v;\n        return\
     \ os;\n    }\n#endif\n\n  private:\n    void update(int k) {\n        node[k]\
     \ = op(node[2 * k], node[2 * k + 1]);\n    }\n};\n\ntemplate <typename T, T INF>\
-    \ auto buildPointSetRangeMin(int n) {\n    return buildPointSetRangeMin(vector<T>(n,\
-    \ INF));\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMin(const vector<T>&\
-    \ v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    SegmentTree seg(f,\
-    \ INF, v);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMax(int\
-    \ n) {\n    return buildPointSetRangeMax(vector<T>(n, INF));\n}\n\ntemplate <typename\
-    \ T, T INF> auto buildPointSetRangeMax(const vector<T>& v) {\n    auto f = [](T\
-    \ a, T b) { return max(a, b); };\n    SegmentTree seg(f, -INF, v);\n    return\
-    \ seg;\n}"
+    \ auto buildPointSetRangeMin(int n) {\n    auto f = [](T a, T b) { return min(a,\
+    \ b); };\n    SegmentTree seg(f, INF, n);\n    return seg;\n}\n\ntemplate <typename\
+    \ T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {\n    auto f = [](T\
+    \ a, T b) { return min(a, b); };\n    SegmentTree seg(f, INF, v);\n    return\
+    \ seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMax(int n) {\n\
+    \    auto f = [](T a, T b) { return max(a, b); };\n    SegmentTree seg(f, -INF,\
+    \ n);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto buildPointSetRangeMax(const\
+    \ vector<T>& v) {\n    auto f = [](T a, T b) { return max(a, b); };\n    SegmentTree\
+    \ seg(f, -INF, v);\n    return seg;\n}"
   dependsOn: []
   isVerificationFile: false
   path: segmenttree/SegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-02-18 15:04:01+09:00'
+  timestamp: '2023-02-20 20:35:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/segmenttree/SegmentTree.test.cpp
