@@ -23,8 +23,8 @@ data:
     \       increased_length += r - l;\n        this->emplace_hint(it, make_pair(l,\
     \ r));\n        return increased_length;\n    }\n\n    T insert_point(T x) {\n\
     \        return insert_range(x, x + 1);\n    }\n\n    T erase_range(T l, T r)\
-    \ {\n        assert(l < r);\n        T decreased_length = r - l - add(l, r);\n\
-    \        auto it =\n            prev(this->upper_bound(make_pair(l, numeric_limits<T>::max())));\n\
+    \ {\n        assert(l < r);\n        T decreased_length = r - l - insert_range(l,\
+    \ r);\n        auto it =\n            prev(this->upper_bound(make_pair(l, numeric_limits<T>::max())));\n\
     \        auto [new_l, new_r] = *it;\n        if (new_l < l) this->emplace_hint(it,\
     \ make_pair(new_l, l));\n        it = this->erase(it);\n        if (new_r > r)\
     \ this->emplace_hint(it, make_pair(r, new_r));\n        return decreased_length;\n\
@@ -52,7 +52,7 @@ data:
     \        }\n        increased_length += r - l;\n        this->emplace_hint(it,\
     \ make_pair(l, r));\n        return increased_length;\n    }\n\n    T insert_point(T\
     \ x) {\n        return insert_range(x, x + 1);\n    }\n\n    T erase_range(T l,\
-    \ T r) {\n        assert(l < r);\n        T decreased_length = r - l - add(l,\
+    \ T r) {\n        assert(l < r);\n        T decreased_length = r - l - insert_range(l,\
     \ r);\n        auto it =\n            prev(this->upper_bound(make_pair(l, numeric_limits<T>::max())));\n\
     \        auto [new_l, new_r] = *it;\n        if (new_l < l) this->emplace_hint(it,\
     \ make_pair(new_l, l));\n        it = this->erase(it);\n        if (new_r > r)\
@@ -74,7 +74,7 @@ data:
   isVerificationFile: false
   path: datastructure/RangeSet.hpp
   requiredBy: []
-  timestamp: '2023-02-22 03:33:57+09:00'
+  timestamp: '2023-02-22 03:55:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/datastructure/RangeSet.test.cpp
