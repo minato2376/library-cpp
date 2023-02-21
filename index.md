@@ -15,6 +15,9 @@ data:
       path: datastructure/BinaryIndexedTree.hpp
       title: datastructure/BinaryIndexedTree.hpp
     - icon: ':heavy_check_mark:'
+      path: datastructure/RangeSet.hpp
+      title: datastructure/RangeSet.hpp
+    - icon: ':heavy_check_mark:'
       path: datastructure/UnionFind.hpp
       title: datastructure/UnionFind.hpp
   - name: generator
@@ -76,6 +79,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/datastructure/BinaryIndexedTree.test.cpp
       title: test/datastructure/BinaryIndexedTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/datastructure/RangeSet.test.cpp
+      title: test/datastructure/RangeSet.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/datastructure/UnionFind.test.cpp
       title: test/datastructure/UnionFind.test.cpp

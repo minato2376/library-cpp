@@ -10,6 +10,9 @@ data:
     path: test/datastructure/BinaryIndexedTree.test.cpp
     title: test/datastructure/BinaryIndexedTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/datastructure/RangeSet.test.cpp
+    title: test/datastructure/RangeSet.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/datastructure/UnionFind.test.cpp
     title: test/datastructure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
@@ -302,6 +305,7 @@ data:
   - test/segmenttree/LazySegmentTree3.test.cpp
   - test/shortestpath/warshall_floyd.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/datastructure/RangeSet.test.cpp
   - test/datastructure/UnionFind.test.cpp
   - test/mod/ModInt.test.cpp
   - test/generator/generate_random_sequence.test.cpp
