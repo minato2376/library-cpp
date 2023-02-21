@@ -26,7 +26,7 @@ template <typename T> struct RangeSet : set<pair<T, T>> {
 
     T erase_range(T l, T r) {
         assert(l < r);
-        T decreased_length = r - l - add(l, r);
+        T decreased_length = r - l - insert_range(l, r);
         auto it =
             prev(this->upper_bound(make_pair(l, numeric_limits<T>::max())));
         auto [new_l, new_r] = *it;
