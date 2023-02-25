@@ -1,7 +1,7 @@
 #pragma once
 #include <atcoder/twosat>
 
-struct TwoSat : public atcoder::two_sat {
+struct TwoSat : atcoder::two_sat {
     TwoSat() : two_sat() {
     }
     TwoSat(int n) : two_sat(n) {
@@ -11,7 +11,14 @@ struct TwoSat : public atcoder::two_sat {
      * x => y
      */
     void add_if(int x, int y) {
-        add_clause(y, true, x, false);
+        add_clause(x, false, y, true);
+    }
+
+    /**
+     * x かつ y が偽
+     */
+    void add_nand(int x, int y) {
+        add_clause(x, false, y, false);
     }
 
     void set_true(int x) {
