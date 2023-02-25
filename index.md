@@ -21,6 +21,9 @@ data:
       path: datastructure/RangeSet.hpp
       title: datastructure/RangeSet.hpp
     - icon: ':heavy_check_mark:'
+      path: datastructure/SlidingWindowAggregation.hpp
+      title: datastructure/SlidingWindowAggregation.hpp
+    - icon: ':heavy_check_mark:'
       path: datastructure/UnionFind.hpp
       title: datastructure/UnionFind.hpp
   - name: generator
@@ -93,6 +96,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/datastructure/RangeSet.test.cpp
       title: test/datastructure/RangeSet.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/datastructure/SlidingWindowAggregation.test.cpp
+      title: test/datastructure/SlidingWindowAggregation.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/datastructure/UnionFind.test.cpp
       title: test/datastructure/UnionFind.test.cpp

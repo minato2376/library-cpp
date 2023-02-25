@@ -16,6 +16,9 @@ data:
     path: test/datastructure/RangeSet.test.cpp
     title: test/datastructure/RangeSet.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/datastructure/SlidingWindowAggregation.test.cpp
+    title: test/datastructure/SlidingWindowAggregation.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/datastructure/UnionFind.test.cpp
     title: test/datastructure/UnionFind.test.cpp
   - icon: ':heavy_check_mark:'
@@ -318,6 +321,7 @@ data:
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/datastructure/RangeSet.test.cpp
   - test/datastructure/UnionFind.test.cpp
+  - test/datastructure/SlidingWindowAggregation.test.cpp
   - test/mod/ModInt.test.cpp
   - test/generator/generate_random_sequence.test.cpp
   - test/algorithm/inversion_number.test.cpp
