@@ -25,6 +25,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: generator/generate_random_sequence.hpp
       title: generator/generate_random_sequence.hpp
+  - name: graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: graph/StronglyConnectedComponents.hpp
+      title: graph/StronglyConnectedComponents.hpp
   - name: math
     pages:
     - icon: ':warning:'
@@ -90,6 +95,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/generator/generate_random_sequence.test.cpp
       title: test/generator/generate_random_sequence.test.cpp
+  - name: test/graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: test/graph/StronglyConnectedComponents.test.cpp
+      title: test/graph/StronglyConnectedComponents.test.cpp
   - name: test/math
     pages:
     - icon: ':heavy_check_mark:'

@@ -19,6 +19,9 @@ data:
     path: test/generator/generate_random_sequence.test.cpp
     title: test/generator/generate_random_sequence.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/graph/StronglyConnectedComponents.test.cpp
+    title: test/graph/StronglyConnectedComponents.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/floor_sqrt.test.cpp
     title: test/math/floor_sqrt.test.cpp
   - icon: ':heavy_check_mark:'
@@ -304,6 +307,7 @@ data:
   - test/segmenttree/SegmentTree.test.cpp
   - test/segmenttree/LazySegmentTree3.test.cpp
   - test/shortestpath/warshall_floyd.test.cpp
+  - test/graph/StronglyConnectedComponents.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
   - test/datastructure/RangeSet.test.cpp
   - test/datastructure/UnionFind.test.cpp
