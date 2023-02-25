@@ -4,6 +4,7 @@
 "test/datastructure/RangeSet.test.cpp": "2023-02-22 03:55:55 +0900",
 "test/datastructure/UnionFind.test.cpp": "2023-02-21 01:03:43 +0900",
 "test/generator/generate_random_sequence.test.cpp": "2023-02-21 01:03:43 +0900",
+"test/graph/StronglyConnectedComponents.test.cpp": "2023-02-25 15:57:15 +0900",
 "test/math/floor_sqrt.test.cpp": "2023-02-21 01:03:43 +0900",
 "test/math/totient.test.cpp": "2023-02-21 01:03:43 +0900",
 "test/mod/ModInt.test.cpp": "2023-02-21 01:03:43 +0900",
