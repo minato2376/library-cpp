@@ -32,7 +32,7 @@ data:
       title: graph/StronglyConnectedComponents.hpp
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/TwoSat.hpp
       title: math/TwoSat.hpp
     - icon: ':heavy_check_mark:'
@@ -102,6 +102,9 @@ data:
       title: test/graph/StronglyConnectedComponents.test.cpp
   - name: test/math
     pages:
+    - icon: ':heavy_check_mark:'
+      path: test/math/TwoSat.test.cpp
+      title: test/math/TwoSat.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/math/floor_sqrt.test.cpp
       title: test/math/floor_sqrt.test.cpp

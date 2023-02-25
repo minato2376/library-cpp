@@ -22,6 +22,9 @@ data:
     path: test/graph/StronglyConnectedComponents.test.cpp
     title: test/graph/StronglyConnectedComponents.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/math/TwoSat.test.cpp
+    title: test/math/TwoSat.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/math/floor_sqrt.test.cpp
     title: test/math/floor_sqrt.test.cpp
   - icon: ':heavy_check_mark:'
@@ -298,6 +301,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/math/floor_sqrt.test.cpp
+  - test/math/TwoSat.test.cpp
   - test/math/totient.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp
   - test/segmenttree/LazySegmentTree2.test.cpp
