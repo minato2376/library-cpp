@@ -9,6 +9,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/inversion_number.hpp
       title: algorithm/inversion_number.hpp
+    - icon: ':heavy_check_mark:'
+      path: algorithm/run_length_encoding.hpp
+      title: algorithm/run_length_encoding.hpp
   - name: datastructure
     pages:
     - icon: ':heavy_check_mark:'
@@ -79,6 +82,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/algorithm/inversion_number.test.cpp
       title: test/algorithm/inversion_number.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/algorithm/run_length_encoding.test.cpp
+      title: test/algorithm/run_length_encoding.test.cpp
   - name: test/datastructure
     pages:
     - icon: ':heavy_check_mark:'
