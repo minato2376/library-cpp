@@ -133,6 +133,5 @@ template <class T, class... Args> void debug_out(const T& x, const Args& ... arg
 #else
 #define debug(...) (void(0))
 #endif
-struct fast_ios { fast_ios() { cin.tie(nullptr); ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed << setprecision(7); }; } fast_ios_;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // clang-format on
