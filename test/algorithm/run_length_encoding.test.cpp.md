@@ -129,9 +129,7 @@ data:
     \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
-    \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
-    \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 1 \"algorithm/run_length_encoding.hpp\"\ntemplate <class\
     \ T>\nvector<pair<T, int>> run_length_encoding(const vector<T>& v) {\n    if (v.empty())\
     \ return {};\n    int cnt = 1;\n    vector<pair<T, int>> ret;\n    for (size_t\
@@ -156,7 +154,7 @@ data:
   isVerificationFile: true
   path: test/algorithm/run_length_encoding.test.cpp
   requiredBy: []
-  timestamp: '2023-02-26 03:27:58+09:00'
+  timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/algorithm/run_length_encoding.test.cpp

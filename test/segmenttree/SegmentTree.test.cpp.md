@@ -129,9 +129,7 @@ data:
     \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
-    \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
-    \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 2 \"segmenttree/SegmentTree.hpp\"\n\ntemplate <class\
     \ T, class F> struct SegmentTree {\n  private:\n    F op;\n    T e;\n    int _n,\
     \ size_, log;\n    vector<T> node;\n\n  public:\n    SegmentTree() {\n    }\n\
@@ -200,7 +198,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/SegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 01:03:43+09:00'
+  timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/SegmentTree.test.cpp

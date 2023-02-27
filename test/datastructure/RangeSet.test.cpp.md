@@ -129,9 +129,7 @@ data:
     \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
-    \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
-    \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 1 \"datastructure/RangeSet.hpp\"\ntemplate <typename\
     \ T> struct RangeSet : set<pair<T, T>> {\n    T insert_range(T l, T r) {\n   \
     \     assert(l < r);\n        T increased_length = 0;\n        auto it = this->lower_bound(make_pair(l,\
@@ -177,7 +175,7 @@ data:
   isVerificationFile: true
   path: test/datastructure/RangeSet.test.cpp
   requiredBy: []
-  timestamp: '2023-02-22 03:55:55+09:00'
+  timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/datastructure/RangeSet.test.cpp

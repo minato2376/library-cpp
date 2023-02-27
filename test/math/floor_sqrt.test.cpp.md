@@ -128,9 +128,7 @@ data:
     \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
-    \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
-    \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 1 \"math/floor_sqrt.hpp\"\n/**\n * sqrt(x) \u3092\u8D85\
     \u3048\u306A\u3044\u6700\u5927\u306E\u6574\u6570\u3092\u6C42\u3081\u308B\u3002\
     \n * O(1)\n */\nlong long floor_sqrt(long long x) {\n    assert(0 <= x);\n   \
@@ -203,7 +201,7 @@ data:
   isVerificationFile: true
   path: test/math/floor_sqrt.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 01:03:43+09:00'
+  timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/floor_sqrt.test.cpp

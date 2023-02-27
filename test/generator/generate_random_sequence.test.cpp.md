@@ -129,9 +129,7 @@ data:
     \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
-    \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
-    \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 1 \"generator/generate_random_sequence.hpp\"\n/**\n\
     \ * \u5024\u304C lower \u4EE5\u4E0A upper \u672A\u6E80\u3067\u3042\u308B\u9577\
     \u3055 n \u306E\u6570\u5217\u3092\u5168\u3066\u751F\u6210\u3059\u308B\u3002\n\
@@ -206,7 +204,7 @@ data:
   isVerificationFile: true
   path: test/generator/generate_random_sequence.test.cpp
   requiredBy: []
-  timestamp: '2023-02-21 01:03:43+09:00'
+  timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/generator/generate_random_sequence.test.cpp

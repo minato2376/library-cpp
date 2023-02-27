@@ -129,9 +129,7 @@ data:
     \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\nstruct fast_ios { fast_ios() { cin.tie(nullptr);\
-    \ ios::sync_with_stdio(false); cout << fixed << setprecision(20); cerr << fixed\
-    \ << setprecision(7); }; } fast_ios_;\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 2 \"datastructure/SlidingWindowAggregation.hpp\"\n\n\
     template <class T, class F> struct SlidingWindowAggregation {\n    F op;\n   \
     \ T e;\n    vector<pair<T, T>> front, back;\n\n    SlidingWindowAggregation(F\
@@ -171,7 +169,7 @@ data:
   isVerificationFile: true
   path: test/datastructure/SlidingWindowAggregation.test.cpp
   requiredBy: []
-  timestamp: '2023-02-26 03:42:04+09:00'
+  timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/datastructure/SlidingWindowAggregation.test.cpp
