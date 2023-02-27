@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: test/algorithm/SquareRootDecomposion.test.cpp
+    title: test/algorithm/SquareRootDecomposion.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/algorithm/inversion_number.test.cpp
     title: test/algorithm/inversion_number.test.cpp
   - icon: ':heavy_check_mark:'
@@ -325,6 +328,7 @@ data:
   - test/mod/ModInt.test.cpp
   - test/generator/generate_random_sequence.test.cpp
   - test/algorithm/inversion_number.test.cpp
+  - test/algorithm/SquareRootDecomposion.test.cpp
   - test/algorithm/run_length_encoding.test.cpp
   - test/other/template.test.cpp
 documentation_of: other/template.hpp
