@@ -157,6 +157,9 @@ data:
       path: test/segmenttree/LazySegmentTree3.test.cpp
       title: test/segmenttree/LazySegmentTree3.test.cpp
     - icon: ':heavy_check_mark:'
+      path: test/segmenttree/LazySegmentTree4.test.cpp
+      title: test/segmenttree/LazySegmentTree4.test.cpp
+    - icon: ':heavy_check_mark:'
       path: test/segmenttree/RangeAddRangeSum.test.cpp
       title: test/segmenttree/RangeAddRangeSum.test.cpp
     - icon: ':heavy_check_mark:'

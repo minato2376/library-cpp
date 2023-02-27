@@ -61,6 +61,9 @@ data:
     path: test/segmenttree/LazySegmentTree3.test.cpp
     title: test/segmenttree/LazySegmentTree3.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/segmenttree/LazySegmentTree4.test.cpp
+    title: test/segmenttree/LazySegmentTree4.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/RangeAddRangeSum.test.cpp
     title: test/segmenttree/RangeAddRangeSum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -312,6 +315,7 @@ data:
   - test/math/floor_sqrt.test.cpp
   - test/math/TwoSat.test.cpp
   - test/math/totient.test.cpp
+  - test/segmenttree/LazySegmentTree4.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp
   - test/segmenttree/LazySegmentTree2.test.cpp
   - test/segmenttree/RangeAddRangeSum.test.cpp

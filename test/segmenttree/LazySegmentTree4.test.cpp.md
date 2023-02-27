@@ -14,47 +14,47 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I
+    PROBLEM: https://yukicoder.me/problems/no/1234
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I
-  bundledCode: "#line 1 \"test/segmenttree/LazySegmentTree3.test.cpp\"\n#define PROBLEM\
-    \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
-    using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld = long double;\n\
-    using pii = pair<int, int>;\nusing pll = pair<long long, long long>;\ntemplate\
-    \ <class T> using maxheap = priority_queue<T>;\ntemplate <class T> using minheap\
-    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <class T> using vec =\
-    \ vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n#define OVERLOAD_REP(_1,\
-    \ _2, _3, name, ...) name\n#define REP0(n) for (auto minato = decay_t<decltype(n)>{};\
-    \ minato < (n); ++minato)\n#define REP1(i, n) for (auto i = decay_t<decltype(n)>{};\
-    \ (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto i = (l); (i) < (r); (i)++)\n\
-    #define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2, REP1, REP0)(__VA_ARGS__)\n#define\
-    \ OVERLOAD_RREP(_1, _2, _3, name, ...) name\n#define RREP1(i, n) for (auto i =\
-    \ (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n#define RREP2(i, l, r) for (auto\
-    \ i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...) OVERLOAD_RREP(__VA_ARGS__,\
-    \ RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x), end(x)\ntemplate <class\
-    \ Container> int SZ(const Container& v) { return int(v.size()); }\ntemplate <class\
-    \ T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end());\
-    \ }\ntemplate <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(),\
-    \ v.end()); }\ntemplate <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(),\
-    \ v.end()); }\ntemplate <class T> T SUM(const vector<T>& v) { return accumulate(v.begin(),\
-    \ v.end(), T(0)); }\ntemplate <class T> T ABS(T x) { return max(x, -x); }\ntemplate\
-    \ <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true;\
-    \ } return false; }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if\
-    \ (a > b) { a = b; return true; } return false; }\nint topbit(ull x) { return\
-    \ x == 0 ? -1 : 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0\
-    \ ? 64 : __builtin_ctzll(x); }\nint popcount(ull x) { return __builtin_popcountll(x);\
-    \ }\nint kthbit(ull x, int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int\
-    \ x) { return x == 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const\
-    \ vector<S>& id) { (void)id; }\ntemplate <typename S, typename T> void rearrange_exec(const\
-    \ vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i <\
-    \ id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename\
-    \ Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
-    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nistream& operator>>(istream&\
-    \ is, __int128_t& x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()),\
-    \ it = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 +\
-    \ s[it] - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
+    - https://yukicoder.me/problems/no/1234
+  bundledCode: "#line 1 \"test/segmenttree/LazySegmentTree4.test.cpp\"\n#define PROBLEM\
+    \ \"https://yukicoder.me/problems/no/1234\"\n#line 1 \"other/template.hpp\"\n\
+    // clang-format off\n#include <bits/stdc++.h>\nusing namespace std;\nusing uint\
+    \ = unsigned int;\nusing ll = long long;\nusing ull = unsigned long long;\nusing\
+    \ i128 = __int128_t;\nusing ld = long double;\nusing pii = pair<int, int>;\nusing\
+    \ pll = pair<long long, long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\n\
+    template <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\n\
+    template <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
+    \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
+    \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
+    \ i = (l); (i) < (r); (i)++)\n#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2,\
+    \ REP1, REP0)(__VA_ARGS__)\n#define OVERLOAD_RREP(_1, _2, _3, name, ...) name\n\
+    #define RREP1(i, n) for (auto i = (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n\
+    #define RREP2(i, l, r) for (auto i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...)\
+    \ OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x),\
+    \ end(x)\ntemplate <class Container> int SZ(const Container& v) { return int(v.size());\
+    \ }\ntemplate <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(),\
+    \ v.end()), v.end()); }\ntemplate <class T> T MAX(const vector<T>& v) { return\
+    \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
+    \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
+    \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
+    \ T> T ABS(T x) { return max(x, -x); }\ntemplate <class T1, class T2> bool chmax(T1&\
+    \ a, T2 b) { if (a < b) { a = b; return true; } return false; }\ntemplate <class\
+    \ T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return\
+    \ false; }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x);\
+    \ }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
+    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
+    \ >> k) & 1; }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1)\
+    \ * 10; }\ntemplate <typename S> void rearrange(const vector<S>& id) { (void)id;\
+    \ }\ntemplate <typename S, typename T> void rearrange_exec(const vector<S>& id,\
+    \ vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++)\
+    \ { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head, typename...\
+    \ Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id,\
+    \ a); rearrange(id, tail...); }\nistream& operator>>(istream& is, __int128_t&\
+    \ x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()), it\
+    \ = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 + s[it]\
+    \ - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
     \ os, __int128_t x) {\n    if (x == 0) return os << 0;\n    if (x < 0) os << '-',\
     \ x = -x;\n    deque<int> deq;\n    while (x) deq.emplace_front(x % 10), x /=\
     \ 10;\n    for (int e : deq) os << e;\n    return os;\n}\ntemplate <class T> vector<T>\
@@ -238,30 +238,30 @@ data:
     \ i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n    }\n    LazySegmentTree\
     \ seg(f, g, h, P(0, 0), ID, w);\n    return seg;\n}\n\ntemplate <typename T, T\
     \ ID> auto buildRangeSetRangeSum(int n) {\n    return buildRangeSetRangeSum<T,\
-    \ ID>(vec<T>(n));\n}\n#line 5 \"test/segmenttree/LazySegmentTree3.test.cpp\"\n\
-    int main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeSum<int, numeric_limits<int>::max()>(n);\n\
-    \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
-    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
-    \            print(seg.get(l, r + 1).first);\n        }\n    }\n}\n"
-  code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
-    \n#include \"other/template.hpp\"\n#include \"segmenttree/LazySegmentTree.hpp\"\
-    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeSum<int, numeric_limits<int>::max()>(n);\n\
-    \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
-    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
-    \            print(seg.get(l, r + 1).first);\n        }\n    }\n}"
+    \ ID>(vec<T>(n));\n}\n#line 4 \"test/segmenttree/LazySegmentTree4.test.cpp\"\n\
+    \nint main() {\n    INT(N);\n    VEC(ll, A, N);\n    auto seg = buildRangeAddRangeMin<ll,\
+    \ TEN(18)>(A);\n    INT(Q);\n    rep(Q) {\n        LL(t, l, r, c);\n        l--;\n\
+    \        if (t == 1) {\n            seg.apply(l, r, c);\n        } else {\n  \
+    \          print(seg.get(l, r));\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/1234\"\n#include \"other/template.hpp\"\
+    \n#include \"segmenttree/LazySegmentTree.hpp\"\n\nint main() {\n    INT(N);\n\
+    \    VEC(ll, A, N);\n    auto seg = buildRangeAddRangeMin<ll, TEN(18)>(A);\n \
+    \   INT(Q);\n    rep(Q) {\n        LL(t, l, r, c);\n        l--;\n        if (t\
+    \ == 1) {\n            seg.apply(l, r, c);\n        } else {\n            print(seg.get(l,\
+    \ r));\n        }\n    }\n}"
   dependsOn:
   - other/template.hpp
   - segmenttree/LazySegmentTree.hpp
   isVerificationFile: true
-  path: test/segmenttree/LazySegmentTree3.test.cpp
+  path: test/segmenttree/LazySegmentTree4.test.cpp
   requiredBy: []
   timestamp: '2023-02-28 04:54:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: test/segmenttree/LazySegmentTree3.test.cpp
+documentation_of: test/segmenttree/LazySegmentTree4.test.cpp
 layout: document
 redirect_from:
-- /verify/test/segmenttree/LazySegmentTree3.test.cpp
-- /verify/test/segmenttree/LazySegmentTree3.test.cpp.html
-title: test/segmenttree/LazySegmentTree3.test.cpp
+- /verify/test/segmenttree/LazySegmentTree4.test.cpp
+- /verify/test/segmenttree/LazySegmentTree4.test.cpp.html
+title: test/segmenttree/LazySegmentTree4.test.cpp
 ---
