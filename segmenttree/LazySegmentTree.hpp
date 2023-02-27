@@ -173,6 +173,16 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
         for (int i = log; i >= 1; i--) push(p >> i);
         return node[p];
     }
+#ifdef MINATO_LOCAL
+    friend ostream& operator<<(ostream& os, LazySegmentTree r) {
+        vector<T> v(r.size());
+        for (int i = 0; i < r.size(); i++) {
+            v[i] = r[i];
+        }
+        os << v;
+        return os;
+    }
+#endif
 
   private:
     void update(int k) {
@@ -241,7 +251,7 @@ template <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>& v) {
     auto f = [](T a, T b) { return min(a, b); };
     auto g = [](T a, T b) { return a + b; };
     auto h = [](T a, T b) { return a + b; };
-    LazySegmentTree seg(f, g, h, INF, 0, v);
+    LazySegmentTree seg(f, g, h, INF, T(0), v);
     return seg;
 }
 
@@ -256,7 +266,7 @@ template <typename T, T INF> auto buildRangeAddRangeMax(const vector<T>& v) {
     auto f = [](T a, T b) { return max(a, b); };
     auto g = [](T a, T b) { return a + b; };
     auto h = [](T a, T b) { return a + b; };
-    LazySegmentTree seg(f, g, h, -INF, 0, v);
+    LazySegmentTree seg(f, g, h, -INF, T(0), v);
     return seg;
 }
 
