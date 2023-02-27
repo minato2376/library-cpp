@@ -3,6 +3,7 @@
 "test/algorithm/run_length_encoding.test.cpp": "2023-02-26 03:27:58 +0900",
 "test/datastructure/BinaryIndexedTree.test.cpp": "2023-02-21 01:03:43 +0900",
 "test/datastructure/RangeSet.test.cpp": "2023-02-22 03:55:55 +0900",
+"test/datastructure/SlidingWindowAggregation.test.cpp": "2023-02-26 03:42:04 +0900",
 "test/datastructure/UnionFind.test.cpp": "2023-02-21 01:03:43 +0900",
 "test/generator/generate_random_sequence.test.cpp": "2023-02-21 01:03:43 +0900",
 "test/graph/StronglyConnectedComponents.test.cpp": "2023-02-25 15:57:15 +0900",
