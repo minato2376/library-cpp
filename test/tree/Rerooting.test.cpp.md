@@ -7,18 +7,18 @@ data:
   - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
+  - icon: ':x:'
+    path: tree/Rerooting.hpp
+    title: "\u5168\u65B9\u4F4D\u6728 DP"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/aplusb
-    links:
-    - https://judge.yosupo.jp/problem/aplusb
-  bundledCode: "#line 1 \"test/mod/ModInt.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
+    links: []
+  bundledCode: "#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld = long double;\n\
     using pii = pair<int, int>;\nusing pll = pair<long long, long long>;\ntemplate\
@@ -129,48 +129,96 @@ data:
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
     #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 1 \"mod/ModInt.hpp\"\ntemplate <int m> struct ModInt\
-    \ {\n  public:\n    static constexpr int mod() {\n        return m;\n    }\n \
-    \   static ModInt raw(int v) {\n        ModInt x;\n        x._v = v;\n       \
-    \ return x;\n    }\n\n    ModInt() : _v(0) {\n    }\n    ModInt(long long v) {\n\
-    \        long long x = (long long)(v % (long long)(umod()));\n        if (x <\
-    \ 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n\n    unsigned int\
-    \ val() const {\n        return _v;\n    }\n\n    ModInt& operator++() {\n   \
-    \     _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n    }\n\
-    \    ModInt& operator--() {\n        if (_v == 0) _v = umod();\n        _v--;\n\
-    \        return *this;\n    }\n    ModInt operator++(int) {\n        ModInt result\
-    \ = *this;\n        ++*this;\n        return result;\n    }\n    ModInt operator--(int)\
-    \ {\n        ModInt result = *this;\n        --*this;\n        return result;\n\
-    \    }\n\n    ModInt& operator+=(const ModInt& rhs) {\n        _v += rhs._v;\n\
-    \        if (_v >= umod()) _v -= umod();\n        return *this;\n    }\n    ModInt&\
-    \ operator-=(const ModInt& rhs) {\n        _v -= rhs._v;\n        if (_v >= umod())\
-    \ _v += umod();\n        return *this;\n    }\n    ModInt& operator*=(const ModInt&\
-    \ rhs) {\n        unsigned long long z = _v;\n        z *= rhs._v;\n        _v\
-    \ = (unsigned int)(z % umod());\n        return *this;\n    }\n    ModInt& operator^=(long\
-    \ long n) {\n        ModInt x = *this;\n        *this = 1;\n        if (n < 0)\
-    \ x = x.inv(), n = -n;\n        while (n) {\n            if (n & 1) *this *= x;\n\
-    \            x *= x;\n            n >>= 1;\n        }\n        return *this;\n\
-    \    }\n    ModInt& operator/=(const ModInt& rhs) {\n        return *this = *this\
-    \ * rhs.inv();\n    }\n\n    ModInt operator+() const {\n        return *this;\n\
-    \    }\n    ModInt operator-() const {\n        return ModInt() - *this;\n   \
-    \ }\n    explicit operator bool() const {\n        return _v != 0;\n    }\n\n\
-    \    ModInt pow(long long n) const {\n        ModInt r = *this;\n        r ^=\
-    \ n;\n        return r;\n    }\n    ModInt inv() const {\n        int a = _v,\
-    \ b = umod(), y = 1, z = 0, t;\n        for (;;) {\n            t = a / b;\n \
-    \           a -= t * b;\n            if (a == 0) {\n                assert(b ==\
-    \ 1 || b == -1);\n                return ModInt(b * z);\n            }\n     \
-    \       y -= t * z;\n            t = b / a;\n            b -= t * a;\n       \
-    \     if (b == 0) {\n                assert(a == 1 || a == -1);\n            \
-    \    return ModInt(a * y);\n            }\n            z -= t * y;\n        }\n\
-    \    }\n\n    friend ModInt operator+(const ModInt& lhs, const ModInt& rhs) {\n\
-    \        return ModInt(lhs) += rhs;\n    }\n    friend ModInt operator-(const\
-    \ ModInt& lhs, const ModInt& rhs) {\n        return ModInt(lhs) -= rhs;\n    }\n\
-    \    friend ModInt operator*(const ModInt& lhs, const ModInt& rhs) {\n       \
-    \ return ModInt(lhs) *= rhs;\n    }\n    friend ModInt operator/(const ModInt&\
-    \ lhs, const ModInt& rhs) {\n        return ModInt(lhs) /= rhs;\n    }\n    friend\
-    \ ModInt operator^(const ModInt& lhs, long long rhs) {\n        return ModInt(lhs)\
-    \ ^= rhs;\n    }\n    friend bool operator==(const ModInt& lhs, const ModInt&\
-    \ rhs) {\n        return lhs._v == rhs._v;\n    }\n    friend bool operator!=(const\
+    // clang-format on\n#line 2 \"tree/Rerooting.hpp\"\n\n/**\n * @brief \u5168\u65B9\
+    \u4F4D\u6728 DP\n * @param n int \u9802\u70B9\u6570\n * @param op (EdgeValue a,\
+    \ EdgeValue b) -> EdgeValue : dp \u306E\u5024\u306E\u6F14\u7B97\n * @param vtoe\
+    \ (VertexValue a, auto(Edge) e) -> EdgeValue : \u9802\u70B9\u306E dp\n * \u306E\
+    \u5024\u3092\u304B\u3089\u8FBA\u306E dp \u306E\u5024\u3092\u8A08\u7B97\u3059\u308B\
+    \n * @param etov (EdgeValue a, int v) -> VertexValue : \u8FBA\u306E dp \u306E\u5024\
+    \u304B\u3089\u9802\u70B9\u306E dp\n * \u306E\u5024\u3092\u8A08\u7B97\u3059\u308B\
+    \n * @param id EdgeValue \u5358\u4F4D\u5143\n */\ntemplate <class EdgeValue,\n\
+    \          class VertexValue,\n          class Weight,\n          class F,\n \
+    \         class G,\n          class H>\nstruct Rerooting {\n    struct Edge {\n\
+    \        int from;\n        int to;\n        Weight weight;\n        Edge(int\
+    \ from, int to, const Weight& weight)\n            : from(from), to(to), weight(weight)\
+    \ {\n        }\n    };\n    int n;\n    vector<vector<Edge>> g;\n    vector<VertexValue>\
+    \ subdp, dp;\n    F op;\n    G vtoe;\n    H etov;\n    EdgeValue id;\n\n    Rerooting()\
+    \ {\n    }\n    Rerooting(int n,\n              const F& op,\n              const\
+    \ G& vtoe,\n              const H& etov,\n              const EdgeValue& id)\n\
+    \        : n(n), g(n), subdp(n), dp(n), op(op), vtoe(vtoe), etov(etov), id(id)\
+    \ {\n    }\n\n    void add_edge(int u, int v, const Weight& weight = Weight())\
+    \ {\n        g[u].emplace_back(u, v, weight);\n        g[v].emplace_back(v, u,\
+    \ weight);\n    }\n\n    void build() {\n        dfs_sub(0, -1);\n        dfs_all(0,\
+    \ -1, VertexValue());\n        return;\n    }\n\n    VertexValue operator[](int\
+    \ i) const {\n        return dp[i];\n    }\n\n#ifdef MINATO_LOCAL\n    friend\
+    \ ostream& operator<<(ostream& os, const Rerooting& r) {\n        os << \"\\nsubdp\
+    \ = \" << r.subdp;\n        os << \"\\ndp = \" << r.dp;\n        return os;\n\
+    \    }\n#endif\n\n  private:\n    void dfs_sub(int v, int pv) {\n        EdgeValue\
+    \ merge_value = id;\n        for (const Edge& edge : g[v]) {\n            if (edge.to\
+    \ == pv) continue;\n            dfs_sub(edge.to, v);\n            merge_value\
+    \ = op(merge_value, vtoe(subdp[edge.to], edge));\n        }\n        subdp[v]\
+    \ = etov(merge_value, v);\n        return;\n    }\n\n    void dfs_all(int v, int\
+    \ pv, const VertexValue& top) {\n        dp[v] = calc_dp(v, pv, top);\n\n    \
+    \    vector<EdgeValue> prefix_sum = get_prefix_sum(v, pv, top);\n        EdgeValue\
+    \ merge_value = id;\n        for (int i = int(g[v].size()) - 1; i >= 0; i--) {\n\
+    \            if (g[v][i].to != pv) {\n                dfs_all(g[v][i].to, v, etov(op(merge_value,\
+    \ prefix_sum[i]), v));\n                merge_value = op(merge_value, vtoe(subdp[g[v][i].to],\
+    \ g[v][i]));\n            } else {\n                merge_value = op(merge_value,\
+    \ vtoe(top, g[v][i]));\n            }\n        }\n        return;\n    }\n\n \
+    \   VertexValue calc_dp(int v, int pv, const VertexValue& top) const {\n     \
+    \   EdgeValue merge_value = id;\n        for (const Edge& edge : g[v]) {\n   \
+    \         if (edge.to == pv) {\n                merge_value = op(merge_value,\
+    \ vtoe(top, edge));\n            } else {\n                merge_value = op(merge_value,\
+    \ vtoe(subdp[edge.to], edge));\n            }\n        }\n        return etov(merge_value,\
+    \ v);\n    }\n\n    vector<EdgeValue> get_prefix_sum(int v,\n                \
+    \                     int pv,\n                                     const VertexValue&\
+    \ top) const {\n        vector<EdgeValue> prefix_sum(g[v].size(), id);\n     \
+    \   for (int i = 0; i < int(g[v].size()) - 1; i++) {\n            if (g[v][i].to\
+    \ == pv) {\n                prefix_sum[i + 1] = op(prefix_sum[i], vtoe(top, g[v][i]));\n\
+    \            } else {\n                prefix_sum[i + 1] =\n                 \
+    \   op(prefix_sum[i], vtoe(subdp[g[v][i].to], g[v][i]));\n            }\n    \
+    \    }\n        return prefix_sum;\n    }\n};\n#line 1 \"mod/ModInt.hpp\"\ntemplate\
+    \ <int m> struct ModInt {\n  public:\n    static constexpr int mod() {\n     \
+    \   return m;\n    }\n    static ModInt raw(int v) {\n        ModInt x;\n    \
+    \    x._v = v;\n        return x;\n    }\n\n    ModInt() : _v(0) {\n    }\n  \
+    \  ModInt(long long v) {\n        long long x = (long long)(v % (long long)(umod()));\n\
+    \        if (x < 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n\n \
+    \   unsigned int val() const {\n        return _v;\n    }\n\n    ModInt& operator++()\
+    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
+    \    }\n    ModInt& operator--() {\n        if (_v == 0) _v = umod();\n      \
+    \  _v--;\n        return *this;\n    }\n    ModInt operator++(int) {\n       \
+    \ ModInt result = *this;\n        ++*this;\n        return result;\n    }\n  \
+    \  ModInt operator--(int) {\n        ModInt result = *this;\n        --*this;\n\
+    \        return result;\n    }\n\n    ModInt& operator+=(const ModInt& rhs) {\n\
+    \        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
+    \ *this;\n    }\n    ModInt& operator-=(const ModInt& rhs) {\n        _v -= rhs._v;\n\
+    \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    ModInt&\
+    \ operator*=(const ModInt& rhs) {\n        unsigned long long z = _v;\n      \
+    \  z *= rhs._v;\n        _v = (unsigned int)(z % umod());\n        return *this;\n\
+    \    }\n    ModInt& operator^=(long long n) {\n        ModInt x = *this;\n   \
+    \     *this = 1;\n        if (n < 0) x = x.inv(), n = -n;\n        while (n) {\n\
+    \            if (n & 1) *this *= x;\n            x *= x;\n            n >>= 1;\n\
+    \        }\n        return *this;\n    }\n    ModInt& operator/=(const ModInt&\
+    \ rhs) {\n        return *this = *this * rhs.inv();\n    }\n\n    ModInt operator+()\
+    \ const {\n        return *this;\n    }\n    ModInt operator-() const {\n    \
+    \    return ModInt() - *this;\n    }\n    explicit operator bool() const {\n \
+    \       return _v != 0;\n    }\n\n    ModInt pow(long long n) const {\n      \
+    \  ModInt r = *this;\n        r ^= n;\n        return r;\n    }\n    ModInt inv()\
+    \ const {\n        int a = _v, b = umod(), y = 1, z = 0, t;\n        for (;;)\
+    \ {\n            t = a / b;\n            a -= t * b;\n            if (a == 0)\
+    \ {\n                assert(b == 1 || b == -1);\n                return ModInt(b\
+    \ * z);\n            }\n            y -= t * z;\n            t = b / a;\n    \
+    \        b -= t * a;\n            if (b == 0) {\n                assert(a == 1\
+    \ || a == -1);\n                return ModInt(a * y);\n            }\n       \
+    \     z -= t * y;\n        }\n    }\n\n    friend ModInt operator+(const ModInt&\
+    \ lhs, const ModInt& rhs) {\n        return ModInt(lhs) += rhs;\n    }\n    friend\
+    \ ModInt operator-(const ModInt& lhs, const ModInt& rhs) {\n        return ModInt(lhs)\
+    \ -= rhs;\n    }\n    friend ModInt operator*(const ModInt& lhs, const ModInt&\
+    \ rhs) {\n        return ModInt(lhs) *= rhs;\n    }\n    friend ModInt operator/(const\
+    \ ModInt& lhs, const ModInt& rhs) {\n        return ModInt(lhs) /= rhs;\n    }\n\
+    \    friend ModInt operator^(const ModInt& lhs, long long rhs) {\n        return\
+    \ ModInt(lhs) ^= rhs;\n    }\n    friend bool operator==(const ModInt& lhs, const\
+    \ ModInt& rhs) {\n        return lhs._v == rhs._v;\n    }\n    friend bool operator!=(const\
     \ ModInt& lhs, const ModInt& rhs) {\n        return lhs._v != rhs._v;\n    }\n\
     \    friend ModInt operator+(long long lhs, const ModInt& rhs) {\n        return\
     \ (ModInt(lhs) += rhs);\n    }\n    friend ModInt operator-(long long lhs, const\
@@ -180,65 +228,48 @@ data:
     \        return os << M._v;\n    }\n    friend istream& operator>>(istream& is,\
     \ ModInt& M) {\n        long long x;\n        is >> x;\n        M = x;\n     \
     \   return is;\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() {\n        return m;\n    }\n};\n#line 4 \"test/mod/ModInt.test.cpp\"\
-    \n\nvoid aplusb() {\n    INT(A, B);\n    print(A + B);\n}\nusing mint = ModInt<11>;\n\
-    \nint main() {\n    mint a = 10;\n    mint b(3);\n\n    // equal\n    assert(a\
-    \ == 21);\n    assert(a == -1);\n    assert(-1 == a);\n\n    // negative\n   \
-    \ assert(-b == 8);\n\n    // plus\n    assert(a + b == 2);  // (10 + 3) mod 11\n\
-    \    assert(1 + a == 0);\n\n    // minus\n    assert(a - b == 7);  // (10 - 3)\
-    \ mod 11\n    assert(b - a == 4);\n\n    //++, --\n    b++;\n    assert(b == 4);\n\
-    \    b--;\n    assert(b == 3);\n\n    // mul\n    assert(a * b == 8);  // (10\
-    \ * 3) mod 11\n\n    // inv\n    assert(b.inv() == 4);  // (3 * 4) mod 11 == 1\n\
-    \n    // div\n    assert(a / b == 7);  // (10 * 4) mod 11\n\n    // +=, -=, *=,\
-    \ /=\n    a += b;\n    assert(a == 2 && b == 3);\n    a -= b;\n    assert(a ==\
-    \ 10 && b == 3);\n    a *= b;\n    assert(a == 8 && b == 3);\n    a /= b;\n  \
-    \  assert(a == 10 && b == 3);\n\n    // pow\n    assert(mint(2).pow(4) == 5);\
-    \  // 16 mod 11\n\n    // ^=\n    mint c = 2;\n    c ^= 4;\n    assert(c == 5);\n\
-    \    c ^= -2;\n    assert(c == 4);  // (4 * 25) mod 11 == 1\n\n    // get mod\n\
-    \    assert(mint::mod() == 11 && a.mod() == 11);\n\n    // mint(x) \u3068\u66F8\
-    \u304F\u3068mod\u3092\u53D6\u308B\u64CD\u4F5C\u304C\u767A\u751F\u3057\u307E\u3059\
-    ((x % mod + mod) %\n    // mod\u3092modint\u306B\u4EE3\u5165\u3057\u307E\u3059\
-    ) mint::raw(x)\n    // \u306Fx\u3092mod\u3092\u53D6\u3089\u305A\u306B\u4EE3\u5165\
-    \u3059\u308B\u306E\u3067\u9AD8\u901F\u3067\u3059(\u3082\u3061\u308D\u3093x\u304C\
-    [0,\n    // mod)\u3067\u3042\u308B\u3053\u3068\u3092\u5229\u7528\u8005\u304C\u4FDD\
-    \u8A3C\u3057\u306A\u3044\u3068\u3044\u3051\u307E\u305B\u3093)\n    assert(mint::raw(3)\
-    \ == 3);\n    aplusb();\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n#include \"other/template.hpp\"\
-    \n#include \"mod/ModInt.hpp\"\n\nvoid aplusb() {\n    INT(A, B);\n    print(A\
-    \ + B);\n}\nusing mint = ModInt<11>;\n\nint main() {\n    mint a = 10;\n    mint\
-    \ b(3);\n\n    // equal\n    assert(a == 21);\n    assert(a == -1);\n    assert(-1\
-    \ == a);\n\n    // negative\n    assert(-b == 8);\n\n    // plus\n    assert(a\
-    \ + b == 2);  // (10 + 3) mod 11\n    assert(1 + a == 0);\n\n    // minus\n  \
-    \  assert(a - b == 7);  // (10 - 3) mod 11\n    assert(b - a == 4);\n\n    //++,\
-    \ --\n    b++;\n    assert(b == 4);\n    b--;\n    assert(b == 3);\n\n    // mul\n\
-    \    assert(a * b == 8);  // (10 * 3) mod 11\n\n    // inv\n    assert(b.inv()\
-    \ == 4);  // (3 * 4) mod 11 == 1\n\n    // div\n    assert(a / b == 7);  // (10\
-    \ * 4) mod 11\n\n    // +=, -=, *=, /=\n    a += b;\n    assert(a == 2 && b ==\
-    \ 3);\n    a -= b;\n    assert(a == 10 && b == 3);\n    a *= b;\n    assert(a\
-    \ == 8 && b == 3);\n    a /= b;\n    assert(a == 10 && b == 3);\n\n    // pow\n\
-    \    assert(mint(2).pow(4) == 5);  // 16 mod 11\n\n    // ^=\n    mint c = 2;\n\
-    \    c ^= 4;\n    assert(c == 5);\n    c ^= -2;\n    assert(c == 4);  // (4 *\
-    \ 25) mod 11 == 1\n\n    // get mod\n    assert(mint::mod() == 11 && a.mod() ==\
-    \ 11);\n\n    // mint(x) \u3068\u66F8\u304F\u3068mod\u3092\u53D6\u308B\u64CD\u4F5C\
-    \u304C\u767A\u751F\u3057\u307E\u3059((x % mod + mod) %\n    // mod\u3092modint\u306B\
-    \u4EE3\u5165\u3057\u307E\u3059) mint::raw(x)\n    // \u306Fx\u3092mod\u3092\u53D6\
-    \u3089\u305A\u306B\u4EE3\u5165\u3059\u308B\u306E\u3067\u9AD8\u901F\u3067\u3059\
-    (\u3082\u3061\u308D\u3093x\u304C[0,\n    // mod)\u3067\u3042\u308B\u3053\u3068\
-    \u3092\u5229\u7528\u8005\u304C\u4FDD\u8A3C\u3057\u306A\u3044\u3068\u3044\u3051\
-    \u307E\u305B\u3093)\n    assert(mint::raw(3) == 3);\n    aplusb();\n}"
+    \ unsigned int umod() {\n        return m;\n    }\n};\n#line 4 \"test/tree/Rerooting.test.cpp\"\
+    \nusing mint = ModInt<1000000007>;\nusing Tu = tuple<mint, mint, mint>;\n\nint\
+    \ main() {\n    INT(N);\n    auto op = [](Tu a, Tu b) {\n        auto [a0, a1,\
+    \ a2] = a;\n        auto [b0, b1, b2] = b;\n        return Tu(a0 + b0, a1 + b1,\
+    \ a2 + b2);\n    };\n    auto etov = [](Tu a, auto e) {\n        auto [a0, a1,\
+    \ a2] = a;\n        return Tu(a0 + a1 * e.weight * 2 + e.weight * e.weight * a2,\n\
+    \                  a1 + e.weight * a2, a2);\n    };\n    auto vtoe = [](Tu a,\
+    \ int v) {\n        (void)v;\n        auto [a0, a1, a2] = a;\n        return Tu(a0,\
+    \ a1, a2 + 1);\n    };\n    const Tu e = Tu(0, 0, 0);\n    Rerooting<Tu, Tu, mint,\
+    \ decltype(op), decltype(etov), decltype(vtoe)> r(\n        N, op, etov, vtoe,\
+    \ e);\n    rep(N - 1) {\n        INT(a, b, c);\n        a--;\n        b--;\n \
+    \       r.add_edge(a, b, c);\n    }\n    r.build();\n    mint ans = 0;\n    rep(i,\
+    \ N) {\n        ans += get<0>(r[i]);\n    }\n    ans /= 2;\n    print(ans);\n\
+    }\n"
+  code: "#include \"other/template.hpp\"\n#include \"tree/Rerooting.hpp\"\n#include\
+    \ \"mod/ModInt.hpp\"\nusing mint = ModInt<1000000007>;\nusing Tu = tuple<mint,\
+    \ mint, mint>;\n\nint main() {\n    INT(N);\n    auto op = [](Tu a, Tu b) {\n\
+    \        auto [a0, a1, a2] = a;\n        auto [b0, b1, b2] = b;\n        return\
+    \ Tu(a0 + b0, a1 + b1, a2 + b2);\n    };\n    auto etov = [](Tu a, auto e) {\n\
+    \        auto [a0, a1, a2] = a;\n        return Tu(a0 + a1 * e.weight * 2 + e.weight\
+    \ * e.weight * a2,\n                  a1 + e.weight * a2, a2);\n    };\n    auto\
+    \ vtoe = [](Tu a, int v) {\n        (void)v;\n        auto [a0, a1, a2] = a;\n\
+    \        return Tu(a0, a1, a2 + 1);\n    };\n    const Tu e = Tu(0, 0, 0);\n \
+    \   Rerooting<Tu, Tu, mint, decltype(op), decltype(etov), decltype(vtoe)> r(\n\
+    \        N, op, etov, vtoe, e);\n    rep(N - 1) {\n        INT(a, b, c);\n   \
+    \     a--;\n        b--;\n        r.add_edge(a, b, c);\n    }\n    r.build();\n\
+    \    mint ans = 0;\n    rep(i, N) {\n        ans += get<0>(r[i]);\n    }\n   \
+    \ ans /= 2;\n    print(ans);\n}"
   dependsOn:
   - other/template.hpp
+  - tree/Rerooting.hpp
   - mod/ModInt.hpp
   isVerificationFile: true
-  path: test/mod/ModInt.test.cpp
+  path: test/tree/Rerooting.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 05:04:55+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-03-20 23:19:26+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: test/mod/ModInt.test.cpp
+documentation_of: test/tree/Rerooting.test.cpp
 layout: document
 redirect_from:
-- /verify/test/mod/ModInt.test.cpp
-- /verify/test/mod/ModInt.test.cpp.html
-title: test/mod/ModInt.test.cpp
+- /verify/test/tree/Rerooting.test.cpp
+- /verify/test/tree/Rerooting.test.cpp.html
+title: test/tree/Rerooting.test.cpp
 ---
