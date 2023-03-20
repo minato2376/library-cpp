@@ -175,8 +175,8 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
     }
 #ifdef MINATO_LOCAL
     friend ostream& operator<<(ostream& os, LazySegmentTree r) {
-        vector<T> v(r.size());
-        for (int i = 0; i < r.size(); i++) {
+        vector<T> v(r._n);
+        for (int i = 0; i < r._n; i++) {
             v[i] = r[i];
         }
         os << v;
@@ -276,8 +276,9 @@ template <typename T, T INF> auto buildRangeAddRangeMax(int n) {
 
 /**
  * 区間更新区間和
+ * @note pair.first: 区間和, pair.second: 区間の長さ
  */
-template <typename T, T ID> auto buildRangeSetRangeSum(const vector<T>& v) {
+template <typename T> auto buildRangeSetRangeSum(const vector<T>& v, T id) {
     using P = pair<T, int>;
     auto f = [](P a, P b) { return P(a.first + b.first, a.second + b.second); };
     auto g = [](P a, T b) { return P(b * a.second, a.second); };
@@ -289,10 +290,10 @@ template <typename T, T ID> auto buildRangeSetRangeSum(const vector<T>& v) {
     for (size_t i = 0; i < v.size(); i++) {
         w[i] = P(v[i], 1);
     }
-    LazySegmentTree seg(f, g, h, P(0, 0), ID, w);
+    LazySegmentTree seg(f, g, h, P(0, 0), id, w);
     return seg;
 }
 
-template <typename T, T ID> auto buildRangeSetRangeSum(int n) {
-    return buildRangeSetRangeSum<T, ID>(vec<T>(n));
+template <typename T> auto buildRangeSetRangeSum(int n, T id) {
+    return buildRangeSetRangeSum<T>(vector<T>(n), id);
 }
