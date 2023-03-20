@@ -4,7 +4,7 @@
 #include "segmenttree/LazySegmentTree.hpp"
 int main() {
     INT(n, q);
-    auto seg = buildRangeSetRangeSum<int, numeric_limits<int>::max()>(n);
+    auto seg = buildRangeSetRangeSum<int>(n, numeric_limits<int>::max());
     rep(q) {
         INT(t);
         if (t == 0) {
