@@ -72,12 +72,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/shortestpath/warshall_floyd.test.cpp
     title: test/shortestpath/warshall_floyd.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting.test.cpp
     title: test/tree/Rerooting.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
@@ -309,7 +309,7 @@ data:
   path: other/template.hpp
   requiredBy: []
   timestamp: '2023-02-28 05:04:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/segmenttree/RangeAddRangeSum.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp

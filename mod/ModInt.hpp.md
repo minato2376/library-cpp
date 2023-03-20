@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mod/ModInt.test.cpp
     title: test/mod/ModInt.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting.test.cpp
     title: test/tree/Rerooting.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"mod/ModInt.hpp\"\ntemplate <int m> struct ModInt {\n  public:\n\
@@ -122,7 +122,7 @@ data:
   path: mod/ModInt.hpp
   requiredBy: []
   timestamp: '2023-02-18 04:05:28+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rerooting.test.cpp
   - test/mod/ModInt.test.cpp

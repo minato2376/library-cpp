@@ -55,12 +55,12 @@ data:
     - icon: ':warning:'
       path: mod/ModCombination.hpp
       title: mod/ModCombination.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: mod/ModInt.hpp
       title: mod/ModInt.hpp
   - name: other
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: other/template.hpp
       title: other/template.hpp
   - name: segmenttree
@@ -84,7 +84,7 @@ data:
       title: shortestpath/warshall_floyd.hpp
   - name: tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: tree/Rerooting.hpp
       title: "\u5168\u65B9\u4F4D\u6728 DP"
   verificationCategories:
@@ -177,7 +177,7 @@ data:
       title: test/shortestpath/warshall_floyd.test.cpp
   - name: test/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting.test.cpp
       title: test/tree/Rerooting.test.cpp
 layout: toppage

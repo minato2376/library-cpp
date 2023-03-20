@@ -1,24 +1,27 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: mod/ModInt.hpp
     title: mod/ModInt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: tree/Rerooting.hpp
     title: "\u5168\u65B9\u4F4D\u6728 DP"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
-  bundledCode: "#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
+    PROBLEM: https://yukicoder.me/problems/no/1333
+    links:
+    - https://yukicoder.me/problems/no/1333
+  bundledCode: "#line 1 \"test/tree/Rerooting.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/1333\"\
+    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
     using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld = long double;\n\
     using pii = pair<int, int>;\nusing pll = pair<long long, long long>;\ntemplate\
@@ -228,7 +231,7 @@ data:
     \        return os << M._v;\n    }\n    friend istream& operator>>(istream& is,\
     \ ModInt& M) {\n        long long x;\n        is >> x;\n        M = x;\n     \
     \   return is;\n    }\n\n  private:\n    unsigned int _v;\n    static constexpr\
-    \ unsigned int umod() {\n        return m;\n    }\n};\n#line 4 \"test/tree/Rerooting.test.cpp\"\
+    \ unsigned int umod() {\n        return m;\n    }\n};\n#line 5 \"test/tree/Rerooting.test.cpp\"\
     \nusing mint = ModInt<1000000007>;\nusing Tu = tuple<mint, mint, mint>;\n\nint\
     \ main() {\n    INT(N);\n    auto op = [](Tu a, Tu b) {\n        auto [a0, a1,\
     \ a2] = a;\n        auto [b0, b1, b2] = b;\n        return Tu(a0 + b0, a1 + b1,\
@@ -242,20 +245,20 @@ data:
     \       r.add_edge(a, b, c);\n    }\n    r.build();\n    mint ans = 0;\n    rep(i,\
     \ N) {\n        ans += get<0>(r[i]);\n    }\n    ans /= 2;\n    print(ans);\n\
     }\n"
-  code: "#include \"other/template.hpp\"\n#include \"tree/Rerooting.hpp\"\n#include\
-    \ \"mod/ModInt.hpp\"\nusing mint = ModInt<1000000007>;\nusing Tu = tuple<mint,\
-    \ mint, mint>;\n\nint main() {\n    INT(N);\n    auto op = [](Tu a, Tu b) {\n\
-    \        auto [a0, a1, a2] = a;\n        auto [b0, b1, b2] = b;\n        return\
-    \ Tu(a0 + b0, a1 + b1, a2 + b2);\n    };\n    auto etov = [](Tu a, auto e) {\n\
-    \        auto [a0, a1, a2] = a;\n        return Tu(a0 + a1 * e.weight * 2 + e.weight\
-    \ * e.weight * a2,\n                  a1 + e.weight * a2, a2);\n    };\n    auto\
-    \ vtoe = [](Tu a, int v) {\n        (void)v;\n        auto [a0, a1, a2] = a;\n\
-    \        return Tu(a0, a1, a2 + 1);\n    };\n    const Tu e = Tu(0, 0, 0);\n \
-    \   Rerooting<Tu, Tu, mint, decltype(op), decltype(etov), decltype(vtoe)> r(\n\
-    \        N, op, etov, vtoe, e);\n    rep(N - 1) {\n        INT(a, b, c);\n   \
-    \     a--;\n        b--;\n        r.add_edge(a, b, c);\n    }\n    r.build();\n\
-    \    mint ans = 0;\n    rep(i, N) {\n        ans += get<0>(r[i]);\n    }\n   \
-    \ ans /= 2;\n    print(ans);\n}"
+  code: "#define PROBLEM \"https://yukicoder.me/problems/no/1333\"\n#include \"other/template.hpp\"\
+    \n#include \"tree/Rerooting.hpp\"\n#include \"mod/ModInt.hpp\"\nusing mint = ModInt<1000000007>;\n\
+    using Tu = tuple<mint, mint, mint>;\n\nint main() {\n    INT(N);\n    auto op\
+    \ = [](Tu a, Tu b) {\n        auto [a0, a1, a2] = a;\n        auto [b0, b1, b2]\
+    \ = b;\n        return Tu(a0 + b0, a1 + b1, a2 + b2);\n    };\n    auto etov =\
+    \ [](Tu a, auto e) {\n        auto [a0, a1, a2] = a;\n        return Tu(a0 + a1\
+    \ * e.weight * 2 + e.weight * e.weight * a2,\n                  a1 + e.weight\
+    \ * a2, a2);\n    };\n    auto vtoe = [](Tu a, int v) {\n        (void)v;\n  \
+    \      auto [a0, a1, a2] = a;\n        return Tu(a0, a1, a2 + 1);\n    };\n  \
+    \  const Tu e = Tu(0, 0, 0);\n    Rerooting<Tu, Tu, mint, decltype(op), decltype(etov),\
+    \ decltype(vtoe)> r(\n        N, op, etov, vtoe, e);\n    rep(N - 1) {\n     \
+    \   INT(a, b, c);\n        a--;\n        b--;\n        r.add_edge(a, b, c);\n\
+    \    }\n    r.build();\n    mint ans = 0;\n    rep(i, N) {\n        ans += get<0>(r[i]);\n\
+    \    }\n    ans /= 2;\n    print(ans);\n}"
   dependsOn:
   - other/template.hpp
   - tree/Rerooting.hpp
@@ -263,8 +266,8 @@ data:
   isVerificationFile: true
   path: test/tree/Rerooting.test.cpp
   requiredBy: []
-  timestamp: '2023-03-20 23:19:26+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-03-20 23:28:15+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rerooting.test.cpp
 layout: document
