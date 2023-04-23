@@ -64,6 +64,9 @@ data:
     path: test/segmenttree/LazySegmentTree4.test.cpp
     title: test/segmenttree/LazySegmentTree4.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/segmenttree/PointAddRectangleSum.test.cpp
+    title: test/segmenttree/PointAddRectangleSum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/RangeAddRangeSum.test.cpp
     title: test/segmenttree/RangeAddRangeSum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -311,30 +314,31 @@ data:
   timestamp: '2023-02-28 05:04:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/segmenttree/RangeAddRangeSum.test.cpp
-  - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/graph/StronglyConnectedComponents.test.cpp
+  - test/tree/Rerooting.test.cpp
+  - test/math/floor_sqrt.test.cpp
+  - test/math/totient.test.cpp
+  - test/math/TwoSat.test.cpp
+  - test/generator/generate_random_sequence.test.cpp
+  - test/mod/ModInt.test.cpp
+  - test/datastructure/UnionFind.test.cpp
+  - test/datastructure/RangeSet.test.cpp
+  - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/datastructure/SlidingWindowAggregation.test.cpp
+  - test/other/template.test.cpp
+  - test/shortestpath/warshall_floyd.test.cpp
+  - test/segmenttree/LazySegmentTree2.test.cpp
+  - test/segmenttree/PointAddRectangleSum.test.cpp
   - test/segmenttree/LazySegmentTree4.test.cpp
-  - test/segmenttree/SegmentTree.test.cpp
   - test/segmenttree/DualSegmentTree.test.cpp
   - test/segmenttree/LazySegmentTree3.test.cpp
   - test/segmenttree/LazySegmentTree.test.cpp
-  - test/segmenttree/LazySegmentTree2.test.cpp
-  - test/other/template.test.cpp
-  - test/tree/Rerooting.test.cpp
-  - test/graph/StronglyConnectedComponents.test.cpp
-  - test/generator/generate_random_sequence.test.cpp
-  - test/datastructure/UnionFind.test.cpp
-  - test/datastructure/SlidingWindowAggregation.test.cpp
-  - test/datastructure/RangeSet.test.cpp
-  - test/datastructure/BinaryIndexedTree.test.cpp
-  - test/math/TwoSat.test.cpp
-  - test/math/totient.test.cpp
-  - test/math/floor_sqrt.test.cpp
+  - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/segmenttree/SegmentTree.test.cpp
+  - test/segmenttree/RangeAddRangeSum.test.cpp
+  - test/algorithm/run_length_encoding.test.cpp
   - test/algorithm/inversion_number.test.cpp
   - test/algorithm/SquareRootDecomposion.test.cpp
-  - test/algorithm/run_length_encoding.test.cpp
-  - test/mod/ModInt.test.cpp
-  - test/shortestpath/warshall_floyd.test.cpp
 documentation_of: other/template.hpp
 layout: document
 redirect_from:

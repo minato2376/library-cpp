@@ -71,6 +71,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segmenttree/LazySegmentTree.hpp
       title: segmenttree/LazySegmentTree.hpp
+    - icon: ':warning:'
+      path: segmenttree/PointAddRectangleSum.hpp
+      title: segmenttree/PointAddRectangleSum.hpp
     - icon: ':heavy_check_mark:'
       path: segmenttree/RangeAddRangeSum.hpp
       title: segmenttree/RangeAddRangeSum.hpp
@@ -164,6 +167,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/LazySegmentTree4.test.cpp
       title: test/segmenttree/LazySegmentTree4.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/segmenttree/PointAddRectangleSum.test.cpp
+      title: test/segmenttree/PointAddRectangleSum.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/RangeAddRangeSum.test.cpp
       title: test/segmenttree/RangeAddRangeSum.test.cpp

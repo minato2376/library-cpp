@@ -16,6 +16,9 @@ data:
     path: test/datastructure/BinaryIndexedTree.test.cpp
     title: test/datastructure/BinaryIndexedTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/segmenttree/PointAddRectangleSum.test.cpp
+    title: test/segmenttree/PointAddRectangleSum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/RangeAddRangeSum.test.cpp
     title: test/segmenttree/RangeAddRangeSum.test.cpp
   _isVerificationFailed: false
@@ -79,8 +82,9 @@ data:
   timestamp: '2023-02-18 14:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/segmenttree/RangeAddRangeSum.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/segmenttree/PointAddRectangleSum.test.cpp
+  - test/segmenttree/RangeAddRangeSum.test.cpp
   - test/algorithm/inversion_number.test.cpp
 documentation_of: datastructure/BinaryIndexedTree.hpp
 layout: document
