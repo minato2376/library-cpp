@@ -8,6 +8,9 @@ data:
     path: other/template.hpp
     title: other/template.hpp
   - icon: ':heavy_check_mark:'
+    path: other/type_traits.hpp
+    title: other/type_traits.hpp
+  - icon: ':heavy_check_mark:'
     path: tree/Rerooting.hpp
     title: "\u5168\u65B9\u4F4D\u6728 DP"
   _extendedRequiredBy: []
@@ -187,13 +190,58 @@ data:
     \ == pv) {\n                prefix_sum[i + 1] = op(prefix_sum[i], vtoe(top, g[v][i]));\n\
     \            } else {\n                prefix_sum[i + 1] =\n                 \
     \   op(prefix_sum[i], vtoe(subdp[g[v][i].to], g[v][i]));\n            }\n    \
-    \    }\n        return prefix_sum;\n    }\n};\n#line 1 \"mod/ModInt.hpp\"\ntemplate\
-    \ <int m> struct ModInt {\n  public:\n    static constexpr int mod() {\n     \
-    \   return m;\n    }\n    static ModInt raw(int v) {\n        ModInt x;\n    \
-    \    x._v = v;\n        return x;\n    }\n\n    ModInt() : _v(0) {\n    }\n  \
-    \  ModInt(long long v) {\n        long long x = (long long)(v % (long long)(umod()));\n\
-    \        if (x < 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n\n \
-    \   unsigned int val() const {\n        return _v;\n    }\n\n    ModInt& operator++()\
+    \    }\n        return prefix_sum;\n    }\n};\n#line 2 \"mod/ModInt.hpp\"\n\n\
+    #line 2 \"other/type_traits.hpp\"\n\nnamespace internal {\n\n#ifndef _MSC_VER\n\
+    template <class T>\nusing is_signed_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value ||\n                                  std::is_same<T, __int128>::value,\n\
+    \                              std::true_type,\n                             \
+    \ std::false_type>::type;\n\ntemplate <class T>\nusing is_unsigned_int128 =\n\
+    \    typename std::conditional<std::is_same<T, __uint128_t>::value ||\n      \
+    \                            std::is_same<T, unsigned __int128>::value,\n    \
+    \                          std::true_type,\n                              std::false_type>::type;\n\
+    \ntemplate <class T>\nusing make_unsigned_int128 =\n    typename std::conditional<std::is_same<T,\
+    \ __int128_t>::value,\n                              __uint128_t,\n          \
+    \                    unsigned __int128>;\n\ntemplate <class T>\nusing is_integral\
+    \ = typename std::conditional<std::is_integral<T>::value ||\n                \
+    \                                  is_signed_int128<T>::value ||\n           \
+    \                                       is_unsigned_int128<T>::value,\n      \
+    \                                        std::true_type,\n                   \
+    \                           std::false_type>::type;\n\ntemplate <class T>\nusing\
+    \ is_signed_int = typename std::conditional<(is_integral<T>::value &&\n      \
+    \                                           std::is_signed<T>::value) ||\n   \
+    \                                                 is_signed_int128<T>::value,\n\
+    \                                                std::true_type,\n           \
+    \                                     std::false_type>::type;\n\ntemplate <class\
+    \ T>\nusing is_unsigned_int =\n    typename std::conditional<(is_integral<T>::value\
+    \ &&\n                               std::is_unsigned<T>::value) ||\n        \
+    \                          is_unsigned_int128<T>::value,\n                   \
+    \           std::true_type,\n                              std::false_type>::type;\n\
+    \ntemplate <class T>\nusing to_unsigned = typename std::conditional<\n    is_signed_int128<T>::value,\n\
+    \    make_unsigned_int128<T>,\n    typename std::conditional<std::is_signed<T>::value,\n\
+    \                              std::make_unsigned<T>,\n                      \
+    \        std::common_type<T>>::type>::type;\n\n#else\n\ntemplate <class T> using\
+    \ is_integral = typename std::is_integral<T>;\n\ntemplate <class T>\nusing is_signed_int\
+    \ =\n    typename std::conditional<is_integral<T>::value && std::is_signed<T>::value,\n\
+    \                              std::true_type,\n                             \
+    \ std::false_type>::type;\n\ntemplate <class T>\nusing is_unsigned_int =\n   \
+    \ typename std::conditional<is_integral<T>::value &&\n                       \
+    \           std::is_unsigned<T>::value,\n                              std::true_type,\n\
+    \                              std::false_type>::type;\n\ntemplate <class T>\n\
+    using to_unsigned = typename std::conditional<is_signed_int<T>::value,\n     \
+    \                                         std::make_unsigned<T>,\n           \
+    \                                   std::common_type<T>>::type;\n\n#endif\n\n\
+    template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
+    \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
+    \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
+    }  // namespace internal\n#line 4 \"mod/ModInt.hpp\"\n\ntemplate <int m> struct\
+    \ ModInt {\n  public:\n    static constexpr int mod() {\n        return m;\n \
+    \   }\n    static ModInt raw(int v) {\n        ModInt x;\n        x._v = v;\n\
+    \        return x;\n    }\n\n    ModInt() : _v(0) {\n    }\n\n    template <class\
+    \ T, internal::is_signed_int_t<T>* = nullptr> ModInt(T v) {\n        long long\
+    \ x = (long long)(v % (long long)(umod()));\n        if (x < 0) x += umod();\n\
+    \        _v = (unsigned int)(x);\n    }\n    template <class T, internal::is_unsigned_int_t<T>*\
+    \ = nullptr> ModInt(T v) {\n        _v = (unsigned int)(v % umod());\n    }\n\n\
+    \    unsigned int val() const {\n        return _v;\n    }\n\n    ModInt& operator++()\
     \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
     \    }\n    ModInt& operator--() {\n        if (_v == 0) _v = umod();\n      \
     \  _v--;\n        return *this;\n    }\n    ModInt operator++(int) {\n       \
@@ -270,10 +318,11 @@ data:
   - other/template.hpp
   - tree/Rerooting.hpp
   - mod/ModInt.hpp
+  - other/type_traits.hpp
   isVerificationFile: true
   path: test/tree/Rerooting.test.cpp
   requiredBy: []
-  timestamp: '2023-06-12 01:31:27+09:00'
+  timestamp: '2023-06-12 01:42:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rerooting.test.cpp

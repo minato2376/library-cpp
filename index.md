@@ -63,6 +63,9 @@ data:
     - icon: ':question:'
       path: other/template.hpp
       title: other/template.hpp
+    - icon: ':heavy_check_mark:'
+      path: other/type_traits.hpp
+      title: other/type_traits.hpp
   - name: segmenttree
     pages:
     - icon: ':heavy_check_mark:'
