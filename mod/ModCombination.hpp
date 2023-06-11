@@ -1,3 +1,5 @@
+#pragma once
+
 template <class M> struct ModCombination {
   public:
     ModCombination() {
@@ -33,6 +35,11 @@ template <class M> struct ModCombination {
         assert(n <= n_);
         return fac_[n] * facinv_[n - k] * facinv_[k];
     }
+
+    /**
+     * @note H(n, k) = (n 個 のボールを k 個の箱に分ける方法の数)
+     * @note H(n, k) = C(n + k - 1, n)
+     */
     M H(int n, int k) const {
         if (n == 0 and k == 0) return M(1);
         return C(n + k - 1, n);
