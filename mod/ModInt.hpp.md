@@ -124,8 +124,8 @@ data:
   timestamp: '2023-02-18 04:05:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/tree/Rerooting.test.cpp
   - test/mod/ModInt.test.cpp
+  - test/tree/Rerooting.test.cpp
 documentation_of: mod/ModInt.hpp
 layout: document
 redirect_from:
