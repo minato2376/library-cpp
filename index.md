@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: algorithm
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: algorithm/SquareRootDecomposition.hpp
       title: "\u30AF\u30A8\u30EA\u306E\u7BC4\u56F2\u3092\u5206\u5272\u3059\u308B"
     - icon: ':warning:'
@@ -60,7 +60,7 @@ data:
       title: mod/ModInt.hpp
   - name: other
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: other/template.hpp
       title: other/template.hpp
   - name: segmenttree
@@ -93,7 +93,7 @@ data:
   verificationCategories:
   - name: test/algorithm
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/algorithm/SquareRootDecomposion.test.cpp
       title: test/algorithm/SquareRootDecomposion.test.cpp
     - icon: ':heavy_check_mark:'

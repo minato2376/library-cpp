@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/floor_sqrt.hpp
     title: math/floor_sqrt.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
   _extendedRequiredBy: []
@@ -18,7 +18,14 @@ data:
     links:
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"test/math/floor_sqrt.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
-    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <bits/stdc++.h>\n\
+    \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <algorithm>\n\
+    #include <array>\n#include <bitset>\n#include <cassert>\n#include <chrono>\n#include\
+    \ <cmath>\n#include <complex>\n#include <deque>\n#include <forward_list>\n#include\
+    \ <fstream>\n#include <functional>\n#include <iomanip>\n#include <ios>\n#include\
+    \ <iostream>\n#include <limits>\n#include <list>\n#include <map>\n#include <numeric>\n\
+    #include <queue>\n#include <random>\n#include <set>\n#include <sstream>\n#include\
+    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
+    \ <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\n\
     using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
     \ ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld = long double;\n\
     using pii = pair<int, int>;\nusing pll = pair<long long, long long>;\ntemplate\
@@ -32,7 +39,7 @@ data:
     \ OVERLOAD_RREP(_1, _2, _3, name, ...) name\n#define RREP1(i, n) for (auto i =\
     \ (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n#define RREP2(i, l, r) for (auto\
     \ i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...) OVERLOAD_RREP(__VA_ARGS__,\
-    \ RREP2, RREP1)(__VA_ARGS__)\n#define all(x) begin(x), end(x)\ntemplate <class\
+    \ RREP2, RREP1)(__VA_ARGS__)\n#define ALL(x) begin(x), end(x)\ntemplate <class\
     \ Container> int SZ(const Container& v) { return int(v.size()); }\ntemplate <class\
     \ T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end());\
     \ }\ntemplate <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(),\
@@ -201,7 +208,7 @@ data:
   isVerificationFile: true
   path: test/math/floor_sqrt.test.cpp
   requiredBy: []
-  timestamp: '2023-02-28 05:04:55+09:00'
+  timestamp: '2023-06-12 01:31:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/floor_sqrt.test.cpp

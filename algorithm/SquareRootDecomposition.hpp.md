@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/algorithm/SquareRootDecomposion.test.cpp
     title: test/algorithm/SquareRootDecomposion.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: "\u30AF\u30A8\u30EA\u306E\u7BC4\u56F2\u3092\u5206\u5272\u3059\u308B"
     links: []
@@ -102,7 +102,7 @@ data:
   path: algorithm/SquareRootDecomposition.hpp
   requiredBy: []
   timestamp: '2023-02-27 18:25:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - test/algorithm/SquareRootDecomposion.test.cpp
 documentation_of: algorithm/SquareRootDecomposition.hpp
