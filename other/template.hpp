@@ -1,5 +1,34 @@
 // clang-format off
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cassert>
+#include <chrono>
+#include <cmath>
+#include <complex>
+#include <deque>
+#include <forward_list>
+#include <fstream>
+#include <functional>
+#include <iomanip>
+#include <ios>
+#include <iostream>
+#include <limits>
+#include <list>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <random>
+#include <set>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <tuple>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
 using namespace std;
 using uint = unsigned int;
 using ll = long long;
@@ -21,7 +50,7 @@ template <class T> using vvec = vector<vector<T>>;
 #define RREP1(i, n) for (auto i = (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)
 #define RREP2(i, l, r) for (auto i = (r) - 1; (i) >= (l); (i)--)
 #define rrep(...) OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)
-#define all(x) begin(x), end(x)
+#define ALL(x) begin(x), end(x)
 template <class Container> int SZ(const Container& v) { return int(v.size()); }
 template <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end()); }
 template <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(), v.end()); }
