@@ -1,3 +1,7 @@
+#pragma once
+
+#include "other/type_traits.hpp"
+
 template <int m> struct ModInt {
   public:
     static constexpr int mod() {
@@ -11,10 +15,14 @@ template <int m> struct ModInt {
 
     ModInt() : _v(0) {
     }
-    ModInt(long long v) {
+
+    template <class T, internal::is_signed_int_t<T>* = nullptr> ModInt(T v) {
         long long x = (long long)(v % (long long)(umod()));
         if (x < 0) x += umod();
         _v = (unsigned int)(x);
+    }
+    template <class T, internal::is_unsigned_int_t<T>* = nullptr> ModInt(T v) {
+        _v = (unsigned int)(v % umod());
     }
 
     unsigned int val() const {
