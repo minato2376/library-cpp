@@ -1,3 +1,8 @@
+#pragma once
+
+#include <cassert>
+#include <vector>
+
 template <class T, class U, class F, class G, class H> struct LazySegmentTree {
   private:
     F op;
@@ -6,8 +11,8 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
     T e;
     U id;
     int _n, size, log;
-    vector<T> node;
-    vector<U> lazy;
+    std::vector<T> node;
+    std::vector<U> lazy;
 
   public:
     LazySegmentTree() {
@@ -18,14 +23,19 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
                     T e,
                     U id,
                     int n)
-        : LazySegmentTree(op, mapping, composition, e, id, vector<T>(n, e)) {
+        : LazySegmentTree(op,
+                          mapping,
+                          composition,
+                          e,
+                          id,
+                          std::vector<T>(n, e)) {
     }
     LazySegmentTree(const F& op,
                     const G& mapping,
                     const H& composition,
                     T e,
                     U id,
-                    const vector<T>& v)
+                    const std::vector<T>& v)
         : op(op),
           mapping(mapping),
           composition(composition),
@@ -35,8 +45,8 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
           log(0) {
         while ((1 << log) < _n) log++;
         size = 1 << log;
-        node = vector<T>(2 * size, e);
-        lazy = vector<U>(size, id);
+        node = std::vector<T>(2 * size, e);
+        lazy = std::vector<U>(size, id);
         for (int i = 0; i < _n; i++) node[size + i] = v[i];
         for (int i = size - 1; i >= 1; i--) {
             update(i);
@@ -175,7 +185,7 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
     }
 #ifdef MINATO_LOCAL
     friend ostream& operator<<(ostream& os, LazySegmentTree r) {
-        vector<T> v(r._n);
+        std::vector<T> v(r._n);
         for (int i = 0; i < r._n; i++) {
             v[i] = r[i];
         }
@@ -205,7 +215,8 @@ template <class T, class U, class F, class G, class H> struct LazySegmentTree {
 /**
  * 区間更新区間最小値
  */
-template <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>& v) {
+template <typename T>
+auto buildRangeSetRangeMin(const std::vector<T>& v, T e, T id) {
     auto f = [](T a, T b) { return min(a, b); };
     auto g = [](T a, T b) {
         (void)a;
@@ -215,18 +226,19 @@ template <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>& v) {
         (void)a;
         return b;
     };
-    LazySegmentTree seg(f, g, h, INF, INF, v);
+    LazySegmentTree seg(f, g, h, e, id, v);
     return seg;
 }
 
-template <typename T, T INF> auto buildRangeSetRangeMin(int n) {
-    return buildRangeSetRangeMin<T, INF>(vector<T>(n, INF));
+template <typename T> auto buildRangeSetRangeMin(int n, T e, T id) {
+    return buildRangeSetRangeMin<T>(std::vector<T>(n, e), e, id);
 }
 
 /**
  * 区間更新区間最大値
  */
-template <typename T, T INF> auto buildRangeSetRangeMax(const vector<T>& v) {
+template <typename T>
+auto buildRangeSetRangeMax(const std::vector<T>& v, T e, T id) {
     auto f = [](T a, T b) { return max(a, b); };
     auto g = [](T a, T b) {
         (void)a;
@@ -236,64 +248,68 @@ template <typename T, T INF> auto buildRangeSetRangeMax(const vector<T>& v) {
         (void)a;
         return b;
     };
-    LazySegmentTree seg(f, g, h, -INF, -INF, v);
+    LazySegmentTree seg(f, g, h, e, id, v);
     return seg;
 }
 
-template <typename T, T INF> auto buildRangeSetRangeMax(int n) {
-    return buildRangeSetRangeMax<T, INF>(vector<T>(n, -INF));
+template <typename T> auto buildRangeSetRangeMax(int n, T e, T id) {
+    return buildRangeSetRangeMax<T>(std::vector<T>(n, e), e, id);
 }
 
 /**
  * 区間加算区間最小値
  */
-template <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>& v) {
+template <typename T>
+auto buildRangeAddRangeMin(const std::vector<T>& v, T e, T id) {
     auto f = [](T a, T b) { return min(a, b); };
     auto g = [](T a, T b) { return a + b; };
     auto h = [](T a, T b) { return a + b; };
-    LazySegmentTree seg(f, g, h, INF, T(0), v);
+    LazySegmentTree seg(f, g, h, e, id, v);
     return seg;
 }
 
-template <typename T, T INF> auto buildRangeAddRangeMin(int n) {
-    return buildRangeAddRangeMin<T, INF>(vector<T>(n));
+template <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {
+    return buildRangeAddRangeMin<T>(std::vector<T>(n), e, id);
 }
 
 /**
  * 区間加算区間最大値
  */
-template <typename T, T INF> auto buildRangeAddRangeMax(const vector<T>& v) {
+template <typename T>
+auto buildRangeAddRangeMax(const std::vector<T>& v, T e, T id) {
     auto f = [](T a, T b) { return max(a, b); };
     auto g = [](T a, T b) { return a + b; };
     auto h = [](T a, T b) { return a + b; };
-    LazySegmentTree seg(f, g, h, -INF, T(0), v);
+    LazySegmentTree seg(f, g, h, e, id, v);
     return seg;
 }
 
-template <typename T, T INF> auto buildRangeAddRangeMax(int n) {
-    return buildRangeAddRangeMax<T, INF>(vector<T>(n));
+template <typename T> auto buildRangeAddRangeMax(int n, T e, T id) {
+    return buildRangeAddRangeMax<T>(std::vector<T>(n, e), e, id);
 }
 
 /**
  * 区間更新区間和
  * @note pair.first: 区間和, pair.second: 区間の長さ
  */
-template <typename T> auto buildRangeSetRangeSum(const vector<T>& v, T id) {
-    using P = pair<T, int>;
+template <typename T, typename S>
+auto buildRangeSetRangeSum(const std::vector<T>& v, pair<T, S> e, T id) {
+    using P = pair<T, S>;
     auto f = [](P a, P b) { return P(a.first + b.first, a.second + b.second); };
     auto g = [](P a, T b) { return P(b * a.second, a.second); };
     auto h = [](T a, T b) {
         (void)a;
         return b;
     };
-    vector<P> w(v.size());
+    std::vector<P> w(v.size());
     for (size_t i = 0; i < v.size(); i++) {
         w[i] = P(v[i], 1);
     }
-    LazySegmentTree seg(f, g, h, P(0, 0), id, w);
+    LazySegmentTree seg(f, g, h, e, id, w);
     return seg;
 }
 
-template <typename T> auto buildRangeSetRangeSum(int n, T id) {
-    return buildRangeSetRangeSum<T>(vector<T>(n), id);
+template <typename T, typename S>
+auto buildRangeSetRangeSum(int n, pair<T, S> e, T id) {
+    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);
 }

@@ -2,10 +2,13 @@
     "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_A"
 #include "other/template.hpp"
 #include "segmenttree/SegmentTree.hpp"
-int main() {
+
+void solve() {
+    constexpr int e = numeric_limits<int>::max();
     INT(n, q);
-    vec<int> A(n, numeric_limits<int>::max());
-    auto seg = buildPointSetRangeMin<int, numeric_limits<int>::max()>(A);
+    vec<int> A(n, e);
+
+    auto seg = buildPointSetRangeMin<int>(A, e);
     rep(q) {
         INT(com, x, y);
         if (com == 0) {
@@ -13,5 +16,19 @@ int main() {
         } else {
             print(seg.get(x, y + 1));
         }
+    }
+}
+
+int main() {
+    cin.tie(nullptr);
+    ios::sync_with_stdio(false);
+    cout << fixed << setprecision(20);
+    cerr << fixed << setprecision(7);
+
+    int T = 1;
+    // cin >> T;
+    for (int test_case = 1; test_case <= T; test_case++) {
+        // debug(test_case);
+        solve();
     }
 }

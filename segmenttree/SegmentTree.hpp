@@ -1,22 +1,26 @@
 #pragma once
 
+#include <cassert>
+#include <vector>
+
 template <class T, class F> struct SegmentTree {
   private:
     F op;
     T e;
     int _n, size_, log;
-    vector<T> node;
+    std::vector<T> node;
 
   public:
     SegmentTree() {
     }
-    SegmentTree(const F& op, T e, int n) : SegmentTree(op, e, vector<T>(n, e)) {
+    SegmentTree(const F& op, T e, int n)
+        : SegmentTree(op, e, std::vector<T>(n, e)) {
     }
-    SegmentTree(const F& op, T e, const vector<T>& v)
+    SegmentTree(const F& op, T e, const std::vector<T>& v)
         : op(op), e(e), _n(int(v.size())), log(0) {
         while ((1 << log) < _n) log++;
         size_ = 1 << log;
-        node = vector<T>(2 * size_, e);
+        node = std::vector<T>(2 * size_, e);
         for (int i = 0; i < _n; i++) node[size_ + i] = v[i];
         for (int i = size_ - 1; i >= 1; i--) {
             update(i);
@@ -109,7 +113,7 @@ template <class T, class F> struct SegmentTree {
 
 #ifdef MINATO_LOCAL
     friend ostream& operator<<(ostream& os, SegmentTree r) {
-        vector<T> v(r.size());
+        std::vector<T> v(r.size());
         for (int i = 0; i < r.size(); i++) {
             v[i] = r[i];
         }
@@ -124,26 +128,26 @@ template <class T, class F> struct SegmentTree {
     }
 };
 
-template <typename T, T INF> auto buildPointSetRangeMin(int n) {
+template <typename T> auto buildPointSetRangeMin(int n, T e) {
     auto f = [](T a, T b) { return min(a, b); };
-    SegmentTree seg(f, INF, n);
+    SegmentTree seg(f, e, n);
     return seg;
 }
 
-template <typename T, T INF> auto buildPointSetRangeMin(const vector<T>& v) {
+template <typename T> auto buildPointSetRangeMin(const std::vector<T>& v, T e) {
     auto f = [](T a, T b) { return min(a, b); };
-    SegmentTree seg(f, INF, v);
+    SegmentTree seg(f, e, v);
     return seg;
 }
 
-template <typename T, T INF> auto buildPointSetRangeMax(int n) {
+template <typename T> auto buildPointSetRangeMax(int n, T e) {
     auto f = [](T a, T b) { return max(a, b); };
-    SegmentTree seg(f, -INF, n);
+    SegmentTree seg(f, e, n);
     return seg;
 }
 
-template <typename T, T INF> auto buildPointSetRangeMax(const vector<T>& v) {
+template <typename T> auto buildPointSetRangeMax(const std::vector<T>& v, T e) {
     auto f = [](T a, T b) { return max(a, b); };
-    SegmentTree seg(f, -INF, v);
+    SegmentTree seg(f, e, v);
     return seg;
 }
