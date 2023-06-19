@@ -1,10 +1,13 @@
 #pragma once
 
+#include <cassert>
+#include <optional>
+
 template <int W> struct SquareRootDecomposition {
     struct Ranges {
-        optional<pair<int, int>> left_overflow_range;
-        optional<pair<int, int>> bucket_range;
-        optional<pair<int, int>> right_overflow_range;
+        std::optional<pair<int, int>> left_overflow_range;
+        std::optional<pair<int, int>> bucket_range;
+        std::optional<pair<int, int>> right_overflow_range;
         Ranges()
             : left_overflow_range(nullopt),
               bucket_range(nullopt),
