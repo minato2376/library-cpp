@@ -74,7 +74,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: segmenttree/LazySegmentTree.hpp
       title: segmenttree/LazySegmentTree.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: segmenttree/PointAddRectangleSum.hpp
       title: segmenttree/PointAddRectangleSum.hpp
     - icon: ':heavy_check_mark:'

@@ -137,131 +137,137 @@ data:
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
     #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 1 \"segmenttree/LazySegmentTree.hpp\"\ntemplate <class\
-    \ T, class U, class F, class G, class H> struct LazySegmentTree {\n  private:\n\
-    \    F op;\n    G mapping;\n    H composition;\n    T e;\n    U id;\n    int _n,\
-    \ size, log;\n    vector<T> node;\n    vector<U> lazy;\n\n  public:\n    LazySegmentTree()\
-    \ {\n    }\n    LazySegmentTree(const F& op,\n                    const G& mapping,\n\
-    \                    const H& composition,\n                    T e,\n       \
-    \             U id,\n                    int n)\n        : LazySegmentTree(op,\
-    \ mapping, composition, e, id, vector<T>(n, e)) {\n    }\n    LazySegmentTree(const\
-    \ F& op,\n                    const G& mapping,\n                    const H&\
-    \ composition,\n                    T e,\n                    U id,\n        \
-    \            const vector<T>& v)\n        : op(op),\n          mapping(mapping),\n\
-    \          composition(composition),\n          e(e),\n          id(id),\n   \
-    \       _n(int(v.size())),\n          log(0) {\n        while ((1 << log) < _n)\
-    \ log++;\n        size = 1 << log;\n        node = vector<T>(2 * size, e);\n \
-    \       lazy = vector<U>(size, id);\n        for (int i = 0; i < _n; i++) node[size\
-    \ + i] = v[i];\n        for (int i = size - 1; i >= 1; i--) {\n            update(i);\n\
-    \        }\n    }\n\n    void set(int p, T x) {\n        assert(0 <= p && p <\
-    \ _n);\n        p += size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n\
-    \        node[p] = x;\n        for (int i = 1; i <= log; i++) update(p >> i);\n\
-    \    }\n\n    // [l, r) (0-indexed)\n    T get(int l, int r) {\n        if (l\
-    \ >= r) return e;\n\n        l += size;\n        r += size;\n\n        for (int\
-    \ i = log; i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n\
-    \            if (((r >> i) << i) != r) push(r >> i);\n        }\n\n        T sml\
-    \ = e, smr = e;\n        while (l < r) {\n            if (l & 1) sml = op(sml,\
-    \ node[l++]);\n            if (r & 1) smr = op(node[--r], smr);\n            l\
-    \ >>= 1;\n            r >>= 1;\n        }\n\n        return op(sml, smr);\n  \
-    \  }\n\n    T all_get() const {\n        return node[1];\n    }\n\n    void apply(int\
-    \ p, U val) {\n        assert(0 <= p && p < _n);\n        p += size;\n       \
-    \ for (int i = log; i >= 1; i--) push(p >> i);\n        node[p] = val == id ?\
-    \ node[p] : mapping(node[p], val);\n        for (int i = 1; i <= log; i++) update(p\
-    \ >> i);\n    }\n\n    void apply(int l, int r, U val) {\n        if (l >= r)\
-    \ return;\n\n        l += size;\n        r += size;\n\n        for (int i = log;\
-    \ i >= 1; i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n      \
-    \      if (((r >> i) << i) != r) push((r - 1) >> i);\n        }\n\n        {\n\
-    \            int l2 = l, r2 = r;\n            while (l < r) {\n              \
-    \  if (l & 1) all_apply(l++, val);\n                if (r & 1) all_apply(--r,\
-    \ val);\n                l >>= 1;\n                r >>= 1;\n            }\n \
-    \           l = l2;\n            r = r2;\n        }\n\n        for (int i = 1;\
-    \ i <= log; i++) {\n            if (((l >> i) << i) != l) update(l >> i);\n  \
-    \          if (((r >> i) << i) != r) update((r - 1) >> i);\n        }\n    }\n\
-    \n    template <typename C> int max_right(int l, const C& check) {\n        assert(0\
-    \ <= l && l <= _n);\n        assert(check(e));\n        if (l == _n) return _n;\n\
-    \        l += size;\n        for (int i = log; i >= 1; i--) push(l >> i);\n  \
-    \      T sm = e;\n        do {\n            while (~l & 1) l >>= 1;\n        \
-    \    if (!check(op(sm, node[l]))) {\n                while (l < size) {\n    \
-    \                push(l);\n                    l = (2 * l);\n                \
-    \    if (check(op(sm, node[l]))) {\n                        sm = op(sm, node[l]);\n\
-    \                        l++;\n                    }\n                }\n    \
-    \            return l - size;\n            }\n            sm = op(sm, node[l]);\n\
-    \            l++;\n        } while ((l & -l) != l);\n        return _n;\n    }\n\
-    \n    template <typename C> int min_left(int r, const C& check) {\n        assert(0\
-    \ <= r && r <= _n);\n        assert(check(e));\n        if (r == 0) return 0;\n\
-    \        r += size;\n        for (int i = log; i >= 1; i--) push((r - 1) >> i);\n\
-    \        T sm = e;\n        do {\n            r--;\n            while (r > 1 &&\
-    \ (r & 1)) r >>= 1;\n            if (!check(op(node[r], sm))) {\n            \
-    \    while (r < size) {\n                    push(r);\n                    r =\
-    \ (2 * r + 1);\n                    if (check(op(node[r], sm))) {\n          \
-    \              sm = op(node[r], sm);\n                        r--;\n         \
-    \           }\n                }\n                return r + 1 - size;\n     \
-    \       }\n            sm = op(node[r], sm);\n        } while ((r & -r) != r);\n\
-    \        return 0;\n    }\n\n    T operator[](int p) {\n        assert(0 <= p\
-    \ && p < _n);\n        p += size;\n        for (int i = log; i >= 1; i--) push(p\
-    \ >> i);\n        return node[p];\n    }\n#ifdef MINATO_LOCAL\n    friend ostream&\
-    \ operator<<(ostream& os, LazySegmentTree r) {\n        vector<T> v(r._n);\n \
-    \       for (int i = 0; i < r._n; i++) {\n            v[i] = r[i];\n        }\n\
-    \        os << v;\n        return os;\n    }\n#endif\n\n  private:\n    void update(int\
-    \ k) {\n        node[k] = op(node[2 * k], node[2 * k + 1]);\n    }\n\n    void\
-    \ all_apply(int k, U val) {\n        node[k] = val == id ? node[k] : mapping(node[k],\
-    \ val);\n        if (k < size) lazy[k] = composition(lazy[k], val);\n    }\n\n\
-    \    void push(int k) {\n        if (lazy[k] == id) return;\n        all_apply(2\
-    \ * k, lazy[k]);\n        all_apply(2 * k + 1, lazy[k]);\n        lazy[k] = id;\n\
-    \    }\n};\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u6700\u5C0F\u5024\n\
-    \ */\ntemplate <typename T, T INF> auto buildRangeSetRangeMin(const vector<T>&\
-    \ v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto g = [](T a,\
-    \ T b) {\n        (void)a;\n        return b;\n    };\n    auto h = [](T a, T\
-    \ b) {\n        (void)a;\n        return b;\n    };\n    LazySegmentTree seg(f,\
-    \ g, h, INF, INF, v);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto\
-    \ buildRangeSetRangeMin(int n) {\n    return buildRangeSetRangeMin<T, INF>(vector<T>(n,\
-    \ INF));\n}\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u6700\u5927\u5024\n\
-    \ */\ntemplate <typename T, T INF> auto buildRangeSetRangeMax(const vector<T>&\
-    \ v) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto g = [](T a,\
-    \ T b) {\n        (void)a;\n        return b;\n    };\n    auto h = [](T a, T\
-    \ b) {\n        (void)a;\n        return b;\n    };\n    LazySegmentTree seg(f,\
-    \ g, h, -INF, -INF, v);\n    return seg;\n}\n\ntemplate <typename T, T INF> auto\
-    \ buildRangeSetRangeMax(int n) {\n    return buildRangeSetRangeMax<T, INF>(vector<T>(n,\
-    \ -INF));\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5C0F\u5024\
-    \n */\ntemplate <typename T, T INF> auto buildRangeAddRangeMin(const vector<T>&\
-    \ v) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto g = [](T a,\
-    \ T b) { return a + b; };\n    auto h = [](T a, T b) { return a + b; };\n    LazySegmentTree\
-    \ seg(f, g, h, INF, T(0), v);\n    return seg;\n}\n\ntemplate <typename T, T INF>\
-    \ auto buildRangeAddRangeMin(int n) {\n    return buildRangeAddRangeMin<T, INF>(vector<T>(n));\n\
-    }\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\n */\ntemplate\
-    \ <typename T, T INF> auto buildRangeAddRangeMax(const vector<T>& v) {\n    auto\
-    \ f = [](T a, T b) { return max(a, b); };\n    auto g = [](T a, T b) { return\
-    \ a + b; };\n    auto h = [](T a, T b) { return a + b; };\n    LazySegmentTree\
-    \ seg(f, g, h, -INF, T(0), v);\n    return seg;\n}\n\ntemplate <typename T, T\
-    \ INF> auto buildRangeAddRangeMax(int n) {\n    return buildRangeAddRangeMax<T,\
-    \ INF>(vector<T>(n));\n}\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u548C\
-    \n * @note pair.first: \u533A\u9593\u548C, pair.second: \u533A\u9593\u306E\u9577\
-    \u3055\n */\ntemplate <typename T> auto buildRangeSetRangeSum(const vector<T>&\
-    \ v, T id) {\n    using P = pair<T, int>;\n    auto f = [](P a, P b) { return\
-    \ P(a.first + b.first, a.second + b.second); };\n    auto g = [](P a, T b) { return\
-    \ P(b * a.second, a.second); };\n    auto h = [](T a, T b) {\n        (void)a;\n\
-    \        return b;\n    };\n    vector<P> w(v.size());\n    for (size_t i = 0;\
-    \ i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n    }\n    LazySegmentTree\
-    \ seg(f, g, h, P(0, 0), id, w);\n    return seg;\n}\n\ntemplate <typename T> auto\
-    \ buildRangeSetRangeSum(int n, T id) {\n    return buildRangeSetRangeSum<T>(vector<T>(n),\
-    \ id);\n}\n#line 5 \"test/segmenttree/LazySegmentTree3.test.cpp\"\nint main()\
-    \ {\n    INT(n, q);\n    auto seg = buildRangeSetRangeSum<int>(n, numeric_limits<int>::max());\n\
-    \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
-    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
-    \            print(seg.get(l, r + 1).first);\n        }\n    }\n}\n"
+    // clang-format on\n#line 2 \"segmenttree/LazySegmentTree.hpp\"\n\n#line 5 \"\
+    segmenttree/LazySegmentTree.hpp\"\n\ntemplate <class T, class U, class F, class\
+    \ G, class H> struct LazySegmentTree {\n  private:\n    F op;\n    G mapping;\n\
+    \    H composition;\n    T e;\n    U id;\n    int _n, size, log;\n    std::vector<T>\
+    \ node;\n    std::vector<U> lazy;\n\n  public:\n    LazySegmentTree() {\n    }\n\
+    \    LazySegmentTree(const F& op,\n                    const G& mapping,\n   \
+    \                 const H& composition,\n                    T e,\n          \
+    \          U id,\n                    int n)\n        : LazySegmentTree(op,\n\
+    \                          mapping,\n                          composition,\n\
+    \                          e,\n                          id,\n               \
+    \           std::vector<T>(n, e)) {\n    }\n    LazySegmentTree(const F& op,\n\
+    \                    const G& mapping,\n                    const H& composition,\n\
+    \                    T e,\n                    U id,\n                    const\
+    \ std::vector<T>& v)\n        : op(op),\n          mapping(mapping),\n       \
+    \   composition(composition),\n          e(e),\n          id(id),\n          _n(int(v.size())),\n\
+    \          log(0) {\n        while ((1 << log) < _n) log++;\n        size = 1\
+    \ << log;\n        node = std::vector<T>(2 * size, e);\n        lazy = std::vector<U>(size,\
+    \ id);\n        for (int i = 0; i < _n; i++) node[size + i] = v[i];\n        for\
+    \ (int i = size - 1; i >= 1; i--) {\n            update(i);\n        }\n    }\n\
+    \n    void set(int p, T x) {\n        assert(0 <= p && p < _n);\n        p +=\
+    \ size;\n        for (int i = log; i >= 1; i--) push(p >> i);\n        node[p]\
+    \ = x;\n        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n    //\
+    \ [l, r) (0-indexed)\n    T get(int l, int r) {\n        if (l >= r) return e;\n\
+    \n        l += size;\n        r += size;\n\n        for (int i = log; i >= 1;\
+    \ i--) {\n            if (((l >> i) << i) != l) push(l >> i);\n            if\
+    \ (((r >> i) << i) != r) push(r >> i);\n        }\n\n        T sml = e, smr =\
+    \ e;\n        while (l < r) {\n            if (l & 1) sml = op(sml, node[l++]);\n\
+    \            if (r & 1) smr = op(node[--r], smr);\n            l >>= 1;\n    \
+    \        r >>= 1;\n        }\n\n        return op(sml, smr);\n    }\n\n    T all_get()\
+    \ const {\n        return node[1];\n    }\n\n    void apply(int p, U val) {\n\
+    \        assert(0 <= p && p < _n);\n        p += size;\n        for (int i = log;\
+    \ i >= 1; i--) push(p >> i);\n        node[p] = val == id ? node[p] : mapping(node[p],\
+    \ val);\n        for (int i = 1; i <= log; i++) update(p >> i);\n    }\n\n   \
+    \ void apply(int l, int r, U val) {\n        if (l >= r) return;\n\n        l\
+    \ += size;\n        r += size;\n\n        for (int i = log; i >= 1; i--) {\n \
+    \           if (((l >> i) << i) != l) push(l >> i);\n            if (((r >> i)\
+    \ << i) != r) push((r - 1) >> i);\n        }\n\n        {\n            int l2\
+    \ = l, r2 = r;\n            while (l < r) {\n                if (l & 1) all_apply(l++,\
+    \ val);\n                if (r & 1) all_apply(--r, val);\n                l >>=\
+    \ 1;\n                r >>= 1;\n            }\n            l = l2;\n         \
+    \   r = r2;\n        }\n\n        for (int i = 1; i <= log; i++) {\n         \
+    \   if (((l >> i) << i) != l) update(l >> i);\n            if (((r >> i) << i)\
+    \ != r) update((r - 1) >> i);\n        }\n    }\n\n    template <typename C> int\
+    \ max_right(int l, const C& check) {\n        assert(0 <= l && l <= _n);\n   \
+    \     assert(check(e));\n        if (l == _n) return _n;\n        l += size;\n\
+    \        for (int i = log; i >= 1; i--) push(l >> i);\n        T sm = e;\n   \
+    \     do {\n            while (~l & 1) l >>= 1;\n            if (!check(op(sm,\
+    \ node[l]))) {\n                while (l < size) {\n                    push(l);\n\
+    \                    l = (2 * l);\n                    if (check(op(sm, node[l])))\
+    \ {\n                        sm = op(sm, node[l]);\n                        l++;\n\
+    \                    }\n                }\n                return l - size;\n\
+    \            }\n            sm = op(sm, node[l]);\n            l++;\n        }\
+    \ while ((l & -l) != l);\n        return _n;\n    }\n\n    template <typename\
+    \ C> int min_left(int r, const C& check) {\n        assert(0 <= r && r <= _n);\n\
+    \        assert(check(e));\n        if (r == 0) return 0;\n        r += size;\n\
+    \        for (int i = log; i >= 1; i--) push((r - 1) >> i);\n        T sm = e;\n\
+    \        do {\n            r--;\n            while (r > 1 && (r & 1)) r >>= 1;\n\
+    \            if (!check(op(node[r], sm))) {\n                while (r < size)\
+    \ {\n                    push(r);\n                    r = (2 * r + 1);\n    \
+    \                if (check(op(node[r], sm))) {\n                        sm = op(node[r],\
+    \ sm);\n                        r--;\n                    }\n                }\n\
+    \                return r + 1 - size;\n            }\n            sm = op(node[r],\
+    \ sm);\n        } while ((r & -r) != r);\n        return 0;\n    }\n\n    T operator[](int\
+    \ p) {\n        assert(0 <= p && p < _n);\n        p += size;\n        for (int\
+    \ i = log; i >= 1; i--) push(p >> i);\n        return node[p];\n    }\n#ifdef\
+    \ MINATO_LOCAL\n    friend ostream& operator<<(ostream& os, LazySegmentTree r)\
+    \ {\n        std::vector<T> v(r._n);\n        for (int i = 0; i < r._n; i++) {\n\
+    \            v[i] = r[i];\n        }\n        os << v;\n        return os;\n \
+    \   }\n#endif\n\n  private:\n    void update(int k) {\n        node[k] = op(node[2\
+    \ * k], node[2 * k + 1]);\n    }\n\n    void all_apply(int k, U val) {\n     \
+    \   node[k] = val == id ? node[k] : mapping(node[k], val);\n        if (k < size)\
+    \ lazy[k] = composition(lazy[k], val);\n    }\n\n    void push(int k) {\n    \
+    \    if (lazy[k] == id) return;\n        all_apply(2 * k, lazy[k]);\n        all_apply(2\
+    \ * k + 1, lazy[k]);\n        lazy[k] = id;\n    }\n};\n\n/**\n * \u533A\u9593\
+    \u66F4\u65B0\u533A\u9593\u6700\u5C0F\u5024\n */\ntemplate <typename T>\nauto buildRangeSetRangeMin(const\
+    \ std::vector<T>& v, T e, T id) {\n    auto f = [](T a, T b) { return min(a, b);\
+    \ };\n    auto g = [](T a, T b) {\n        (void)a;\n        return b;\n    };\n\
+    \    auto h = [](T a, T b) {\n        (void)a;\n        return b;\n    };\n  \
+    \  LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate <typename\
+    \ T> auto buildRangeSetRangeMin(int n, T e, T id) {\n    return buildRangeSetRangeMin<T>(std::vector<T>(n,\
+    \ e), e, id);\n}\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u6700\u5927\u5024\
+    \n */\ntemplate <typename T>\nauto buildRangeSetRangeMax(const std::vector<T>&\
+    \ v, T e, T id) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto\
+    \ g = [](T a, T b) {\n        (void)a;\n        return b;\n    };\n    auto h\
+    \ = [](T a, T b) {\n        (void)a;\n        return b;\n    };\n    LazySegmentTree\
+    \ seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate <typename T> auto buildRangeSetRangeMax(int\
+    \ n, T e, T id) {\n    return buildRangeSetRangeMax<T>(std::vector<T>(n, e), e,\
+    \ id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5C0F\u5024\n\
+    \ */\ntemplate <typename T>\nauto buildRangeAddRangeMin(const std::vector<T>&\
+    \ v, T e, T id) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto\
+    \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
+    \ b; };\n    LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate\
+    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n),\
+    \ e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
+    \n */\ntemplate <typename T>\nauto buildRangeAddRangeMax(const std::vector<T>&\
+    \ v, T e, T id) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto\
+    \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
+    \ b; };\n    LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate\
+    \ <typename T> auto buildRangeAddRangeMax(int n, T e, T id) {\n    return buildRangeAddRangeMax<T>(std::vector<T>(n,\
+    \ e), e, id);\n}\n\n/**\n * \u533A\u9593\u66F4\u65B0\u533A\u9593\u548C\n * @note\
+    \ pair.first: \u533A\u9593\u548C, pair.second: \u533A\u9593\u306E\u9577\u3055\n\
+    \ */\ntemplate <typename T, typename S>\nauto buildRangeSetRangeSum(const std::vector<T>&\
+    \ v, pair<T, S> e, T id) {\n    using P = pair<T, S>;\n    auto f = [](P a, P\
+    \ b) { return P(a.first + b.first, a.second + b.second); };\n    auto g = [](P\
+    \ a, T b) { return P(b * a.second, a.second); };\n    auto h = [](T a, T b) {\n\
+    \        (void)a;\n        return b;\n    };\n    std::vector<P> w(v.size());\n\
+    \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
+    \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
+    \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}\n\
+    #line 5 \"test/segmenttree/LazySegmentTree3.test.cpp\"\nint main() {\n    INT(n,\
+    \ q);\n    constexpr pii e = pii(0, 0);\n    constexpr int id = numeric_limits<int>::max();\n\
+    \    auto seg = buildRangeSetRangeSum<int, int>(n, e, id);\n    rep(q) {\n   \
+    \     INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n            seg.apply(l,\
+    \ r + 1, x);\n        } else {\n            INT(l, r);\n            print(seg.get(l,\
+    \ r + 1).first);\n        }\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_I\"\
     \n#include \"other/template.hpp\"\n#include \"segmenttree/LazySegmentTree.hpp\"\
-    \nint main() {\n    INT(n, q);\n    auto seg = buildRangeSetRangeSum<int>(n, numeric_limits<int>::max());\n\
-    \    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n\
-    \            seg.apply(l, r + 1, x);\n        } else {\n            INT(l, r);\n\
-    \            print(seg.get(l, r + 1).first);\n        }\n    }\n}"
+    \nint main() {\n    INT(n, q);\n    constexpr pii e = pii(0, 0);\n    constexpr\
+    \ int id = numeric_limits<int>::max();\n    auto seg = buildRangeSetRangeSum<int,\
+    \ int>(n, e, id);\n    rep(q) {\n        INT(t);\n        if (t == 0) {\n    \
+    \        INT(l, r, x);\n            seg.apply(l, r + 1, x);\n        } else {\n\
+    \            INT(l, r);\n            print(seg.get(l, r + 1).first);\n       \
+    \ }\n    }\n}"
   dependsOn:
   - other/template.hpp
   - segmenttree/LazySegmentTree.hpp
   isVerificationFile: true
   path: test/segmenttree/LazySegmentTree3.test.cpp
   requiredBy: []
-  timestamp: '2023-06-12 01:31:27+09:00'
+  timestamp: '2023-06-20 01:18:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/LazySegmentTree3.test.cpp

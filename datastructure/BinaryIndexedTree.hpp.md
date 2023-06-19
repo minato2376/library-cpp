@@ -6,6 +6,9 @@ data:
     path: algorithm/inversion_number.hpp
     title: algorithm/inversion_number.hpp
   - icon: ':heavy_check_mark:'
+    path: segmenttree/PointAddRectangleSum.hpp
+    title: segmenttree/PointAddRectangleSum.hpp
+  - icon: ':heavy_check_mark:'
     path: segmenttree/RangeAddRangeSum.hpp
     title: segmenttree/RangeAddRangeSum.hpp
   _extendedVerifiedWith:
@@ -78,6 +81,7 @@ data:
   path: datastructure/BinaryIndexedTree.hpp
   requiredBy:
   - segmenttree/RangeAddRangeSum.hpp
+  - segmenttree/PointAddRectangleSum.hpp
   - algorithm/inversion_number.hpp
   timestamp: '2023-02-18 14:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
