@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: segmenttree/LazySegmentTree.hpp
     title: segmenttree/LazySegmentTree.hpp
   _extendedRequiredBy: []
@@ -247,8 +247,8 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
-    }\n#line 5 \"test/segmenttree/LazySegmentTree.test.cpp\"\nint main() {\n    INT(n,\
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}\n\
+    #line 5 \"test/segmenttree/LazySegmentTree.test.cpp\"\nint main() {\n    INT(n,\
     \ q);\n    constexpr int e = numeric_limits<int>::max();\n    constexpr int id\
     \ = numeric_limits<int>::max();\n    auto seg = buildRangeSetRangeMin<int>(n,\
     \ e, id);\n    rep(q) {\n        INT(t);\n        if (t == 0) {\n            INT(l,\
@@ -267,7 +267,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/LazySegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 00:49:55+09:00'
+  timestamp: '2023-06-26 01:08:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/LazySegmentTree.test.cpp

@@ -6,18 +6,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree.test.cpp
     title: test/segmenttree/LazySegmentTree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree2.test.cpp
     title: test/segmenttree/LazySegmentTree2.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree3.test.cpp
     title: test/segmenttree/LazySegmentTree3.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree4.test.cpp
     title: test/segmenttree/LazySegmentTree4.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"segmenttree/LazySegmentTree.hpp\"\n\n#include <cassert>\n\
@@ -129,8 +129,7 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
-    }\n"
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\ntemplate <class\
     \ T, class U, class F, class G, class H> struct LazySegmentTree {\n  private:\n\
     \    F op;\n    G mapping;\n    H composition;\n    T e;\n    U id;\n    int _n,\
@@ -240,14 +239,13 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
-    }"
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}"
   dependsOn: []
   isVerificationFile: false
   path: segmenttree/LazySegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-06-26 00:49:55+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2023-06-26 01:08:26+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/segmenttree/LazySegmentTree4.test.cpp
   - test/segmenttree/LazySegmentTree3.test.cpp

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
   - icon: ':heavy_check_mark:'
@@ -138,21 +138,21 @@ data:
     \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
     \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
     #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 2 \"shortestpath/warshall_floyd.hpp\"\n\ntemplate <typename\
-    \ Int, Int INF> void warshall_floyd(vector<vector<Int>>& G) {\n    int N = G.size();\n\
-    \n    for (int k = 0; k < N; k++) {\n        for (int i = 0; i < N; i++) {\n \
-    \           if (G[i][k] == INF) continue;\n            for (int j = 0; j < N;\
-    \ j++) {\n                if (G[k][j] == INF) continue;\n                G[i][j]\
-    \ = min(G[i][j], G[i][k] + G[k][j]);\n            }\n        }\n    }\n    return;\n\
-    }\n#line 5 \"test/shortestpath/warshall_floyd.test.cpp\"\n\nint main() {\n   \
-    \ constexpr int INF = numeric_limits<int>::max();\n    INT(V, E);\n    vvec<int>\
-    \ dist(V, vec<int>(V, INF));\n    rep(i, V) dist[i][i] = 0;\n    rep(E) {\n  \
-    \      INT(s, t, d);\n        chmin(dist[s][t], d);\n    }\n    warshall_floyd<int,\
-    \ INF>(dist);\n    rep(i, V) if (dist[i][i] < 0) drop(\"NEGATIVE CYCLE\");\n \
-    \   rep(i, V) {\n        rep(j, V) {\n            if (j) cout << \" \";\n    \
-    \        if (dist[i][j] == INF)\n                cout << \"INF\";\n          \
-    \  else\n                cout << dist[i][j];\n        }\n        cout << ln;\n\
-    \    }\n}\n"
+    // clang-format on\n#line 2 \"shortestpath/warshall_floyd.hpp\"\n\n#line 4 \"\
+    shortestpath/warshall_floyd.hpp\"\n\ntemplate <typename Int, Int INF>\nvoid warshall_floyd(std::vector<std::vector<Int>>&\
+    \ G) {\n    int N = G.size();\n\n    for (int k = 0; k < N; k++) {\n        for\
+    \ (int i = 0; i < N; i++) {\n            if (G[i][k] == INF) continue;\n     \
+    \       for (int j = 0; j < N; j++) {\n                if (G[k][j] == INF) continue;\n\
+    \                G[i][j] = min(G[i][j], G[i][k] + G[k][j]);\n            }\n \
+    \       }\n    }\n    return;\n}\n#line 5 \"test/shortestpath/warshall_floyd.test.cpp\"\
+    \n\nint main() {\n    constexpr int INF = numeric_limits<int>::max();\n    INT(V,\
+    \ E);\n    vvec<int> dist(V, vec<int>(V, INF));\n    rep(i, V) dist[i][i] = 0;\n\
+    \    rep(E) {\n        INT(s, t, d);\n        chmin(dist[s][t], d);\n    }\n \
+    \   warshall_floyd<int, INF>(dist);\n    rep(i, V) if (dist[i][i] < 0) drop(\"\
+    NEGATIVE CYCLE\");\n    rep(i, V) {\n        rep(j, V) {\n            if (j) cout\
+    \ << \" \";\n            if (dist[i][j] == INF)\n                cout << \"INF\"\
+    ;\n            else\n                cout << dist[i][j];\n        }\n        cout\
+    \ << ln;\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n#include \"other/template.hpp\"\n#include \"shortestpath/warshall_floyd.hpp\"\
     \n\nint main() {\n    constexpr int INF = numeric_limits<int>::max();\n    INT(V,\
@@ -169,7 +169,7 @@ data:
   isVerificationFile: true
   path: test/shortestpath/warshall_floyd.test.cpp
   requiredBy: []
-  timestamp: '2023-06-20 01:24:59+09:00'
+  timestamp: '2023-06-26 01:08:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/shortestpath/warshall_floyd.test.cpp

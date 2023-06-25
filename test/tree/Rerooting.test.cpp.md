@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: mod/ModInt.hpp
     title: mod/ModInt.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
   - icon: ':heavy_check_mark:'
@@ -234,38 +234,38 @@ data:
     template <class T>\nusing is_signed_int_t = std::enable_if_t<is_signed_int<T>::value>;\n\
     \ntemplate <class T>\nusing is_unsigned_int_t = std::enable_if_t<is_unsigned_int<T>::value>;\n\
     \ntemplate <class T> using to_unsigned_t = typename to_unsigned<T>::type;\n\n\
-    }  // namespace internal\n#line 4 \"mod/ModInt.hpp\"\n\ntemplate <int m> struct\
-    \ ModInt {\n  public:\n    static constexpr int mod() {\n        return m;\n \
-    \   }\n    static ModInt raw(int v) {\n        ModInt x;\n        x._v = v;\n\
-    \        return x;\n    }\n\n    ModInt() : _v(0) {\n    }\n\n    template <class\
-    \ T, internal::is_signed_int_t<T>* = nullptr> ModInt(T v) {\n        long long\
-    \ x = (long long)(v % (long long)(umod()));\n        if (x < 0) x += umod();\n\
-    \        _v = (unsigned int)(x);\n    }\n    template <class T, internal::is_unsigned_int_t<T>*\
-    \ = nullptr> ModInt(T v) {\n        _v = (unsigned int)(v % umod());\n    }\n\n\
-    \    unsigned int val() const {\n        return _v;\n    }\n\n    ModInt& operator++()\
-    \ {\n        _v++;\n        if (_v == umod()) _v = 0;\n        return *this;\n\
-    \    }\n    ModInt& operator--() {\n        if (_v == 0) _v = umod();\n      \
-    \  _v--;\n        return *this;\n    }\n    ModInt operator++(int) {\n       \
-    \ ModInt result = *this;\n        ++*this;\n        return result;\n    }\n  \
-    \  ModInt operator--(int) {\n        ModInt result = *this;\n        --*this;\n\
-    \        return result;\n    }\n\n    ModInt& operator+=(const ModInt& rhs) {\n\
-    \        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n        return\
-    \ *this;\n    }\n    ModInt& operator-=(const ModInt& rhs) {\n        _v -= rhs._v;\n\
-    \        if (_v >= umod()) _v += umod();\n        return *this;\n    }\n    ModInt&\
-    \ operator*=(const ModInt& rhs) {\n        unsigned long long z = _v;\n      \
-    \  z *= rhs._v;\n        _v = (unsigned int)(z % umod());\n        return *this;\n\
-    \    }\n    ModInt& operator^=(long long n) {\n        ModInt x = *this;\n   \
-    \     *this = 1;\n        if (n < 0) x = x.inv(), n = -n;\n        while (n) {\n\
-    \            if (n & 1) *this *= x;\n            x *= x;\n            n >>= 1;\n\
-    \        }\n        return *this;\n    }\n    ModInt& operator/=(const ModInt&\
-    \ rhs) {\n        return *this = *this * rhs.inv();\n    }\n\n    ModInt operator+()\
-    \ const {\n        return *this;\n    }\n    ModInt operator-() const {\n    \
-    \    return ModInt() - *this;\n    }\n    explicit operator bool() const {\n \
-    \       return _v != 0;\n    }\n\n    ModInt pow(long long n) const {\n      \
-    \  ModInt r = *this;\n        r ^= n;\n        return r;\n    }\n    ModInt inv()\
-    \ const {\n        int a = _v, b = umod(), y = 1, z = 0, t;\n        for (;;)\
-    \ {\n            t = a / b;\n            a -= t * b;\n            if (a == 0)\
-    \ {\n                assert(b == 1 || b == -1);\n                return ModInt(b\
+    }  // namespace internal\n#line 4 \"mod/ModInt.hpp\"\n\n#line 6 \"mod/ModInt.hpp\"\
+    \n\ntemplate <int m> struct ModInt {\n  public:\n    static constexpr int mod()\
+    \ {\n        return m;\n    }\n    static ModInt raw(int v) {\n        ModInt\
+    \ x;\n        x._v = v;\n        return x;\n    }\n\n    ModInt() : _v(0) {\n\
+    \    }\n\n    template <class T, internal::is_signed_int_t<T>* = nullptr> ModInt(T\
+    \ v) {\n        long long x = (long long)(v % (long long)(umod()));\n        if\
+    \ (x < 0) x += umod();\n        _v = (unsigned int)(x);\n    }\n    template <class\
+    \ T, internal::is_unsigned_int_t<T>* = nullptr> ModInt(T v) {\n        _v = (unsigned\
+    \ int)(v % umod());\n    }\n\n    unsigned int val() const {\n        return _v;\n\
+    \    }\n\n    ModInt& operator++() {\n        _v++;\n        if (_v == umod())\
+    \ _v = 0;\n        return *this;\n    }\n    ModInt& operator--() {\n        if\
+    \ (_v == 0) _v = umod();\n        _v--;\n        return *this;\n    }\n    ModInt\
+    \ operator++(int) {\n        ModInt result = *this;\n        ++*this;\n      \
+    \  return result;\n    }\n    ModInt operator--(int) {\n        ModInt result\
+    \ = *this;\n        --*this;\n        return result;\n    }\n\n    ModInt& operator+=(const\
+    \ ModInt& rhs) {\n        _v += rhs._v;\n        if (_v >= umod()) _v -= umod();\n\
+    \        return *this;\n    }\n    ModInt& operator-=(const ModInt& rhs) {\n \
+    \       _v -= rhs._v;\n        if (_v >= umod()) _v += umod();\n        return\
+    \ *this;\n    }\n    ModInt& operator*=(const ModInt& rhs) {\n        unsigned\
+    \ long long z = _v;\n        z *= rhs._v;\n        _v = (unsigned int)(z % umod());\n\
+    \        return *this;\n    }\n    ModInt& operator^=(long long n) {\n       \
+    \ ModInt x = *this;\n        *this = 1;\n        if (n < 0) x = x.inv(), n = -n;\n\
+    \        while (n) {\n            if (n & 1) *this *= x;\n            x *= x;\n\
+    \            n >>= 1;\n        }\n        return *this;\n    }\n    ModInt& operator/=(const\
+    \ ModInt& rhs) {\n        return *this = *this * rhs.inv();\n    }\n\n    ModInt\
+    \ operator+() const {\n        return *this;\n    }\n    ModInt operator-() const\
+    \ {\n        return ModInt() - *this;\n    }\n    explicit operator bool() const\
+    \ {\n        return _v != 0;\n    }\n\n    ModInt pow(long long n) const {\n \
+    \       ModInt r = *this;\n        r ^= n;\n        return r;\n    }\n    ModInt\
+    \ inv() const {\n        int a = _v, b = umod(), y = 1, z = 0, t;\n        for\
+    \ (;;) {\n            t = a / b;\n            a -= t * b;\n            if (a ==\
+    \ 0) {\n                assert(b == 1 || b == -1);\n                return ModInt(b\
     \ * z);\n            }\n            y -= t * z;\n            t = b / a;\n    \
     \        b -= t * a;\n            if (b == 0) {\n                assert(a == 1\
     \ || a == -1);\n                return ModInt(a * y);\n            }\n       \
@@ -323,7 +323,7 @@ data:
   isVerificationFile: true
   path: test/tree/Rerooting.test.cpp
   requiredBy: []
-  timestamp: '2023-06-20 01:24:59+09:00'
+  timestamp: '2023-06-26 01:08:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/tree/Rerooting.test.cpp

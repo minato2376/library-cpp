@@ -12,6 +12,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: algorithm/inversion_number.hpp
       title: algorithm/inversion_number.hpp
+    - icon: ':warning:'
+      path: algorithm/longest_common_subsequence.hpp
+      title: algorithm/longest_common_subsequence.hpp
     - icon: ':heavy_check_mark:'
       path: algorithm/run_length_encoding.hpp
       title: algorithm/run_length_encoding.hpp
@@ -20,6 +23,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: datastructure/BinaryIndexedTree.hpp
       title: datastructure/BinaryIndexedTree.hpp
+    - icon: ':warning:'
+      path: datastructure/FrequencyManager.hpp
+      title: datastructure/FrequencyManager.hpp
     - icon: ':heavy_check_mark:'
       path: datastructure/RangeSet.hpp
       title: datastructure/RangeSet.hpp
@@ -60,7 +66,7 @@ data:
       title: mod/ModInt.hpp
   - name: other
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: other/template.hpp
       title: other/template.hpp
     - icon: ':heavy_check_mark:'
@@ -71,7 +77,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: segmenttree/DualSegmentTree.hpp
       title: segmenttree/DualSegmentTree.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: segmenttree/LazySegmentTree.hpp
       title: segmenttree/LazySegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -161,10 +167,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/LazySegmentTree.test.cpp
       title: test/segmenttree/LazySegmentTree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/segmenttree/LazySegmentTree2.test.cpp
       title: test/segmenttree/LazySegmentTree2.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/segmenttree/LazySegmentTree3.test.cpp
       title: test/segmenttree/LazySegmentTree3.test.cpp
     - icon: ':heavy_check_mark:'
