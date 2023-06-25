@@ -6,18 +6,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree.test.cpp
     title: test/segmenttree/LazySegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/segmenttree/LazySegmentTree2.test.cpp
     title: test/segmenttree/LazySegmentTree2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/segmenttree/LazySegmentTree3.test.cpp
     title: test/segmenttree/LazySegmentTree3.test.cpp
   - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree4.test.cpp
     title: test/segmenttree/LazySegmentTree4.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"segmenttree/LazySegmentTree.hpp\"\n\n#include <cassert>\n\
@@ -112,8 +112,8 @@ data:
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
     \ b; };\n    LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate\
-    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n),\
-    \ e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
+    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n,\
+    \ e), e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
     \n */\ntemplate <typename T>\nauto buildRangeAddRangeMax(const std::vector<T>&\
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
@@ -129,7 +129,8 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}\n"
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
+    }\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\ntemplate <class\
     \ T, class U, class F, class G, class H> struct LazySegmentTree {\n  private:\n\
     \    F op;\n    G mapping;\n    H composition;\n    T e;\n    U id;\n    int _n,\
@@ -222,8 +223,8 @@ data:
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
     \ b; };\n    LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate\
-    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n),\
-    \ e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
+    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n,\
+    \ e), e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
     \n */\ntemplate <typename T>\nauto buildRangeAddRangeMax(const std::vector<T>&\
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
@@ -239,16 +240,17 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}"
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
+    }"
   dependsOn: []
   isVerificationFile: false
   path: segmenttree/LazySegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-06-20 01:18:34+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-06-26 00:49:55+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/segmenttree/LazySegmentTree3.test.cpp
   - test/segmenttree/LazySegmentTree4.test.cpp
+  - test/segmenttree/LazySegmentTree3.test.cpp
   - test/segmenttree/LazySegmentTree.test.cpp
   - test/segmenttree/LazySegmentTree2.test.cpp
 documentation_of: segmenttree/LazySegmentTree.hpp

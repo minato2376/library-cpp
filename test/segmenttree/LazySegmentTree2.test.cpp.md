@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: segmenttree/LazySegmentTree.hpp
     title: segmenttree/LazySegmentTree.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_2_H
@@ -230,8 +230,8 @@ data:
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
     \ b; };\n    LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate\
-    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n),\
-    \ e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
+    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n,\
+    \ e), e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
     \n */\ntemplate <typename T>\nauto buildRangeAddRangeMax(const std::vector<T>&\
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
@@ -247,8 +247,8 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}\n\
-    #line 5 \"test/segmenttree/LazySegmentTree2.test.cpp\"\nint main() {\n    INT(n,\
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
+    }\n#line 5 \"test/segmenttree/LazySegmentTree2.test.cpp\"\nint main() {\n    INT(n,\
     \ q);\n    constexpr int e = numeric_limits<int>::max();\n    constexpr int id\
     \ = 0;\n    auto seg = buildRangeAddRangeMin<int>(n, e, id);\n    rep(q) {\n \
     \       INT(t);\n        if (t == 0) {\n            INT(l, r, x);\n          \
@@ -267,8 +267,8 @@ data:
   isVerificationFile: true
   path: test/segmenttree/LazySegmentTree2.test.cpp
   requiredBy: []
-  timestamp: '2023-06-20 01:24:59+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2023-06-26 00:49:55+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/segmenttree/LazySegmentTree2.test.cpp
 layout: document

@@ -60,7 +60,7 @@ data:
       title: mod/ModInt.hpp
   - name: other
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: other/template.hpp
       title: other/template.hpp
     - icon: ':heavy_check_mark:'
@@ -71,7 +71,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: segmenttree/DualSegmentTree.hpp
       title: segmenttree/DualSegmentTree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: segmenttree/LazySegmentTree.hpp
       title: segmenttree/LazySegmentTree.hpp
     - icon: ':heavy_check_mark:'
@@ -161,10 +161,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/segmenttree/LazySegmentTree.test.cpp
       title: test/segmenttree/LazySegmentTree.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/segmenttree/LazySegmentTree2.test.cpp
       title: test/segmenttree/LazySegmentTree2.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/segmenttree/LazySegmentTree3.test.cpp
       title: test/segmenttree/LazySegmentTree3.test.cpp
     - icon: ':heavy_check_mark:'

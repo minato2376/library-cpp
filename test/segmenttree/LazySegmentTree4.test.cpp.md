@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: segmenttree/LazySegmentTree.hpp
     title: segmenttree/LazySegmentTree.hpp
   _extendedRequiredBy: []
@@ -229,8 +229,8 @@ data:
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return min(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
     \ b; };\n    LazySegmentTree seg(f, g, h, e, id, v);\n    return seg;\n}\n\ntemplate\
-    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n),\
-    \ e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
+    \ <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {\n    return buildRangeAddRangeMin<T>(std::vector<T>(n,\
+    \ e), e, id);\n}\n\n/**\n * \u533A\u9593\u52A0\u7B97\u533A\u9593\u6700\u5927\u5024\
     \n */\ntemplate <typename T>\nauto buildRangeAddRangeMax(const std::vector<T>&\
     \ v, T e, T id) {\n    auto f = [](T a, T b) { return max(a, b); };\n    auto\
     \ g = [](T a, T b) { return a + b; };\n    auto h = [](T a, T b) { return a +\
@@ -246,12 +246,12 @@ data:
     \    for (size_t i = 0; i < v.size(); i++) {\n        w[i] = P(v[i], 1);\n   \
     \ }\n    LazySegmentTree seg(f, g, h, e, id, w);\n    return seg;\n}\n\ntemplate\
     \ <typename T, typename S>\nauto buildRangeSetRangeSum(int n, pair<T, S> e, T\
-    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);\n}\n\
-    #line 4 \"test/segmenttree/LazySegmentTree4.test.cpp\"\n\nint main() {\n    INT(N);\n\
-    \    VEC(ll, A, N);\n    constexpr ll e = numeric_limits<ll>::max();\n    constexpr\
-    \ ll id = 0;\n    auto seg = buildRangeAddRangeMin<ll>(A, e, id);\n    INT(Q);\n\
-    \    rep(Q) {\n        LL(t, l, r, c);\n        l--;\n        if (t == 1) {\n\
-    \            seg.apply(l, r, c);\n        } else {\n            print(seg.get(l,\
+    \ id) {\n    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);\n\
+    }\n#line 4 \"test/segmenttree/LazySegmentTree4.test.cpp\"\n\nint main() {\n  \
+    \  INT(N);\n    VEC(ll, A, N);\n    constexpr ll e = numeric_limits<ll>::max();\n\
+    \    constexpr ll id = 0;\n    auto seg = buildRangeAddRangeMin<ll>(A, e, id);\n\
+    \    INT(Q);\n    rep(Q) {\n        LL(t, l, r, c);\n        l--;\n        if\
+    \ (t == 1) {\n            seg.apply(l, r, c);\n        } else {\n            print(seg.get(l,\
     \ r));\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1234\"\n#include \"other/template.hpp\"\
     \n#include \"segmenttree/LazySegmentTree.hpp\"\n\nint main() {\n    INT(N);\n\
@@ -266,7 +266,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/LazySegmentTree4.test.cpp
   requiredBy: []
-  timestamp: '2023-06-20 01:24:59+09:00'
+  timestamp: '2023-06-26 00:49:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/LazySegmentTree4.test.cpp

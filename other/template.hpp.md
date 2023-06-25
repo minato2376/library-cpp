@@ -54,10 +54,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/segmenttree/LazySegmentTree.test.cpp
     title: test/segmenttree/LazySegmentTree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/segmenttree/LazySegmentTree2.test.cpp
     title: test/segmenttree/LazySegmentTree2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/segmenttree/LazySegmentTree3.test.cpp
     title: test/segmenttree/LazySegmentTree3.test.cpp
   - icon: ':heavy_check_mark:'
@@ -78,9 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting.test.cpp
     title: test/tree/Rerooting.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"other/template.hpp\"\n// clang-format off\n#include <algorithm>\n\
@@ -327,33 +327,33 @@ data:
   path: other/template.hpp
   requiredBy: []
   timestamp: '2023-06-20 01:24:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/segmenttree/DualSegmentTree.test.cpp
-  - test/segmenttree/PointAddRectangleSum.test.cpp
-  - test/segmenttree/SegmentTree.test.cpp
-  - test/segmenttree/DualSegmentTree2.test.cpp
-  - test/segmenttree/LazySegmentTree3.test.cpp
-  - test/segmenttree/LazySegmentTree4.test.cpp
-  - test/segmenttree/RangeAddRangeSum.test.cpp
-  - test/segmenttree/LazySegmentTree.test.cpp
-  - test/segmenttree/LazySegmentTree2.test.cpp
-  - test/algorithm/SquareRootDecomposion.test.cpp
-  - test/algorithm/inversion_number.test.cpp
-  - test/algorithm/run_length_encoding.test.cpp
-  - test/mod/ModInt.test.cpp
-  - test/shortestpath/warshall_floyd.test.cpp
-  - test/other/template.test.cpp
-  - test/math/totient.test.cpp
-  - test/math/floor_sqrt.test.cpp
-  - test/math/TwoSat.test.cpp
-  - test/graph/StronglyConnectedComponents.test.cpp
-  - test/generator/generate_random_sequence.test.cpp
   - test/datastructure/RangeSet.test.cpp
+  - test/datastructure/SlidingWindowAggregation.test.cpp
   - test/datastructure/UnionFind.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
-  - test/datastructure/SlidingWindowAggregation.test.cpp
+  - test/mod/ModInt.test.cpp
+  - test/shortestpath/warshall_floyd.test.cpp
+  - test/math/TwoSat.test.cpp
+  - test/math/floor_sqrt.test.cpp
+  - test/math/totient.test.cpp
+  - test/algorithm/inversion_number.test.cpp
+  - test/algorithm/SquareRootDecomposion.test.cpp
+  - test/algorithm/run_length_encoding.test.cpp
+  - test/graph/StronglyConnectedComponents.test.cpp
+  - test/other/template.test.cpp
+  - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/segmenttree/LazySegmentTree4.test.cpp
+  - test/segmenttree/SegmentTree.test.cpp
+  - test/segmenttree/DualSegmentTree.test.cpp
+  - test/segmenttree/LazySegmentTree3.test.cpp
+  - test/segmenttree/LazySegmentTree.test.cpp
+  - test/segmenttree/PointAddRectangleSum.test.cpp
+  - test/segmenttree/LazySegmentTree2.test.cpp
+  - test/segmenttree/RangeAddRangeSum.test.cpp
   - test/tree/Rerooting.test.cpp
+  - test/generator/generate_random_sequence.test.cpp
 documentation_of: other/template.hpp
 layout: document
 redirect_from:
