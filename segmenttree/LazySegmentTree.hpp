@@ -269,7 +269,7 @@ auto buildRangeAddRangeMin(const std::vector<T>& v, T e, T id) {
 }
 
 template <typename T> auto buildRangeAddRangeMin(int n, T e, T id) {
-    return buildRangeAddRangeMin<T>(std::vector<T>(n), e, id);
+    return buildRangeAddRangeMin<T>(std::vector<T>(n, e), e, id);
 }
 
 /**
@@ -311,5 +311,5 @@ auto buildRangeSetRangeSum(const std::vector<T>& v, pair<T, S> e, T id) {
 
 template <typename T, typename S>
 auto buildRangeSetRangeSum(int n, pair<T, S> e, T id) {
-    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);
+    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);
 }
