@@ -311,5 +311,5 @@ auto buildRangeSetRangeSum(const std::vector<T>& v, pair<T, S> e, T id) {
 
 template <typename T, typename S>
 auto buildRangeSetRangeSum(int n, pair<T, S> e, T id) {
-    return buildRangeSetRangeSum<T, S>(std::vector<T>(n, e), e, id);
+    return buildRangeSetRangeSum<T, S>(std::vector<T>(n), e, id);
 }

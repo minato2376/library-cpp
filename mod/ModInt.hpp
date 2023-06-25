@@ -2,6 +2,8 @@
 
 #include "other/type_traits.hpp"
 
+#include <cassert>
+
 template <int m> struct ModInt {
   public:
     static constexpr int mod() {

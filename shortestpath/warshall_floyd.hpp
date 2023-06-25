@@ -1,6 +1,9 @@
 #pragma once
 
-template <typename Int, Int INF> void warshall_floyd(vector<vector<Int>>& G) {
+#include <vector>
+
+template <typename Int, Int INF>
+void warshall_floyd(std::vector<std::vector<Int>>& G) {
     int N = G.size();
 
     for (int k = 0; k < N; k++) {

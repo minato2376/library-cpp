@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cassert>
+#include <vector>
+
 template <class M> struct ModCombination {
   public:
     ModCombination() {
@@ -51,5 +54,5 @@ template <class M> struct ModCombination {
 
   private:
     int n_;
-    vector<M> fac_, facinv_;
+    std::vector<M> fac_, facinv_;
 };

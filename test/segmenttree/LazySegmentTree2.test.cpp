@@ -6,7 +6,7 @@ int main() {
     INT(n, q);
     constexpr int e = numeric_limits<int>::max();
     constexpr int id = 0;
-    auto seg = buildRangeAddRangeMin<int>(n, e, id);
+    auto seg = buildRangeAddRangeMin<int>(vec<int>(n), e, id);
     rep(q) {
         INT(t);
         if (t == 0) {
