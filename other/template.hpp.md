@@ -16,6 +16,9 @@ data:
     path: test/datastructure/BinaryIndexedTree.test.cpp
     title: test/datastructure/BinaryIndexedTree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: test/datastructure/BinaryTrie.test.cpp
+    title: test/datastructure/BinaryTrie.test.cpp
+  - icon: ':heavy_check_mark:'
     path: test/datastructure/RangeSet.test.cpp
     title: test/datastructure/RangeSet.test.cpp
   - icon: ':heavy_check_mark:'
@@ -329,31 +332,32 @@ data:
   timestamp: '2023-06-20 01:24:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/datastructure/RangeSet.test.cpp
-  - test/datastructure/SlidingWindowAggregation.test.cpp
-  - test/datastructure/UnionFind.test.cpp
-  - test/datastructure/BinaryIndexedTree.test.cpp
-  - test/mod/ModInt.test.cpp
-  - test/shortestpath/warshall_floyd.test.cpp
-  - test/math/TwoSat.test.cpp
   - test/math/floor_sqrt.test.cpp
   - test/math/totient.test.cpp
+  - test/math/TwoSat.test.cpp
+  - test/datastructure/BinaryTrie.test.cpp
+  - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/datastructure/SlidingWindowAggregation.test.cpp
+  - test/datastructure/UnionFind.test.cpp
+  - test/datastructure/RangeSet.test.cpp
   - test/algorithm/inversion_number.test.cpp
   - test/algorithm/SquareRootDecomposion.test.cpp
   - test/algorithm/run_length_encoding.test.cpp
-  - test/graph/StronglyConnectedComponents.test.cpp
-  - test/other/template.test.cpp
+  - test/mod/ModInt.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp
-  - test/segmenttree/LazySegmentTree4.test.cpp
   - test/segmenttree/SegmentTree.test.cpp
-  - test/segmenttree/DualSegmentTree.test.cpp
+  - test/segmenttree/LazySegmentTree2.test.cpp
+  - test/segmenttree/LazySegmentTree4.test.cpp
   - test/segmenttree/LazySegmentTree3.test.cpp
   - test/segmenttree/LazySegmentTree.test.cpp
   - test/segmenttree/PointAddRectangleSum.test.cpp
-  - test/segmenttree/LazySegmentTree2.test.cpp
   - test/segmenttree/RangeAddRangeSum.test.cpp
-  - test/tree/Rerooting.test.cpp
+  - test/segmenttree/DualSegmentTree.test.cpp
   - test/generator/generate_random_sequence.test.cpp
+  - test/tree/Rerooting.test.cpp
+  - test/shortestpath/warshall_floyd.test.cpp
+  - test/other/template.test.cpp
+  - test/graph/StronglyConnectedComponents.test.cpp
 documentation_of: other/template.hpp
 layout: document
 redirect_from:

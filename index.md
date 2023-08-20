@@ -23,6 +23,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: datastructure/BinaryIndexedTree.hpp
       title: datastructure/BinaryIndexedTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: datastructure/BinaryTrie.hpp
+      title: datastructure/BinaryTrie.hpp
     - icon: ':warning:'
       path: datastructure/FrequencyManager.hpp
       title: datastructure/FrequencyManager.hpp
@@ -116,6 +119,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/datastructure/BinaryIndexedTree.test.cpp
       title: test/datastructure/BinaryIndexedTree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/datastructure/BinaryTrie.test.cpp
+      title: test/datastructure/BinaryTrie.test.cpp
     - icon: ':heavy_check_mark:'
       path: test/datastructure/RangeSet.test.cpp
       title: test/datastructure/RangeSet.test.cpp
