@@ -1,6 +1,9 @@
 #pragma once
 
 #include <atcoder/internal_scc>
+#include <cassert>
+#include <utility>
+#include <vector>
 
 struct StronglyConnectedComponents {
     int n;
@@ -8,7 +11,7 @@ struct StronglyConnectedComponents {
     /**
      * 元のグラフの頂点がどの強連結成分に所属するかを表す配列
      */
-    vector<int> scc_ids;
+    std::vector<int> scc_ids;
 
     StronglyConnectedComponents() : n(0), internal(0) {
     }
@@ -31,9 +34,9 @@ struct StronglyConnectedComponents {
         return group_num;
     }
 
-    vector<vector<int>> groups() const {
-        vector<vector<int>> groups(group_num);
-        vector<int> counts(group_num);
+    std::vector<std::vector<int>> groups() const {
+        std::vector<std::vector<int>> groups(group_num);
+        std::vector<int> counts(group_num);
         for (auto x : scc_ids) counts[x]++;
         for (int i = 0; i < group_num; i++) {
             groups[i].reserve(counts[i]);
@@ -44,9 +47,10 @@ struct StronglyConnectedComponents {
         return groups;
     }
 
-    vector<vector<int>> scc_graph() const {
-        vector<int> counts(group_num);
-        vector<vector<int>> naive_scc_graph(group_num), scc_graph(group_num);
+    std::vector<std::vector<int>> scc_graph() const {
+        std::vector<int> counts(group_num);
+        std::vector<std::vector<int>> naive_scc_graph(group_num),
+            scc_graph(group_num);
         for (auto [from, to] : edges) counts[scc_ids[from]]++;
         for (int i = 0; i < group_num; i++) {
             naive_scc_graph[i].reserve(counts[i]);
@@ -55,7 +59,7 @@ struct StronglyConnectedComponents {
         for (auto [from, to] : edges) {
             naive_scc_graph[scc_ids[from]].push_back(scc_ids[to]);
         }
-        vector<int> exists(group_num);
+        std::vector<int> exists(group_num);
         for (int from = 0; from < group_num; from++) {
             for (auto to : naive_scc_graph[from]) {
                 if (exists[to]) continue;
@@ -76,5 +80,5 @@ struct StronglyConnectedComponents {
 
   private:
     atcoder::internal::scc_graph internal;
-    vector<pair<int, int>> edges;
+    std::vector<std::pair<int, int>> edges;
 };
