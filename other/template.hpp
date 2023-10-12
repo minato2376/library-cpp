@@ -141,6 +141,18 @@ void print() { cout << "\n"; }
 template <class T> void print(const vector<T>& v) { for (auto it = v.begin(); it != v.end(); ++it) { if (it != v.begin()) { cout << " "; } cout << *it; } print(); }
 template <class T, class... Args> void print(const T& x, const Args& ... args) { cout << x; if (sizeof...(Args)) cout << " "; print(args...); }
 #ifdef MINATO_LOCAL
+template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p);
+template <class ...Args> ostream& operator<<(ostream& os, tuple<Args...> t);
+template <class T> ostream& operator<<(ostream& os, vector<T> v);
+template <class T, size_t N> ostream& operator<<(ostream& os, array<T, N> a);
+template <class T, size_t N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>& operator<<(ostream& os, T(&a)[N]);
+template <class Key> ostream& operator<<(ostream& os, set<Key> s);
+template <class Key, class T> ostream& operator<<(ostream& os, map<Key, T> mp);
+template <class Key> ostream& operator<<(ostream& os, multiset<Key> s);
+template <class T> ostream& operator<<(ostream& os, queue<T> q);
+template <class T> ostream& operator<<(ostream& os, deque<T> q);
+template <class T> ostream& operator<<(ostream& os, priority_queue<T> q);
+template <class T> ostream& operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>> q);
 template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p) { return os << "(" << p.first << ", " << p.second << ")"; }
 template <size_t N, class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_; }
 template <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream &os, TUPLE t) { os << (N == 0 ? "" : ", ") << get<N>(t); debug_tuple<N + 1, TUPLE, Args...>(os, t); }
