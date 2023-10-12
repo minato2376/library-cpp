@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/type_traits.hpp
     title: other/type_traits.hpp
   _extendedRequiredBy: []
@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/mod/ModInt.test.cpp
     title: test/mod/ModInt.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Rerooting.test.cpp
     title: test/tree/Rerooting.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 2 \"mod/ModInt.hpp\"\n\n#line 2 \"other/type_traits.hpp\"\n\n\
@@ -173,7 +173,7 @@ data:
   path: mod/ModInt.hpp
   requiredBy: []
   timestamp: '2023-06-26 01:08:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - test/mod/ModInt.test.cpp
   - test/tree/Rerooting.test.cpp

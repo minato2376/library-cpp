@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
   - icon: ':heavy_check_mark:'
@@ -106,10 +106,22 @@ data:
     \ ++it) { if (it != v.begin()) { cout << \" \"; } cout << *it; } print(); }\n\
     template <class T, class... Args> void print(const T& x, const Args& ... args)\
     \ { cout << x; if (sizeof...(Args)) cout << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\n\
-    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p)\
-    \ { return os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate\
-    \ <size_t N, class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_;\
-    \ }\ntemplate <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
+    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p);\n\
+    template <class ...Args> ostream& operator<<(ostream& os, tuple<Args...> t);\n\
+    template <class T> ostream& operator<<(ostream& os, vector<T> v);\ntemplate <class\
+    \ T, size_t N> ostream& operator<<(ostream& os, array<T, N> a);\ntemplate <class\
+    \ T, size_t N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>& operator<<(ostream&\
+    \ os, T(&a)[N]);\ntemplate <class Key> ostream& operator<<(ostream& os, set<Key>\
+    \ s);\ntemplate <class Key, class T> ostream& operator<<(ostream& os, map<Key,\
+    \ T> mp);\ntemplate <class Key> ostream& operator<<(ostream& os, multiset<Key>\
+    \ s);\ntemplate <class T> ostream& operator<<(ostream& os, queue<T> q);\ntemplate\
+    \ <class T> ostream& operator<<(ostream& os, deque<T> q);\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, priority_queue<T> q);\ntemplate <class T> ostream&\
+    \ operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>> q);\ntemplate\
+    \ <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p) { return\
+    \ os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate <size_t N,\
+    \ class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_; }\n\
+    template <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
     \ &os, TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t); debug_tuple<N +\
     \ 1, TUPLE, Args...>(os, t); }\ntemplate <class ...Args> ostream& operator<<(ostream&\
     \ os, tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>, Args...>(os,\
@@ -267,7 +279,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/LazySegmentTree.test.cpp
   requiredBy: []
-  timestamp: '2023-06-26 01:08:26+09:00'
+  timestamp: '2023-10-13 01:31:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/LazySegmentTree.test.cpp

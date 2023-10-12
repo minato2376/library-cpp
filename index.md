@@ -38,6 +38,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: datastructure/UnionFind.hpp
       title: datastructure/UnionFind.hpp
+  - name: flow
+    pages:
+    - icon: ':warning:'
+      path: flow/MaximumFlowLowerBound.hpp
+      title: flow/MaximumFlowLowerBound.hpp
   - name: generator
     pages:
     - icon: ':heavy_check_mark:'
@@ -62,17 +67,32 @@ data:
   - name: mod
     pages:
     - icon: ':warning:'
+      path: mod/FormalPowerSeries.hpp
+      title: mod/FormalPowerSeries.hpp
+    - icon: ':warning:'
       path: mod/ModCombination.hpp
       title: mod/ModCombination.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: mod/ModInt.hpp
       title: mod/ModInt.hpp
+    - icon: ':warning:'
+      path: mod/berlekamp_massey.hpp
+      title: mod/berlekamp_massey.hpp
+    - icon: ':warning:'
+      path: mod/bostan_mori.hpp
+      title: Bostan-Mori Algorithm
+    - icon: ':warning:'
+      path: mod/convolution998244353.hpp
+      title: mod/convolution998244353.hpp
+    - icon: ':warning:'
+      path: mod/kth_term.hpp
+      title: mod/kth_term.hpp
   - name: other
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: other/template.hpp
       title: other/template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: other/type_traits.hpp
       title: other/type_traits.hpp
   - name: segmenttree
@@ -99,7 +119,7 @@ data:
       title: shortestpath/warshall_floyd.hpp
   - name: tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: tree/Rerooting.hpp
       title: "\u5168\u65B9\u4F4D\u6728 DP"
   verificationCategories:
@@ -198,7 +218,7 @@ data:
       title: test/shortestpath/warshall_floyd.test.cpp
   - name: test/tree
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/tree/Rerooting.test.cpp
       title: test/tree/Rerooting.test.cpp
 layout: toppage

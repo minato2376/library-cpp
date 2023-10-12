@@ -78,12 +78,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: test/shortestpath/warshall_floyd.test.cpp
     title: test/shortestpath/warshall_floyd.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: test/tree/Rerooting.test.cpp
     title: test/tree/Rerooting.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"other/template.hpp\"\n// clang-format off\n#include <algorithm>\n\
@@ -173,10 +173,22 @@ data:
     \ ++it) { if (it != v.begin()) { cout << \" \"; } cout << *it; } print(); }\n\
     template <class T, class... Args> void print(const T& x, const Args& ... args)\
     \ { cout << x; if (sizeof...(Args)) cout << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\n\
-    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p)\
-    \ { return os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate\
-    \ <size_t N, class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_;\
-    \ }\ntemplate <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
+    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p);\n\
+    template <class ...Args> ostream& operator<<(ostream& os, tuple<Args...> t);\n\
+    template <class T> ostream& operator<<(ostream& os, vector<T> v);\ntemplate <class\
+    \ T, size_t N> ostream& operator<<(ostream& os, array<T, N> a);\ntemplate <class\
+    \ T, size_t N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>& operator<<(ostream&\
+    \ os, T(&a)[N]);\ntemplate <class Key> ostream& operator<<(ostream& os, set<Key>\
+    \ s);\ntemplate <class Key, class T> ostream& operator<<(ostream& os, map<Key,\
+    \ T> mp);\ntemplate <class Key> ostream& operator<<(ostream& os, multiset<Key>\
+    \ s);\ntemplate <class T> ostream& operator<<(ostream& os, queue<T> q);\ntemplate\
+    \ <class T> ostream& operator<<(ostream& os, deque<T> q);\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, priority_queue<T> q);\ntemplate <class T> ostream&\
+    \ operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>> q);\ntemplate\
+    \ <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p) { return\
+    \ os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate <size_t N,\
+    \ class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_; }\n\
+    template <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
     \ &os, TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t); debug_tuple<N +\
     \ 1, TUPLE, Args...>(os, t); }\ntemplate <class ...Args> ostream& operator<<(ostream&\
     \ os, tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>, Args...>(os,\
@@ -292,10 +304,22 @@ data:
     \ ++it) { if (it != v.begin()) { cout << \" \"; } cout << *it; } print(); }\n\
     template <class T, class... Args> void print(const T& x, const Args& ... args)\
     \ { cout << x; if (sizeof...(Args)) cout << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\n\
-    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p)\
-    \ { return os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate\
-    \ <size_t N, class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_;\
-    \ }\ntemplate <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
+    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p);\n\
+    template <class ...Args> ostream& operator<<(ostream& os, tuple<Args...> t);\n\
+    template <class T> ostream& operator<<(ostream& os, vector<T> v);\ntemplate <class\
+    \ T, size_t N> ostream& operator<<(ostream& os, array<T, N> a);\ntemplate <class\
+    \ T, size_t N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>& operator<<(ostream&\
+    \ os, T(&a)[N]);\ntemplate <class Key> ostream& operator<<(ostream& os, set<Key>\
+    \ s);\ntemplate <class Key, class T> ostream& operator<<(ostream& os, map<Key,\
+    \ T> mp);\ntemplate <class Key> ostream& operator<<(ostream& os, multiset<Key>\
+    \ s);\ntemplate <class T> ostream& operator<<(ostream& os, queue<T> q);\ntemplate\
+    \ <class T> ostream& operator<<(ostream& os, deque<T> q);\ntemplate <class T>\
+    \ ostream& operator<<(ostream& os, priority_queue<T> q);\ntemplate <class T> ostream&\
+    \ operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>> q);\ntemplate\
+    \ <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p) { return\
+    \ os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate <size_t N,\
+    \ class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_; }\n\
+    template <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
     \ &os, TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t); debug_tuple<N +\
     \ 1, TUPLE, Args...>(os, t); }\ntemplate <class ...Args> ostream& operator<<(ostream&\
     \ os, tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>, Args...>(os,\
@@ -329,35 +353,35 @@ data:
   isVerificationFile: false
   path: other/template.hpp
   requiredBy: []
-  timestamp: '2023-06-20 01:24:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2023-10-13 01:31:07+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - test/math/floor_sqrt.test.cpp
-  - test/math/totient.test.cpp
-  - test/math/TwoSat.test.cpp
-  - test/datastructure/BinaryTrie.test.cpp
-  - test/datastructure/BinaryIndexedTree.test.cpp
-  - test/datastructure/SlidingWindowAggregation.test.cpp
-  - test/datastructure/UnionFind.test.cpp
-  - test/datastructure/RangeSet.test.cpp
+  - test/algorithm/run_length_encoding.test.cpp
   - test/algorithm/inversion_number.test.cpp
   - test/algorithm/SquareRootDecomposion.test.cpp
-  - test/algorithm/run_length_encoding.test.cpp
-  - test/mod/ModInt.test.cpp
-  - test/segmenttree/DualSegmentTree2.test.cpp
-  - test/segmenttree/SegmentTree.test.cpp
-  - test/segmenttree/LazySegmentTree2.test.cpp
-  - test/segmenttree/LazySegmentTree4.test.cpp
   - test/segmenttree/LazySegmentTree3.test.cpp
-  - test/segmenttree/LazySegmentTree.test.cpp
   - test/segmenttree/PointAddRectangleSum.test.cpp
   - test/segmenttree/RangeAddRangeSum.test.cpp
+  - test/segmenttree/LazySegmentTree4.test.cpp
+  - test/segmenttree/LazySegmentTree2.test.cpp
   - test/segmenttree/DualSegmentTree.test.cpp
-  - test/generator/generate_random_sequence.test.cpp
-  - test/tree/Rerooting.test.cpp
+  - test/segmenttree/LazySegmentTree.test.cpp
+  - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/segmenttree/SegmentTree.test.cpp
   - test/shortestpath/warshall_floyd.test.cpp
-  - test/other/template.test.cpp
   - test/graph/StronglyConnectedComponents.test.cpp
+  - test/datastructure/BinaryTrie.test.cpp
+  - test/datastructure/UnionFind.test.cpp
+  - test/datastructure/SlidingWindowAggregation.test.cpp
+  - test/datastructure/RangeSet.test.cpp
+  - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/other/template.test.cpp
+  - test/math/TwoSat.test.cpp
+  - test/math/floor_sqrt.test.cpp
+  - test/math/totient.test.cpp
+  - test/mod/ModInt.test.cpp
+  - test/tree/Rerooting.test.cpp
+  - test/generator/generate_random_sequence.test.cpp
 documentation_of: other/template.hpp
 layout: document
 redirect_from:
