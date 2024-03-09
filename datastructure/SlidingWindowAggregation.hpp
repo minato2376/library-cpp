@@ -1,9 +1,13 @@
 #pragma once
 
+#include <cassert>
+#include <utility>
+#include <vector>
+
 template <class T, class F> struct SlidingWindowAggregation {
     F op;
     T e;
-    vector<pair<T, T>> front, back;
+    std::vector<std::pair<T, T>> front, back;
 
     SlidingWindowAggregation(F op, T e) : op(op), e(e) {
     }
@@ -13,13 +17,13 @@ template <class T, class F> struct SlidingWindowAggregation {
         back.clear();
     }
 
-    void reserve(size_t n) {
+    void reserve(int n) {
         front.reserve(n);
         back.reserve(n);
     }
 
     bool empty() const {
-        return front.empty() and back.empty();
+        return front.empty() && back.empty();
     }
 
     int size() const {
@@ -32,7 +36,7 @@ template <class T, class F> struct SlidingWindowAggregation {
         return op(vf, vb);
     }
 
-    void emplace(const T& val) {
+    void push(const T& val) {
         if (back.empty()) {
             back.emplace_back(val, val);
         } else {

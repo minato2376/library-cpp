@@ -58,6 +58,7 @@ template <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(), v.
 template <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(), v.end()); }
 template <class T> T SUM(const vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }
 template <class T> T ABS(T x) { return max(x, -x); }
+long long floor_div(long long n, long long d) { return n / d - ((n ^ d) < 0 && n % d); }
 template <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }
 template <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false; }
 int topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }
@@ -137,6 +138,18 @@ template <class T> void scan(T& a) { cin >> a; }
 template <class T> void scan(vector<T>& a) { for (auto& i : a) scan(i); }
 void IN() {}
 template <class Head, class... Tail> void IN(Head& head, Tail&... tail) { scan(head); IN(tail...); }
+std::vector<std::vector<int>> read_graph(int N, int M) {
+    std::vector<std::vector<int>> g(N);
+    for (int i = 0; i < M; i++) {
+        int a, b;
+        cin >> a >> b;
+        a--, b--;
+        g[a].emplace_back(b);
+        g[b].emplace_back(a);
+    }
+    return g;
+}
+std::vector<std::vector<int>> read_tree(int N) { return read_graph(N, N - 1); }
 void print() { cout << "\n"; }
 template <class T> void print(const vector<T>& v) { for (auto it = v.begin(); it != v.end(); ++it) { if (it != v.begin()) { cout << " "; } cout << *it; } print(); }
 template <class T, class... Args> void print(const T& x, const Args& ... args) { cout << x; if (sizeof...(Args)) cout << " "; print(args...); }

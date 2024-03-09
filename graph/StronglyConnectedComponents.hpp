@@ -62,6 +62,7 @@ struct StronglyConnectedComponents {
         std::vector<int> exists(group_num);
         for (int from = 0; from < group_num; from++) {
             for (auto to : naive_scc_graph[from]) {
+                if (from == to) continue;
                 if (exists[to]) continue;
                 scc_graph[from].push_back(to);
                 exists[to] = 1;

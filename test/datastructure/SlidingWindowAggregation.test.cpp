@@ -12,7 +12,7 @@ int main() {
     ll ans = 0;
     rep(l, N) {
         while (r < N && f(swag.fold_all(), A[r]) != 1) {
-            swag.emplace(A[r]);
+            swag.push(A[r]);
             r++;
         }
         ans += N - r;
