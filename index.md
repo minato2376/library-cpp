@@ -27,6 +27,12 @@ data:
       path: datastructure/BinaryTrie.hpp
       title: datastructure/BinaryTrie.hpp
     - icon: ':warning:'
+      path: datastructure/Csr.hpp
+      title: datastructure/Csr.hpp
+    - icon: ':warning:'
+      path: datastructure/ErasablePriorityQueue.hpp
+      title: datastructure/ErasablePriorityQueue.hpp
+    - icon: ':warning:'
       path: datastructure/FrequencyManager.hpp
       title: datastructure/FrequencyManager.hpp
     - icon: ':heavy_check_mark:'
@@ -35,9 +41,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: datastructure/SlidingWindowAggregation.hpp
       title: datastructure/SlidingWindowAggregation.hpp
+    - icon: ':warning:'
+      path: datastructure/TopK.hpp
+      title: datastructure/TopK.hpp
+    - icon: ':warning:'
+      path: datastructure/UndoUnionFind.hpp
+      title: datastructure/UndoUnionFind.hpp
     - icon: ':heavy_check_mark:'
       path: datastructure/UnionFind.hpp
       title: datastructure/UnionFind.hpp
+    - icon: ':warning:'
+      path: datastructure/use_dynamic_bitset.hpp
+      title: datastructure/use_dynamic_bitset.hpp
   - name: flow
     pages:
     - icon: ':warning:'
@@ -48,13 +63,33 @@ data:
     - icon: ':heavy_check_mark:'
       path: generator/generate_random_sequence.hpp
       title: generator/generate_random_sequence.hpp
+  - name: geometry-integer
+    pages:
+    - icon: ':warning:'
+      path: geometry-integer/Point.hpp
+      title: geometry-integer/Point.hpp
+    - icon: ':warning:'
+      path: geometry-integer/arg_sort.hpp
+      title: geometry-integer/arg_sort.hpp
+    - icon: ':warning:'
+      path: geometry-integer/ccw.hpp
+      title: geometry-integer/ccw.hpp
   - name: graph
     pages:
+    - icon: ':warning:'
+      path: graph/EdgeSum.hpp
+      title: graph/EdgeSum.hpp
     - icon: ':heavy_check_mark:'
       path: graph/StronglyConnectedComponents.hpp
       title: graph/StronglyConnectedComponents.hpp
   - name: math
     pages:
+    - icon: ':warning:'
+      path: math/BinomialPrefixSum.hpp
+      title: math/BinomialPrefixSum.hpp
+    - icon: ':warning:'
+      path: math/SquareMatrix.hpp
+      title: math/SquareMatrix.hpp
     - icon: ':heavy_check_mark:'
       path: math/TwoSat.hpp
       title: math/TwoSat.hpp
@@ -66,15 +101,21 @@ data:
       title: math/totient.hpp
   - name: mod
     pages:
-    - icon: ':warning:'
-      path: mod/FormalPowerSeries.hpp
-      title: mod/FormalPowerSeries.hpp
+    - icon: ':heavy_check_mark:'
+      path: mod/FormalPowerSeriesNTTFriendly.hpp
+      title: mod/FormalPowerSeriesNTTFriendly.hpp
     - icon: ':warning:'
       path: mod/ModCombination.hpp
       title: mod/ModCombination.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: mod/ModInt.hpp
       title: mod/ModInt.hpp
+    - icon: ':warning:'
+      path: mod/ModInt61.hpp
+      title: mod/ModInt61.hpp
+    - icon: ':warning:'
+      path: mod/atcoder_modint_header.hpp
+      title: mod/atcoder_modint_header.hpp
     - icon: ':warning:'
       path: mod/berlekamp_massey.hpp
       title: mod/berlekamp_massey.hpp
@@ -87,12 +128,15 @@ data:
     - icon: ':warning:'
       path: mod/kth_term.hpp
       title: mod/kth_term.hpp
+    - icon: ':warning:'
+      path: mod/product_FPS.hpp
+      title: mod/product_FPS.hpp
   - name: other
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: other/template.hpp
       title: other/template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: other/type_traits.hpp
       title: other/type_traits.hpp
   - name: segmenttree
@@ -112,14 +156,37 @@ data:
     - icon: ':heavy_check_mark:'
       path: segmenttree/SegmentTree.hpp
       title: segmenttree/SegmentTree.hpp
+    - icon: ':warning:'
+      path: segmenttree/SegmentTreeInfo.hpp
+      title: segmenttree/SegmentTreeInfo.hpp
   - name: shortestpath
     pages:
+    - icon: ':warning:'
+      path: shortestpath/Dijkstra.hpp
+      title: shortestpath/Dijkstra.hpp
     - icon: ':heavy_check_mark:'
       path: shortestpath/warshall_floyd.hpp
       title: shortestpath/warshall_floyd.hpp
+  - name: string
+    pages:
+    - icon: ':warning:'
+      path: string/LCP_SegmentTree.hpp
+      title: string/LCP_SegmentTree.hpp
+    - icon: ':warning:'
+      path: string/RollingHash.hpp
+      title: string/RollingHash.hpp
+    - icon: ':warning:'
+      path: string/SuffixArray.hpp
+      title: string/SuffixArray.hpp
+    - icon: ':warning:'
+      path: string/manachar.hpp
+      title: string/manachar.hpp
   - name: tree
     pages:
-    - icon: ':x:'
+    - icon: ':warning:'
+      path: tree/Centroid.hpp
+      title: tree/Centroid.hpp
+    - icon: ':heavy_check_mark:'
       path: tree/Rerooting.hpp
       title: "\u5168\u65B9\u4F4D\u6728 DP"
   verificationCategories:
@@ -177,6 +244,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: test/mod/ModInt.test.cpp
       title: test/mod/ModInt.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mod/convolution.test.cpp
+      title: test/mod/convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mod/exp_of_formal_power_series.test.cpp
+      title: test/mod/exp_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: test/mod/inv_of_formal_power_series.test.cpp
+      title: test/mod/inv_of_formal_power_series.test.cpp
   - name: test/other
     pages:
     - icon: ':heavy_check_mark:'
@@ -218,7 +294,7 @@ data:
       title: test/shortestpath/warshall_floyd.test.cpp
   - name: test/tree
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: test/tree/Rerooting.test.cpp
       title: test/tree/Rerooting.test.cpp
 layout: toppage

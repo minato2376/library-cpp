@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: test/tree/Rerooting.test.cpp
     title: test/tree/Rerooting.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u5168\u65B9\u4F4D\u6728 DP"
     links: []
@@ -115,7 +115,7 @@ data:
   path: tree/Rerooting.hpp
   requiredBy: []
   timestamp: '2023-03-20 23:19:26+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/tree/Rerooting.test.cpp
 documentation_of: tree/Rerooting.hpp

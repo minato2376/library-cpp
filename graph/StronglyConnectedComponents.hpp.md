@@ -36,11 +36,12 @@ data:
     \ to] : edges) {\n            naive_scc_graph[scc_ids[from]].push_back(scc_ids[to]);\n\
     \        }\n        std::vector<int> exists(group_num);\n        for (int from\
     \ = 0; from < group_num; from++) {\n            for (auto to : naive_scc_graph[from])\
-    \ {\n                if (exists[to]) continue;\n                scc_graph[from].push_back(to);\n\
-    \                exists[to] = 1;\n            }\n            for (auto to : scc_graph[from])\
-    \ {\n                exists[to] = 0;\n            }\n        }\n        return\
-    \ scc_graph;\n    }\n\n    int operator[](int i) const {\n        assert(0 <=\
-    \ i && i < n);\n        return scc_ids[i];\n    }\n\n  private:\n    atcoder::internal::scc_graph\
+    \ {\n                if (from == to) continue;\n                if (exists[to])\
+    \ continue;\n                scc_graph[from].push_back(to);\n                exists[to]\
+    \ = 1;\n            }\n            for (auto to : scc_graph[from]) {\n       \
+    \         exists[to] = 0;\n            }\n        }\n        return scc_graph;\n\
+    \    }\n\n    int operator[](int i) const {\n        assert(0 <= i && i < n);\n\
+    \        return scc_ids[i];\n    }\n\n  private:\n    atcoder::internal::scc_graph\
     \ internal;\n    std::vector<std::pair<int, int>> edges;\n};\n"
   code: "#pragma once\n\n#include <atcoder/internal_scc>\n#include <cassert>\n#include\
     \ <utility>\n#include <vector>\n\nstruct StronglyConnectedComponents {\n    int\
@@ -67,17 +68,18 @@ data:
     \ to] : edges) {\n            naive_scc_graph[scc_ids[from]].push_back(scc_ids[to]);\n\
     \        }\n        std::vector<int> exists(group_num);\n        for (int from\
     \ = 0; from < group_num; from++) {\n            for (auto to : naive_scc_graph[from])\
-    \ {\n                if (exists[to]) continue;\n                scc_graph[from].push_back(to);\n\
-    \                exists[to] = 1;\n            }\n            for (auto to : scc_graph[from])\
-    \ {\n                exists[to] = 0;\n            }\n        }\n        return\
-    \ scc_graph;\n    }\n\n    int operator[](int i) const {\n        assert(0 <=\
-    \ i && i < n);\n        return scc_ids[i];\n    }\n\n  private:\n    atcoder::internal::scc_graph\
+    \ {\n                if (from == to) continue;\n                if (exists[to])\
+    \ continue;\n                scc_graph[from].push_back(to);\n                exists[to]\
+    \ = 1;\n            }\n            for (auto to : scc_graph[from]) {\n       \
+    \         exists[to] = 0;\n            }\n        }\n        return scc_graph;\n\
+    \    }\n\n    int operator[](int i) const {\n        assert(0 <= i && i < n);\n\
+    \        return scc_ids[i];\n    }\n\n  private:\n    atcoder::internal::scc_graph\
     \ internal;\n    std::vector<std::pair<int, int>> edges;\n};"
   dependsOn: []
   isVerificationFile: false
   path: graph/StronglyConnectedComponents.hpp
   requiredBy: []
-  timestamp: '2023-08-20 19:19:57+09:00'
+  timestamp: '2024-03-09 12:07:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/graph/StronglyConnectedComponents.test.cpp

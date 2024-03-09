@@ -80,16 +80,16 @@ data:
   isVerificationFile: false
   path: datastructure/BinaryIndexedTree.hpp
   requiredBy:
-  - algorithm/inversion_number.hpp
-  - segmenttree/PointAddRectangleSum.hpp
   - segmenttree/RangeAddRangeSum.hpp
+  - segmenttree/PointAddRectangleSum.hpp
+  - algorithm/inversion_number.hpp
   timestamp: '2023-02-18 14:52:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/algorithm/inversion_number.test.cpp
-  - test/segmenttree/PointAddRectangleSum.test.cpp
   - test/segmenttree/RangeAddRangeSum.test.cpp
+  - test/segmenttree/PointAddRectangleSum.test.cpp
   - test/datastructure/BinaryIndexedTree.test.cpp
+  - test/algorithm/inversion_number.test.cpp
 documentation_of: datastructure/BinaryIndexedTree.hpp
 layout: document
 redirect_from:

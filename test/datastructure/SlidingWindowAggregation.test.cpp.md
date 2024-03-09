@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: datastructure/SlidingWindowAggregation.hpp
     title: datastructure/SlidingWindowAggregation.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: other/template.hpp
     title: other/template.hpp
   _extendedRequiredBy: []
@@ -46,22 +46,23 @@ data:
     \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
     \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
     \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
-    \ T> T ABS(T x) { return max(x, -x); }\ntemplate <class T1, class T2> bool chmax(T1&\
-    \ a, T2 b) { if (a < b) { a = b; return true; } return false; }\ntemplate <class\
-    \ T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return\
-    \ false; }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x);\
-    \ }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
-    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
-    \ >> k) & 1; }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1)\
-    \ * 10; }\ntemplate <typename S> void rearrange(const vector<S>& id) { (void)id;\
-    \ }\ntemplate <typename S, typename T> void rearrange_exec(const vector<S>& id,\
-    \ vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++)\
-    \ { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head, typename...\
-    \ Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id,\
-    \ a); rearrange(id, tail...); }\nistream& operator>>(istream& is, __int128_t&\
-    \ x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()), it\
-    \ = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 + s[it]\
-    \ - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
+    \ T> T ABS(T x) { return max(x, -x); }\nlong long floor_div(long long n, long\
+    \ long d) { return n / d - ((n ^ d) < 0 && n % d); }\ntemplate <class T1, class\
+    \ T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false;\
+    \ }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a =\
+    \ b; return true; } return false; }\nint topbit(ull x) { return x == 0 ? -1 :\
+    \ 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x);\
+    \ }\nint popcount(ull x) { return __builtin_popcountll(x); }\nint kthbit(ull x,\
+    \ int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int x) { return x ==\
+    \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
+    \ id) { (void)id; }\ntemplate <typename S, typename T> void rearrange_exec(const\
+    \ vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i <\
+    \ id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename\
+    \ Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nistream& operator>>(istream&\
+    \ is, __int128_t& x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()),\
+    \ it = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 +\
+    \ s[it] - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
     \ os, __int128_t x) {\n    if (x == 0) return os << 0;\n    if (x < 0) os << '-',\
     \ x = -x;\n    deque<int> deq;\n    while (x) deq.emplace_front(x % 10), x /=\
     \ 10;\n    for (int e : deq) os << e;\n    return os;\n}\ntemplate <class T> vector<T>\
@@ -100,95 +101,99 @@ data:
     \ \\\n    IN(name)\ntemplate <class T> void scan(T& a) { cin >> a; }\ntemplate\
     \ <class T> void scan(vector<T>& a) { for (auto& i : a) scan(i); }\nvoid IN()\
     \ {}\ntemplate <class Head, class... Tail> void IN(Head& head, Tail&... tail)\
-    \ { scan(head); IN(tail...); }\nvoid print() { cout << \"\\n\"; }\ntemplate <class\
-    \ T> void print(const vector<T>& v) { for (auto it = v.begin(); it != v.end();\
-    \ ++it) { if (it != v.begin()) { cout << \" \"; } cout << *it; } print(); }\n\
-    template <class T, class... Args> void print(const T& x, const Args& ... args)\
-    \ { cout << x; if (sizeof...(Args)) cout << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\n\
-    template <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p);\n\
-    template <class ...Args> ostream& operator<<(ostream& os, tuple<Args...> t);\n\
-    template <class T> ostream& operator<<(ostream& os, vector<T> v);\ntemplate <class\
-    \ T, size_t N> ostream& operator<<(ostream& os, array<T, N> a);\ntemplate <class\
-    \ T, size_t N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>& operator<<(ostream&\
-    \ os, T(&a)[N]);\ntemplate <class Key> ostream& operator<<(ostream& os, set<Key>\
-    \ s);\ntemplate <class Key, class T> ostream& operator<<(ostream& os, map<Key,\
-    \ T> mp);\ntemplate <class Key> ostream& operator<<(ostream& os, multiset<Key>\
-    \ s);\ntemplate <class T> ostream& operator<<(ostream& os, queue<T> q);\ntemplate\
-    \ <class T> ostream& operator<<(ostream& os, deque<T> q);\ntemplate <class T>\
-    \ ostream& operator<<(ostream& os, priority_queue<T> q);\ntemplate <class T> ostream&\
-    \ operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>> q);\ntemplate\
-    \ <class T1, class T2> ostream& operator<<(ostream& os, pair<T1, T2> p) { return\
-    \ os << \"(\" << p.first << \", \" << p.second << \")\"; }\ntemplate <size_t N,\
-    \ class TUPLE> void debug_tuple(ostream& os, TUPLE _) { (void)os; (void)_; }\n\
-    template <size_t N, class TUPLE, class T, class ...Args> void debug_tuple(ostream\
-    \ &os, TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t); debug_tuple<N +\
-    \ 1, TUPLE, Args...>(os, t); }\ntemplate <class ...Args> ostream& operator<<(ostream&\
-    \ os, tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>, Args...>(os,\
-    \ t); return os << \")\"; }\nstring debug_delim(int& i) { return i++ == 0 ? \"\
-    \" : \", \"; }\n#define debug_embrace(x) { int i = 0; os << \"{\";  { x } return\
-    \ os << \"}\"; }\ntemplate <class T> ostream& operator<<(ostream& os, vector<T>\
-    \ v) { debug_embrace( for (T e : v) { os << debug_delim(i) << e; } ) }\ntemplate\
-    \ <class T, size_t N> ostream& operator<<(ostream& os, array<T, N> a) { debug_embrace(\
-    \ for (T e : a) { os << debug_delim(i) << e; } ) }\ntemplate <class T, size_t\
-    \ N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>& operator<<(ostream&\
-    \ os, T(&a)[N]) { debug_embrace( for (T e : a) { os << debug_delim(i) << e; }\
-    \ ) }\ntemplate <class Key> ostream& operator<<(ostream& os, set<Key> s) { debug_embrace(\
-    \ for (Key e : s) { os << debug_delim(i) << e; }) }\ntemplate <class Key, class\
-    \ T> ostream& operator<<(ostream& os, map<Key, T> mp) { debug_embrace( for (auto\
-    \ e : mp) { os << debug_delim(i) << e; }) }\ntemplate <class Key> ostream& operator<<(ostream&\
-    \ os, multiset<Key> s) { debug_embrace( for (Key e : s) { os << debug_delim(i)\
-    \ << e; }) }\ntemplate <class T> ostream& operator<<(ostream& os, queue<T> q)\
-    \ { debug_embrace( for (; !q.empty(); q.pop()) { os << debug_delim(i) << q.front();\
-    \ } ) }\ntemplate <class T> ostream& operator<<(ostream& os, deque<T> q) { debug_embrace(\
-    \ for (T e : q) { os << debug_delim(i) << e; } ) }\ntemplate <class T> ostream&\
-    \ operator<<(ostream& os, priority_queue<T> q) { debug_embrace( for (; !q.empty();\
-    \ q.pop()) { os << debug_delim(i) << q.top(); } ) }\ntemplate <class T> ostream&\
-    \ operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>> q) { debug_embrace(\
-    \ for (; !q.empty(); q.pop()) { os << debug_delim(i) << q.top(); } ) }\nvoid debug_out()\
-    \ { cerr << endl; }\ntemplate <class T, class... Args> void debug_out(const T&\
-    \ x, const Args& ... args) { cerr << \" \" << x; debug_out(args...); }\n#define\
-    \ debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\", debug_out(__VA_ARGS__)\n\
-    #else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    \ { scan(head); IN(tail...); }\nstd::vector<std::vector<int>> read_graph(int N,\
+    \ int M) {\n    std::vector<std::vector<int>> g(N);\n    for (int i = 0; i < M;\
+    \ i++) {\n        int a, b;\n        cin >> a >> b;\n        a--, b--;\n     \
+    \   g[a].emplace_back(b);\n        g[b].emplace_back(a);\n    }\n    return g;\n\
+    }\nstd::vector<std::vector<int>> read_tree(int N) { return read_graph(N, N - 1);\
+    \ }\nvoid print() { cout << \"\\n\"; }\ntemplate <class T> void print(const vector<T>&\
+    \ v) { for (auto it = v.begin(); it != v.end(); ++it) { if (it != v.begin()) {\
+    \ cout << \" \"; } cout << *it; } print(); }\ntemplate <class T, class... Args>\
+    \ void print(const T& x, const Args& ... args) { cout << x; if (sizeof...(Args))\
+    \ cout << \" \"; print(args...); }\n#ifdef MINATO_LOCAL\ntemplate <class T1, class\
+    \ T2> ostream& operator<<(ostream& os, pair<T1, T2> p);\ntemplate <class ...Args>\
+    \ ostream& operator<<(ostream& os, tuple<Args...> t);\ntemplate <class T> ostream&\
+    \ operator<<(ostream& os, vector<T> v);\ntemplate <class T, size_t N> ostream&\
+    \ operator<<(ostream& os, array<T, N> a);\ntemplate <class T, size_t N> enable_if_t<!is_same_v<char,\
+    \ remove_cv_t<T>>, ostream>& operator<<(ostream& os, T(&a)[N]);\ntemplate <class\
+    \ Key> ostream& operator<<(ostream& os, set<Key> s);\ntemplate <class Key, class\
+    \ T> ostream& operator<<(ostream& os, map<Key, T> mp);\ntemplate <class Key> ostream&\
+    \ operator<<(ostream& os, multiset<Key> s);\ntemplate <class T> ostream& operator<<(ostream&\
+    \ os, queue<T> q);\ntemplate <class T> ostream& operator<<(ostream& os, deque<T>\
+    \ q);\ntemplate <class T> ostream& operator<<(ostream& os, priority_queue<T> q);\n\
+    template <class T> ostream& operator<<(ostream& os, priority_queue<T, vector<T>,\
+    \ greater<T>> q);\ntemplate <class T1, class T2> ostream& operator<<(ostream&\
+    \ os, pair<T1, T2> p) { return os << \"(\" << p.first << \", \" << p.second <<\
+    \ \")\"; }\ntemplate <size_t N, class TUPLE> void debug_tuple(ostream& os, TUPLE\
+    \ _) { (void)os; (void)_; }\ntemplate <size_t N, class TUPLE, class T, class ...Args>\
+    \ void debug_tuple(ostream &os, TUPLE t) { os << (N == 0 ? \"\" : \", \") << get<N>(t);\
+    \ debug_tuple<N + 1, TUPLE, Args...>(os, t); }\ntemplate <class ...Args> ostream&\
+    \ operator<<(ostream& os, tuple<Args...> t) { os << \"(\"; debug_tuple<0, tuple<Args...>,\
+    \ Args...>(os, t); return os << \")\"; }\nstring debug_delim(int& i) { return\
+    \ i++ == 0 ? \"\" : \", \"; }\n#define debug_embrace(x) { int i = 0; os << \"\
+    {\";  { x } return os << \"}\"; }\ntemplate <class T> ostream& operator<<(ostream&\
+    \ os, vector<T> v) { debug_embrace( for (T e : v) { os << debug_delim(i) << e;\
+    \ } ) }\ntemplate <class T, size_t N> ostream& operator<<(ostream& os, array<T,\
+    \ N> a) { debug_embrace( for (T e : a) { os << debug_delim(i) << e; } ) }\ntemplate\
+    \ <class T, size_t N> enable_if_t<!is_same_v<char, remove_cv_t<T>>, ostream>&\
+    \ operator<<(ostream& os, T(&a)[N]) { debug_embrace( for (T e : a) { os << debug_delim(i)\
+    \ << e; } ) }\ntemplate <class Key> ostream& operator<<(ostream& os, set<Key>\
+    \ s) { debug_embrace( for (Key e : s) { os << debug_delim(i) << e; }) }\ntemplate\
+    \ <class Key, class T> ostream& operator<<(ostream& os, map<Key, T> mp) { debug_embrace(\
+    \ for (auto e : mp) { os << debug_delim(i) << e; }) }\ntemplate <class Key> ostream&\
+    \ operator<<(ostream& os, multiset<Key> s) { debug_embrace( for (Key e : s) {\
+    \ os << debug_delim(i) << e; }) }\ntemplate <class T> ostream& operator<<(ostream&\
+    \ os, queue<T> q) { debug_embrace( for (; !q.empty(); q.pop()) { os << debug_delim(i)\
+    \ << q.front(); } ) }\ntemplate <class T> ostream& operator<<(ostream& os, deque<T>\
+    \ q) { debug_embrace( for (T e : q) { os << debug_delim(i) << e; } ) }\ntemplate\
+    \ <class T> ostream& operator<<(ostream& os, priority_queue<T> q) { debug_embrace(\
+    \ for (; !q.empty(); q.pop()) { os << debug_delim(i) << q.top(); } ) }\ntemplate\
+    \ <class T> ostream& operator<<(ostream& os, priority_queue<T, vector<T>, greater<T>>\
+    \ q) { debug_embrace( for (; !q.empty(); q.pop()) { os << debug_delim(i) << q.top();\
+    \ } ) }\nvoid debug_out() { cerr << endl; }\ntemplate <class T, class... Args>\
+    \ void debug_out(const T& x, const Args& ... args) { cerr << \" \" << x; debug_out(args...);\
+    \ }\n#define debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\"\
+    , debug_out(__VA_ARGS__)\n#else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 2 \"datastructure/SlidingWindowAggregation.hpp\"\n\n\
-    template <class T, class F> struct SlidingWindowAggregation {\n    F op;\n   \
-    \ T e;\n    vector<pair<T, T>> front, back;\n\n    SlidingWindowAggregation(F\
-    \ op, T e) : op(op), e(e) {\n    }\n\n    void clear() {\n        front.clear();\n\
-    \        back.clear();\n    }\n\n    void reserve(size_t n) {\n        front.reserve(n);\n\
-    \        back.reserve(n);\n    }\n\n    bool empty() const {\n        return front.empty()\
-    \ and back.empty();\n    }\n\n    int size() const {\n        return front.size()\
-    \ + back.size();\n    }\n\n    T fold_all() const {\n        T vf = front.empty()\
-    \ ? e : front.back().second;\n        T vb = back.empty() ? e : back.back().second;\n\
-    \        return op(vf, vb);\n    }\n\n    void emplace(const T& val) {\n     \
-    \   if (back.empty()) {\n            back.emplace_back(val, val);\n        } else\
-    \ {\n            back.emplace_back(val, op(back.back().second, val));\n      \
-    \  }\n    }\n\n    void pop() {\n        assert(!empty());\n        if (front.empty())\
-    \ {\n            front.emplace_back(back.back().first, back.back().first);\n \
-    \           back.pop_back();\n            while (!back.empty()) {\n          \
-    \      front.emplace_back(back.back().first,\n                               \
-    \    op(back.back().first, front.back().second));\n                back.pop_back();\n\
-    \            }\n        }\n        front.pop_back();\n    }\n};\n#line 4 \"test/datastructure/SlidingWindowAggregation.test.cpp\"\
-    \n\nint main() {\n    INT(N);\n    VEC(ll, A, N);\n    auto f = [](ll a, ll b)\
-    \ { return gcd(a, b); };\n    constexpr ll e = 0;\n    SlidingWindowAggregation\
-    \ swag(f, e);\n    int r = 0;\n    ll ans = 0;\n    rep(l, N) {\n        while\
-    \ (r < N && f(swag.fold_all(), A[r]) != 1) {\n            swag.emplace(A[r]);\n\
-    \            r++;\n        }\n        ans += N - r;\n        if (l == r)\n   \
-    \         r++;\n        else\n            swag.pop();\n    }\n    print(ans);\n\
-    }\n"
+    #line 6 \"datastructure/SlidingWindowAggregation.hpp\"\n\ntemplate <class T, class\
+    \ F> struct SlidingWindowAggregation {\n    F op;\n    T e;\n    std::vector<std::pair<T,\
+    \ T>> front, back;\n\n    SlidingWindowAggregation(F op, T e) : op(op), e(e) {\n\
+    \    }\n\n    void clear() {\n        front.clear();\n        back.clear();\n\
+    \    }\n\n    void reserve(int n) {\n        front.reserve(n);\n        back.reserve(n);\n\
+    \    }\n\n    bool empty() const {\n        return front.empty() && back.empty();\n\
+    \    }\n\n    int size() const {\n        return front.size() + back.size();\n\
+    \    }\n\n    T fold_all() const {\n        T vf = front.empty() ? e : front.back().second;\n\
+    \        T vb = back.empty() ? e : back.back().second;\n        return op(vf,\
+    \ vb);\n    }\n\n    void push(const T& val) {\n        if (back.empty()) {\n\
+    \            back.emplace_back(val, val);\n        } else {\n            back.emplace_back(val,\
+    \ op(back.back().second, val));\n        }\n    }\n\n    void pop() {\n      \
+    \  assert(!empty());\n        if (front.empty()) {\n            front.emplace_back(back.back().first,\
+    \ back.back().first);\n            back.pop_back();\n            while (!back.empty())\
+    \ {\n                front.emplace_back(back.back().first,\n                 \
+    \                  op(back.back().first, front.back().second));\n            \
+    \    back.pop_back();\n            }\n        }\n        front.pop_back();\n \
+    \   }\n};\n#line 4 \"test/datastructure/SlidingWindowAggregation.test.cpp\"\n\n\
+    int main() {\n    INT(N);\n    VEC(ll, A, N);\n    auto f = [](ll a, ll b) { return\
+    \ gcd(a, b); };\n    constexpr ll e = 0;\n    SlidingWindowAggregation swag(f,\
+    \ e);\n    int r = 0;\n    ll ans = 0;\n    rep(l, N) {\n        while (r < N\
+    \ && f(swag.fold_all(), A[r]) != 1) {\n            swag.push(A[r]);\n        \
+    \    r++;\n        }\n        ans += N - r;\n        if (l == r)\n           \
+    \ r++;\n        else\n            swag.pop();\n    }\n    print(ans);\n}\n"
   code: "#define PROBLEM \"https://yukicoder.me/problems/no/1036\"\n#include \"other/template.hpp\"\
     \n#include \"datastructure/SlidingWindowAggregation.hpp\"\n\nint main() {\n  \
     \  INT(N);\n    VEC(ll, A, N);\n    auto f = [](ll a, ll b) { return gcd(a, b);\
     \ };\n    constexpr ll e = 0;\n    SlidingWindowAggregation swag(f, e);\n    int\
     \ r = 0;\n    ll ans = 0;\n    rep(l, N) {\n        while (r < N && f(swag.fold_all(),\
-    \ A[r]) != 1) {\n            swag.emplace(A[r]);\n            r++;\n        }\n\
-    \        ans += N - r;\n        if (l == r)\n            r++;\n        else\n\
-    \            swag.pop();\n    }\n    print(ans);\n}"
+    \ A[r]) != 1) {\n            swag.push(A[r]);\n            r++;\n        }\n \
+    \       ans += N - r;\n        if (l == r)\n            r++;\n        else\n \
+    \           swag.pop();\n    }\n    print(ans);\n}"
   dependsOn:
   - other/template.hpp
   - datastructure/SlidingWindowAggregation.hpp
   isVerificationFile: true
   path: test/datastructure/SlidingWindowAggregation.test.cpp
   requiredBy: []
-  timestamp: '2023-10-13 01:31:07+09:00'
+  timestamp: '2024-03-09 12:07:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/datastructure/SlidingWindowAggregation.test.cpp
