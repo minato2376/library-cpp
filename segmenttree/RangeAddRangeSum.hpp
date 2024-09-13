@@ -29,4 +29,15 @@ template <typename T> struct RangeAddRangeSum {
     T sum(int l, int r) const {
         return sum(r) - sum(l);
     }
+
+#ifdef MINATO_LOCAL
+    friend ostream& operator<<(ostream& os, const RangeAddRangeSum& r) {
+        vector<T> v(r.size());
+        for (int i = 0; i < r.size(); i++) {
+            v[i] = r.sum(i, i + 1);
+        }
+        os << v;
+        return os;
+    }
+#endif
 };

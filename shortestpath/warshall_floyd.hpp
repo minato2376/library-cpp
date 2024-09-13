@@ -2,18 +2,21 @@
 
 #include <vector>
 
-template <typename Int, Int INF>
-void warshall_floyd(std::vector<std::vector<Int>>& G) {
+template <typename Int>
+std::vector<std::vector<Int>> warshall_floyd(
+    const std::vector<std::vector<Int>>& G,
+    Int INF) {
     int N = G.size();
+    auto dist = G;
 
     for (int k = 0; k < N; k++) {
         for (int i = 0; i < N; i++) {
-            if (G[i][k] == INF) continue;
+            if (dist[i][k] == INF) continue;
             for (int j = 0; j < N; j++) {
-                if (G[k][j] == INF) continue;
-                G[i][j] = min(G[i][j], G[i][k] + G[k][j]);
+                if (dist[k][j] == INF) continue;
+                dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
             }
         }
     }
-    return;
+    return dist;
 }

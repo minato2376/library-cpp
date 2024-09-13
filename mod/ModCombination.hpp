@@ -42,6 +42,7 @@ template <class M> struct ModCombination {
     /**
      * @note H(n, k) = (n 個 のボールを k 個の箱に分ける方法の数)
      * @note H(n, k) = C(n + k - 1, n)
+     * @note H(n, k) = [x ^ n] (1 / (1 - x) ^ k)
      */
     M H(int n, int k) const {
         if (n == 0 and k == 0) return M(1);

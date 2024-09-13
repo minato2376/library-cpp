@@ -3,23 +3,31 @@
 #include <algorithm>
 #include <array>
 #include <cassert>
+#include <utility>
 #include <vector>
 
-template <class S, int K, bool (*comp)(S, S), S (*e)()> struct TopK {
-    std::array<S, K> data;
+template <class Key,
+          class T,
+          int K,
+          T (*op)(T, T),
+          bool (*comp)(std::pair<Key, T>, std::pair<Key, T>),
+          std::pair<Key, T> (*e)()>
+struct TopK {
+    using P = std::pair<Key, T>;
+    std::array<P, K> data;
 
     TopK() {
         std::fill(data.begin(), data.end(), e());
     }
-    TopK(std::vector<S> v) {
-        assert(int(v.size()) <= K);
+    TopK(std::vector<P> v) {
         std::fill(data.begin(), data.end(), e());
         for (int i = 0; i < int(v.size()); i++) {
             data[i] = v[i];
         }
     }
 
-    void push(S x) {
+    void push(P x) {
+        std::array<P, K + 1> buf = {};
         for (int i = 0; i < K; i++) {
             if (comp(x, data[i])) {
                 swap(x, data[i]);

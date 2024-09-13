@@ -2,8 +2,10 @@
 
 #include <algorithm>
 #include <cassert>
+#include <limits>
 #include <queue>
 #include <vector>
+
 template <class T, bool RESTORE = false> struct Dijkstra {
   public:
     struct edge {
@@ -13,8 +15,9 @@ template <class T, bool RESTORE = false> struct Dijkstra {
 
     Dijkstra() {
     }
-    Dijkstra(int n_, T INF_) : n(n_), INF(INF_), g(n_), dist(n_) {
-        if (RESTORE) from.resize(n_);
+    Dijkstra(int n_) : Dijkstra(n_, std::numeric_limits<T>::max() / 2) {
+    }
+    Dijkstra(int n_, T INF_) : n(n_), INF(INF_), g(n_) {
     }
 
     int size() const {
@@ -32,8 +35,8 @@ template <class T, bool RESTORE = false> struct Dijkstra {
     }
 
     void shortest_path(const std::vector<int>& vs = {0}) {
-        fill(dist.begin(), dist.end(), INF);
-        if (RESTORE) fill(from.begin(), from.end(), -1);
+        dist.assign(n, INF);
+        if (RESTORE) from.assign(n, -1);
         std::priority_queue<vertex> pq;
         for (int v : vs) {
             dist[v] = 0;

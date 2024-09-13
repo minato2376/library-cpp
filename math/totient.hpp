@@ -1,3 +1,5 @@
+#pragma once
+#include <cassert>
 /**
  * n と互いに素な整数の個数を求める。
  * O(sqrt(N))

@@ -7,7 +7,10 @@ using ll = long long;
 
 struct Point {
     ll x, y;
-    Point(ll x_ = 0, ll y_ = 0) : x(x_), y(y_) {
+
+    Point() : x(0), y(0) {
+    }
+    Point(ll x_, ll y_) : x(x_), y(y_) {
     }
 
     /**
@@ -59,7 +62,8 @@ struct Point {
     }
     bool operator<(const Point& r) const {
         if (pos() != r.pos()) return pos() < r.pos();
-        return y * r.x < x * r.y;
+        if (y * r.x != x * r.y) return y * r.x < x * r.y;
+        return norm() < r.norm();
     }
     bool operator>(const Point& r) const {
         return r < *this;
@@ -82,7 +86,7 @@ struct Point {
 #endif
 };
 
-//ベクトル
+// ベクトル
 using Vector = Point;
 
 ll dot(const Vector& a, const Vector& b) {

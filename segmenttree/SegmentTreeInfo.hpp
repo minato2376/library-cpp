@@ -59,6 +59,6 @@ struct SegmentTreeInfo {
 
   private:
     int topbit(int x) const {
-        return 31 - std::countr_zero((uint)x);
+        return 31 - std::countl_zero((uint)x);
     }
 };

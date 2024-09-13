@@ -14,8 +14,8 @@
  * * 1 * 2 * 3 *
  * * * * | * * *
  */
-std::vector<int> arg_sort(const std::vector<int>& X,
-                          const std::vector<int>& Y) {
+template <class T>
+std::vector<int> arg_sort(const std::vector<T>& X, const std::vector<T>& Y) {
     assert(X.size() == Y.size());
     int n = X.size();
 
@@ -32,7 +32,10 @@ std::vector<int> arg_sort(const std::vector<int>& X,
 
     std::sort(ids.begin(), ids.end(), [&](int i, int j) {
         if (pos[i] != pos[j]) return pos[i] < pos[j];
-        return X[i] * Y[j] < X[j] * Y[i];
+        if ((long long)X[i] * Y[j] != (long long)X[j] * Y[i])
+            return (long long)X[i] * Y[j] < (long long)X[j] * Y[i];
+        return (long long)X[i] * X[i] + (long long)Y[i] * Y[i] <
+               (long long)X[j] * X[j] + (long long)Y[j] * Y[j];
     });
     return ids;
 }

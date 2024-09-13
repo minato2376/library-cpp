@@ -1,12 +1,15 @@
 #pragma once
 
+#include <cassert>
+#include <vector>
+
 template <class T> struct BinaryIndexedTree {
     int n;
-    vector<T> data;
+    std::vector<T> data;
 
     BinaryIndexedTree() {
     }
-    BinaryIndexedTree(int n) : n(n), data(n + 1, 0) {
+    BinaryIndexedTree(int n_) : n(n_), data(n + 1, 0) {
     }
 
     int size() const {
@@ -65,7 +68,7 @@ template <class T> struct BinaryIndexedTree {
 
 #ifdef MINATO_LOCAL
     friend ostream& operator<<(ostream& os, const BinaryIndexedTree& r) {
-        vector<T> v(r.size());
+        std::vector<T> v(r.size());
         for (int i = 0; i < r.size(); i++) {
             v[i] = r.sum(i, i + 1);
         }

@@ -16,7 +16,7 @@ template <class Key, class T, int B, class F> struct BinaryTrie {
 
     F op;
     T e;
-    vector<Node> nodes;
+    std::vector<Node> nodes;
 
     BinaryTrie(const F& op, T e) : op(op), e(e), nodes(1, Node(-1, e)) {
     }

@@ -4,6 +4,7 @@
 #include <bitset>
 #include <cassert>
 #include <chrono>
+#include <climits>
 #include <cmath>
 #include <complex>
 #include <deque>
@@ -58,17 +59,32 @@ template <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(), v.
 template <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(), v.end()); }
 template <class T> T SUM(const vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }
 template <class T> T ABS(T x) { return max(x, -x); }
-long long floor_div(long long n, long long d) { return n / d - ((n ^ d) < 0 && n % d); }
+template <class T> constexpr T POW(T x, ull n) { T ret = 1; while (n > 0) { if (n & 1) ret *= x; x *= x; n >>= 1; } return ret; }
+template <class T> constexpr T POW(T x, ull n, T mod) { T ret = 1; while (n > 0) { if (n & 1) ret = ret * x % mod; x = x * x % mod; n >>= 1; } return ret; }
+constexpr long long floor_div(long long n, long long d) { return n / d - ((n ^ d) < 0 && n % d); }
 template <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }
 template <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false; }
 int topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }
 int botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }
 int popcount(ull x) { return __builtin_popcountll(x); }
 int kthbit(ull x, int k) { return (x >> k) & 1; }
+int popparity(ull x) { return __builtin_parityll(x); }
+int parity_sign(ull x) { return (x & 1) ? -1 : 1; }
 constexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1) * 10; }
 template <typename S> void rearrange(const vector<S>& id) { (void)id; }
 template <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }
 template <typename S, typename Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id, a); rearrange(id, tail...); }
+template <class T>
+vector<vector<T>> rot90(const vector<vector<T>>& v) {
+    int n = v.size(), m = v[0].size();
+    vector<vector<T>> ret(m, vector<T>(n));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            ret[m - 1 - j][i] = v[i][j];
+        }
+    }
+    return ret;
+}
 istream& operator>>(istream& is, __int128_t& x) {
     x = 0;
     string s;
@@ -185,8 +201,17 @@ template <class T> ostream& operator<<(ostream& os, priority_queue<T, vector<T>,
 void debug_out() { cerr << endl; }
 template <class T, class... Args> void debug_out(const T& x, const Args& ... args) { cerr << " " << x; debug_out(args...); }
 #define debug(...) cerr << __LINE__ << " : [" << #__VA_ARGS__ << "] =", debug_out(__VA_ARGS__)
+void debug_table(const std::vector<std::vector<int>>& table) {
+    for (const auto& row : table) {
+        for (const auto& cell : row) {
+            cerr << cell << "\t";
+        }
+        cerr << endl;
+    }
+}
 #else
 #define debug(...) (void(0))
+void debug_table(const std::vector<std::vector<int>>& table) { (void)table; }
 #endif
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // clang-format on
