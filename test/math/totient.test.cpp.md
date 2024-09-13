@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: math/totient.hpp
     title: math/totient.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
   _extendedRequiredBy: []
@@ -20,47 +20,56 @@ data:
   bundledCode: "#line 1 \"test/math/totient.test.cpp\"\n#define PROBLEM \\\n    \"\
     https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_D\"\n#line 1 \"\
     other/template.hpp\"\n// clang-format off\n#include <algorithm>\n#include <array>\n\
-    #include <bitset>\n#include <cassert>\n#include <chrono>\n#include <cmath>\n#include\
-    \ <complex>\n#include <deque>\n#include <forward_list>\n#include <fstream>\n#include\
-    \ <functional>\n#include <iomanip>\n#include <ios>\n#include <iostream>\n#include\
-    \ <limits>\n#include <list>\n#include <map>\n#include <numeric>\n#include <optional>\n\
-    #include <queue>\n#include <random>\n#include <set>\n#include <sstream>\n#include\
-    \ <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n#include\
-    \ <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include <vector>\n\
-    using namespace std;\nusing uint = unsigned int;\nusing ll = long long;\nusing\
-    \ ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld = long double;\n\
-    using pii = pair<int, int>;\nusing pll = pair<long long, long long>;\ntemplate\
-    \ <class T> using maxheap = priority_queue<T>;\ntemplate <class T> using minheap\
-    \ = priority_queue<T, vector<T>, greater<T>>;\ntemplate <class T> using vec =\
-    \ vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n#define OVERLOAD_REP(_1,\
-    \ _2, _3, name, ...) name\n#define REP0(n) for (auto minato = decay_t<decltype(n)>{};\
-    \ minato < (n); ++minato)\n#define REP1(i, n) for (auto i = decay_t<decltype(n)>{};\
-    \ (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto i = (l); (i) < (r); (i)++)\n\
-    #define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2, REP1, REP0)(__VA_ARGS__)\n#define\
-    \ OVERLOAD_RREP(_1, _2, _3, name, ...) name\n#define RREP1(i, n) for (auto i =\
-    \ (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n#define RREP2(i, l, r) for (auto\
-    \ i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...) OVERLOAD_RREP(__VA_ARGS__,\
-    \ RREP2, RREP1)(__VA_ARGS__)\n#define ALL(x) begin(x), end(x)\ntemplate <class\
-    \ Container> int SZ(const Container& v) { return int(v.size()); }\ntemplate <class\
-    \ T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(), v.end()), v.end());\
-    \ }\ntemplate <class T> T MAX(const vector<T>& v) { return *max_element(v.begin(),\
-    \ v.end()); }\ntemplate <class T> T MIN(const vector<T>& v) { return *min_element(v.begin(),\
-    \ v.end()); }\ntemplate <class T> T SUM(const vector<T>& v) { return accumulate(v.begin(),\
-    \ v.end(), T(0)); }\ntemplate <class T> T ABS(T x) { return max(x, -x); }\nlong\
-    \ long floor_div(long long n, long long d) { return n / d - ((n ^ d) < 0 && n\
-    \ % d); }\ntemplate <class T1, class T2> bool chmax(T1& a, T2 b) { if (a < b)\
-    \ { a = b; return true; } return false; }\ntemplate <class T1, class T2> bool\
-    \ chmin(T1& a, T2 b) { if (a > b) { a = b; return true; } return false; }\nint\
-    \ topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x); }\nint botbit(ull\
-    \ x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull x) { return\
-    \ __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x >> k) & 1;\
-    \ }\nconstexpr long long TEN(int x) { return x == 0 ? 1 : TEN(x - 1) * 10; }\n\
-    template <typename S> void rearrange(const vector<S>& id) { (void)id; }\ntemplate\
-    \ <typename S, typename T> void rearrange_exec(const vector<S>& id, vector<T>&\
-    \ v) { vector<T> w(v.size()); for (size_t i = 0; i < id.size(); i++) { w[i] =\
-    \ v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename Head, typename... Tail>\
-    \ void rearrange(const vector<S>& id, Head& a, Tail& ...tail) { rearrange_exec(id,\
-    \ a); rearrange(id, tail...); }\nistream& operator>>(istream& is, __int128_t&\
+    #include <bitset>\n#include <cassert>\n#include <chrono>\n#include <climits>\n\
+    #include <cmath>\n#include <complex>\n#include <deque>\n#include <forward_list>\n\
+    #include <fstream>\n#include <functional>\n#include <iomanip>\n#include <ios>\n\
+    #include <iostream>\n#include <limits>\n#include <list>\n#include <map>\n#include\
+    \ <numeric>\n#include <optional>\n#include <queue>\n#include <random>\n#include\
+    \ <set>\n#include <sstream>\n#include <stack>\n#include <string>\n#include <tuple>\n\
+    #include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n#include\
+    \ <utility>\n#include <vector>\nusing namespace std;\nusing uint = unsigned int;\n\
+    using ll = long long;\nusing ull = unsigned long long;\nusing i128 = __int128_t;\n\
+    using ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
+    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
+    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
+    \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
+    \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
+    \ i = (l); (i) < (r); (i)++)\n#define rep(...) OVERLOAD_REP(__VA_ARGS__, REP2,\
+    \ REP1, REP0)(__VA_ARGS__)\n#define OVERLOAD_RREP(_1, _2, _3, name, ...) name\n\
+    #define RREP1(i, n) for (auto i = (n) - 1; (i) >= decay_t<decltype(n)>{}; (i)--)\n\
+    #define RREP2(i, l, r) for (auto i = (r) - 1; (i) >= (l); (i)--)\n#define rrep(...)\
+    \ OVERLOAD_RREP(__VA_ARGS__, RREP2, RREP1)(__VA_ARGS__)\n#define ALL(x) begin(x),\
+    \ end(x)\ntemplate <class Container> int SZ(const Container& v) { return int(v.size());\
+    \ }\ntemplate <class T> void UNIQUE(vector<T>& v) { v.erase(unique(v.begin(),\
+    \ v.end()), v.end()); }\ntemplate <class T> T MAX(const vector<T>& v) { return\
+    \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
+    \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
+    \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
+    \ T> T ABS(T x) { return max(x, -x); }\ntemplate <class T> constexpr T POW(T x,\
+    \ ull n) { T ret = 1; while (n > 0) { if (n & 1) ret *= x; x *= x; n >>= 1; }\
+    \ return ret; }\ntemplate <class T> constexpr T POW(T x, ull n, T mod) { T ret\
+    \ = 1; while (n > 0) { if (n & 1) ret = ret * x % mod; x = x * x % mod; n >>=\
+    \ 1; } return ret; }\nconstexpr long long floor_div(long long n, long long d)\
+    \ { return n / d - ((n ^ d) < 0 && n % d); }\ntemplate <class T1, class T2> bool\
+    \ chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }\ntemplate\
+    \ <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true;\
+    \ } return false; }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x);\
+    \ }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
+    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
+    \ >> k) & 1; }\nint popparity(ull x) { return __builtin_parityll(x); }\nint parity_sign(ull\
+    \ x) { return (x & 1) ? -1 : 1; }\nconstexpr long long TEN(int x) { return x ==\
+    \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
+    \ id) { (void)id; }\ntemplate <typename S, typename T> void rearrange_exec(const\
+    \ vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i <\
+    \ id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename\
+    \ Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\ntemplate <class T>\nvector<vector<T>>\
+    \ rot90(const vector<vector<T>>& v) {\n    int n = v.size(), m = v[0].size();\n\
+    \    vector<vector<T>> ret(m, vector<T>(n));\n    for (int i = 0; i < n; i++)\
+    \ {\n        for (int j = 0; j < m; j++) {\n            ret[m - 1 - j][i] = v[i][j];\n\
+    \        }\n    }\n    return ret;\n}\nistream& operator>>(istream& is, __int128_t&\
     \ x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()), it\
     \ = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 + s[it]\
     \ - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
@@ -154,8 +163,12 @@ data:
     \ } ) }\nvoid debug_out() { cerr << endl; }\ntemplate <class T, class... Args>\
     \ void debug_out(const T& x, const Args& ... args) { cerr << \" \" << x; debug_out(args...);\
     \ }\n#define debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\"\
-    , debug_out(__VA_ARGS__)\n#else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 1 \"math/totient.hpp\"\n/**\n * n \u3068\u4E92\u3044\
+    , debug_out(__VA_ARGS__)\nvoid debug_table(const std::vector<std::vector<int>>&\
+    \ table) {\n    for (const auto& row : table) {\n        for (const auto& cell\
+    \ : row) {\n            cerr << cell << \"\\t\";\n        }\n        cerr << endl;\n\
+    \    }\n}\n#else\n#define debug(...) (void(0))\nvoid debug_table(const std::vector<std::vector<int>>&\
+    \ table) { (void)table; }\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    // clang-format on\n#line 3 \"math/totient.hpp\"\n/**\n * n \u3068\u4E92\u3044\
     \u306B\u7D20\u306A\u6574\u6570\u306E\u500B\u6570\u3092\u6C42\u3081\u308B\u3002\
     \n * O(sqrt(N))\n */\ntemplate <typename Int> Int totient(Int n) {\n    assert(n\
     \ >= 1);\n    Int ret = n;\n    for (Int i = 2; i * i <= n; i++) {\n        if\
@@ -172,7 +185,7 @@ data:
   isVerificationFile: true
   path: test/math/totient.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 12:07:22+09:00'
+  timestamp: '2024-09-14 03:17:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/math/totient.test.cpp

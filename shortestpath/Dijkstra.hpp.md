@@ -9,19 +9,19 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"shortestpath/Dijkstra.hpp\"\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <queue>\n#include <vector>\ntemplate <class T, bool RESTORE\
-    \ = false> struct Dijkstra {\n  public:\n    struct edge {\n        int from,\
-    \ to, idx;\n        T cost;\n    };\n\n    Dijkstra() {\n    }\n    Dijkstra(int\
-    \ n_, T INF_) : n(n_), INF(INF_), g(n_), dist(n_) {\n        if (RESTORE) from.resize(n_);\n\
-    \    }\n\n    int size() const {\n        return n;\n    }\n\n    int add_edge(int\
-    \ u, int v, T cost) {\n        assert(0 <= v and v < n);\n        assert(0 <=\
-    \ cost);\n\n        int m = int(edges.size());\n        g[u].push_back(edge{u,\
-    \ v, m, cost});\n        edges.push_back(edge{u, v, m, cost});\n        return\
-    \ m;\n    }\n\n    void shortest_path(const std::vector<int>& vs = {0}) {\n  \
-    \      fill(dist.begin(), dist.end(), INF);\n        if (RESTORE) fill(from.begin(),\
-    \ from.end(), -1);\n        std::priority_queue<vertex> pq;\n        for (int\
-    \ v : vs) {\n            dist[v] = 0;\n            pq.push(vertex{v, 0});\n  \
-    \      }\n\n        while (!pq.empty()) {\n            vertex v = pq.top();\n\
+    \ <cassert>\n#include <limits>\n#include <queue>\n#include <vector>\n\ntemplate\
+    \ <class T, bool RESTORE = false> struct Dijkstra {\n  public:\n    struct edge\
+    \ {\n        int from, to, idx;\n        T cost;\n    };\n\n    Dijkstra() {\n\
+    \    }\n    Dijkstra(int n_) : Dijkstra(n_, std::numeric_limits<T>::max() / 2)\
+    \ {\n    }\n    Dijkstra(int n_, T INF_) : n(n_), INF(INF_), g(n_) {\n    }\n\n\
+    \    int size() const {\n        return n;\n    }\n\n    int add_edge(int u, int\
+    \ v, T cost) {\n        assert(0 <= v and v < n);\n        assert(0 <= cost);\n\
+    \n        int m = int(edges.size());\n        g[u].push_back(edge{u, v, m, cost});\n\
+    \        edges.push_back(edge{u, v, m, cost});\n        return m;\n    }\n\n \
+    \   void shortest_path(const std::vector<int>& vs = {0}) {\n        dist.assign(n,\
+    \ INF);\n        if (RESTORE) from.assign(n, -1);\n        std::priority_queue<vertex>\
+    \ pq;\n        for (int v : vs) {\n            dist[v] = 0;\n            pq.push(vertex{v,\
+    \ 0});\n        }\n\n        while (!pq.empty()) {\n            vertex v = pq.top();\n\
     \            pq.pop();\n            if (v.dist > dist[v.idx]) continue;\n    \
     \        for (const edge& e : g[v.idx]) {\n                if (dist[e.to] > v.dist\
     \ + e.cost) {\n                    dist[e.to] = v.dist + e.cost;\n           \
@@ -36,21 +36,21 @@ data:
     \ from;\n    std::vector<edge> edges;\n    struct vertex {\n        int idx;\n\
     \        T dist;\n        bool operator<(const vertex& o) const {\n          \
     \  return dist > o.dist;\n        }\n    };\n};\n"
-  code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <queue>\n\
-    #include <vector>\ntemplate <class T, bool RESTORE = false> struct Dijkstra {\n\
-    \  public:\n    struct edge {\n        int from, to, idx;\n        T cost;\n \
-    \   };\n\n    Dijkstra() {\n    }\n    Dijkstra(int n_, T INF_) : n(n_), INF(INF_),\
-    \ g(n_), dist(n_) {\n        if (RESTORE) from.resize(n_);\n    }\n\n    int size()\
-    \ const {\n        return n;\n    }\n\n    int add_edge(int u, int v, T cost)\
-    \ {\n        assert(0 <= v and v < n);\n        assert(0 <= cost);\n\n       \
-    \ int m = int(edges.size());\n        g[u].push_back(edge{u, v, m, cost});\n \
-    \       edges.push_back(edge{u, v, m, cost});\n        return m;\n    }\n\n  \
-    \  void shortest_path(const std::vector<int>& vs = {0}) {\n        fill(dist.begin(),\
-    \ dist.end(), INF);\n        if (RESTORE) fill(from.begin(), from.end(), -1);\n\
-    \        std::priority_queue<vertex> pq;\n        for (int v : vs) {\n       \
-    \     dist[v] = 0;\n            pq.push(vertex{v, 0});\n        }\n\n        while\
-    \ (!pq.empty()) {\n            vertex v = pq.top();\n            pq.pop();\n \
-    \           if (v.dist > dist[v.idx]) continue;\n            for (const edge&\
+  code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <limits>\n\
+    #include <queue>\n#include <vector>\n\ntemplate <class T, bool RESTORE = false>\
+    \ struct Dijkstra {\n  public:\n    struct edge {\n        int from, to, idx;\n\
+    \        T cost;\n    };\n\n    Dijkstra() {\n    }\n    Dijkstra(int n_) : Dijkstra(n_,\
+    \ std::numeric_limits<T>::max() / 2) {\n    }\n    Dijkstra(int n_, T INF_) :\
+    \ n(n_), INF(INF_), g(n_) {\n    }\n\n    int size() const {\n        return n;\n\
+    \    }\n\n    int add_edge(int u, int v, T cost) {\n        assert(0 <= v and\
+    \ v < n);\n        assert(0 <= cost);\n\n        int m = int(edges.size());\n\
+    \        g[u].push_back(edge{u, v, m, cost});\n        edges.push_back(edge{u,\
+    \ v, m, cost});\n        return m;\n    }\n\n    void shortest_path(const std::vector<int>&\
+    \ vs = {0}) {\n        dist.assign(n, INF);\n        if (RESTORE) from.assign(n,\
+    \ -1);\n        std::priority_queue<vertex> pq;\n        for (int v : vs) {\n\
+    \            dist[v] = 0;\n            pq.push(vertex{v, 0});\n        }\n\n \
+    \       while (!pq.empty()) {\n            vertex v = pq.top();\n            pq.pop();\n\
+    \            if (v.dist > dist[v.idx]) continue;\n            for (const edge&\
     \ e : g[v.idx]) {\n                if (dist[e.to] > v.dist + e.cost) {\n     \
     \               dist[e.to] = v.dist + e.cost;\n                    if (RESTORE)\
     \ from[e.to] = e.idx;\n                    pq.push(vertex{e.to, dist[e.to]});\n\
@@ -68,7 +68,7 @@ data:
   isVerificationFile: false
   path: shortestpath/Dijkstra.hpp
   requiredBy: []
-  timestamp: '2024-03-09 12:07:22+09:00'
+  timestamp: '2024-09-14 03:17:25+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: shortestpath/Dijkstra.hpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: shortestpath/warshall_floyd.hpp
     title: shortestpath/warshall_floyd.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C
@@ -21,18 +21,18 @@ data:
     \ \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n#line 1 \"other/template.hpp\"\n// clang-format off\n#include <algorithm>\n\
     #include <array>\n#include <bitset>\n#include <cassert>\n#include <chrono>\n#include\
-    \ <cmath>\n#include <complex>\n#include <deque>\n#include <forward_list>\n#include\
-    \ <fstream>\n#include <functional>\n#include <iomanip>\n#include <ios>\n#include\
-    \ <iostream>\n#include <limits>\n#include <list>\n#include <map>\n#include <numeric>\n\
-    #include <optional>\n#include <queue>\n#include <random>\n#include <set>\n#include\
-    \ <sstream>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
-    #include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include\
-    \ <vector>\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long\
-    \ long;\nusing ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld =\
-    \ long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long, long\
-    \ long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate <class\
-    \ T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate <class\
-    \ T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    \ <climits>\n#include <cmath>\n#include <complex>\n#include <deque>\n#include\
+    \ <forward_list>\n#include <fstream>\n#include <functional>\n#include <iomanip>\n\
+    #include <ios>\n#include <iostream>\n#include <limits>\n#include <list>\n#include\
+    \ <map>\n#include <numeric>\n#include <optional>\n#include <queue>\n#include <random>\n\
+    #include <set>\n#include <sstream>\n#include <stack>\n#include <string>\n#include\
+    \ <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
+    #include <utility>\n#include <vector>\nusing namespace std;\nusing uint = unsigned\
+    \ int;\nusing ll = long long;\nusing ull = unsigned long long;\nusing i128 = __int128_t;\n\
+    using ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
+    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
+    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
     #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
     \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
     \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
@@ -47,23 +47,32 @@ data:
     \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
     \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
     \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
-    \ T> T ABS(T x) { return max(x, -x); }\nlong long floor_div(long long n, long\
-    \ long d) { return n / d - ((n ^ d) < 0 && n % d); }\ntemplate <class T1, class\
-    \ T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false;\
-    \ }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a =\
-    \ b; return true; } return false; }\nint topbit(ull x) { return x == 0 ? -1 :\
-    \ 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x);\
-    \ }\nint popcount(ull x) { return __builtin_popcountll(x); }\nint kthbit(ull x,\
-    \ int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int x) { return x ==\
+    \ T> T ABS(T x) { return max(x, -x); }\ntemplate <class T> constexpr T POW(T x,\
+    \ ull n) { T ret = 1; while (n > 0) { if (n & 1) ret *= x; x *= x; n >>= 1; }\
+    \ return ret; }\ntemplate <class T> constexpr T POW(T x, ull n, T mod) { T ret\
+    \ = 1; while (n > 0) { if (n & 1) ret = ret * x % mod; x = x * x % mod; n >>=\
+    \ 1; } return ret; }\nconstexpr long long floor_div(long long n, long long d)\
+    \ { return n / d - ((n ^ d) < 0 && n % d); }\ntemplate <class T1, class T2> bool\
+    \ chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }\ntemplate\
+    \ <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true;\
+    \ } return false; }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x);\
+    \ }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
+    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
+    \ >> k) & 1; }\nint popparity(ull x) { return __builtin_parityll(x); }\nint parity_sign(ull\
+    \ x) { return (x & 1) ? -1 : 1; }\nconstexpr long long TEN(int x) { return x ==\
     \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
     \ id) { (void)id; }\ntemplate <typename S, typename T> void rearrange_exec(const\
     \ vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i <\
     \ id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename\
     \ Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
-    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nistream& operator>>(istream&\
-    \ is, __int128_t& x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()),\
-    \ it = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 +\
-    \ s[it] - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\ntemplate <class T>\nvector<vector<T>>\
+    \ rot90(const vector<vector<T>>& v) {\n    int n = v.size(), m = v[0].size();\n\
+    \    vector<vector<T>> ret(m, vector<T>(n));\n    for (int i = 0; i < n; i++)\
+    \ {\n        for (int j = 0; j < m; j++) {\n            ret[m - 1 - j][i] = v[i][j];\n\
+    \        }\n    }\n    return ret;\n}\nistream& operator>>(istream& is, __int128_t&\
+    \ x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()), it\
+    \ = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 + s[it]\
+    \ - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
     \ os, __int128_t x) {\n    if (x == 0) return os << 0;\n    if (x < 0) os << '-',\
     \ x = -x;\n    deque<int> deq;\n    while (x) deq.emplace_front(x % 10), x /=\
     \ 10;\n    for (int e : deq) os << e;\n    return os;\n}\ntemplate <class T> vector<T>\
@@ -154,22 +163,27 @@ data:
     \ } ) }\nvoid debug_out() { cerr << endl; }\ntemplate <class T, class... Args>\
     \ void debug_out(const T& x, const Args& ... args) { cerr << \" \" << x; debug_out(args...);\
     \ }\n#define debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\"\
-    , debug_out(__VA_ARGS__)\n#else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    , debug_out(__VA_ARGS__)\nvoid debug_table(const std::vector<std::vector<int>>&\
+    \ table) {\n    for (const auto& row : table) {\n        for (const auto& cell\
+    \ : row) {\n            cerr << cell << \"\\t\";\n        }\n        cerr << endl;\n\
+    \    }\n}\n#else\n#define debug(...) (void(0))\nvoid debug_table(const std::vector<std::vector<int>>&\
+    \ table) { (void)table; }\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
     // clang-format on\n#line 2 \"shortestpath/warshall_floyd.hpp\"\n\n#line 4 \"\
-    shortestpath/warshall_floyd.hpp\"\n\ntemplate <typename Int, Int INF>\nvoid warshall_floyd(std::vector<std::vector<Int>>&\
-    \ G) {\n    int N = G.size();\n\n    for (int k = 0; k < N; k++) {\n        for\
-    \ (int i = 0; i < N; i++) {\n            if (G[i][k] == INF) continue;\n     \
-    \       for (int j = 0; j < N; j++) {\n                if (G[k][j] == INF) continue;\n\
-    \                G[i][j] = min(G[i][j], G[i][k] + G[k][j]);\n            }\n \
-    \       }\n    }\n    return;\n}\n#line 5 \"test/shortestpath/warshall_floyd.test.cpp\"\
-    \n\nint main() {\n    constexpr int INF = numeric_limits<int>::max();\n    INT(V,\
-    \ E);\n    vvec<int> dist(V, vec<int>(V, INF));\n    rep(i, V) dist[i][i] = 0;\n\
-    \    rep(E) {\n        INT(s, t, d);\n        chmin(dist[s][t], d);\n    }\n \
-    \   warshall_floyd<int, INF>(dist);\n    rep(i, V) if (dist[i][i] < 0) drop(\"\
-    NEGATIVE CYCLE\");\n    rep(i, V) {\n        rep(j, V) {\n            if (j) cout\
-    \ << \" \";\n            if (dist[i][j] == INF)\n                cout << \"INF\"\
-    ;\n            else\n                cout << dist[i][j];\n        }\n        cout\
-    \ << ln;\n    }\n}\n"
+    shortestpath/warshall_floyd.hpp\"\n\ntemplate <typename Int>\nstd::vector<std::vector<Int>>\
+    \ warshall_floyd(\n    const std::vector<std::vector<Int>>& G,\n    Int INF) {\n\
+    \    int N = G.size();\n    auto dist = G;\n\n    for (int k = 0; k < N; k++)\
+    \ {\n        for (int i = 0; i < N; i++) {\n            if (dist[i][k] == INF)\
+    \ continue;\n            for (int j = 0; j < N; j++) {\n                if (dist[k][j]\
+    \ == INF) continue;\n                dist[i][j] = min(dist[i][j], dist[i][k] +\
+    \ dist[k][j]);\n            }\n        }\n    }\n    return dist;\n}\n#line 5\
+    \ \"test/shortestpath/warshall_floyd.test.cpp\"\n\nint main() {\n    constexpr\
+    \ int INF = numeric_limits<int>::max();\n    INT(V, E);\n    vvec<int> dist(V,\
+    \ vec<int>(V, INF));\n    rep(i, V) dist[i][i] = 0;\n    rep(E) {\n        INT(s,\
+    \ t, d);\n        chmin(dist[s][t], d);\n    }\n    warshall_floyd<int, INF>(dist);\n\
+    \    rep(i, V) if (dist[i][i] < 0) drop(\"NEGATIVE CYCLE\");\n    rep(i, V) {\n\
+    \        rep(j, V) {\n            if (j) cout << \" \";\n            if (dist[i][j]\
+    \ == INF)\n                cout << \"INF\";\n            else\n              \
+    \  cout << dist[i][j];\n        }\n        cout << ln;\n    }\n}\n"
   code: "#define PROBLEM \\\n    \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n#include \"other/template.hpp\"\n#include \"shortestpath/warshall_floyd.hpp\"\
     \n\nint main() {\n    constexpr int INF = numeric_limits<int>::max();\n    INT(V,\
@@ -186,8 +200,8 @@ data:
   isVerificationFile: true
   path: test/shortestpath/warshall_floyd.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 12:07:22+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-09-14 03:17:25+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: test/shortestpath/warshall_floyd.test.cpp
 layout: document

@@ -29,7 +29,7 @@ data:
     \        coverings.reserve(topbit(i) + 1);\n        while (i > 0) {\n        \
     \    coverings.push_back(i);\n            i >>= 1;\n        }\n        return\
     \ coverings;\n    }\n\n  private:\n    int topbit(int x) const {\n        return\
-    \ 31 - std::countr_zero((uint)x);\n    }\n};\n"
+    \ 31 - std::countl_zero((uint)x);\n    }\n};\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <cassert>\n#include <bit>\n\
     #include <vector>\n\nstruct SegmentTreeInfo {\n    using uint = unsigned int;\n\
     \    int n, n_bit_ceil;\n\n    SegmentTreeInfo(int n_) : n(n_), n_bit_ceil(std::bit_ceil((uint)n_))\
@@ -50,12 +50,12 @@ data:
     \ coverings;\n        coverings.reserve(topbit(i) + 1);\n        while (i > 0)\
     \ {\n            coverings.push_back(i);\n            i >>= 1;\n        }\n  \
     \      return coverings;\n    }\n\n  private:\n    int topbit(int x) const {\n\
-    \        return 31 - std::countr_zero((uint)x);\n    }\n};"
+    \        return 31 - std::countl_zero((uint)x);\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: segmenttree/SegmentTreeInfo.hpp
   requiredBy: []
-  timestamp: '2024-03-09 12:07:22+09:00'
+  timestamp: '2024-09-14 03:17:25+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: segmenttree/SegmentTreeInfo.hpp

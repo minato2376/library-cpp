@@ -16,8 +16,8 @@ data:
     \ struct BinaryTrie {\n    struct Node {\n        int parent;\n        std::array<int,\
     \ 2> child;\n        T value;\n        Node(int parent, T value) : parent(parent),\
     \ value(value) {\n            child[0] = child[1] = -1;\n        }\n    };\n\n\
-    \    F op;\n    T e;\n    vector<Node> nodes;\n\n    BinaryTrie(const F& op, T\
-    \ e) : op(op), e(e), nodes(1, Node(-1, e)) {\n    }\n\n    int create_node(int\
+    \    F op;\n    T e;\n    std::vector<Node> nodes;\n\n    BinaryTrie(const F&\
+    \ op, T e) : op(op), e(e), nodes(1, Node(-1, e)) {\n    }\n\n    int create_node(int\
     \ parent, T value) {\n        int ret = int(nodes.size());\n        nodes.emplace_back(parent,\
     \ value);\n        return ret;\n    }\n\n    void insert(Key key, T value) {\n\
     \        int cur = 0;\n\n        for (int i = B - 1; i >= 0; i--) {\n        \
@@ -64,9 +64,9 @@ data:
     \ Node {\n        int parent;\n        std::array<int, 2> child;\n        T value;\n\
     \        Node(int parent, T value) : parent(parent), value(value) {\n        \
     \    child[0] = child[1] = -1;\n        }\n    };\n\n    F op;\n    T e;\n   \
-    \ vector<Node> nodes;\n\n    BinaryTrie(const F& op, T e) : op(op), e(e), nodes(1,\
-    \ Node(-1, e)) {\n    }\n\n    int create_node(int parent, T value) {\n      \
-    \  int ret = int(nodes.size());\n        nodes.emplace_back(parent, value);\n\
+    \ std::vector<Node> nodes;\n\n    BinaryTrie(const F& op, T e) : op(op), e(e),\
+    \ nodes(1, Node(-1, e)) {\n    }\n\n    int create_node(int parent, T value) {\n\
+    \        int ret = int(nodes.size());\n        nodes.emplace_back(parent, value);\n\
     \        return ret;\n    }\n\n    void insert(Key key, T value) {\n        int\
     \ cur = 0;\n\n        for (int i = B - 1; i >= 0; i--) {\n            int b =\
     \ kthbit(key, i);\n            if (nodes[cur].child[b] == -1) {\n            \
@@ -111,7 +111,7 @@ data:
   isVerificationFile: false
   path: datastructure/BinaryTrie.hpp
   requiredBy: []
-  timestamp: '2023-08-20 19:09:02+09:00'
+  timestamp: '2024-09-14 03:17:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - test/datastructure/BinaryTrie.test.cpp

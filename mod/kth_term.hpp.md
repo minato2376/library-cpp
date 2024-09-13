@@ -28,34 +28,31 @@ data:
     \         y = x;\n        } else {\n            for (int i = 0; i < m; i++) c[l\
     \ - 1 - i] -= freq * b[m - 1 - i];\n        }\n    }\n    reverse(c.begin(), c.end());\n\
     \    return c;\n}\n#line 2 \"mod/bostan_mori.hpp\"\n\n#include <cassert>\n#line\
-    \ 5 \"mod/bostan_mori.hpp\"\n\n/**\n * @brief Bostan-Mori Algorithm\n *\n */\n\
-    template <class mint,\n          std::vector<mint> (*convolution)(std::vector<mint>,\n\
-    \                                           std::vector<mint>)>\nmint bostan_mori(std::vector<mint>\
+    \ 5 \"mod/bostan_mori.hpp\"\n\n#include <atcoder/convolution>\n\n/**\n * @brief\
+    \ Bostan-Mori Algorithm\n *\n */\ntemplate <class mint>\nmint bostan_mori(std::vector<mint>\
     \ P, std::vector<mint> Q, long long N) {\n    assert(Q[0] == 1);\n    assert(P.size()\
     \ < Q.size());\n    int D = Q.size();\n    while (N) {\n        auto Q_neg = Q;\n\
     \        for (int i = 1; i < int(Q.size()); i += 2) Q_neg[i] *= -1;\n        P\
-    \ = convolution(P, Q_neg);\n        Q = convolution(Q, Q_neg);\n        for (int\
-    \ i = N & 1; i < int(P.size()); i += 2) P[i >> 1] = P[i];\n        for (int i\
-    \ = 0; i < int(Q.size()); i += 2) Q[i >> 1] = Q[i];\n        P.resize(D - 1);\n\
-    \        Q.resize(D);\n        N >>= 1;\n    }\n    return P[0];\n}\n#line 6 \"\
-    mod/kth_term.hpp\"\n\ntemplate <class mint,\n          std::vector<mint> (*convolution)(std::vector<mint>,\n\
-    \                                           std::vector<mint>)>\nmint kth_term(std::vector<mint>\
-    \ a, long long N) {\n    std::vector<mint> c = berlekamp_massey(a);\n    auto\
-    \ b = convolution(a, c);\n    b.resize(c.size() - 1);\n    return bostan_mori<mint,\
-    \ convolution>(b, c, N);\n}\n"
+    \ = atcoder::convolution(P, Q_neg);\n        Q = atcoder::convolution(Q, Q_neg);\n\
+    \        for (int i = N & 1; i < int(P.size()); i += 2) P[i >> 1] = P[i];\n  \
+    \      for (int i = 0; i < int(Q.size()); i += 2) Q[i >> 1] = Q[i];\n        P.resize(D\
+    \ - 1);\n        Q.resize(D);\n        N >>= 1;\n    }\n    return P[0];\n}\n\
+    #line 5 \"mod/kth_term.hpp\"\n\n#line 8 \"mod/kth_term.hpp\"\n\ntemplate <class\
+    \ mint> mint kth_term(std::vector<mint> a, long long N) {\n    std::vector<mint>\
+    \ c = berlekamp_massey(a);\n    auto b = convolution(a, c);\n    b.resize(c.size()\
+    \ - 1);\n    return bostan_mori<mint>(b, c, N);\n}\n"
   code: "#pragma once\n\n#include \"mod/berlekamp_massey.hpp\"\n#include \"mod/bostan_mori.hpp\"\
-    \n#include <vector>\n\ntemplate <class mint,\n          std::vector<mint> (*convolution)(std::vector<mint>,\n\
-    \                                           std::vector<mint>)>\nmint kth_term(std::vector<mint>\
-    \ a, long long N) {\n    std::vector<mint> c = berlekamp_massey(a);\n    auto\
-    \ b = convolution(a, c);\n    b.resize(c.size() - 1);\n    return bostan_mori<mint,\
-    \ convolution>(b, c, N);\n}"
+    \n\n#include <atcoder/convolution>\n#include <vector>\n\ntemplate <class mint>\
+    \ mint kth_term(std::vector<mint> a, long long N) {\n    std::vector<mint> c =\
+    \ berlekamp_massey(a);\n    auto b = convolution(a, c);\n    b.resize(c.size()\
+    \ - 1);\n    return bostan_mori<mint>(b, c, N);\n}"
   dependsOn:
   - mod/berlekamp_massey.hpp
   - mod/bostan_mori.hpp
   isVerificationFile: false
   path: mod/kth_term.hpp
   requiredBy: []
-  timestamp: '2023-10-13 01:31:07+09:00'
+  timestamp: '2024-09-14 03:17:25+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: mod/kth_term.hpp

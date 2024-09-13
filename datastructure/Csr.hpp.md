@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':warning:'
+    path: graph/Namori.hpp
+    title: graph/Namori.hpp
+  - icon: ':warning:'
+    path: graph/WeightedNamori.hpp
+    title: graph/WeightedNamori.hpp
+  - icon: ':warning:'
     path: tree/Centroid.hpp
     title: tree/Centroid.hpp
   _extendedVerifiedWith: []
@@ -43,6 +49,8 @@ data:
   path: datastructure/Csr.hpp
   requiredBy:
   - tree/Centroid.hpp
+  - graph/Namori.hpp
+  - graph/WeightedNamori.hpp
   timestamp: '2024-03-09 12:07:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

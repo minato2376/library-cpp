@@ -3,6 +3,9 @@ data:
   libraryCategories:
   - name: algorithm
     pages:
+    - icon: ':warning:'
+      path: algorithm/Mo.hpp
+      title: algorithm/Mo.hpp
     - icon: ':heavy_check_mark:'
       path: algorithm/SquareRootDecomposition.hpp
       title: "\u30AF\u30A8\u30EA\u306E\u7BC4\u56F2\u3092\u5206\u5272\u3059\u308B"
@@ -15,6 +18,9 @@ data:
     - icon: ':warning:'
       path: algorithm/longest_common_subsequence.hpp
       title: algorithm/longest_common_subsequence.hpp
+    - icon: ':warning:'
+      path: algorithm/longest_increasing_subsequence.hpp
+      title: algorithm/longest_increasing_subsequence.hpp
     - icon: ':heavy_check_mark:'
       path: algorithm/run_length_encoding.hpp
       title: algorithm/run_length_encoding.hpp
@@ -27,6 +33,9 @@ data:
       path: datastructure/BinaryTrie.hpp
       title: datastructure/BinaryTrie.hpp
     - icon: ':warning:'
+      path: datastructure/Compress.hpp
+      title: datastructure/Compress.hpp
+    - icon: ':warning:'
       path: datastructure/Csr.hpp
       title: datastructure/Csr.hpp
     - icon: ':warning:'
@@ -35,9 +44,15 @@ data:
     - icon: ':warning:'
       path: datastructure/FrequencyManager.hpp
       title: datastructure/FrequencyManager.hpp
+    - icon: ':warning:'
+      path: datastructure/GridUnionFind.hpp
+      title: datastructure/GridUnionFind.hpp
     - icon: ':heavy_check_mark:'
       path: datastructure/RangeSet.hpp
       title: datastructure/RangeSet.hpp
+    - icon: ':warning:'
+      path: datastructure/RangeUnionFind.hpp
+      title: datastructure/RangeUnionFind.hpp
     - icon: ':heavy_check_mark:'
       path: datastructure/SlidingWindowAggregation.hpp
       title: datastructure/SlidingWindowAggregation.hpp
@@ -58,6 +73,9 @@ data:
     - icon: ':warning:'
       path: flow/MaximumFlowLowerBound.hpp
       title: flow/MaximumFlowLowerBound.hpp
+    - icon: ':warning:'
+      path: flow/ProjectSelectionProblem.hpp
+      title: flow/ProjectSelectionProblem.hpp
   - name: generator
     pages:
     - icon: ':heavy_check_mark:'
@@ -79,9 +97,15 @@ data:
     - icon: ':warning:'
       path: graph/EdgeSum.hpp
       title: graph/EdgeSum.hpp
+    - icon: ':warning:'
+      path: graph/Namori.hpp
+      title: graph/Namori.hpp
     - icon: ':heavy_check_mark:'
       path: graph/StronglyConnectedComponents.hpp
       title: graph/StronglyConnectedComponents.hpp
+    - icon: ':warning:'
+      path: graph/WeightedNamori.hpp
+      title: graph/WeightedNamori.hpp
   - name: math
     pages:
     - icon: ':warning:'
@@ -93,6 +117,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: math/TwoSat.hpp
       title: math/TwoSat.hpp
+    - icon: ':warning:'
+      path: math/divisor.hpp
+      title: math/divisor.hpp
     - icon: ':heavy_check_mark:'
       path: math/floor_sqrt.hpp
       title: math/floor_sqrt.hpp
@@ -101,9 +128,18 @@ data:
       title: math/totient.hpp
   - name: mod
     pages:
+    - icon: ':warning:'
+      path: mod/BinomialPrefixSum.hpp
+      title: mod/BinomialPrefixSum.hpp
+    - icon: ':warning:'
+      path: mod/FormalPowerSeriesArbitrary.hpp
+      title: mod/FormalPowerSeriesArbitrary.hpp
     - icon: ':heavy_check_mark:'
       path: mod/FormalPowerSeriesNTTFriendly.hpp
       title: mod/FormalPowerSeriesNTTFriendly.hpp
+    - icon: ':warning:'
+      path: mod/ModComb.hpp
+      title: mod/ModComb.hpp
     - icon: ':warning:'
       path: mod/ModCombination.hpp
       title: mod/ModCombination.hpp
@@ -113,6 +149,9 @@ data:
     - icon: ':warning:'
       path: mod/ModInt61.hpp
       title: mod/ModInt61.hpp
+    - icon: ':warning:'
+      path: mod/arbitrary_convolution.hpp
+      title: mod/arbitrary_convolution.hpp
     - icon: ':warning:'
       path: mod/atcoder_modint_header.hpp
       title: mod/atcoder_modint_header.hpp
@@ -126,6 +165,9 @@ data:
       path: mod/convolution998244353.hpp
       title: mod/convolution998244353.hpp
     - icon: ':warning:'
+      path: mod/count_increasing_sequence.hpp
+      title: mod/count_increasing_sequence.hpp
+    - icon: ':warning:'
       path: mod/kth_term.hpp
       title: mod/kth_term.hpp
     - icon: ':warning:'
@@ -133,7 +175,13 @@ data:
       title: mod/product_FPS.hpp
   - name: other
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
+      path: other/BigInt.hpp
+      title: other/BigInt.hpp
+    - icon: ':warning:'
+      path: other/Rational.hpp
+      title: other/Rational.hpp
+    - icon: ':question:'
       path: other/template.hpp
       title: other/template.hpp
     - icon: ':heavy_check_mark:'
@@ -144,6 +192,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: segmenttree/DualSegmentTree.hpp
       title: segmenttree/DualSegmentTree.hpp
+    - icon: ':warning:'
+      path: segmenttree/DynamicSegmentTree.hpp
+      title: segmenttree/DynamicSegmentTree.hpp
     - icon: ':heavy_check_mark:'
       path: segmenttree/LazySegmentTree.hpp
       title: segmenttree/LazySegmentTree.hpp
@@ -157,6 +208,9 @@ data:
       path: segmenttree/SegmentTree.hpp
       title: segmenttree/SegmentTree.hpp
     - icon: ':warning:'
+      path: segmenttree/SegmentTree2D.hpp
+      title: segmenttree/SegmentTree2D.hpp
+    - icon: ':warning:'
       path: segmenttree/SegmentTreeInfo.hpp
       title: segmenttree/SegmentTreeInfo.hpp
   - name: shortestpath
@@ -164,11 +218,17 @@ data:
     - icon: ':warning:'
       path: shortestpath/Dijkstra.hpp
       title: shortestpath/Dijkstra.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
+      path: shortestpath/bfs.hpp
+      title: shortestpath/bfs.hpp
+    - icon: ':x:'
       path: shortestpath/warshall_floyd.hpp
       title: shortestpath/warshall_floyd.hpp
   - name: string
     pages:
+    - icon: ':warning:'
+      path: string/AhoCorasick.hpp
+      title: AhoCorasick
     - icon: ':warning:'
       path: string/LCP_SegmentTree.hpp
       title: string/LCP_SegmentTree.hpp
@@ -179,6 +239,9 @@ data:
       path: string/SuffixArray.hpp
       title: string/SuffixArray.hpp
     - icon: ':warning:'
+      path: string/Trie.hpp
+      title: Trie
+    - icon: ':warning:'
       path: string/manachar.hpp
       title: string/manachar.hpp
   - name: tree
@@ -186,6 +249,9 @@ data:
     - icon: ':warning:'
       path: tree/Centroid.hpp
       title: tree/Centroid.hpp
+    - icon: ':warning:'
+      path: tree/HeavyLightDecomposition.hpp
+      title: tree/HeavyLightDecomposition.hpp
     - icon: ':heavy_check_mark:'
       path: tree/Rerooting.hpp
       title: "\u5168\u65B9\u4F4D\u6728 DP"
@@ -289,7 +355,7 @@ data:
       title: test/segmenttree/SegmentTree.test.cpp
   - name: test/shortestpath
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: test/shortestpath/warshall_floyd.test.cpp
       title: test/shortestpath/warshall_floyd.test.cpp
   - name: test/tree

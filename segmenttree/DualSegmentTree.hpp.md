@@ -90,8 +90,8 @@ data:
   timestamp: '2023-02-18 20:47:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/segmenttree/DualSegmentTree.test.cpp
   - test/segmenttree/DualSegmentTree2.test.cpp
+  - test/segmenttree/DualSegmentTree.test.cpp
 documentation_of: segmenttree/DualSegmentTree.hpp
 layout: document
 redirect_from:

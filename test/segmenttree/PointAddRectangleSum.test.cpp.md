@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: datastructure/BinaryIndexedTree.hpp
     title: datastructure/BinaryIndexedTree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: other/template.hpp
     title: other/template.hpp
   - icon: ':heavy_check_mark:'
@@ -24,18 +24,18 @@ data:
     \ PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n#line 1\
     \ \"other/template.hpp\"\n// clang-format off\n#include <algorithm>\n#include\
     \ <array>\n#include <bitset>\n#include <cassert>\n#include <chrono>\n#include\
-    \ <cmath>\n#include <complex>\n#include <deque>\n#include <forward_list>\n#include\
-    \ <fstream>\n#include <functional>\n#include <iomanip>\n#include <ios>\n#include\
-    \ <iostream>\n#include <limits>\n#include <list>\n#include <map>\n#include <numeric>\n\
-    #include <optional>\n#include <queue>\n#include <random>\n#include <set>\n#include\
-    \ <sstream>\n#include <stack>\n#include <string>\n#include <tuple>\n#include <type_traits>\n\
-    #include <unordered_map>\n#include <unordered_set>\n#include <utility>\n#include\
-    \ <vector>\nusing namespace std;\nusing uint = unsigned int;\nusing ll = long\
-    \ long;\nusing ull = unsigned long long;\nusing i128 = __int128_t;\nusing ld =\
-    \ long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long, long\
-    \ long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate <class\
-    \ T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate <class\
-    \ T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
+    \ <climits>\n#include <cmath>\n#include <complex>\n#include <deque>\n#include\
+    \ <forward_list>\n#include <fstream>\n#include <functional>\n#include <iomanip>\n\
+    #include <ios>\n#include <iostream>\n#include <limits>\n#include <list>\n#include\
+    \ <map>\n#include <numeric>\n#include <optional>\n#include <queue>\n#include <random>\n\
+    #include <set>\n#include <sstream>\n#include <stack>\n#include <string>\n#include\
+    \ <tuple>\n#include <type_traits>\n#include <unordered_map>\n#include <unordered_set>\n\
+    #include <utility>\n#include <vector>\nusing namespace std;\nusing uint = unsigned\
+    \ int;\nusing ll = long long;\nusing ull = unsigned long long;\nusing i128 = __int128_t;\n\
+    using ld = long double;\nusing pii = pair<int, int>;\nusing pll = pair<long long,\
+    \ long long>;\ntemplate <class T> using maxheap = priority_queue<T>;\ntemplate\
+    \ <class T> using minheap = priority_queue<T, vector<T>, greater<T>>;\ntemplate\
+    \ <class T> using vec = vector<T>;\ntemplate <class T> using vvec = vector<vector<T>>;\n\
     #define OVERLOAD_REP(_1, _2, _3, name, ...) name\n#define REP0(n) for (auto minato\
     \ = decay_t<decltype(n)>{}; minato < (n); ++minato)\n#define REP1(i, n) for (auto\
     \ i = decay_t<decltype(n)>{}; (i) < (n); (i)++)\n#define REP2(i, l, r) for (auto\
@@ -50,23 +50,32 @@ data:
     \ *max_element(v.begin(), v.end()); }\ntemplate <class T> T MIN(const vector<T>&\
     \ v) { return *min_element(v.begin(), v.end()); }\ntemplate <class T> T SUM(const\
     \ vector<T>& v) { return accumulate(v.begin(), v.end(), T(0)); }\ntemplate <class\
-    \ T> T ABS(T x) { return max(x, -x); }\nlong long floor_div(long long n, long\
-    \ long d) { return n / d - ((n ^ d) < 0 && n % d); }\ntemplate <class T1, class\
-    \ T2> bool chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false;\
-    \ }\ntemplate <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a =\
-    \ b; return true; } return false; }\nint topbit(ull x) { return x == 0 ? -1 :\
-    \ 63 - __builtin_clzll(x); }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x);\
-    \ }\nint popcount(ull x) { return __builtin_popcountll(x); }\nint kthbit(ull x,\
-    \ int k) { return (x >> k) & 1; }\nconstexpr long long TEN(int x) { return x ==\
+    \ T> T ABS(T x) { return max(x, -x); }\ntemplate <class T> constexpr T POW(T x,\
+    \ ull n) { T ret = 1; while (n > 0) { if (n & 1) ret *= x; x *= x; n >>= 1; }\
+    \ return ret; }\ntemplate <class T> constexpr T POW(T x, ull n, T mod) { T ret\
+    \ = 1; while (n > 0) { if (n & 1) ret = ret * x % mod; x = x * x % mod; n >>=\
+    \ 1; } return ret; }\nconstexpr long long floor_div(long long n, long long d)\
+    \ { return n / d - ((n ^ d) < 0 && n % d); }\ntemplate <class T1, class T2> bool\
+    \ chmax(T1& a, T2 b) { if (a < b) { a = b; return true; } return false; }\ntemplate\
+    \ <class T1, class T2> bool chmin(T1& a, T2 b) { if (a > b) { a = b; return true;\
+    \ } return false; }\nint topbit(ull x) { return x == 0 ? -1 : 63 - __builtin_clzll(x);\
+    \ }\nint botbit(ull x) { return x == 0 ? 64 : __builtin_ctzll(x); }\nint popcount(ull\
+    \ x) { return __builtin_popcountll(x); }\nint kthbit(ull x, int k) { return (x\
+    \ >> k) & 1; }\nint popparity(ull x) { return __builtin_parityll(x); }\nint parity_sign(ull\
+    \ x) { return (x & 1) ? -1 : 1; }\nconstexpr long long TEN(int x) { return x ==\
     \ 0 ? 1 : TEN(x - 1) * 10; }\ntemplate <typename S> void rearrange(const vector<S>&\
     \ id) { (void)id; }\ntemplate <typename S, typename T> void rearrange_exec(const\
     \ vector<S>& id, vector<T>& v) { vector<T> w(v.size()); for (size_t i = 0; i <\
     \ id.size(); i++) { w[i] = v[id[i]]; } v.swap(w); }\ntemplate <typename S, typename\
     \ Head, typename... Tail> void rearrange(const vector<S>& id, Head& a, Tail& ...tail)\
-    \ { rearrange_exec(id, a); rearrange(id, tail...); }\nistream& operator>>(istream&\
-    \ is, __int128_t& x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()),\
-    \ it = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 +\
-    \ s[it] - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
+    \ { rearrange_exec(id, a); rearrange(id, tail...); }\ntemplate <class T>\nvector<vector<T>>\
+    \ rot90(const vector<vector<T>>& v) {\n    int n = v.size(), m = v[0].size();\n\
+    \    vector<vector<T>> ret(m, vector<T>(n));\n    for (int i = 0; i < n; i++)\
+    \ {\n        for (int j = 0; j < m; j++) {\n            ret[m - 1 - j][i] = v[i][j];\n\
+    \        }\n    }\n    return ret;\n}\nistream& operator>>(istream& is, __int128_t&\
+    \ x) {\n    x = 0;\n    string s;\n    is >> s;\n    int n = int(s.size()), it\
+    \ = 0;\n    if (s[0] == '-') it++;\n    for (; it < n; it++) x = (x * 10 + s[it]\
+    \ - '0');\n    if (s[0] == '-') x = -x;\n    return is;\n}\nostream& operator<<(ostream&\
     \ os, __int128_t x) {\n    if (x == 0) return os << 0;\n    if (x < 0) os << '-',\
     \ x = -x;\n    deque<int> deq;\n    while (x) deq.emplace_front(x % 10), x /=\
     \ 10;\n    for (int e : deq) os << e;\n    return os;\n}\ntemplate <class T> vector<T>\
@@ -157,29 +166,33 @@ data:
     \ } ) }\nvoid debug_out() { cerr << endl; }\ntemplate <class T, class... Args>\
     \ void debug_out(const T& x, const Args& ... args) { cerr << \" \" << x; debug_out(args...);\
     \ }\n#define debug(...) cerr << __LINE__ << \" : [\" << #__VA_ARGS__ << \"] =\"\
-    , debug_out(__VA_ARGS__)\n#else\n#define debug(...) (void(0))\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
-    // clang-format on\n#line 2 \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate\
-    \ <class T> struct BinaryIndexedTree {\n    int n;\n    vector<T> data;\n\n  \
-    \  BinaryIndexedTree() {\n    }\n    BinaryIndexedTree(int n) : n(n), data(n +\
-    \ 1, 0) {\n    }\n\n    int size() const {\n        return n;\n    }\n\n    /**\n\
-    \     * (0-indexed)\n     * a[i] += x\n     */\n    void add(int i, T x) {\n \
-    \       assert(0 <= i and i < n);\n        for (++i; i <= n; i += i & -i) data[i]\
-    \ += x;\n    }\n\n    // [0,i) (0-indexed) a[0] + \u2026 + a[i-1]\n    T sum(int\
-    \ i) const {\n        assert(0 <= i and i <= n);\n        T ret = 0;\n       \
-    \ for (; i > 0; i -= i & -i) ret += data[i];\n        return ret;\n    }\n\n \
-    \   /**\n     * [l, r) (0-indexed)\n     * @return a[l] + \u2026\u3000+ a[r-1]\n\
-    \     */\n    T sum(int l, int r) const {\n        if (l >= r) return T(0);\n\
-    \        return sum(r) - sum(l);\n    }\n\n    /**\n     * (0-indexed)\n     *\
-    \ r = 0 or a[0] + a[1] + ... + a[r-1] < x\n     * r = n or a[0] + a[1] + ... +\
-    \ a[r] >= x\n     * a[0] + a[1] + ... + a[r] >= x \u3068\u306A\u308B\u6700\u5C0F\
-    \u306E r \u3092\u8FD4\u3059\u3002\n     */\n    int lower_bound(T x) const {\n\
-    \        int k = 1;\n        int ret = 0;\n        while ((k << 1) <= n) k <<=\
-    \ 1;\n        while (k > 0) {\n            if (ret + k <= n and data[ret + k]\
-    \ < x) {\n                x -= data[ret + k];\n                ret += k;\n   \
-    \         }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n \
-    \   int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\n\
-    #ifdef MINATO_LOCAL\n    friend ostream& operator<<(ostream& os, const BinaryIndexedTree&\
-    \ r) {\n        vector<T> v(r.size());\n        for (int i = 0; i < r.size();\
+    , debug_out(__VA_ARGS__)\nvoid debug_table(const std::vector<std::vector<int>>&\
+    \ table) {\n    for (const auto& row : table) {\n        for (const auto& cell\
+    \ : row) {\n            cerr << cell << \"\\t\";\n        }\n        cerr << endl;\n\
+    \    }\n}\n#else\n#define debug(...) (void(0))\nvoid debug_table(const std::vector<std::vector<int>>&\
+    \ table) { (void)table; }\n#endif\n///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n\
+    // clang-format on\n#line 2 \"datastructure/BinaryIndexedTree.hpp\"\n\n#line 5\
+    \ \"datastructure/BinaryIndexedTree.hpp\"\n\ntemplate <class T> struct BinaryIndexedTree\
+    \ {\n    int n;\n    std::vector<T> data;\n\n    BinaryIndexedTree() {\n    }\n\
+    \    BinaryIndexedTree(int n_) : n(n_), data(n + 1, 0) {\n    }\n\n    int size()\
+    \ const {\n        return n;\n    }\n\n    /**\n     * (0-indexed)\n     * a[i]\
+    \ += x\n     */\n    void add(int i, T x) {\n        assert(0 <= i and i < n);\n\
+    \        for (++i; i <= n; i += i & -i) data[i] += x;\n    }\n\n    // [0,i) (0-indexed)\
+    \ a[0] + \u2026 + a[i-1]\n    T sum(int i) const {\n        assert(0 <= i and\
+    \ i <= n);\n        T ret = 0;\n        for (; i > 0; i -= i & -i) ret += data[i];\n\
+    \        return ret;\n    }\n\n    /**\n     * [l, r) (0-indexed)\n     * @return\
+    \ a[l] + \u2026\u3000+ a[r-1]\n     */\n    T sum(int l, int r) const {\n    \
+    \    if (l >= r) return T(0);\n        return sum(r) - sum(l);\n    }\n\n    /**\n\
+    \     * (0-indexed)\n     * r = 0 or a[0] + a[1] + ... + a[r-1] < x\n     * r\
+    \ = n or a[0] + a[1] + ... + a[r] >= x\n     * a[0] + a[1] + ... + a[r] >= x \u3068\
+    \u306A\u308B\u6700\u5C0F\u306E r \u3092\u8FD4\u3059\u3002\n     */\n    int lower_bound(T\
+    \ x) const {\n        int k = 1;\n        int ret = 0;\n        while ((k << 1)\
+    \ <= n) k <<= 1;\n        while (k > 0) {\n            if (ret + k <= n and data[ret\
+    \ + k] < x) {\n                x -= data[ret + k];\n                ret += k;\n\
+    \            }\n            k >>= 1;\n        }\n        return ret;\n    }\n\n\
+    \    int upper_bound(T x) const {\n        return lower_bound(x + 1);\n    }\n\
+    \n#ifdef MINATO_LOCAL\n    friend ostream& operator<<(ostream& os, const BinaryIndexedTree&\
+    \ r) {\n        std::vector<T> v(r.size());\n        for (int i = 0; i < r.size();\
     \ i++) {\n            v[i] = r.sum(i, i + 1);\n        }\n        os << v;\n \
     \       return os;\n    }\n#endif\n};\n#line 3 \"segmenttree/PointAddRectangleSum.hpp\"\
     \n\n#line 5 \"segmenttree/PointAddRectangleSum.hpp\"\n\ntemplate <class S, class\
@@ -266,7 +279,7 @@ data:
   isVerificationFile: true
   path: test/segmenttree/PointAddRectangleSum.test.cpp
   requiredBy: []
-  timestamp: '2024-03-09 12:07:22+09:00'
+  timestamp: '2024-09-14 03:17:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: test/segmenttree/PointAddRectangleSum.test.cpp
