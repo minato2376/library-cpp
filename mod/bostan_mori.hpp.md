@@ -36,7 +36,7 @@ data:
   path: mod/bostan_mori.hpp
   requiredBy:
   - mod/kth_term.hpp
-  timestamp: '2024-09-14 03:17:25+09:00'
+  timestamp: '2024-10-13 22:59:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: mod/bostan_mori.hpp

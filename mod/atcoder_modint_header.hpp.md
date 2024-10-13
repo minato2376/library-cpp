@@ -23,7 +23,7 @@ data:
   isVerificationFile: false
   path: mod/atcoder_modint_header.hpp
   requiredBy: []
-  timestamp: '2024-03-09 12:07:22+09:00'
+  timestamp: '2024-10-13 22:59:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: mod/atcoder_modint_header.hpp

@@ -52,7 +52,7 @@ data:
   isVerificationFile: false
   path: mod/kth_term.hpp
   requiredBy: []
-  timestamp: '2024-09-14 03:17:25+09:00'
+  timestamp: '2024-10-13 22:59:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: mod/kth_term.hpp
