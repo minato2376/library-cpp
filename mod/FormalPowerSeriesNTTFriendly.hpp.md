@@ -348,9 +348,9 @@ data:
   timestamp: '2024-10-13 22:59:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - test/mod/inv_of_formal_power_series.test.cpp
-  - test/mod/convolution.test.cpp
   - test/mod/exp_of_formal_power_series.test.cpp
+  - test/mod/convolution.test.cpp
+  - test/mod/inv_of_formal_power_series.test.cpp
 documentation_of: mod/FormalPowerSeriesNTTFriendly.hpp
 layout: document
 redirect_from:

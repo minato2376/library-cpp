@@ -48,8 +48,8 @@ data:
   isVerificationFile: false
   path: datastructure/Csr.hpp
   requiredBy:
-  - graph/WeightedNamori.hpp
   - graph/Namori.hpp
+  - graph/WeightedNamori.hpp
   - tree/Centroid.hpp
   timestamp: '2024-03-09 12:07:22+09:00'
   verificationStatus: LIBRARY_NO_TESTS

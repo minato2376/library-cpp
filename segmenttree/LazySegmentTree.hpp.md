@@ -249,8 +249,8 @@ data:
   verifiedWith:
   - test/segmenttree/LazySegmentTree.test.cpp
   - test/segmenttree/LazySegmentTree4.test.cpp
-  - test/segmenttree/LazySegmentTree3.test.cpp
   - test/segmenttree/LazySegmentTree2.test.cpp
+  - test/segmenttree/LazySegmentTree3.test.cpp
 documentation_of: segmenttree/LazySegmentTree.hpp
 layout: document
 redirect_from:
